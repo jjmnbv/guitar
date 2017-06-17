@@ -129,29 +129,70 @@ Page({
 		shops: app.globalData.shops
 	},
 	onLoad: function () {
-		var self = this;
+		//定位到当前的街道
+  		var page =this  
+		//获取当前的经度和纬度
 		wx.getLocation({
 			type: 'gcj02',
 			success: function (res) {
 				var latitude = res.latitude;
 				var longitude = res.longitude;
-				server.getJSON('/waimai/api/location.php', {
-					latitude: latitude,
-					longitude: longitude
-				}, function (res) {
-					console.log(res)
-					if (res.data.status != -1) {
-						self.setData({
-							address: res.data.result.address_component.street_number
-						});
-					} else {
-						self.setData({
+		//将参数传入到百度的API,返回当前的街道的位置
+		wx.request({  
+			url: 'https://api.map.baidu.com/geocoder/v2/?ak=4rzN5WRiYiGfl52k5zyH70SURmC1M30C &location='+latitude+','+longitude+'&output=json',  
+			data: {},  
+			header:{  
+				'Content-Type':'application/json'  
+			},  
+			success: function(res){  
+				// success  
+				console.log(res);  
+				var city=res.data.result.addressComponent.city;  
+				// page.setData({city:city}); 
+				self.setData({
+							address: city
+							}); 
+			},  
+			fail: function() {  
+				self.setData({
 							address: '定位失败'
-						});
-					}
-				});
+						}); 
+			},  
+			complete: function() {  
+				// complete  
+			}  
+			}) 
+
 			}
-		})
+			})
+		
+
+		
+			
+
+		// var self = this;
+		// wx.getLocation({
+		// 	type: 'gcj02',
+		// 	success: function (res) {
+		// 		var latitude = res.latitude;
+		// 		var longitude = res.longitude;
+		// 		server.getJSON('/waimai/api/location.php', {
+		// 			latitude: latitude,
+		// 			longitude: longitude
+		// 		}, function (res) {
+		// 			console.log(res)
+		// 			if (res.data.status != -1) {
+		// 				self.setData({
+		// 					address: res.data.result.address_component.street_number
+		// 				});
+		// 			} else {
+		// 				self.setData({
+		// 					address: '定位失败'
+		// 				});
+		// 			}
+		// 		});
+		// 	}
+		// })
 	},
 	onShow: function () {
 	},
