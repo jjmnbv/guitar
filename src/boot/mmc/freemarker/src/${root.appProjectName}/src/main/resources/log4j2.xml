@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" status="WARN">
+  <Properties>
+    <Property name="APPNAME">app</Property>
+    <Property name="LOGSDIR">var/log/zkbc/xfjr</Property>
+    <Property name="PATTERN_LAYOUT">[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS}(%t:%c): %m%n</Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="STDOUT">
+      <PatternLayout pattern="${PATTERN_LAYOUT}"/>
+    </Console>
+
+    <RollingFile name="ROLLING" fileName="${LOGSDIR}/${APPNAME}.log" filePattern="${LOGSDIR}/${APPNAME}-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${PATTERN_LAYOUT}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="20"/>
+    </RollingFile>
+
+  </Appenders>
+
+  <loggers>
+    <root level="INFO">
+      <appenderRef ref="STDOUT"/>
+      <appenderRef ref="ROLLING"/>
+    </root>
+    <logger level="DEBUG" name="net.zkbc"/>
+  </loggers>
+</Configuration>

@@ -1,0 +1,221 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>增加贷款还款方式变更信息</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+       <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+  	   <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+  	   <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnpaychgt-add.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.app}}/js/cc/common/loan-prop.js"></script>
+    <script src="{{path.base}}/script/cc/loan/lnpaychgt-add.js"></script>
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=TrTyp"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=17,3009,3010,3016,3022,3023,3033"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnpaychgt-add.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    {{{{raw}}}}
+     <div class="portlet">
+        <div class="portlet-body">
+          <form action="/LNPAYCHGT_CREATE" method="POST" role="form" class="bsdForm" id="add-lnpaychgt-form">
+              <input type="hidden" name="athNo" readonly="readonly" maxlength="32" >
+              <input type="hidden" name="athInd" readonly="readonly" maxlength="1" >
+              <div class="form-group">
+	            <label class="control-label fill">借据号：</label>
+	            <div class="find">
+	                <div class="line propInput">
+	                    <input type="text"  name="loNo" class="form-control required" id="loNo" maxlength="32" readonly placeholder="请选择借据号...">
+	                </div>
+	                <div class="line-use">
+	                    <a data-toggle="modal" href="#lonoModal">
+	                        <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+	                                type="button" data-select2-open="single-prepend-text">
+	                            <span class="glyphicon glyphicon-search"></span>
+	                        </button>
+	                    </a>
+	                </div>
+	            </div>
+        	  </div>
+              <div class="form-group form-ishide">
+                <label class=" control-label">业务流水号:</label>
+                <div >
+                  <input name="buzSeqNo" type="text" class="form-control input-sm" placeholder="请输入业务流水号...">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">变更类型:</label>
+                <div >
+                  <!-- <input name="chgTyp" type="text" class="form-control input-sm" placeholder="请输入变更类型..."> -->
+                  <select name="chgTyp"   class="form-control chgTyp"
+	                data-selectloader-store="chgTyp"
+	                data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                <option value="">请选择...</option>
+       		 	   </select>
+                </div>
+              </div>
+              <div class="form-group form-group-sel single form-exdapp-hidden">
+		          <label class="control-label ">交易日:</label>
+		      	  <div class="selBox">
+		   			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+		        	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+		        	 	data-date-language="zh-CN">
+		        	   	 	<input name="trDt" type="text"  id="trDt"  class="form-control uniform-input text"  placeholder="交易日..." readonly>
+		         			<span class="input-group-btn">
+		                	<button class="btn default" type="button">
+		                     <i class="fa fa-calendar"></i>
+		                 	</button>
+		         		</span>
+		   			</div>
+		    	 </div>
+			  </div>
+              <div class="form-group form-ishide">
+                <label class=" control-label">创建日期:</label>
+                <div >
+                  <input name="crtDt" type="text" class="form-control input-sm" placeholder="请输入创建日期...">
+                </div>
+              </div>
+              <div class="form-group form-ishide">
+                <label class=" control-label">创建时间:</label>
+                <div >
+                  <input name="crtTm" type="text" class="form-control input-sm" placeholder="请输入创建时间...">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">还款方式类型:</label>
+                <div >
+                 <select name="payTyp"   class="form-control payTyp"
+	                 data-selectloader-store="payTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		 </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">还款方式本息类型:</label>
+                <div >
+                  <!-- <input name="payOpt" type="text" class="form-control input-sm" placeholder="请输入还款方式本息类型..."> -->
+                   <select name="payOpt"   class="form-control payOpt"
+	                 data-selectloader-store="payOpt"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		 </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">生效类型:</label>
+                <div >
+                  <!-- <input name="valTyp" type="text" class="form-control input-sm" placeholder="请输入生效类型..."> -->
+                  <select name="valTyp"   class="form-control valTyp"
+	                 data-selectloader-store="valTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		 </select>
+                </div>
+              </div>
+              <div class="form-group  form-ishide">
+                <label class=" control-label">生效日期:</label>
+                <div >
+                  <input name="valDt" type="text" class="form-control input-sm" placeholder="请输入生效日期...">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">机构号:</label>
+                <div >
+                  <input name="brNo" type="text" class="form-control input-sm" placeholder="请输入机构号...">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">用户号:</label>
+                <div >
+                  <input name="laUsId" type="text" class="form-control input-sm" placeholder="请输入用户号...">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label">用户名称:</label>
+                <div >
+                  <input name="laUsNa" type="text" class="form-control input-sm" placeholder="请输入用户名称...">
+                </div>
+              </div>
+              <div class="form-group form-group-sel single form-exdapp-hidden">
+		          <label class="control-label ">申请日期:</label>
+		      	  <div class="selBox">
+		   			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+		        	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+		        	 	data-date-language="zh-CN">
+		        	   	 	<input name="appDt" type="text"  id="appDt"  class="form-control uniform-input text"  placeholder="申请日期..." readonly>
+		         			<span class="input-group-btn">
+		                	<button class="btn default" type="button">
+		                     <i class="fa fa-calendar"></i>
+		                 	</button>
+		         		</span>
+		   			</div>
+		    	 </div>
+			  </div>
+              <div class="portlet-body center">
+              <div class="clearfix">
+	              <button  type="button" class="btn sky-blue btn-wid mainCol" id="saveForm">保存</button>
+	              <a class="btn sky-blue btn-wid mainCol" onclick="returnlist()">返回</a>
+              </div>
+              </div>
+          </form>
+    	</div>
+   </div>
+ {{{{/raw}}}}
+ {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- pagination-form END -->
+
+ <!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+ {{#content "content-pagination"}}
+ <!-- @Override -->
+ {{/content}}
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  
+  <!-- 借据选择框 -->
+  {{> loan-prop}}
+
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+{{/content}}
+{{/extend}}

@@ -1,0 +1,86 @@
+.details-address{
+    margin-bottom: 15px;
+}
+.details-address>label{
+    width: 8.8em;
+    text-align: right;
+    display: inline-block;
+    margin-right: .5em;
+}
+.address{
+    display: inline-block;
+    position: relative;
+}
+.address select{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #c2cad8;
+    outline: 0!important;
+}
+.address input{
+    width: 400px;
+    height: 30px;
+    border: 1px solid #c2cad8;
+    outline: 0!important;
+    padding: 6px 12px;
+}
+.address .form-control{
+    display: inline-block;
+}
+.address span.help-block-error{
+    margin: 0 10px;
+}
+#provCd-error{
+    color: #e73d4a;
+    left: -9px;
+}
+#cityCd-error{
+    /*left: 134px;*/
+    color: #e73d4a;
+}
+#distCd-error{
+    /*left: 276px;*/
+    color: #e73d4a;
+}
+#adCa-error{
+    left:400px ;
+    color: #e73d4a;
+}
+span.help-block.help-block-error{
+    position: absolute;
+    bottom: -16px;
+}
+.line-yuan{
+    display: inline-block;
+}
+.line span{
+    font-size: 12px;
+}
+.unit{
+    font-size: 12px;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+/*地址样式更新select有关*/
+.conSelect{
+	border: 1px solid #D6D6D6;
+	float: left;
+}
+.address > .conSelect > div.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    width: 135px;
+    float: left;
+    padding-left: 0;
+}
+.address > .conSelect > div.bootstrap-select button{
+    border-width: 0;
+    height: 28px;
+    /*padding: 0px;*/
+}
+.conSelect .bootstrap-select.btn-group .dropdown-toggle .filter-option{
+   position: relative;
+    top:-6px;
+}
+/*.address > .conSelect > div.bootstrap-select button > span.caret{
+    height: 28px;
+}*/

@@ -1,0 +1,62 @@
+{
+    "content": [
+      {
+        "id":"0",
+        "applicationWater": "KH0001",
+        "customerName": "张三",
+        "customerNo": "20001",
+        "papersNo": "11022219890909",
+        "mobileNo": "13455737373",
+        "loanKindCode": "助学分期",
+        "loanUseCode": "教育",
+        "applyDate": "2016-01-01",
+        "w": "待发起"
+      },
+      {
+       "id":"1",
+       "applicationWater": "KH0002",
+             "customerName": "张三",
+             "customerNo": "20001",
+             "papersNo": "11022219890909",
+             "mobileNo": "13455737373",
+             "loanKindCode": "助学分期",
+             "loanUseCode": "教育",
+             "applyDate": "2016-01-01",
+             "w": "待发起"
+           },
+       {
+        "id":"3",
+       "applicationWater": "KH0003",
+              "customerName": "张三",
+              "customerNo": "20001",
+              "papersNo": "11022219890909",
+              "mobileNo": "13455737373",
+              "loanKindCode": "助学分期",
+              "loanUseCode": "教育",
+              "applyDate": "2016-01-01",
+              "w": "待发起"
+            },
+       {
+        "id":"4",
+        "applicationWater": "KH0003",
+              "customerName": "张三",
+              "customerNo": "20001",
+              "papersNo": "11022219890909",
+              "mobileNo": "13455737373",
+              "loanKindCode": "助学分期",
+              "loanUseCode": "教育",
+              "applyDate": "2016-01-01",
+              "w": "待发起"
+            }
+    ],
+    "totalElements":4,
+    "totalPages": 1,
+    "size": 4,
+    "number": 0,
+    "numberOfElements": 20,
+    "pages": [
+      1,
+      2,
+      3
+    ]
+}

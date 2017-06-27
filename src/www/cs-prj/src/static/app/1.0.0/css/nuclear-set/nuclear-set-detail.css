@@ -1,0 +1,15 @@
+/*crumbs*/
+.icon-pruduct-set{
+	background-image: url(../../img/product-set/productSet.png);
+}
+.table .table{
+	background: inherit;
+	margin-bottom: 0px;
+}
+.table > tbody > tr > td{
+	line-height: inherit;
+}
+.bsdForm td.form-group{
+	padding: 0px !important;
+	line-height: 40px;
+}

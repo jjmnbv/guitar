@@ -1,0 +1,195 @@
+{{#extend "main"}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}} | {{path.subSystem}} | 权限管理</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+        <link rel="stylesheet" href="{{path.app}}/lib/jquery-ui-1.12.1/jquery-ui.min.css"/>
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/cu/simple-layout.css"/>
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <script src="{{path.base}}/script/cu/dicts?ids=70"></script>
+        <script src="{{path.base}}/script/cu/curoris"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+        <script src="{{path.app}}/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+        <script src="{{path.app}}/lib/jquery-layout/jquery.layout.min.js"></script>
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cu/common/app-context.js"></script>
+        <script src="{{path.app}}/js/cu/auth-management/auth-management.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        {{{{raw}}}}
+
+            <div id="content">
+                <div class="ui-layout-west">
+                    <!--<button id="select" class="btn btn-primary">select</button>-->
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>系统菜单 </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tree-nav" id="jstree"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-layout-center">
+                    <!--<button id="getBtn">get</button>-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">角色列表</div>
+                        <div class="list-group" id="leftNav">
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="ui-layout-east">
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>权限 </div>
+                        </div>
+                        <div class="portlet-body form" id="showContent">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="portlet light">-->
+            	<!--<div class="portlet-title">-->
+            		<!--<div class="caption">-->
+            			<!--<i class="fa fa-gift"></i>Portlet </div>-->
+            		<!--<div class="tools">-->
+            			<!--<a href="javascript:;" class="collapse" data-original-title="" title=""> </a>-->
+            			<!--<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>-->
+            			<!--<a href="javascript:;" class="reload" data-original-title="" title=""> </a>-->
+            			<!--<a href="" class="fullscreen" data-original-title="" title=""> </a>-->
+            			<!--<a href="javascript:;" class="remove" data-original-title="" title=""> </a>-->
+            		<!--</div>-->
+            	<!--</div>-->
+            	<!--<div class="portlet-body">-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="col-md-2">-->
+                            <!--<div class="tree-nav" id="jstree"></div>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-10">-->
+
+                        <!--</div>-->
+                    <!--</div>-->
+            	<!--</div>-->
+            <!--</div>-->
+        {{{{/raw}}}}
+    {{/content}}
+
+    <!-- 搜索按钮组，筛选条件，表格，分页的总容器(只有需要单独做查询样式的才需要引入) -->
+    {{#content "content-pagination"}}
+    {{/content}}
+
+    <!-- 分页查询条件 pagination-form -->
+    {{#content "pagination-form"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 分页表格和分页页码 pagination-container -->
+    {{#content "pagination-container"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 页面模态框 -->
+    {{#content "content-free"}}
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><span class="title"></span>&nbsp;|&nbsp;<small>选择权限</small></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" id="addMenuForm" action="/UPDATE_AUTH_DATA" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">权限</label>
+                                <div class="col-sm-6">
+                                    <div class="checkbox-list status" id="authCheck"
+                                        data-checkboxloader-name="resActCdList"
+                                        data-checkboxloader-store="resActCdList"
+                                         data-checkboxloader-vkey="code"
+                                         data-checkboxloader-tkey="name"
+                                    required>
+                                </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" id="addConfirm">确定</button>
+                        <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/content}}
+
+    <!-- 页面组件模板 -->
+    {{#content "content-component"}}
+        <script id="leftNavTemplate" type="text/x-handlebars-template">
+            {{{{raw}}}}
+                {{#each content}}
+                    <a href="javascript:;" style="text-indent: 2em;" class="list-group-item" data-id="{{roNo}}">{{roNa}}</a>
+                {{/each}}
+            {{{{/raw}}}}
+        </script>
+
+        <script id="show-form-template" type="text/x-handlebars-template">
+            {{{{raw}}}}
+                <form class="form-horizontal" action="/UPDATE_AUTH_DATA" id="showForm" role="form">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">权限:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" id="roNo" name="roNo">
+                                <input type="hidden" id="resNo" name="resNo">
+                                <div class="checkbox-list status" id="authCheck2"
+                                     data-checkboxloader-val="{{resActCdList}}"
+                                     data-checkboxloader-name="resActCdList"
+                                     data-checkboxloader-store="resActCdList"
+                                     data-checkboxloader-vkey="code"
+                                     data-checkboxloader-tkey="name"
+                                     required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-3">
+                                <button type="button" id="updateBtn" class="btn btn-circle green">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            {{{{/raw}}}}
+        </script>
+    {{/content}}
+
+
+{{/extend}}

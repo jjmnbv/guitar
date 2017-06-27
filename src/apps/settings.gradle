@@ -1,0 +1,24 @@
+def PROJECT = project(':').projectDir
+def BASE = new File(PROJECT.parentFile, 'base')
+def APIS = new File(PROJECT.parentFile, 'apis')
+def PROJECTS = [PROJECT, BASE, APIS] as Set
+
+def filter = {file ->
+  file.isDirectory() && 
+  file.name.charAt(0) != '.' && 
+  file.name != 'scripts' && 
+  file.name != 'RemoteSystemsTempFiles' && 
+  file.name != 'Servers'
+} as FileFilter
+
+def projectDirList = []
+
+PROJECTS.each {
+  projectDirList.addAll it.listFiles(filter)
+}
+
+include(projectDirList*.name as String[])
+
+projectDirList.each { dir ->
+  project(":$dir.name").projectDir = dir
+}

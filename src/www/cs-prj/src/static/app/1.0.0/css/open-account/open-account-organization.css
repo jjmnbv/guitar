@@ -1,0 +1,46 @@
+.bank-details{
+    line-height: 60px;
+    text-align: left;
+}
+.bank-details span{
+    font-size: 14px;
+    margin-left: 30px;
+    margin-right: 40px;
+}
+input[disabled], input[readonly], select[disabled], textarea[disabled], textarea[readonly]{
+    background-color: #FAFAFA !important;
+}
+.table-scrollable input{
+    text-align: center!important;
+}
+
+.line,.line-use{
+    display: inline-block;
+}
+.line{
+    vertical-align: middle;
+}
+
+.address{
+    margin-bottom: 20px;
+}
+.bootstrap-select{
+    float: left!important;
+}
+/*.bootstrap-select.btn-group .dropdown-toggle .filter-option{
+    line-height: 20px!important;
+}*/
+
+#regionModal{
+    z-index: 10055!important;
+}
+#regionModal .modal-dialog{
+    z-index: 10055!important;
+}
+.modal .line-use .btn{
+    border-radius: 0!important;
+    padding: 6px 12px!important;
+}
+.line > span{
+    font-size: 12px;
+}

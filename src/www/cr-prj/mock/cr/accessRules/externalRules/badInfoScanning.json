@@ -1,0 +1,63 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中法院失信名单",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中犯罪通缉名单",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中法院执行名单",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证号对应人存在助学贷款逾期历史",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中信贷逾期名单",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中高风险关注名单",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中车辆租赁违约名单",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "不良信息扫描",
+      "varType": "身份证命中法院结案名单",
+      "varDefault": "",
+      "idType": ""
+    }
+  ]
+}

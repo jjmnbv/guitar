@@ -1,0 +1,70 @@
+{
+    "content": [
+      {
+        "id":"0",
+        "organizationNo": "KH0001",
+        "storeNo": "张三",
+        "storeName": "20001",
+        "address": "11022219890909"
+      },
+       {
+             "id":"0",
+             "organizationNo": "KH0001",
+             "storeNo": "张三",
+             "storeName": "20001",
+             "address": "11022219890909"
+           },
+         {
+               "id":"0",
+               "organizationNo": "KH0001",
+               "storeNo": "张三",
+               "storeName": "20001",
+               "address": "11022219890909"
+             },
+        {
+              "id":"0",
+              "organizationNo": "KH0001",
+              "storeNo": "张三",
+              "storeName": "20001",
+              "address": "11022219890909"
+            },
+       {
+             "id":"0",
+             "organizationNo": "KH0001",
+             "storeNo": "张三",
+             "storeName": "20001",
+             "address": "11022219890909"
+           },
+        {
+              "id":"0",
+              "organizationNo": "KH0001",
+              "storeNo": "张三",
+              "storeName": "20001",
+              "address": "11022219890909"
+            },
+       {
+             "id":"0",
+             "organizationNo": "KH0001",
+             "storeNo": "张三",
+             "storeName": "20001",
+             "address": "11022219890909"
+           },
+     {
+           "id":"0",
+           "organizationNo": "KH0001",
+           "storeNo": "张三",
+           "storeName": "20001",
+           "address": "11022219890909"
+         }
+    ],
+    "totalElements": 23,
+    "totalPages": 3,
+    "size": 10,
+    "number": 0,
+    "numberOfElements": 20,
+    "pages": [
+      1,
+      2,
+      3
+    ]
+}

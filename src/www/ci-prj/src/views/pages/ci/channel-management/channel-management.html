@@ -1,0 +1,213 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}渠道管理</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/ci/common-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/ci/modal-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/ci/channel-management/channel-management.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<!--加载数据字典-->
+<script src="{{path.base}}/script/ci/channelList"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/ci/common/app-context.js"></script>
+<script src="{{path.app}}/js/ci/channel-management/channel-management.js"></script>
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<!-- @Override -->
+{{/content}}
+
+
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+<!--BEGIN CONDITION SERACH-->
+<form action="/CHANNELMANAGEMENT" class="bsdForm pagination-form" id="channelTypeForm">
+    <div class="form-group">
+        <label class="control-label">渠道编号</label>
+        <div>
+            <input type="text" class="form-control" name="no" value="" maxlength="32">
+        </div>
+    </div>
+    <div class="form-group form-group-sel">
+        <label class="control-label">接入时间</label>
+        <div class="selBox">
+            <div class="date date-picker date-picker-page" data-date-format="yyyy-dd-mm">
+                <input type="text" class="form-control" name="accessBeginTime" id="accessBeginTime">
+                <span class="input-group-btn">
+                    <button class="btn default" type="button">
+                      <i class="fa fa-calendar"></i>
+                    </button>
+                  </span>
+            </div>
+            <span>至</span>
+            <div class="date date-picker date-picker-page" data-date-format="yyyy-dd-mm">
+                <input type="text" class="form-control" name="accessEndTime" id="accessEndTime">
+                <span class="input-group-btn">
+                    <button class="btn default" type="button">
+                      <i class="fa fa-calendar"></i>
+                    </button>
+                  </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">当前状态</label>
+        <div>
+            <select
+                    name="status"
+                    class="form-control dictionarys"
+                    data-selectloader-store="status"
+                    data-selectloader-vkey="code"
+                    data-selectloader-tkey="name"
+            >
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">渠道名称</label>
+        <div>
+            <input type="text" class="form-control" name="name"  maxlength="30">
+        </div>
+    </div>
+    <div class="form-group form-group-sel">
+        <label class="control-label">服务时间</label>
+        <div class="selBox">
+            <div class="date date-picker date-picker-page" data-date-format="yyyy-dd-mm">
+                <input type="text" class="form-control" name="serviceBeginDate" >
+                <span class="input-group-btn">
+                    <button class="btn default" type="button">
+                      <i class="fa fa-calendar"></i>
+                    </button>
+                  </span>
+            </div>
+            <span>至</span>
+            <div class="date date-picker date-picker-page" data-date-format="yyyy-dd-mm">
+                <input type="text" class="form-control" name="serviceEndDate" >
+                <span class="input-group-btn">
+                    <button class="btn default" type="button">
+                      <i class="fa fa-calendar"></i>
+                    </button>
+                  </span>
+            </div>
+        </div>
+    </div>
+</form>
+<!--END CONDITION SERACH-->
+{{/content}}
+
+<!-- 分页表格和分页页码 pagination-container -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+<div class="portlet box reg">
+    <div class="portlet-title">
+        <div class="caption">渠道列表</div>
+        <div class="actions">
+            <a id="add" href="channel-management-add.html" title="新增" class="add-sign"></a>
+            <a id="update" href="javascript:;" title="修改" class="update-sign"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="tabbable tabbable-tabdrop">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <div class="pagination-reload"></div>
+                    <div class="portlet-body pagination-container"
+                         data-page-first-store="first-store"
+                         data-page-url="/CHANNELMANAGEMENT"
+                         data-page-template-id="table1-page-template">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<!-- @Override -->
+<script type="text/x-handlebars-template" id="table1-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>选择</th>
+                <th>渠道编号</th>
+                <th>渠道状态</th>
+                <th>渠道名称</th>
+                <th>合同开始时间</th>
+                <th>合同结束时间</th>
+                <th>接入时间</th>
+                <th>预存余额</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each page.content}}
+            <tr>
+                <td>
+                    <div class="icheck-inline">
+                        <label>
+                            <input type="radio" class="icheck" name="checkRow" data-id="{{no}}" >
+                        </label>
+                    </div>
+                </td>
+                <td>{{no}}</td>
+                <td>{{status-text}}</td>
+                <td>{{name}}</td>
+                <td>{{contractBeginDate}}</td>
+                <td>{{contractEndDate}}</td>
+                <td>{{accessBeginTime}}</td>
+                <td>{{contractAmount}}</td>
+                <td><a href="channel-management-view.html?no={{no}}">查看详情</a></td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+</script>
+{{/content}}
+
+{{/extend}}

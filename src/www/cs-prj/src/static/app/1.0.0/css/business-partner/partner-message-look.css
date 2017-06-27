@@ -1,0 +1,12 @@
+.prov{
+    width: 135px!important;
+}
+.ad-details{
+    width: 300px!important;
+}
+.form-control[readonly], fieldset[disabled] .form-control {
+    width: 100%;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+     background-color: #ffffff;
+}

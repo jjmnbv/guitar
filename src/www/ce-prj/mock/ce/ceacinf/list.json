@@ -1,0 +1,18 @@
+[{
+  "content":[{
+    "acId":1,
+    "acSe":"",
+    "acNa":"",
+    "acNo":"",
+    "acBankNa":"",
+    "acBankNo":"",
+    "acBankBrNa":"",
+    "acBankBrNo":"",
+    "acSaAm":1,
+    "acTy":"",
+    "acCur":"",
+    "acSt":"",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

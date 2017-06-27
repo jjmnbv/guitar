@@ -1,0 +1,66 @@
+.bsdForm{
+    padding:20px 0;
+}
+.details-address{
+    margin-bottom: 15px;
+}
+.details-address>label{
+    width: 8.8em;
+    text-align: right;
+    display: inline-block;
+    margin-right: .5em;
+}
+.address{
+    display: inline-block;
+    position: relative;
+}
+.address select{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #c2cad8;
+    outline: 0!important;
+}
+.address input{
+    width: 400px;
+    height: 30px;
+    border: 1px solid #c2cad8;
+    outline: 0!important;
+    padding: 6px 12px;
+}
+.address .form-control{
+    display: inline-block;
+}
+.address span{
+    margin: 0 10px;
+}
+#provCd-error{
+    color: #e73d4a;
+    left: -9px;
+}
+#cityCd-error{
+    left: 90px;
+    color: #e73d4a;
+}
+#distCd-error{
+    left: 190px;
+    color: #e73d4a;
+}
+#adCa-error{
+    left:290px ;
+    color: #e73d4a;
+}
+span.help-block.help-block-error{
+    position: absolute;
+}
+.line-yuan{
+    display: inline-block;
+}
+.line span{
+    font-size: 12px;
+}
+.unit{
+    font-size: 12px;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+

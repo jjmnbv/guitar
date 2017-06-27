@@ -1,0 +1,40 @@
+
+window.app = window.app || {};
+/**
+ * 数据模拟
+ */
++function($, app){
+/**
+     * 面包屑导航数据
+     * @type {{icon: string, dt: string, dd: Array}}
+     */
+    app.crumbs = {
+        icon: 'icon-set',
+        dt: {
+            text: '情报系统',
+            url: '#'
+        },
+        dd: [
+            {
+                text: '配置管理',
+                url: '#'
+            },
+            {
+                text: '渠道管理',
+                url: '/ci/channel-management/channel-management.html'
+            },
+            {
+              text: '新增',
+              url: '#'
+            }
+        ]
+    };
+   app.perProYnList =[
+      {"code":"Y","name":"是"},
+      {"code":"N","name":"否"}];
+   app.channelStatus =[
+        {"code":"Y","name":"启用"},
+        {"code":"D","name":"待接入"},
+        {"code":"S","name":"暂停"}];
+
+}(window.jQuery,window.app);

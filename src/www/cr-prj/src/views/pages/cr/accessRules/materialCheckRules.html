@@ -1,0 +1,175 @@
+{{#extend "main"}}
+
+<!-- title BEGIN -->
+{{#content "title"}}
+<!-- @Override -->
+<title>物检规则</title>
+{{/content}}
+<!-- title END -->
+
+<!-- css-plugins BEGIN -->
+{{#content "css-plugins"}}
+{{/content}}
+<!-- css-plugins END -->
+
+<!-- css-main BEGIN -->
+{{#content "css-main"}}
+<!-- @Override -->
+{{/content}}
+<!-- css-main END -->
+
+<!-- js-loader BEGIN -->
+{{#content "js-loader"}}
+<!-- <script src="{{path.base}}/script/cr/accessRules/materialCheckRules.js"></script> -->
+
+<script src="{{path.base}}/script/cr/crdicc"></script>
+<script>
+	app.crumbs.dd[0].text= "准入规则";
+	app.crumbs.dd[1].text= "物检规则";
+	delete app.crumbs.dd[2];
+</script>
+
+{{/content}}
+<!-- js-loader END -->
+
+<!-- js-plugins BEGIN -->
+{{#content "js-plugins"}}
+{{/content}}
+<!-- js-plugins END -->
+
+<!-- js-main BEGIN -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/cr/accessRules/materialCheckRules.js"></script>
+{{/content}}
+<!-- js-main END -->
+
+<!-- content-main BEGIN -->
+{{#content "content-main"}}
+<div id="innerLayout">
+    <div class="ui-layout-center">
+        <form class="bsdForm dynamic-query-box" id="dynamicQueryBox" action="#">
+        <input type="hidden" name="conditionParams" id="conditionParams" />
+            <div class="dynamicCondRow">
+                <div class="form-group choose-input">
+                    <div>
+                        <select class="form-control" name="condition" id="firstCondition">
+                            <option value="0">请选择</option>
+                            <!-- <option value="ruleIn">规则中类</option> -->
+                            <option value="ruleSmall">规则小类</option>
+                            <option value="checkTheme">检查主题</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group choose-input">
+                    <div>
+                        <select class="form-control" name="express">
+                            <option value="eq">等于</option>
+                            <!-- <option value="gt">大于</option>
+                            <option value="lt">小于</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group choose-input">
+                    <div>
+                        <input class="form-control" name="queryVal" type="text" placeholder="具体值">
+                    </div>
+                </div>
+                <div class="form-group opt-btn">
+                    <button id="addDynamic" class="btn btn-sm btn-info" type="button">+</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-sm btn-warning" type="button" id="query">查询</button>
+                </div>
+            </div>
+
+        </form>
+        <div class="portlet portlet-table">
+            <div class="portlet-title">
+                <div class="btn-on-title actions clearfix">
+                    <a href="javascript:;" title="刷新" id="refresh" class="Refresh-sign" data-toggle="tooltip"
+                       data-placement="bottom"></a>
+                    <a href="javascript:;" title="导出.xls" id="exportExcel" class="export-excel-sign"
+                       data-toggle="tooltip" data-placement="bottom"></a>
+                </div>
+                <div class="table-info"><span id="allBlacklistCount">9</span>项</div>
+            </div>
+        </div>
+        <div class="ui-layout-content">
+            <table class="table table-striped table-bordered table-hover" width="99.9%" id="allBlacklistTable">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>规则中类</th>
+                    <th>规则小类</th>
+                    <th>检查主题</th>
+                    <!-- <th>信贷接口</th>
+                    <th>情报接口</th> -->
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--<div class="ui-layout-north">North</div>-->
+    <!--<div class="ui-layout-south">South</div>-->
+    <!--<div class="ui-layout-west">West</div>-->
+</div>
+{{/content}}
+<!-- content-main END -->
+
+<!-- content-pagination BEGIN -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- content-pagination END -->
+
+<!-- pagination-form BEGIN -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-form END -->
+
+<!-- pagination-container BEGIN -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-container END -->
+
+<!-- pagination-free BEGIN -->
+{{#content "content-free"}}
+<script id="dynamicCondTmpl" type="text/x-handlebars-template">
+    <div class="dynamicCondRow">
+        <div class="form-group choose-input">
+            <div>
+                <select class="form-control" name="condition">
+                    <option value="0">请选择</option>
+                    <!--<option value="ruleIn">规则中类</option>-->
+                    <option value="ruleSmall">规则小类</option>
+                    <option value="checkTheme">检查主题</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group choose-input">
+            <div>
+                <select class="form-control" name="express">
+                    <option value="eq">等于</option>
+                    <!-- <option value="gt">大于</option>
+                    <option value="lt">小于</option> -->
+                </select>
+            </div>
+        </div>
+        <div class="form-group choose-input">
+            <div>
+                <input class="form-control" name="queryVal" type="text" placeholder="具体值">
+            </div>
+        </div>
+        <div class="form-group opt-btn">
+            <button class="btn btn-sm btn-info removeDynamic" type="button">-</button>
+        </div>
+    </div>
+</script>
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

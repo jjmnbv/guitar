@@ -1,0 +1,22 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "diId":1,
+    "diDesc":"字典说明",
+    "syCd":"系统标识",
+    "taNa":"表名",
+    "cdColNa":"值字段名",
+    "txtColNa":"显示字段名",
+    "conSql":"查询条件",
+    "ordCol":"排序字段",
+    "ordTyp":"排序类型",
+    "diSql":"字典语句(可以直接写语句，第一个值是code，第二个值是name)",
+    "resultCode": "SUCCESS"
+  }]
+}

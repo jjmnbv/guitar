@@ -1,0 +1,14 @@
+task cleanWorkspace {
+  doLast {
+    delete new File(projectDir, 'RemoteSystemsTempFiles')
+    delete new File(projectDir, 'Servers')
+    delete new File(projectDir, '.gradle')
+    delete new File(projectDir, '.metadata')
+    delete new File(projectDir, '.recommenders')
+    subprojects {
+      delete new File(projectDir, '.log')
+      delete new File(projectDir, '.settings')
+      delete new File(projectDir, 'scripts/stdout.log')
+    }
+  }
+}

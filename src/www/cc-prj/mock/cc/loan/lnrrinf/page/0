@@ -1,0 +1,29 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "athNo":1,
+    "athInd":"授权状态",
+    "loNo":"借据号",
+    "buzSeqNo":1,
+    "trDt":"交易日期",
+    "rrTolAmt":1,
+    "rrPrAmt":1,
+    "rrInAmt":1,
+    "rrOvInAmt":1,
+    "rrCmInAmt":1,
+    "rrFeeAmt":1,
+    "rrDesc":"减免说明",
+    "rrPrInd":"是否减免本金",
+    "rrPrDesc":"减免本金说明",
+    "brNo":"机构号",
+    "laUsId":"用户号",
+    "laUpDt":"申请日期",
+    "resultCode": "SUCCESS"
+  }]
+}

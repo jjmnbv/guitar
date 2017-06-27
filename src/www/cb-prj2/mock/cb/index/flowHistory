@@ -1,0 +1,28 @@
+{
+  "recordsTotal": 5,
+  "recordsFiltered": 5,
+  "draw":1,
+  "data": [
+    {
+      "flowId": 1,
+      "flowVersion": "1.0",
+      "createDate": "2017-3-23 15:57",
+      "operator": "tj",
+      "content": "第一版保存"
+    },
+    {
+      "flowId": 2,
+      "flowVersion": "1.1",
+      "createDate": "2017-3-24 11:34",
+      "operator": "tj",
+      "content": "第二版保存"
+    },
+    {
+      "flowId": 1,
+      "flowVersion": "1.2",
+      "createDate": "2017-3-24 5:7",
+      "operator": "tj",
+      "content": "第三版保存"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+subprojects {
+  configurations {
+    jdbc
+    h2
+    mysql
+    postgresql
+    oracle
+    db2
+    sql_server
+  }
+
+  dependencies {
+    h2 GLOBAL.jdbcDrivers.h2
+    mysql GLOBAL.jdbcDrivers.mysql
+    postgresql GLOBAL.jdbcDrivers.postgresql
+    oracle GLOBAL.jdbcDrivers.oracle
+    db2 GLOBAL.jdbcDrivers.db2
+    sql_server GLOBAL.jdbcDrivers.sql_server
+  }
+
+  if (!application.database) return
+  def database = application.database.toLowerCase()
+
+  apply plugin: 'org.flywaydb.flyway'
+  flyway {
+    if (application.properties['flyway.schemas']) {
+      schemas = application.properties['flyway.schemas'].split(',')
+    }
+    driver = application.properties['spring.datasource.driver-class-name']
+    url = application.properties['flyway.url']
+    user = application.properties['flyway.user']
+    password = application.properties['flyway.password']
+    locations = ["filesystem:$projectDir/scripts/$database"]
+    encoding = 'UTF-8'
+    baselineOnMigrate = true
+  }
+
+  dependencies {
+    jdbc configurations[database]
+    testRuntime configurations[database]
+  }
+}

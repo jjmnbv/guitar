@@ -1,0 +1,37 @@
+
+window.app = window.app || {};window.app.dicts = window.app.dicts || {};
+/**
+ * 数据模拟
+ */
++function($, app){
+/**
+     * 面包屑导航数据
+     * @type {{icon: string, dt: string, dd: Array}}
+     */
+    app.crumbs = {
+        icon: 'icon-set',
+        dt: {
+            text: '授信额度系统',
+            url: '#'
+        },
+        dd: [
+            {
+                text: '授信配置',
+                url: '#'
+            },
+            {
+                text: '授信产品配置',
+                url: '#'
+            }
+        ]
+    };
+   app.typeName=[
+        {"code":"0","name":"类型一"},
+        {"code":"1","name":"类型二"}
+    ];
+    app.toList=[
+        {"code":"0","name":"是"},
+        {"code":"1","name":"否"}
+    ];
+
+}(window.jQuery,window.app);

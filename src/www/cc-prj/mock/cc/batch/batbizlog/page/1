@@ -1,0 +1,20 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":1,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "txLogSeq":1,
+    "exId":1,
+    "bchNo":"机构编号",
+    "bizDt":"业务日期",
+    "loanNo":"借据号",
+    "txAmt":1,
+    "txNo":"交易码",
+    "exSt":"执行状态",
+    "resultCode": "SUCCESS"
+  }]
+}

@@ -1,0 +1,71 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title></title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+    {{#content "content-pagination"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 分页查询条件 pagination-form -->
+    {{#content "pagination-form"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 分页表格和分页页码 pagination-container -->
+    {{#content "pagination-container"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 页面模态框 -->
+    {{#content "content-free"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 页面组件模板 -->
+    {{#content "content-component"}}
+        <!-- @Override -->
+    {{/content}}
+
+{{/extend}}

@@ -1,0 +1,18 @@
+[{
+  "content":[{
+    "brId":1,
+    "faId":"",
+    "brSe":"",
+    "brNo":"",
+    "alNa":"",
+    "acNa":"",
+    "acBankNa":"",
+    "acNo":"",
+    "acAm":1,
+    "acSt":"",
+    "nodeLevel":1,
+    "dispOrder":1,
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

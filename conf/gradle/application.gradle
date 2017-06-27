@@ -1,0 +1,54 @@
+subprojects {
+  buildscript {
+    project.ext {
+      application = [ properties: new Properties() ]
+
+      def props = file("src/main/resources/application.properties")
+      if ( props.exists() ) {
+        props.withInputStream { stream ->
+          application.properties.load(stream)
+        }
+      }
+
+      def profile = System.properties['spring.profiles.active']
+      props = file("src/main/resources/application-${profile}.properties")
+      if ( props.exists() ) {
+        props.withInputStream { stream ->
+          application.properties = new Properties(application.properties)
+          application.properties.load(stream)
+        }
+      }
+
+      application.database = application.properties['spring.jpa.database']
+    }
+    repositories {
+      maven {
+        url "$GLOBAL.repositoriesRoot/repositories/plugins.gradle.org/"
+      }
+      maven {
+        url "$GLOBAL.repositoriesRoot/repositories/jcenter/"
+      }
+      maven {
+        url "https://plugins.gradle.org/m2/"
+      }
+      jcenter()
+    }
+
+    if (!application.database) return
+    def database = application.database.toLowerCase()
+
+    dependencies {
+      classpath GLOBAL.jdbcDrivers[database]
+    }
+  }
+
+  repositories {
+    maven {
+      url "$GLOBAL.repositoriesRoot/groups/public/"
+    }
+    maven {
+      url "http://repository.jboss.org/nexus/content/groups/public-jboss"
+    }
+    mavenCentral()
+  }
+}

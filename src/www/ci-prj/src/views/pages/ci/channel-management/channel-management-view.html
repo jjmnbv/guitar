@@ -1,0 +1,185 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}还款方式{{path.detailText}}</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<link rel="stylesheet" href="{{path.app}}/css/ci/common-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/ci/channel-management/channel-management-add.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<!--加载数据字典-->
+<script src="{{path.base}}/script/ci/channelView"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<script src="{{path.app}}/js/ci/ci-app.js"></script>
+<script src="{{path.app}}/js/ci/channel-management/channel-management-view.js"></script>
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<div>
+    <form  class="bsdForm" id="add-repay-form" data-link="channel-management.html">
+    	<input type="hidden" name="no" >
+        <div class="portlet box reg">
+            <div class="portlet-title">
+                <div class="caption">
+                    渠道信息
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body tabs-below">
+                <div class="form-group">
+                    <label for="name" class="control-label ">渠道简称</label>
+                    <div>
+                        <input type="text" class="form-control " name="name" id="name"  readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="control-label ">合约开始时间</label>
+                    <div>
+                        <input type="text" class="form-control " name="contractBeginDate" id="contractBeginDate"  readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="control-label ">合约结束时间</label>
+                    <div>
+                        <input type="text" class="form-control " name="contractEndDate" id="contractEndDate"  readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">合同号</label>
+                    <div>
+                        <input type="text" class="form-control " name="contractNo" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">接入时间</label>
+                    <div>
+                        <input type="text" class="form-control " name="accessBeginTime" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">首次预存金额</label>
+                    <div>
+                        <input type="text" class="form-control bindEvent" name="contractAmount" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">正式认证账号</label>
+                    <div>
+                        <input type="text" class="form-control " name="channelOrganNo" readonly >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">URL</label>
+                    <div>
+                        <input type="text" class="form-control " name="url" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label ">正式认证密码</label>
+                    <div>
+                        <input type="text" class="form-control " name="channelPassword" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">证书key</label>
+                    <div>
+                        <input type="text" class="form-control " name="certificateKey" readonly>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="control-label ">服务开始日期</label>
+                    <div>
+                        <input type="text" class="form-control " name="serviceBeginDate" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">服务结束日期</label>
+                    <div>
+                        <input type="text" class="form-control " name="serviceEndDate" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">渠道状态</label>
+                    <div style="pointer-events: none;">
+                        <select
+                                name="status"
+                                class="form-control channel-status required"
+                                data-selectloader-store="channelStatus"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name"
+                        >
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">是否需要IP白名单</label>
+                    <div class="no-border" style="pointer-events: none;">
+                        <div class="radio-list ipWhitelist "
+                             data-radioloader-name="ipWhitelist"
+                             data-radioloader-store="ipWhitelistList"
+                             data-radioloader-vkey="code"
+                             data-radioloader-tkey="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">备注</label>
+                    <div>
+                        <textarea class="form-control " rangelength="[1,200]" name="remark" readonly></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="portlet-body center">
+            <div class="clearfix">
+                <a class="btn sky-blue btn-wid mainCol" href="channel-management.html">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+{{/content}}
+
+{{/extend}}

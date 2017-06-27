@@ -1,0 +1,215 @@
+{
+  "id": "1",
+  "text": "授信品种",
+  "state": {
+    "opened": true,
+    "disabled": false,
+    "selected": false
+  },
+  "children": [
+    {
+      "id": "m_50005",
+      "text": "品种一",
+      "state": {
+        "opened": false,
+        "disabled": false,
+        "selected": false
+      },
+      "children": [
+        {
+          "id": "m_2",
+          "text": "品种二",
+          "state": {
+            "opened": false,
+            "disabled": false,
+            "selected": false
+          },
+          "children": [
+            {
+              "id": "m_3",
+              "text": "品种三",
+              "state": {
+                "opened": false,
+                "disabled": false,
+                "selected": false
+              },
+              "children": [],
+              "li_attr": {
+                "type": "MENU",
+                "name": "菜单"
+              }
+            },
+            {
+              "id": "m_5",
+              "text": "品种三",
+              "state": {
+                "opened": false,
+                "disabled": false,
+                "selected": false
+              },
+              "children": [],
+              "li_attr": {
+                "type": "MENU",
+                "name": "菜单"
+              }
+            }
+          ],
+          "li_attr": {
+            "type": "MENU",
+            "name": "菜单"
+          }
+        }
+      ],
+      "li_attr": {
+        "type": "MENU",
+        "name": "菜单"
+      }
+    },
+    {
+      "id": "m_20",
+      "text": "品种一",
+      "state": {
+        "opened": false,
+        "disabled": false,
+        "selected": false
+      },
+      "children": [
+        {
+          "id": "m_21",
+          "text": "品种二",
+          "state": {
+            "opened": false,
+            "disabled": false,
+            "selected": false
+          },
+          "children": [
+            {
+              "id": "a_21_0001",
+              "text": "品种三",
+              "state": {
+                "opened": false,
+                "disabled": false,
+                "selected": false
+              },
+              "children": [],
+              "li_attr": {
+                "type": "ACTION",
+                "name": "操作"
+              }
+            },
+            {
+              "id": "a_21_111",
+              "text": "品种三",
+              "state": {
+                "opened": false,
+                "disabled": false,
+                "selected": false
+              },
+              "children": [],
+              "li_attr": {
+                "type": "ACTION",
+                "name": "操作"
+              }
+            }
+          ],
+          "li_attr": {
+            "type": "MENU",
+            "name": "菜单"
+          }
+        },
+        {
+          "id": "m_22",
+          "text": "品种二",
+          "state": {
+            "opened": false,
+            "disabled": false,
+            "selected": false
+          },
+          "children": [
+            {
+              "id": "m_24",
+              "text": "品种三",
+              "state": {
+                "opened": false,
+                "disabled": false,
+                "selected": false
+              },
+              "children": [
+                {
+                  "id": "a_24_0001",
+                  "text": "品种四",
+                  "state": {
+                    "opened": false,
+                    "disabled": false,
+                    "selected": false
+                  },
+                  "children": [],
+                  "li_attr": {
+                    "type": "ACTION",
+                    "name": "操作"
+                  }
+                },
+                {
+                  "id": "a_24_270",
+                  "text": "品种四",
+                  "state": {
+                    "opened": false,
+                    "disabled": false,
+                    "selected": false
+                  },
+                  "children": [],
+                  "li_attr": {
+                    "type": "ACTION",
+                    "name": "操作"
+                  }
+                }
+              ],
+              "li_attr": {
+                "type": "MENU",
+                "name": "菜单"
+              }
+            },
+            {
+              "id": "m_25",
+              "text": "品种三",
+              "state": {
+                "opened": false,
+                "disabled": false,
+                "selected": false
+              },
+              "children": [
+                {
+                  "id": "a_25_0001",
+                  "text": "品种四",
+                  "state": {
+                    "opened": false,
+                    "disabled": false,
+                    "selected": false
+                  },
+                  "children": [],
+                  "li_attr": {
+                    "type": "ACTION",
+                    "name": "操作"
+                  }
+                }
+              ],
+              "li_attr": {
+                "type": "MENU",
+                "name": "菜单"
+              }
+            }
+          ],
+          "li_attr": {
+            "type": "MENU",
+            "name": "菜单"
+          }
+        }
+      ],
+      "li_attr": {
+        "type": "MENU",
+        "name": "菜单"
+      }
+    }
+  ],
+  "li_attr": 0
+}

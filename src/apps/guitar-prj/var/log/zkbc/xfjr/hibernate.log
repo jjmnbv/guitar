@@ -1,0 +1,95 @@
+[INFO ] 2017-06-28 01:01:24.809(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 01:01:24.869(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 01:01:24.870(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 01:01:24.871(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 01:01:24.911(main:org.hibernate.annotations.common.Version): HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[INFO ] 2017-06-28 01:01:25.368(main:org.hibernate.dialect.Dialect): HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2017-06-28 01:01:25.572(main:org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl): HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+[INFO ] 2017-06-28 01:01:25.573(main:org.hibernate.type.BasicTypeRegistry): HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@68a305eb
+[WARN ] 2017-06-28 01:01:25.723(main:org.hibernate.boot.internal.SessionFactoryBuilderImpl): Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+[INFO ] 2017-06-28 01:01:25.795(main:org.hibernate.validator.internal.util.Version): HV000001: Hibernate Validator 5.2.4.Final
+[INFO ] 2017-06-28 01:35:04.389(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 01:35:04.456(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 01:35:04.458(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 01:35:04.459(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 01:37:26.391(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 01:37:26.461(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 01:37:26.463(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 01:37:26.464(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 01:37:26.497(main:org.hibernate.annotations.common.Version): HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[INFO ] 2017-06-28 01:37:26.645(main:org.hibernate.dialect.Dialect): HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2017-06-28 01:37:26.817(main:org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl): HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+[INFO ] 2017-06-28 01:37:26.819(main:org.hibernate.type.BasicTypeRegistry): HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@4fb57fb3
+[WARN ] 2017-06-28 01:37:26.978(main:org.hibernate.boot.internal.SessionFactoryBuilderImpl): Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+[INFO ] 2017-06-28 01:37:27.047(main:org.hibernate.validator.internal.util.Version): HV000001: Hibernate Validator 5.2.4.Final
+[INFO ] 2017-06-28 01:44:35.907(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 01:44:35.969(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 01:44:35.970(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 01:44:35.971(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 01:44:36.006(main:org.hibernate.annotations.common.Version): HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[INFO ] 2017-06-28 01:44:36.162(main:org.hibernate.dialect.Dialect): HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2017-06-28 01:44:36.346(main:org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl): HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+[INFO ] 2017-06-28 01:44:36.347(main:org.hibernate.type.BasicTypeRegistry): HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@4fb57fb3
+[WARN ] 2017-06-28 01:44:36.502(main:org.hibernate.boot.internal.SessionFactoryBuilderImpl): Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+[INFO ] 2017-06-28 01:44:36.578(main:org.hibernate.validator.internal.util.Version): HV000001: Hibernate Validator 5.2.4.Final
+[INFO ] 2017-06-28 01:45:00.593(qtp1297189682-22:org.hibernate.hql.internal.QueryTranslatorFactoryInitiator): HHH000397: Using ASTQueryTranslatorFactory
+[DEBUG] 2017-06-28 01:45:00.696(qtp1297189682-22:org.hibernate.SQL): select user0_.id as id1_0_, user0_.age as age2_0_, user0_.detail_id as detail_i3_0_, user0_.nick_name as nick_nam4_0_, user0_.pass_word as pass_wor5_0_, user0_.role_id as role_id6_0_, user0_.sex as sex7_0_, user0_.user_name as user_nam8_0_ from xfjr_cb.g_user user0_ where 1=1
+[WARN ] 2017-06-28 01:45:00.703(qtp1297189682-22:org.hibernate.engine.jdbc.spi.SqlExceptionHelper): SQL Error: 0, SQLState: 42703
+[ERROR] 2017-06-28 01:45:00.703(qtp1297189682-22:org.hibernate.engine.jdbc.spi.SqlExceptionHelper): ERROR: column user0_.detail_id does not exist
+  建议：Perhaps you meant to reference the column "user0_.detail_Id".
+  位置：52
+[INFO ] 2017-06-28 01:47:43.992(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 01:47:44.056(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 01:47:44.058(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 01:47:44.059(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 01:47:44.094(main:org.hibernate.annotations.common.Version): HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[INFO ] 2017-06-28 01:47:44.266(main:org.hibernate.dialect.Dialect): HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2017-06-28 01:47:44.458(main:org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl): HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+[INFO ] 2017-06-28 01:47:44.459(main:org.hibernate.type.BasicTypeRegistry): HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@61bd0845
+[WARN ] 2017-06-28 01:47:44.626(main:org.hibernate.boot.internal.SessionFactoryBuilderImpl): Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+[INFO ] 2017-06-28 01:47:44.703(main:org.hibernate.validator.internal.util.Version): HV000001: Hibernate Validator 5.2.4.Final
+[INFO ] 2017-06-28 01:48:42.226(qtp1264941544-44:org.hibernate.hql.internal.QueryTranslatorFactoryInitiator): HHH000397: Using ASTQueryTranslatorFactory
+[DEBUG] 2017-06-28 01:48:42.336(qtp1264941544-44:org.hibernate.SQL): select user0_.id as id1_0_, user0_.age as age2_0_, user0_.detail_id as detail_i3_0_, user0_.nick_name as nick_nam4_0_, user0_.pass_word as pass_wor5_0_, user0_.role_id as role_id6_0_, user0_.sex as sex7_0_, user0_.user_name as user_nam8_0_ from xfjr_cb.g_user user0_ where 1=1
+[WARN ] 2017-06-28 01:48:42.342(qtp1264941544-44:org.hibernate.engine.jdbc.spi.SqlExceptionHelper): SQL Error: 0, SQLState: 42703
+[ERROR] 2017-06-28 01:48:42.342(qtp1264941544-44:org.hibernate.engine.jdbc.spi.SqlExceptionHelper): ERROR: column user0_.detail_id does not exist
+  建议：Perhaps you meant to reference the column "user0_.detail_Id".
+  位置：52
+[INFO ] 2017-06-28 01:52:58.252(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 01:52:58.316(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 01:52:58.318(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 01:52:58.319(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 01:52:58.356(main:org.hibernate.annotations.common.Version): HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[INFO ] 2017-06-28 01:52:58.703(main:org.hibernate.dialect.Dialect): HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[WARN ] 2017-06-28 01:52:58.908(main:org.hibernate.boot.internal.SessionFactoryBuilderImpl): Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+[INFO ] 2017-06-28 01:52:58.987(main:org.hibernate.validator.internal.util.Version): HV000001: Hibernate Validator 5.2.4.Final
+[INFO ] 2017-06-28 01:53:40.777(qtp1264941544-20:org.hibernate.hql.internal.QueryTranslatorFactoryInitiator): HHH000397: Using ASTQueryTranslatorFactory
+[DEBUG] 2017-06-28 01:53:40.898(qtp1264941544-20:org.hibernate.SQL): select user0_.id as id1_0_, user0_.age as age2_0_, user0_.detail_id as detail_i3_0_, user0_.nick_name as nick_nam4_0_, user0_.pass_word as pass_wor5_0_, user0_.role_id as role_id6_0_, user0_.sex as sex7_0_, user0_.user_name as user_nam8_0_ from g_user user0_ where 1=1
+[DEBUG] 2017-06-28 01:57:09.739(qtp1264941544-20:org.hibernate.SQL): select user0_.id as id1_0_, user0_.age as age2_0_, user0_.detail_id as detail_i3_0_, user0_.nick_name as nick_nam4_0_, user0_.pass_word as pass_wor5_0_, user0_.role_id as role_id6_0_, user0_.sex as sex7_0_, user0_.user_name as user_nam8_0_ from g_user user0_ where 1=1
+[TRACE] 2017-06-28 01:57:09.746(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([id1_0_] : [INTEGER]) - [1]
+[TRACE] 2017-06-28 01:57:09.751(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([age2_0_] : [INTEGER]) - [1]
+[TRACE] 2017-06-28 01:57:09.751(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([detail_i3_0_] : [INTEGER]) - [1]
+[TRACE] 2017-06-28 01:57:09.752(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([nick_nam4_0_] : [VARCHAR]) - [xkq]
+[TRACE] 2017-06-28 01:57:09.752(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([pass_wor5_0_] : [VARCHAR]) - [888888]
+[TRACE] 2017-06-28 01:57:09.752(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([role_id6_0_] : [INTEGER]) - [1]
+[TRACE] 2017-06-28 01:57:09.752(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([sex7_0_] : [VARCHAR]) - [1]
+[TRACE] 2017-06-28 01:57:09.752(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([user_nam8_0_] : [VARCHAR]) - [xukaiqiang]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([id1_0_] : [INTEGER]) - [2]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([age2_0_] : [INTEGER]) - [2]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([detail_i3_0_] : [INTEGER]) - [2]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([nick_nam4_0_] : [VARCHAR]) - [2]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([pass_wor5_0_] : [VARCHAR]) - [888888]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([role_id6_0_] : [INTEGER]) - [2]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([sex7_0_] : [VARCHAR]) - [2]
+[TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([user_nam8_0_] : [VARCHAR]) - [maxiaojing]

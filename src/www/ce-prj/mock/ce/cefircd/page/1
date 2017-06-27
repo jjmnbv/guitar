@@ -1,0 +1,23 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":1,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "fiNo":1,
+    "buzTyp":"业务类型（考虑是否配置到主表）",
+    "buzNo":"业务标识号（文件内容重要标识，预留）",
+    "sndChl":"发送渠道",
+    "trCd":"交易码",
+    "buzDt":"业务日期",
+    "crtTm":"创建时间",
+    "fiNm":"文件名",
+    "fiPath":"文件路径",
+    "fiRcdNum":1,
+    "fiSiz":1,
+    "resultCode": "SUCCESS"
+  }]
+}

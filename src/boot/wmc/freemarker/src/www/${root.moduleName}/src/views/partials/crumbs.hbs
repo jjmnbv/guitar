@@ -1,0 +1,59 @@
+{{!--
+面包屑导航
+使用说明：
+1.数据接口:(在对应的script文件夹下定义，然后在使用的地方引入即可)
+ app.crumbs = {
+        icon: 'icon-index',
+        dt: {
+            text: '首页',
+            url: 'index.html'
+        },
+        dd: [
+        {
+            text: '**',
+            url: '**'
+        },
+        ...
+        ]
+    };
+
+2.样式文件写在pub下的app.ccss中
+
+3.使用时添加占位符“{{> crumbs}}”，编译时会自动添加到主模板中
+
+开发步骤：
+
+1.在需要的页面中添加{{> crumbs}}
+
+2.在对应的script文件夹下定义数据结构，并在页面中引入
+
+3.去当前页面定义icon图标（只需要引入背景图片即可）
+
+备注：
+如果使用的地方较多，可以考虑在main.hbs中直接引入
+--}}
+{{{{raw}}}}
+    {{#if crumbs}}
+        <div class="page-crumbs clearfix">
+            <dl>
+                <dt class="{{crumbs.icon}}"><a href="{{crumbs.dt.url}}">{{crumbs.dt.text}}</a></dt>
+                {{#each crumbs.dd}}
+                <dd><a href="{{url}}">{{text}}</a></dd>
+                {{/each}}
+            </dl>
+            <div class="">
+                <div class="login-info" id="loginInfo">
+                <a href="javascript:;" onclick="showLogin();">
+                  <img src="{{app.base}}/static/app/1.0.0/img/user01.png"/>
+                  <span>{{userInfo.loginName}}</span>
+                </a>
+                <ul style="display: none">
+                  <li><a href="{{app.base}}/cu/personal-settings/personal-info-maintenance.html">个人信息</a></li>
+                  <li><a href="{{app.base}}/cu/personal-settings/update-password.html">修改密码</a></li>
+                  <li><a href="{{app.base}}/logout">退出登录</a></li>
+                </ul>
+              </div>
+            </div>
+        </div>
+    {{/if}}
+{{{{/raw}}}}

@@ -1,0 +1,10 @@
+.bsdForm .form-group > label {
+  width: 145px;
+}
+.bsdForm .form-group > div
+{
+  width: 190px;
+}
+.bsdForm .form-group-sel > div.selBox > div {
+  width: 190px !important;
+}

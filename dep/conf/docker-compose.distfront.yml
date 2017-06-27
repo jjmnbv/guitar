@@ -1,0 +1,20 @@
+version: '2'
+services:
+  distfront:
+    image: node:7.8.0
+    container_name: xfjr-distfront
+    volumes:
+      - ./../..:/ci_xfjr
+      - node_bin:/usr/local/bin
+      - node_modules:/usr/local/lib/node_modules
+      - node_root:/root
+    working_dir: /ci_xfjr
+    env_file: ./env.cfg
+    environment:
+      - CI_HOME=/ci_xfjr
+      - TZ=Asia/Shanghai
+    entrypoint: bin/entrypoint-distfront.sh
+volumes:
+  node_bin:
+  node_modules:
+  node_root:

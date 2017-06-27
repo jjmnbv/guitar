@@ -1,0 +1,36 @@
+subprojects {
+  if (!System.properties['codegen.jpa']) return
+
+  configurations {
+    jpamodelgen
+  }
+
+  dependencies {
+    jpamodelgen "org.hibernate:hibernate-jpamodelgen:$hibernateVersion"
+  }
+
+  sourceSets {
+    jpamodel {
+      java {
+        srcDirs = ['src/main/java']
+      }
+    }
+    generated {
+      java {
+        srcDirs = ['src/metamodel/java'] 
+      }
+      compileClasspath += sourceSets.jpamodel.output
+    }
+  }
+
+  task cleanJpaMetamodel(type: Delete) {
+    delete 'src/metamodel/java'
+  }
+
+  task generateJpaMetamodel(type: JavaCompile) {
+    source = sourceSets.jpamodel.java
+    classpath = configurations.compile + configurations.jpamodelgen
+    options.compilerArgs = ['-proc:only', '-AaddGenerationDate=true']
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+  }
+}

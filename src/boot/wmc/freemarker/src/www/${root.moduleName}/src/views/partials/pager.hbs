@@ -1,0 +1,43 @@
+{{{{raw}}}}
+<div class="row table-pager">
+    <div class="col-md-5 col-sm-12">
+        <div style="padding-top:8px;">共 {{page.totalPages}} 页 {{page.totalElements}} 条记录</div>
+    </div>
+    <div class="col-md-7 col-sm-12">
+        <ul class="pagination pull-right">
+            {{#if (page-first)}}
+            {{!--<li class="prev disabled"><a href="javascript:;"><i class="fa fa-angle-left"></i>上一页</a></li>--}}
+            {{else}}
+            <li class="prev" data-page-number="{{page-prev}}"><a href="javascript:;">{{{{/raw}}}}<img src="{{path.app}}/img/icon/leftTri.png"/>{{{{raw}}}}</a></li>
+            {{/if}}
+            {{#each page.pages}}
+                {{#if (page-show-first)}}
+                  {{#if (eq this 2)}}
+            <li data-page-number="1"><a href="javascript:;">1</a></li>
+                  {{else}}
+            <li data-page-number="1"><a href="javascript:;">1...</a></li>
+                  {{/if}}
+                {{/if}}
+            <li{{#if (page-current)}} class="active"{{else}} data-page-number="{{this}}"{{/if}}><a href="javascript:;">{{this}}</a></li>
+                {{#if (page-show-last)}}
+                  {{#if (eq this (sum ../page.totalPages -1))}}
+            <li data-page-number="1"><a href="javascript:;">{{../page.totalPages}}</a></li>
+                  {{else}}
+            <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">...{{../page.totalPages}}</a></li>
+                  {{/if}}
+                {{/if}}
+            {{/each}}
+            {{#if (page-last)}}
+            {{!--<li class="next disabled"><a href="javascript:;">下一页<i class="fa fa-angle-right"></i></a></li>--}}
+            {{else}}
+            <li class="next" data-page-number="{{page-next}}"><a href="javascript:;">{{{{/raw}}}}<img src="{{path.app}}/img/icon/rightTri.png"/>{{{{raw}}}}</a></li>
+            {{/if}}
+            <li>
+                <i>跳转到:&nbsp; </i>
+                <input value="{{sum page.number 1}}" data-number="{{sum page.number 1}}" data-total-pages="{{page.totalPages}}" class="pageVal"/>
+            </li>
+            <li class="goPage"><a href="javascript:;">go</a></li>
+        </ul>
+    </div>
+</div>
+{{{{/raw}}}}

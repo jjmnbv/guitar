@@ -1,0 +1,22 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "setNo":1,
+    "name":1,
+    "version":1,
+    "createDate":"创建日期",
+    "lastUpdate":"最后更新日期",
+    "lastUpdateUserId":1,
+    "status":"状态<br>参见通用状态的字典分类。",
+    "typeCode":"模版类型<br>HT 合同模版<br>SQ 贷款申请<br>参见字典分类 71",
+    "fileId":1,
+    "comment":"备注",
+    "resultCode": "SUCCESS"
+  }]
+}

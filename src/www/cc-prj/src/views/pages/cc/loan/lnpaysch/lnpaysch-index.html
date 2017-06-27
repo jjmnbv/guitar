@@ -1,0 +1,1235 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>还款计划表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cc/loan/lnpaysch"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=3002"></script> 
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/loan/lnpaysch.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="form-horizontal pagination-form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">还款日期:</label>
+              <div class="col-md-9">
+                <input name="dueDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">期供金额:</label>
+              <div class="col-md-9">
+                <input name="insAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">期供本金:</label>
+              <div class="col-md-9">
+                <input name="prAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">期供利息:</label>
+              <div class="col-md-9">
+                <input name="inAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">期供罚息:</label>
+              <div class="col-md-9">
+                <input name="ovInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">期供复利:</label>
+              <div class="col-md-9">
+                <input name="cmInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">期供费用:</label>
+              <div class="col-md-9">
+                <input name="feeAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">剩余本金:</label>
+              <div class="col-md-9">
+                <input name="prSa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">正常利率:</label>
+              <div class="col-md-9">
+                <input name="inRt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">逾期利率:</label>
+              <div class="col-md-9">
+                <input name="ovRt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已还本金:</label>
+              <div class="col-md-9">
+                <input name="payPrAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已还利息:</label>
+              <div class="col-md-9">
+                <input name="payInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已还罚息:</label>
+              <div class="col-md-9">
+                <input name="payOvInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已还复利:</label>
+              <div class="col-md-9">
+                <input name="payCmInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已还费用:</label>
+              <div class="col-md-9">
+                <input name="payFeeAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">结清标志:</label>
+              <div class="col-md-9">
+                <input name="clnInd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">逾期标志:</label>
+              <div class="col-md-9">
+                <input name="odInd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">宽限期标志:</label>
+              <div class="col-md-9">
+                <input name="grcInd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">本金状态:</label>
+              <div class="col-md-9">
+                <input name="prSts" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">利息状态:</label>
+              <div class="col-md-9">
+                <input name="intSts" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">本金积数:</label>
+              <div class="col-md-9">
+                <input name="proPrAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">利息积数:</label>
+              <div class="col-md-9">
+                <input name="proInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">罚息积数:</label>
+              <div class="col-md-9">
+                <input name="proOvInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">复利积数:</label>
+              <div class="col-md-9">
+                <input name="proCmInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">费用积数:</label>
+              <div class="col-md-9">
+                <input name="proFeeAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">减免本金:</label>
+              <div class="col-md-9">
+                <input name="rrPrAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">减免利息:</label>
+              <div class="col-md-9">
+                <input name="rrInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">减免罚息:</label>
+              <div class="col-md-9">
+                <input name="rrOvInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">减免复利:</label>
+              <div class="col-md-9">
+                <input name="rrCmInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">减免费用:</label>
+              <div class="col-md-9">
+                <input name="rrFeeAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已计提利息:</label>
+              <div class="col-md-9">
+                <input name="acInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">已计提罚息:</label>
+              <div class="col-md-9">
+                <input name="acOvInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">利息税金:</label>
+              <div class="col-md-9">
+                <input name="txInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">罚息税金:</label>
+              <div class="col-md-9">
+                <input name="txOvInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">复利税金:</label>
+              <div class="col-md-9">
+                <input name="txCmInAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">费用税金:</label>
+              <div class="col-md-9">
+                <input name="txFeeAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">上一还款日:</label>
+              <div class="col-md-9">
+                <input name="laPayDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">上一利息计提日:</label>
+              <div class="col-md-9">
+                <input name="laAcIntDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">上一罚息计提日期:</label>
+              <div class="col-md-9">
+                <input name="laAcOvIntDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">上一滚基数日期:</label>
+              <div class="col-md-9">
+                <input name="laProDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">上一结息日:</label>
+              <div class="col-md-9">
+                <input name="laBalDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption"><i class="fa fa-list"></i> 还款计划表列表 </div>
+      <div class="actions">
+        <div class="btn-group btn-group-devided" data-toggle="buttons">
+          <a href="#" title="新增" data-target="#lnpaysch-add-modal" data-toggle="modal" class=""><img src="{{path.app}}/img/icon/group_3.png"/></a>
+          <a href="javascript:;" class="pagination-reload"><img src="{{path.app}}/img/icon/group_5.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/LNPAYSCH_PAGE"
+          data-page-template-id="lnpaysch-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <div id="lnpaysch-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增还款计划表</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/LNPAYSCH_CREATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="loNo" readonly="readonly">
+              <input type="hidden" name="perQt" readonly="readonly">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">还款日期:</label>
+                    <div class="col-md-9">
+                      <input name="dueDt" type="text" class="form-control input-sm" placeholder="请输入还款日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供金额:</label>
+                    <div class="col-md-9">
+                      <input name="insAmt" type="text" class="form-control input-sm" placeholder="请输入期供金额...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供本金:</label>
+                    <div class="col-md-9">
+                      <input name="prAmt" type="text" class="form-control input-sm" placeholder="请输入期供本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供利息:</label>
+                    <div class="col-md-9">
+                      <input name="inAmt" type="text" class="form-control input-sm" placeholder="请输入期供利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供罚息:</label>
+                    <div class="col-md-9">
+                      <input name="ovInAmt" type="text" class="form-control input-sm" placeholder="请输入期供罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供复利:</label>
+                    <div class="col-md-9">
+                      <input name="cmInAmt" type="text" class="form-control input-sm" placeholder="请输入期供复利...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供费用:</label>
+                    <div class="col-md-9">
+                      <input name="feeAmt" type="text" class="form-control input-sm" placeholder="请输入期供费用...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">剩余本金:</label>
+                    <div class="col-md-9">
+                      <input name="prSa" type="text" class="form-control input-sm" placeholder="请输入剩余本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">正常利率:</label>
+                    <div class="col-md-9">
+                      <input name="inRt" type="text" class="form-control input-sm" placeholder="请输入正常利率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">逾期利率:</label>
+                    <div class="col-md-9">
+                      <input name="ovRt" type="text" class="form-control input-sm" placeholder="请输入逾期利率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还本金:</label>
+                    <div class="col-md-9">
+                      <input name="payPrAmt" type="text" class="form-control input-sm" placeholder="请输入已还本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还利息:</label>
+                    <div class="col-md-9">
+                      <input name="payInAmt" type="text" class="form-control input-sm" placeholder="请输入已还利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还罚息:</label>
+                    <div class="col-md-9">
+                      <input name="payOvInAmt" type="text" class="form-control input-sm" placeholder="请输入已还罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还复利:</label>
+                    <div class="col-md-9">
+                      <input name="payCmInAmt" type="text" class="form-control input-sm" placeholder="请输入已还复利...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还费用:</label>
+                    <div class="col-md-9">
+                      <input name="payFeeAmt" type="text" class="form-control input-sm" placeholder="请输入已还费用...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">结清标志:</label>
+                    <div class="col-md-9">
+                      <input name="clnInd" type="text" class="form-control input-sm" placeholder="请输入结清标志...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">逾期标志:</label>
+                    <div class="col-md-9">
+                      <input name="odInd" type="text" class="form-control input-sm" placeholder="请输入逾期标志...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">宽限期标志:</label>
+                    <div class="col-md-9">
+                      <input name="grcInd" type="text" class="form-control input-sm" placeholder="请输入宽限期标志...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">本金状态:</label>
+                    <div class="col-md-9">
+                      <input name="prSts" type="text" class="form-control input-sm" placeholder="请输入本金状态...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">利息状态:</label>
+                    <div class="col-md-9">
+                      <input name="intSts" type="text" class="form-control input-sm" placeholder="请输入利息状态...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">本金积数:</label>
+                    <div class="col-md-9">
+                      <input name="proPrAmt" type="text" class="form-control input-sm" placeholder="请输入本金积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">利息积数:</label>
+                    <div class="col-md-9">
+                      <input name="proInAmt" type="text" class="form-control input-sm" placeholder="请输入利息积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">罚息积数:</label>
+                    <div class="col-md-9">
+                      <input name="proOvInAmt" type="text" class="form-control input-sm" placeholder="请输入罚息积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">复利积数:</label>
+                    <div class="col-md-9">
+                      <input name="proCmInAmt" type="text" class="form-control input-sm" placeholder="请输入复利积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">费用积数:</label>
+                    <div class="col-md-9">
+                      <input name="proFeeAmt" type="text" class="form-control input-sm" placeholder="请输入费用积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免本金:</label>
+                    <div class="col-md-9">
+                      <input name="rrPrAmt" type="text" class="form-control input-sm" placeholder="请输入减免本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免利息:</label>
+                    <div class="col-md-9">
+                      <input name="rrInAmt" type="text" class="form-control input-sm" placeholder="请输入减免利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免罚息:</label>
+                    <div class="col-md-9">
+                      <input name="rrOvInAmt" type="text" class="form-control input-sm" placeholder="请输入减免罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免复利:</label>
+                    <div class="col-md-9">
+                      <input name="rrCmInAmt" type="text" class="form-control input-sm" placeholder="请输入减免复利...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免费用:</label>
+                    <div class="col-md-9">
+                      <input name="rrFeeAmt" type="text" class="form-control input-sm" placeholder="请输入减免费用...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已计提利息:</label>
+                    <div class="col-md-9">
+                      <input name="acInAmt" type="text" class="form-control input-sm" placeholder="请输入已计提利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已计提罚息:</label>
+                    <div class="col-md-9">
+                      <input name="acOvInAmt" type="text" class="form-control input-sm" placeholder="请输入已计提罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">利息税金:</label>
+                    <div class="col-md-9">
+                      <input name="txInAmt" type="text" class="form-control input-sm" placeholder="请输入利息税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">罚息税金:</label>
+                    <div class="col-md-9">
+                      <input name="txOvInAmt" type="text" class="form-control input-sm" placeholder="请输入罚息税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">复利税金:</label>
+                    <div class="col-md-9">
+                      <input name="txCmInAmt" type="text" class="form-control input-sm" placeholder="请输入复利税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">费用税金:</label>
+                    <div class="col-md-9">
+                      <input name="txFeeAmt" type="text" class="form-control input-sm" placeholder="请输入费用税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一还款日:</label>
+                    <div class="col-md-9">
+                      <input name="laPayDt" type="text" class="form-control input-sm" placeholder="请输入上一还款日...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一利息计提日:</label>
+                    <div class="col-md-9">
+                      <input name="laAcIntDt" type="text" class="form-control input-sm" placeholder="请输入上一利息计提日...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一罚息计提日期:</label>
+                    <div class="col-md-9">
+                      <input name="laAcOvIntDt" type="text" class="form-control input-sm" placeholder="请输入上一罚息计提日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一滚基数日期:</label>
+                    <div class="col-md-9">
+                      <input name="laProDt" type="text" class="form-control input-sm" placeholder="请输入上一滚基数日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一结息日:</label>
+                    <div class="col-md-9">
+                      <input name="laBalDt" type="text" class="form-control input-sm" placeholder="请输入上一结息日...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lnpaysch-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑还款计划表<span class="edit_lnpaysch_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/LNPAYSCH_UPDATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="loNo" readonly="readonly" required>
+              <input type="hidden" name="perQt" readonly="readonly" required>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">还款日期:</label>
+                    <div class="col-md-9">
+                      <input name="dueDt" type="text" class="form-control input-sm" placeholder="请输入还款日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供金额:</label>
+                    <div class="col-md-9">
+                      <input name="insAmt" type="text" class="form-control input-sm" placeholder="请输入期供金额...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供本金:</label>
+                    <div class="col-md-9">
+                      <input name="prAmt" type="text" class="form-control input-sm" placeholder="请输入期供本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供利息:</label>
+                    <div class="col-md-9">
+                      <input name="inAmt" type="text" class="form-control input-sm" placeholder="请输入期供利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供罚息:</label>
+                    <div class="col-md-9">
+                      <input name="ovInAmt" type="text" class="form-control input-sm" placeholder="请输入期供罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供复利:</label>
+                    <div class="col-md-9">
+                      <input name="cmInAmt" type="text" class="form-control input-sm" placeholder="请输入期供复利...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">期供费用:</label>
+                    <div class="col-md-9">
+                      <input name="feeAmt" type="text" class="form-control input-sm" placeholder="请输入期供费用...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">剩余本金:</label>
+                    <div class="col-md-9">
+                      <input name="prSa" type="text" class="form-control input-sm" placeholder="请输入剩余本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">正常利率:</label>
+                    <div class="col-md-9">
+                      <input name="inRt" type="text" class="form-control input-sm" placeholder="请输入正常利率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">逾期利率:</label>
+                    <div class="col-md-9">
+                      <input name="ovRt" type="text" class="form-control input-sm" placeholder="请输入逾期利率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还本金:</label>
+                    <div class="col-md-9">
+                      <input name="payPrAmt" type="text" class="form-control input-sm" placeholder="请输入已还本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还利息:</label>
+                    <div class="col-md-9">
+                      <input name="payInAmt" type="text" class="form-control input-sm" placeholder="请输入已还利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还罚息:</label>
+                    <div class="col-md-9">
+                      <input name="payOvInAmt" type="text" class="form-control input-sm" placeholder="请输入已还罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还复利:</label>
+                    <div class="col-md-9">
+                      <input name="payCmInAmt" type="text" class="form-control input-sm" placeholder="请输入已还复利...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已还费用:</label>
+                    <div class="col-md-9">
+                      <input name="payFeeAmt" type="text" class="form-control input-sm" placeholder="请输入已还费用...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">结清标志:</label>
+                    <div class="col-md-9">
+                      <input name="clnInd" type="text" class="form-control input-sm" placeholder="请输入结清标志...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">逾期标志:</label>
+                    <div class="col-md-9">
+                      <input name="odInd" type="text" class="form-control input-sm" placeholder="请输入逾期标志...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">宽限期标志:</label>
+                    <div class="col-md-9">
+                      <input name="grcInd" type="text" class="form-control input-sm" placeholder="请输入宽限期标志...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">本金状态:</label>
+                    <div class="col-md-9">
+                      <input name="prSts" type="text" class="form-control input-sm" placeholder="请输入本金状态...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">利息状态:</label>
+                    <div class="col-md-9">
+                      <input name="intSts" type="text" class="form-control input-sm" placeholder="请输入利息状态...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">本金积数:</label>
+                    <div class="col-md-9">
+                      <input name="proPrAmt" type="text" class="form-control input-sm" placeholder="请输入本金积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">利息积数:</label>
+                    <div class="col-md-9">
+                      <input name="proInAmt" type="text" class="form-control input-sm" placeholder="请输入利息积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">罚息积数:</label>
+                    <div class="col-md-9">
+                      <input name="proOvInAmt" type="text" class="form-control input-sm" placeholder="请输入罚息积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">复利积数:</label>
+                    <div class="col-md-9">
+                      <input name="proCmInAmt" type="text" class="form-control input-sm" placeholder="请输入复利积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">费用积数:</label>
+                    <div class="col-md-9">
+                      <input name="proFeeAmt" type="text" class="form-control input-sm" placeholder="请输入费用积数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免本金:</label>
+                    <div class="col-md-9">
+                      <input name="rrPrAmt" type="text" class="form-control input-sm" placeholder="请输入减免本金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免利息:</label>
+                    <div class="col-md-9">
+                      <input name="rrInAmt" type="text" class="form-control input-sm" placeholder="请输入减免利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免罚息:</label>
+                    <div class="col-md-9">
+                      <input name="rrOvInAmt" type="text" class="form-control input-sm" placeholder="请输入减免罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免复利:</label>
+                    <div class="col-md-9">
+                      <input name="rrCmInAmt" type="text" class="form-control input-sm" placeholder="请输入减免复利...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">减免费用:</label>
+                    <div class="col-md-9">
+                      <input name="rrFeeAmt" type="text" class="form-control input-sm" placeholder="请输入减免费用...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已计提利息:</label>
+                    <div class="col-md-9">
+                      <input name="acInAmt" type="text" class="form-control input-sm" placeholder="请输入已计提利息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">已计提罚息:</label>
+                    <div class="col-md-9">
+                      <input name="acOvInAmt" type="text" class="form-control input-sm" placeholder="请输入已计提罚息...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">利息税金:</label>
+                    <div class="col-md-9">
+                      <input name="txInAmt" type="text" class="form-control input-sm" placeholder="请输入利息税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">罚息税金:</label>
+                    <div class="col-md-9">
+                      <input name="txOvInAmt" type="text" class="form-control input-sm" placeholder="请输入罚息税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">复利税金:</label>
+                    <div class="col-md-9">
+                      <input name="txCmInAmt" type="text" class="form-control input-sm" placeholder="请输入复利税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">费用税金:</label>
+                    <div class="col-md-9">
+                      <input name="txFeeAmt" type="text" class="form-control input-sm" placeholder="请输入费用税金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一还款日:</label>
+                    <div class="col-md-9">
+                      <input name="laPayDt" type="text" class="form-control input-sm" placeholder="请输入上一还款日...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一利息计提日:</label>
+                    <div class="col-md-9">
+                      <input name="laAcIntDt" type="text" class="form-control input-sm" placeholder="请输入上一利息计提日...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一罚息计提日期:</label>
+                    <div class="col-md-9">
+                      <input name="laAcOvIntDt" type="text" class="form-control input-sm" placeholder="请输入上一罚息计提日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一滚基数日期:</label>
+                    <div class="col-md-9">
+                      <input name="laProDt" type="text" class="form-control input-sm" placeholder="请输入上一滚基数日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">上一结息日:</label>
+                    <div class="col-md-9">
+                      <input name="laBalDt" type="text" class="form-control input-sm" placeholder="请输入上一结息日...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="lnpaysch-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th> 借据号 </th>
+            <th> 期数 </th>
+            <th> 还款日期 </th>
+            <th> 期供金额 </th>
+            <th> 期供本金 </th>
+            <th> 期供利息 </th>
+            <th> 期供罚息 </th>
+            <th> 期供复利 </th>
+            <th> 期供费用 </th>
+            <th> 剩余本金 </th>
+            <th> 正常利率 </th>
+            <th> 逾期利率 </th>
+            <th> 已还本金 </th>
+            <th> 已还利息 </th>
+            <th> 已还罚息 </th>
+            <th> 已还复利 </th>
+            <th> 已还费用 </th>
+            <th> 结清标志 </th>
+            <th> 逾期标志 </th>
+            <th> 宽限期标志 </th>
+            <th> 本金状态 </th>
+            <th> 利息状态 </th>
+            <th> 本金积数 </th>
+            <th> 利息积数 </th>
+            <th> 罚息积数 </th>
+            <th> 复利积数 </th>
+            <th> 费用积数 </th>
+            <th> 减免本金 </th>
+            <th> 减免利息 </th>
+            <th> 减免罚息 </th>
+            <th> 减免复利 </th>
+            <th> 减免费用 </th>
+            <th> 已计提利息 </th>
+            <th> 已计提罚息 </th>
+            <th> 利息税金 </th>
+            <th> 罚息税金 </th>
+            <th> 复利税金 </th>
+            <th> 费用税金 </th>
+            <th> 上一还款日 </th>
+            <th> 上一利息计提日 </th>
+            <th> 上一罚息计提日期 </th>
+            <th> 上一滚基数日期 </th>
+            <th> 上一结息日 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{loNo}} </td>
+            <td> {{perQt}} </td>
+            <td> {{dueDt}} </td>
+            <td> {{insAmt}} </td>
+            <td> {{prAmt}} </td>
+            <td> {{inAmt}} </td>
+            <td> {{ovInAmt}} </td>
+            <td> {{cmInAmt}} </td>
+            <td> {{feeAmt}} </td>
+            <td> {{prSa}} </td>
+            <td> {{inRt}} </td>
+            <td> {{ovRt}} </td>
+            <td> {{payPrAmt}} </td>
+            <td> {{payInAmt}} </td>
+            <td> {{payOvInAmt}} </td>
+            <td> {{payCmInAmt}} </td>
+            <td> {{payFeeAmt}} </td>
+            <td> {{clnInd-text}} </td>
+            <td> {{odInd}} </td>
+            <td> {{grcInd}} </td>
+            <td> {{prSts}} </td>
+            <td> {{intSts}} </td>
+            <td> {{proPrAmt}} </td>
+            <td> {{proInAmt}} </td>
+            <td> {{proOvInAmt}} </td>
+            <td> {{proCmInAmt}} </td>
+            <td> {{proFeeAmt}} </td>
+            <td> {{rrPrAmt}} </td>
+            <td> {{rrInAmt}} </td>
+            <td> {{rrOvInAmt}} </td>
+            <td> {{rrCmInAmt}} </td>
+            <td> {{rrFeeAmt}} </td>
+            <td> {{acInAmt}} </td>
+            <td> {{acOvInAmt}} </td>
+            <td> {{txInAmt}} </td>
+            <td> {{txOvInAmt}} </td>
+            <td> {{txCmInAmt}} </td>
+            <td> {{txFeeAmt}} </td>
+            <td> {{laPayDt}} </td>
+            <td> {{laAcIntDt}} </td>
+            <td> {{laAcOvIntDt}} </td>
+            <td> {{laProDt}} </td>
+            <td> {{laBalDt}} </td>
+            <td>
+              <a href="#" data-target="#lnpaysch-edit-modal" data-toggle="modal" data-lnpaysch-id="?loNo={{loNo}}&perQt={{perQt}}"> 编辑 </a>
+              <a href="javascript:;" data-delete-lnpaysch-lono="{{loNo}}" data-delete-lnpaysch-perqt="{{perQt}}">删除</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

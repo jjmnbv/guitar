@@ -1,0 +1,301 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}电核设置设计</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css">
+        <link rel="stylesheet" href="{{path.app}}/css/nuclear-set/nuclear-set-design.css">
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <script src="{{path.base}}/script/cs/dicts?ids=49,28,56"></script>
+        <script src="{{path.base}}/script/cs/tellcheckdesign"></script>
+
+app.dictionaryList
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cs/common/app-context.js"></script>
+        <script src="{{path.app}}/js/cs/nuclear-set/nuclear-set-design.js"></script>
+		<script src="{{path.app}}/js/auth-judge.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+      <div id="main-template">
+      </div>
+
+    {{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+
+<div class="modal fade" id="answerList" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog  model-list-width">
+        <div class="modal-content" id="managerListModal">
+            <div data-modal-header="" class="modal-header">
+                <h4 data-modal-title="" class="modal-title">
+                    电核答案配置
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                </h4>
+            </div>
+            <div data-modal-body="" class="modal-body">
+                <div class="mes-list">
+                    <div id="managerTable">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td> <input type="checkbox" class="checkboxBtn" name="checkRowAll" id="checkRowAll"></td>
+                                    <td>序号</td>
+                                    <td>电核名称</td>
+                                    <td>数据来源</td>
+                                </tr>
+                                </thead>
+                                <tbody id="nuc-list">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-modal-footer="" class="modal-footer model-btn-center">
+                <div class="clearfix">
+                    <button type="button" class="btn sky-blue btn-wid mainCol" data-dismiss="modal"
+                            id="confirm">
+                        确定
+                    </button>
+                    <button type="button" class="btn sky-blue btn-wid mainCol" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+  <script type="text/x-handlebars-template" id="main-cont-template">
+  	{{{{raw}}}}
+  	  <form action="" class="bsdForm" id="update-nuclear-form" data-link="nuclear-set.html">
+  	  	    <input type="hidden"  name="telCheCd" id="telCheCd" value="{{request.telCheDd}}" />
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        电核项目信息
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" id="nuclearDesignAdd" title="增加" class="add-sign"></a>
+                        <a href="javascript:;" id="nuclearDesignUp" title="上移" class="dwon-sign"></a>
+                        <a href="javascript:;" id="nuclearDesignDown" title="下移" class="up-sign"></a>
+                        <a href="javascript:;" id="nuclearDesignDelete" title="删除" class="delete-sign"></a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                        <div class="table-scrollable">
+                            
+                            <table class="table table-striped table-bordered table-hover bsdForm" id="repayModeTable">
+                                <thead>
+                                <tr>
+                                    <th>选择</th>
+                                    <th>顺序</th>
+                                    <th>电核对象</th>
+                                    <th>电核答案</th>
+                                    <th>问题分类</th>
+                                    <th>问题话术</th>
+                                    <th width="20%">是否必填</th>
+                                </tr>
+                                </thead>
+                                <tbody id="nuclearSetTableBody">
+                                {{#each tellCheckSubRequestList}}
+                                  <tr>
+                                    <td class="form-group">
+                                      	 <input type="hidden" name="tellCheckSubRequestList[{{@index}}].suId" value="{{suId}}" class="suId"/>
+                                        <input type="radio" class="icheck" name="checkRow" data-id="{{@index}}" data-suId={{suId}}>
+                                    </td>
+                                    <td data-index> {{list-rowindex}} </td>
+                                    <td class="form-group">
+                                      <select id="tellCheckSubRequestList[{{@index}}].telChePersCd"
+                                              name="tellCheckSubRequestList[{{@index}}].telChePersCd"
+                                              class="form-control telChePersCd"
+                                              data-selectloader-store="telChePersCdList"
+                                              data-selectloader-vkey="code"
+                                              data-selectloader-tkey="name"
+                                              data-selectloader-val="{{telChePersCd}}">
+                                        <option value="">请选择</option>
+                                      </select>
+                                    </td>
+                                      <td class="form-group">
+                                          <div class="find">
+                                              <div class="line">
+                                                  <input type="hidden" class="agenceHidden telCheTipCo" value="{{telCheTipCo}}" name="tellCheckSubRequestList[{{@index}}].telCheTipCo">
+                                                  <input type="text" class="form-control   uniform-input text agence"  readonly="" value="{{telCheTipCoName}}">
+                                              </div>
+                                              <div class="line-use">
+                                                  <a data-toggle="modal" href="#answerList" >
+                                                      <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                                              type="button"
+                                                              data-select2-open="single-prepend-text">
+                                                          <span class="glyphicon glyphicon-search"></span>
+                                                      </button>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="form-group">
+                                          <select id="tellCheckSubRequestList[{{@index}}].telCheTyCd"
+                                                  name="tellCheckSubRequestList[{{@index}}].telCheTyCd"
+                                                  class="form-control telCheTyCd"
+                                                  data-selectloader-store="telCheTyCdList"
+                                                  data-selectloader-vkey="code"
+                                                  data-selectloader-tkey="name"
+                                                  data-selectloader-val="{{telCheTyCd}}">
+                                              <option value="">请选择</option>
+                                          </select>
+                                      </td>
+                                    <td class="form-group">
+                                      <input type="text" class="form-control iteNa"
+                                      	       name="tellCheckSubRequestList[{{@index}}].iteNa"
+                                      	       value="{{iteNa}}" maxlength="30">
+                                    </td>
+
+                                     <td class="td-radio">
+                                         <div class="raidoBox">
+                                             <label class="mt-radio">
+                                                 <input type="radio" name="tellCheckSubRequestList[{{@index}}].maYn" class="required maYn"
+                                                        value="Y"/>
+                                                 <span class="ifor">是</span>
+                                             </label>
+                                             <label class="mt-radio">
+                                                 <input type="radio" name="tellCheckSubRequestList[{{@index}}].maYn" class="required maYn"
+                                                        value="N"/>
+                                                 <span class="ifor">否</span>
+                                             </label>
+                                         </div>
+                                     </td>
+                                   </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                         
+                        </div>
+                </div>
+            </div>
+            <div class="portlet-body center">
+              <div class="clearfix">
+               <button class="btn sky-blue btn-wid mainCol" id="saveForm" type="button">保存</button>
+               <a class="btn sky-blue btn-wid mainCol" href="nuclear-set.html">返回</a>
+              </div>
+            </div>
+          </form>
+  	{{{{/raw}}}}
+  </script>
+  <script type="text/x-handlebars-template" id="table-row1-template">
+  	  {{{{raw}}}}
+  	    <tr>
+        <td class="form-group">
+            <input type="hidden" name="tellCheckSubRequestList[{{listIndex index}}].suId" value="" class="suId"/>
+            <input type="radio" class="icheck" name="checkRow" data-newtr="newtr" data-id="{{listIndex index}}" data-suId="">
+        </td>
+        <td data-index>  {{index}} </td>
+        <td class="form-group">
+            <select id="tellCheckSubRequestList[{{listIndex index}}].telChePersCd"
+                    name="tellCheckSubRequestList[{{listIndex index}}].telChePersCd"
+                    class="form-control telChePersCd"
+                    data-selectloader-store="telChePersCdList"
+                    data-selectloader-vkey="code"
+                    data-selectloader-tkey="name">
+              <option value="">请选择</option>
+            </select>
+        </td>
+            <td class="form-group">
+                <div class="find">
+                    <div class="line">
+                        <input type="hidden" class="agenceHidden telCheTipCo" name="telCheTipCo">
+                        <input type="text" class="form-control  uniform-input text agence" name="tellCheckSubRequestList[{{listIndex index}}].telCheTipCo" readonly="">
+                    </div>
+                    <div class="line-use">
+                        <a data-toggle="modal" href="#answerList">
+                            <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                    type="button"
+                                    data-select2-open="single-prepend-text">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+            </td>
+            <td class="form-group">
+                <select id="tellCheckSubRequestList[{{listIndex index}}].telCheTyCd"
+                        name="tellCheckSubRequestList[{{listIndex index}}].telCheTyCd"
+                        class="form-control telCheTyCd"
+                        data-selectloader-store="telCheTyCdList"
+                        data-selectloader-vkey="code"
+                        data-selectloader-tkey="name">
+                    <option value="">请选择</option>
+                </select>
+            </td>
+        <td class="form-group">
+            <input type="text" class="form-control iteNa" name="tellCheckSubRequestList[{{listIndex index}}].iteNa" id="tellCheckSubRequestList[{{listIndex index}}].iteNa" maxlength="30">
+        </td>
+        <td class="td-radio">
+            <div class="raidoBox">
+                <label class="mt-radio">
+                    <input type="radio" name="tellCheckSubRequestList[{{listIndex index}}].maYn" class="required maYn"
+                           value="Y"/>
+                    <span class="ifor">是</span>
+                </label>
+                <label class="mt-radio">
+                    <input type="radio" name="tellCheckSubRequestList[{{listIndex index}}].maYn" class="required maYn"
+                           value="N"/>
+                    <span class="ifor">否</span>
+                </label>
+            </div>
+        </td>
+      </tr>
+  	  {{{{/raw}}}}
+  	</script>
+
+<!--电核答案-->
+<script type="text/x-handlebars-template" id="nuclear-answer-list">
+    {{{{raw}}}}
+       {{#each content}}
+            <tr class="oneRow">
+                <td> <input type="checkbox"  class="checkRow" name="checkRow" ></td>
+                <td>{{add @index 1}}  </td>
+                <td>  {{name}}</td>
+                <td class="thisName" >{{code}}</td>
+            </tr>
+        {{/each}}
+    {{{{/raw}}}}
+</script>
+{{/content}}
+
+{{/extend}}

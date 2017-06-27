@@ -1,0 +1,300 @@
+{{#extend "main"}}
+
+<!-- title BEGIN -->
+{{#content "title"}}
+<title>消费金融平台-业务支撑系统 | 字典管理</title>
+<!-- @Override -->
+{{/content}}
+<!-- title END -->
+
+<!-- css-plugins BEGIN -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+{{/content}}
+<!-- css-plugins END -->
+
+<!-- css-main BEGIN -->
+{{#content "css-main"}}
+<!-- @Override -->
+{{/content}}
+<!-- css-main END -->
+
+<!-- js-loader BEGIN -->
+{{#content "js-loader"}}
+  <script>
+    $(function () {
+      var dict_status_modelCode = {
+        "dict-status": [{
+          "code": "CS",
+          "name": "初始"
+        }, {
+          "code": "JH",
+          "name": "激活"
+        }],
+        "dict-modelCode": [{
+          "code": "XT",
+          "name": "系统"
+        }, {
+          "code": "QT",
+          "name": "其他"
+        }]
+      };
+      $('.radio-list').radioloader(dict_status_modelCode);
+      app.registerTextHelper('status', dict_status_modelCode['dict-status'], 'code', 'name');
+      app.registerTextHelper('modelCode', dict_status_modelCode['dict-modelCode'], 'code', 'name');
+    });
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- js-loader END -->
+
+<!-- js-plugins BEGIN -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+{{/content}}
+<!-- js-plugins END -->
+
+<!-- js-main BEGIN -->
+{{#content "js-main"}}
+  <script src="{{path.app}}/js/admin/dictionaryCategory.js"></script>
+  <script src="{{path.base}}/script/dictionaryCategory-index.js"></script>
+<!-- @Override -->
+{{/content}}
+<!-- js-main END -->
+
+<!-- content-main BEGIN -->
+{{#content "content-main"}}
+<!-- @Override -->
+{{/content}}
+<!-- content-main END -->
+
+<!-- pagination-form BEGIN -->
+{{#content "pagination-form"}}
+<form role="form" class="form-horizontal pagination-form">
+  <div class="form-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label col-md-3">名称:</label>
+          <div class="col-md-9">
+            <input name="name" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label col-md-3">描述</label>
+          <div class="col-md-9">
+            <input name="desc" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-form END -->
+
+<!-- pagination-container BEGIN -->
+{{#content "pagination-container"}}
+<div class="portlet-title">
+  <div class="caption"><i class="fa fa-list"></i> 数据字典分类列表 </div>
+  <div class="actions">
+    <div class="btn-group btn-group-devided" data-toggle="buttons">
+      <a href="#" title="新增" data-target="#dict-add-modal" data-toggle="modal" class="btn btn-circle btn-default btn-sm font-white"><i class="fa fa-plus font-white"></i> 新增 </a>
+      <a href="javascript:;" class="pagination-reload btn btn-circle btn-default btn-sm font-white"><i class="icon-refresh font-white"></i> 刷新 </a>
+    </div>
+  </div>
+</div>
+<div class="portlet-body pagination-container" data-page-first-store="first-store" data-page-url="/DICTIONARYCATEGORY_PAGE" data-page-template-id="dict-page-template"></div>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-container END -->
+
+<!-- pagination-free BEGIN -->
+{{#content "content-free"}}
+  <div id="dict-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增字典分类</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/DICTIONARYCATEGORY_CREATE" method="POST" role="form" class="form-horizontal">
+            <input type="hidden" name="id" readonly="readonly">
+            <div class="form-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">名称:</label>
+                    <div class="col-md-9">
+                      <input name="name" type="text" class="form-control input-sm" placeholder="请输入名称..." required>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">描述:</label>
+                    <div class="col-md-9">
+                      <input name="desc" type="text" class="form-control input-sm" placeholder="请输入描述..." required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">状态:</label>
+                    <div class="col-md-9">
+                      <div class="radio-list status" data-radioloader-val="CS" data-radioloader-name="status" data-radioloader-val="1" data-radioloader-store="dict-status" data-radioloader-vkey="code" data-radioloader-tkey="name" required></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">模块代码:</label>
+                    <div class="col-md-9">
+                      <div class="radio-list modelCode" data-radioloader-val="QT" data-radioloader-name="modelCode" data-radioloader-val="1" data-radioloader-store="dict-modelCode" data-radioloader-vkey="code" data-radioloader-tkey="name" required></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dict-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑字典分类<span class="edit_wb_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/DICTIONARYCATEGORY_UPDATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="id" readonly="readonly" required>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">名称:</label>
+                    <div class="col-md-9">
+                      <input name="name" type="text" class="form-control input-sm" placeholder="请输入名称..." required>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">描述:</label>
+                    <div class="col-md-9">
+                      <input name="desc" type="text" class="form-control input-sm" placeholder="请输入描述..." required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">状态:</label>
+                    <div class="col-md-9">
+                      <div class="radio-list status" data-radioloader-name="status" data-radioloader-val="1" data-radioloader-store="dict-status" data-radioloader-vkey="code" data-radioloader-tkey="name" required></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">模块代码:</label>
+                    <div class="col-md-9">
+                      <div class="radio-list modelCode" data-radioloader-name="modelCode" data-radioloader-val="1" data-radioloader-store="dict-modelCode" data-radioloader-vkey="code" data-radioloader-tkey="name" required></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="dict-page-template">
+{{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> # </th>
+            <th> 名称 </th>
+            <th> 描述 </th>
+            <th> 状态 </th>
+            <th> 模块代码 </th>
+            <th> 创建日期 </th>
+            <th> 最后更新日期 </th>
+            <th> 最后更新用户 </th>
+            <th> 版本 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> <a href="#" data-target="#dict-edit-modal" data-toggle="modal" data-dict-id="{{id}}">{{name}}</a> </td>
+            <td> {{desc}} </td>
+            <td> {{status-text}} </td>
+            <td> {{modelCode-text}} </td>
+            <td> {{createDate}} </td>
+            <td> {{lastUpdate}} </td>
+            <td> {{lastUpdateUserId}} </td>
+            <td> {{version}} </td>
+            <td>
+              <a href="{{base}}/admin/dictionary/index.html?pkId={{id}}">字典项编辑</a>
+              <a href="javascript:;" data-delete-wb-id="{{id}}">删除</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-5 col-sm-12">
+        <div style="padding-top:8px;">共 {{page.totalPages}} 页 {{page.totalElements}} 条记录</div>
+      </div>
+      <div class="col-md-7 col-sm-12">
+        <ul class="pagination pull-right">
+          {{#if (page-first)}} 
+          <li class="prev disabled"><a href="#"><i class="fa fa-angle-left"></i>上一页</a></li> 
+          {{else}}
+          <li class="prev" data-page-number="{{page-prev}}"><a href="#"><i class="fa fa-angle-left"></i>上一页</a></li>
+          {{/if}}
+          {{#each pages}}
+          <li{{#if (page-current)}} class="active"{{else}} data-page-number="{{this}}"{{/if}}><a href="#">{{this}}</a></li>
+          {{/each}}
+          {{#if (page-last)}}
+          <li class="next disabled"><a href="#">下一页<i class="fa fa-angle-right"></i></a></li>
+          {{else}}
+          <li class="next" data-page-number="{{page-next}}"><a href="#">下一页<i class="fa fa-angle-right"></i></a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+{{{{/raw}}}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

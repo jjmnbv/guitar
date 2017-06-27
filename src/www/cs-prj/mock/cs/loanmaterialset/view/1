@@ -1,0 +1,14 @@
+{
+    "matSetCd":"1",
+    "version":"1",
+    "createDate":"2016-12-5",
+    "lastUpdateDate":"2016-12-5",
+    "lastUpdateUserId":"2016-12-5",
+    "matSetStatus":"假数据",
+    "description":"假数据",
+    "matPhCdDic":"1",
+    "matTyCdDic":"假数据",
+    "matColCdDic":"假数据",
+    "resultCode": "SUCCESS",
+    "errors": []
+}

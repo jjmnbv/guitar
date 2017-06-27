@@ -1,0 +1,126 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}贷款申请详情录入 | 影像信息 | {{path.editText}}</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<link rel="stylesheet" href="{{path.app}}/css/cb/common-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/cb/modal-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/cb/loan-application/details-checked.css">
+<link rel="stylesheet" href="{{path.app}}/css/cb/loan-application/business-processing.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<script src="{{path.base}}/script/cb/loandetailapply/imageData"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<script src="{{path.app}}/js/bpm/bpm.js"></script>
+{{/content}}
+<!-- 自定义js -->
+{{#content "js-main"}}
+<script src="{{path.app}}/js/cb/common-tools.js"></script>
+<script src="{{path.app}}/js/cb/loan-application/image-data.js"></script>
+<script src="{{path.app}}/js/auth-judge.js"></script>
+<script src="{{path.app}}/js/cb/stepKeys.js"></script>
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<div >
+    <div class="ulBox">
+        <img src="/static/app/1.0.0/img/product-set/step03.png">
+    </div>
+	<form action="" class="bsdForm pagination-form" id="image-data-form" data-view-idname="apply_id">
+        <input name="apTr" id="applyWater" type="hidden" value=""/>
+		<input name="suId" id="suId" type="hidden" value="1"/>
+		<input name="comment" id="comment" type="hidden" value=""/>
+	</form>
+	<!--用于执行退回操作时参数使用-->
+	<form class="bsdForm pagination-form add-page-form" id="detail-approval-form" data-view-idname="apply_id">
+            <!--审批信息-->
+            <div class="portlet box reg left-add">
+            <div class="portlet-title">
+                <div class="caption">
+                    审批信息
+                </div>
+            </div>
+            <div class="portlet-body parents-num tabs-below">
+                <div class="addpage-form-width">
+                    <div class="form-group set-row-width">
+                        <label class="control-label fill">审批结果</label>
+						<div class="raidoBox ">
+							<label class="mt-radio">
+								<input type="radio" name="opinionId"
+									   class="required"
+									   value="TH"
+									   checked="true"/>
+								<span class="ifor">退回</span>
+							</label>
+						</div>
+					</div>
+					<div class="form-group" id="rollBack">
+						<label class="control-label fill">退回节点</label>
+						<div class="raidoBox ">
+							<label class="mt-radio">
+								<input type="text" name="rollBackNode" id="rollBackNode"
+									   class="required"/>
+							</label>
+						</div>
+					</div>
+					<div class="form-group set-row-width">
+						<label for="" class="control-label fill">审批意见</label>
+						<div class="textarea-box">
+							<textarea type="text" class="required text" id="opinionNote"
+									  name="opinionNote" aria-required="true"></textarea>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--按钮组-->
+    <div class="portlet-body center">
+        <div class="clearfix">
+            <button class="btn sky-blue btn-wid mainCol" type="button" id="previousPage">上一步  </button>
+            <button class="btn sky-blue btn-wid mainCol" type="button" id="submitData">提交</button>
+			<button class="btn sky-blue btn-wid mainCol" type="button" id="rollbackBtn">退回</button>
+            <a href="detail-list.html" class="btn sky-blue btn-wid mainCol"> 关闭 </a>
+        </div>
+    </div>
+</div>
+
+{{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+
+
+{{/content}}
+
+{{/extend}}

@@ -1,0 +1,120 @@
+<div class="modal fade" id="lonoModal" tabindex="-1" role="basic" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div data-modal-header="" class="modal-header">
+                <h3 class="modal-title">借据信息列表
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <a class="search-pic" id="searchCase" href="javaScript:;">
+                        <img src="{{path.app}}/img/search_model.png" alt="">
+                    </a>
+                </h3>
+            </div>
+            <div data-modal-body="" class="modal-body">
+                <form action="/LNLOINF_PAGE" class="bsdForm pagination-form query-form">
+                    <div class="search">
+                        <div class="form-group">
+                            <label class="control-label">借据号:</label>
+                            <div>
+                                <input name="loNo" type="text" class="form-control" maxlength="32">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">客户名称:</label>
+                            <div>
+                                <input name="cuNa" type="text" class="form-control" maxlength="32">
+                            </div>
+                        </div>
+                        <input type="hidden" name="noDbSts"   value="JQ,HX">
+                        <div class="center">
+                            <button class="btn blue pagination-query mainCol" type="button">查询</button>
+                            <button class="btn blue pagination-reset mainCol reset" type="reset"> 重置 </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="mes-list">
+                    <div id="lonoTable">
+                        <div class="pagination-reload"></div>
+                        <div class="portlet-body pagination-container"
+                             data-page-first-store="first-store"
+                             data-page-url="/LNLOINF_PAGE"
+                             data-page-template-id="lnloinfmess-page-template"></div>
+                    </div>
+                </div>
+            </div>
+            <div data-modal-footer="" class="modal-footer model-btn-center">
+                <div class="portlet-body">
+                    <div class="clearfix">
+                        <button class="btn blue" data-dismiss="modal" id="confirmY">确定</button>
+                        <button class="btn blue" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-handlebars-template" id="lnloinfmess-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>选择</th>
+                <th>编号</th>
+                <th>借据号</th>
+                <th>合同号</th>
+                <th>放款状态</th>
+                <th>账务状态</th>
+                <th>机构号</th>
+                <th>客户号</th>
+                <th>客户名称</th>
+                <th>证件类型</th>
+                <th>证件号</th>
+                <th>放款金额</th>
+                <th>借据余额</th>
+                <th>起息日</th>
+                <th>到期日</th>
+                <th style="display:none;">币种</th>
+                <th>客户经理编号</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each page.content}}
+            <tr>
+                <td>
+                    <label>
+                        <input
+                                type="radio"
+                                name="radio"
+                                value="{{id}}"
+                                data-dbSts="{{dbSts}}">
+                    </label>
+                </td>
+                <td>{{page-rowindex}}</td>
+                <td class="name">{{loNo}}</td>
+                <td class="td-coNo">{{coNo}}</td>
+                <td>{{loSts-text}}</td>
+                <td class="td-loSts" style="display:none;">{{loSts}}</td>
+                <td>{{dbSts-text}}</td>
+                <td class="td-cuCertTyp" style="display:none;">{{dbSts}}</td>
+                <td class="td-brNo">{{brNo}}</td>
+                <td class="td-cuNo">{{cuNo}}</td>
+                <td class="td-cuNa">{{cuNa}}</td>
+                <td>{{cuCertTyp-text}}</td>
+                <td class="td-cuCertTyp" style="display:none;">{{cuCertTyp}}</td>
+                <td class="td-cuCertId">{{cuCertId}}</td>
+                <td>{{formatMoney loPrAmt}}</td>
+                <td class="td-loPrAmt" style="display:none;">{{loPrAmt}}</td>
+                <td>{{formatMoney loPrSa}}</td>
+                <td class="td-loPrSa" style="display:none;">{{loPrSa}}</td>
+                <td class="td-inStDt">{{inStDt}}</td>
+                <td class="td-laDueDt">{{laDueDt}}</td>
+                <td class="td-curTyp" style="display:none;">{{curTyp}}</td>
+                <td class="td-appUs">{{appUsId}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+</script>

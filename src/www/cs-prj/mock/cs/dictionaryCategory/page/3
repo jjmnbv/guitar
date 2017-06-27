@@ -1,0 +1,126 @@
+{
+    "resultCode": "SUCCESS",
+    "totalPages": 4,
+    "totalElements": 70,
+    "number": 3,
+    "size": 20,
+    "pages": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "content": [
+        {
+            "id": 10,
+            "version": 1,
+            "name": "性别",
+            "desc": "客户性别",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 9,
+            "version": 1,
+            "name": "客户状态",
+            "desc": "客户状态",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 8,
+            "version": 1,
+            "name": "客户分类",
+            "desc": "客户VIP分类信息",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 7,
+            "version": 1,
+            "name": "客户类型",
+            "desc": "客户类型信息",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 6,
+            "version": 1,
+            "name": "核算品种",
+            "desc": "核算品种分类",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 5,
+            "version": 1,
+            "name": "罚息利率方式",
+            "desc": "罚息浮动方式",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 4,
+            "version": 1,
+            "name": "计算方式",
+            "desc": "费用结算方式",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 3,
+            "version": 1,
+            "name": "收取方",
+            "desc": "费用收取方",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 2,
+            "version": 1,
+            "name": "费用收取代码",
+            "desc": "费用收取时点",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 1,
+            "version": 1,
+            "name": "费用种类",
+            "desc": "收取费用的种类",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        }
+    ],
+    "errors": []
+}

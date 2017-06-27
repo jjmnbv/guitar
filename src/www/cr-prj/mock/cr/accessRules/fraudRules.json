@@ -1,0 +1,56 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": "黑名单相关检查规则",
+      "varName": "单位名称",
+      "varType": "申请人单位名称与我司黑名单单位名称是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "黑名单相关检查规则",
+      "varName": "单位名称",
+      "varType": "申请人单位地址与我司黑名单住宅地址是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "黑名单相关检查规则",
+      "varName": "单位名称",
+      "varType": "申请人单位地址与我司黑名单单位地址是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "黑名单相关检查规则",
+      "varName": "单位名称",
+      "varType": "申请人单位电话与我司黑名单手机号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "黑名单相关检查规则",
+      "varName": "单位名称",
+      "varType": "申请人单位电话与我司黑名单单位电话号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "黑名单相关检查规则",
+      "varName": "单位名称",
+      "varType": "申请人单位电话与我司黑名单单位电话号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "同一申请人校验本次申请与前次申请",
+      "varName": "单位名称",
+      "varType": "申请人单位电话与我司黑名单住宅电话号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    }
+  ]
+}

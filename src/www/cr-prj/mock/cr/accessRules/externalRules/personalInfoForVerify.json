@@ -1,0 +1,63 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "身份证格式",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "身份证归属地",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "手机号",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "手机号",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "手机号",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "手机号",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "手机号",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": "",
+      "varName": "个人基本信息核查",
+      "varType": "邮箱格式",
+      "varDefault": "",
+      "idType": ""
+    }
+  ]
+}

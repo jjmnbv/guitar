@@ -1,0 +1,256 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}指标集配置</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/cl/common-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/cl/modal-form.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<!--加载数据字典-->
+<!-- @Override -->
+<script src="{{path.base}}/script/cl/limitindexoccupy"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/cl/common/app-context.js"></script>
+<script src="{{path.app}}/js/cl/quota-allocation/quota-index-config.js"></script>
+<!--<script src="{{path.app}}/js/auth-judge.js"></script>-->
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<!-- @Override -->
+{{{{raw}}}}
+  <input id="limitExecutionCode" type="hidden" name="limitExecutionCode"  class="hiddenCondition" value="{{request.limitExecutionCode}}" />
+{{{{/raw}}}} 
+{{/content}}
+
+
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+<!--BEGIN CONDITION SERACH-->
+<form  class="bsdForm pagination-form" action="/QUOTA_INDEX_LIST"> 
+    <div class="form-group">
+        <label class="control-label">指标集代码</label>
+        <div>
+            <input type="text" class="form-control" name="indexSetCode" maxlength="10">
+            {{{{raw}}}}
+            <input id="" type="hidden" name="limitExecutionCode" value="{{request.limitExecutionCode}}"/>
+            {{{{/raw}}}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">指标集名称</label>
+        <div>
+            <input type="text" class="form-control" name="indexSetName" maxlength="30">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">额度占用策略</label>
+        <div>
+            <select
+                    name="limitOccupyCode"
+                    class="form-control dictionarys"
+                    data-selectloader-store="limitOccupyCodeList"
+                    data-selectloader-vkey="code"
+                    data-selectloader-tkey="name">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    
+</form>
+<!--END CONDITION SERACH-->
+{{/content}}
+
+<!-- 分页表格和分页页码 pagination-container -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+<div class="portlet box reg">
+    <div class="portlet-title">
+        <div class="caption">额度执行列表列表</div>
+        <div class="actions">
+            <a id="add" href="javascript:;" title="新增" class="add-sign"></a>
+            <a id="update" href="javascript:;" title="修改" class="update-sign"></a>
+            <a id="delete" href="javascript:;" title="删除" class="delete-sign"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="tabbable tabbable-tabdrop">
+                    <div class="pagination-reload"></div>
+                    <div class="portlet-body pagination-container"
+                         data-page-first-store="first-store"
+                         data-page-url="/QUOTA_INDEX_LIST"
+                         data-page-template-id="table1-page-template">
+                    </div>
+        </div>
+    </div>
+</div>
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<!-- @Override -->
+<script type="text/x-handlebars-template" id="table1-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th >选择</th>
+                <th >额度执行代码</th>
+                <th >指标集代码</th>
+                <th >指标集名称</th>
+                <th >额度占用策略</th>
+                <th >是否单户限额</th>
+                <th >是否占用</th>
+                <th >扣款顺序</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each page.content}}
+            <tr>
+                <td>
+                    <div>
+                        <label>
+                            <input type="radio" class="icheck" name="checkRow" data-id="{{limitExecutionCode}}" data-indexSetCode="{{indexSetCode}}">
+                        </label>
+                    </div>
+                </td>
+                <td>{{limitExecutionCode-text}}</td>
+                <td>{{indexSetCode}}</td>
+                <td>{{indexSetName}}</td>
+                <td>
+                  {{limitOccupyCode-text}}
+                </td>
+                <td>{{isSingleControl-text}}</td>
+                <td>{{isOccupy-text}}</td>
+                <td>{{displayOrder}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+</script>
+<script type="text/x-handlebars-template" id="form-template">
+    {{{{raw}}}}
+    <form class="bsdForm">
+        
+        <div class="form-group">
+            <label  class="control-label fill">额度执行代码</label>
+            <div>
+                <select id=""
+                        name=""
+                        class="form-control required limitExecutionCode selLoader"
+                        data-selectloader-store="limitExecutionCodeList"
+                        data-selectloader-vkey="code"
+                        data-selectloader-tkey="name"
+                        data-selectloader-val="">
+                  <option value="">请选择</option>
+                </select>
+                <input id="limitExecutionCode" name="limitExecutionCode" class="limitExecutionCodeVal" type="hidden"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">指标集名称</label>
+            <div>
+                <select id="indexSetCode"
+                        name="indexSetCode"
+                        class="form-control selLoader required"
+                        data-selectloader-store="indexSetCodeList"
+                        data-selectloader-vkey="indexSetCode"
+                        data-selectloader-tkey="indexSetName"
+                        data-text-input=".indexSetCodeList_text">
+                    <option value="">请选择</option>
+                </select>
+				<input type="hidden" name="oldIndexSetCode">
+                <input type="hidden" name="indexSetName" class="indexSetCodeList_text">
+            </div>
+        </div>
+        <div class="form-group">
+        <label class="control-label">额度占用策略</label>
+        <div>
+            <select
+                    name="limitOccupyCode"
+                    class="form-control selLoader"
+                    data-selectloader-store="limitOccupyCodeList"
+                    data-selectloader-vkey="code"
+                    data-selectloader-tkey="name">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+        <div class="form-group">
+            <label  class="control-label fill">是否单户限额</label>
+            <div class="no-border">
+              <div class="radio-list radioLoader" 
+                   data-radioloader-name="isSingleControl"
+                   data-radioloader-val="Y"
+                   data-radioloader-store="isSingleControlList" 
+                   data-radioloader-vkey="code"
+                   data-radioloader-tkey="name">
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="control-label fill">是否占用</label>
+            <div class="no-border">
+              <div class="radio-list radioLoader" 
+                   data-radioloader-name="isOccupy"
+                   data-radioloader-val="Y"
+                   data-radioloader-store="isOccupyList" 
+                   data-radioloader-vkey="code"
+                   data-radioloader-tkey="name">
+              </div>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label  class="control-label fill">扣款顺序</label>
+            <div>
+                <input type="text" class="form-control required nonnegativeInteger" name="displayOrder">
+            </div>
+        </div>
+    </form>
+    {{{{/raw}}}}
+</script>
+{{/content}}
+
+{{/extend}}

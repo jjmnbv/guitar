@@ -1,0 +1,176 @@
+{{#extend "main"}}
+
+<!-- title BEGIN -->
+{{#content "title"}}
+<!-- @Override -->
+{{/content}}
+<!-- title END -->
+
+<!-- css-plugins BEGIN -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+
+<link rel="stylesheet" href="{{path.app}}/lib/jquery-layout-1.4.0/layout-default-latest.css">
+<link href="{{path.app}}/lib/datatables/css/jquery.dataTables.min.css" rel="stylesheet"/>
+{{/content}}
+<!-- css-plugins END -->
+
+<!-- css-main BEGIN -->
+{{#content "css-main"}}
+<!-- @Override -->
+{{/content}}
+<!-- css-main END -->
+
+<!-- js-loader BEGIN -->
+{{#content "js-loader"}}
+<!-- @Override -->
+{{/content}}
+<!-- js-loader END -->
+
+<!-- js-plugins BEGIN -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+<script src="{{path.app}}/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="{{path.app}}/lib/jquery-layout-1.4.0/jquery.layout-latest.js"></script>
+<script src="{{path.app}}/lib/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{path.app}}/lib/datatables/js/table.js"></script>
+{{/content}}
+<!-- js-plugins END -->
+
+<!-- js-main BEGIN -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/uiLayout.js"></script>
+{{/content}}
+<!-- js-main END -->
+
+<!-- content-main BEGIN -->
+{{#content "content-main"}}
+<!-- @Override -->
+
+<div id="innerLayout">
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="#allBlacklist" data-toggle="tab" aria-expanded="false"> 所有黑名单成员 </a>
+            <em></em>
+        </li>
+        <li class="">
+            <a href="#belongingToBlacklist" data-toggle="tab" aria-expanded="true"> 隶属黑名单客户 </a>
+            <em></em>
+        </li>
+        <li>
+            <a href="#outBlacklist" data-toggle="tab" aria-expanded="true"> 黑名单外客户 </a>
+            <em></em>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="allBlacklist">
+            <div class="middle-center">
+                <div class="center-box">
+                    Center
+                    <div class="adjust-box">
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                    </div>
+                    <div class="content-box">
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-east">East</div>
+        </div>
+        <div class="tab-pane" id="belongingToBlacklist">
+            <div class="middle-center">
+                <div class="center-box">
+                    Center
+                    <div class="adjust-box">
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                    </div>
+                    <div class="content-box">
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                        <p><a href="http://layout.jquery-dev.com/demos.html">Go to the Demos page</a></p>
+                        <p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+                        <p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-east">East</div>
+        </div>
+    </div>
+</div>
+
+{{/content}}
+<!-- content-main END -->
+
+<!-- content-pagination BEGIN -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- content-pagination END -->
+
+<!-- pagination-form BEGIN -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-form END -->
+
+<!-- pagination-container BEGIN -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-container END -->
+
+<!-- pagination-free BEGIN -->
+{{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

@@ -1,0 +1,18 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "reId":1,
+    "reNo":"",
+    "setlReNo":"",
+    "setlReNa":"",
+    "brReNo":"",
+    "brReNa":"",
+    "resultCode": "SUCCESS"
+  }]
+}

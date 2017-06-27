@@ -1,0 +1,191 @@
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>存款账户交易添加</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnloinf-lgd.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnrrdtl-edit.css"/>
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <script src="{{path.base}}/script/cc/dicts?ids=17,3025,3016,3028"></script>
+        <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=CurTyp"></script>
+        <script src="{{path.base}}/script/cc/loan/lndeptrd-add.js"></script>
+        <script src="{{path.base}}/script/cc/loan/lndeptrdinf"></script>
+        
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+        <script src="{{path.app}}/js/cc/loan/lndeptrd-add.js"></script>
+        <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        <div class="portlet">
+            <div class="portlet-body">
+                <form class="bsdForm" id="accessBorrowForm" action="/LNDEPTRDINF_CREATE">
+                    <div class="form-group">
+                        <label class="control-label fill">客户号:</label>
+                        <div>
+                            <input name="cuNo" id="cuNo" type="text" class="form-control input-sm required" maxlength="32" placeholder="" readonly="readonly" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill">客户名称:</label>
+                        <div>
+                            <input name="cuNa" id="cuNa" type="text" class="form-control input-sm required" maxlength="60" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill">证件类型:</label>
+                        <div>
+                            <select name="cuCertTyp" id="cuCertTyp" class="form-control cuCertTyp required"
+                                    data-selectloader-store="certTypList"
+                                    data-selectloader-vkey="code" data-selectloader-tkey="name">
+                                <option value="">请选择...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill ">证件号:</label>
+                        <div>
+                            <input name="cuCertId" type="text" id="cuCertId" class="form-control input-sm required"   placeholder="请输入证件号...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill">收支类型:</label>
+                        <div>
+                            <select name="rpTyp" id="rpTyp" class="form-control rpTyp required"
+                                    data-selectloader-val="NORMAL" data-placeholder="收支类型..."
+                                    data-selectloader-store="rpTypList"
+                                    data-selectloader-vkey="code" data-selectloader-tkey="name">
+                                <option value="">请选择...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill">币种:</label>
+                        <div>
+                            <select name="curTyp" id="curTyp" class="form-control curTyp required"
+                                    data-selectloader-store="curTyp"
+                                    data-selectloader-vkey="code" data-selectloader-tkey="name">
+                                <option value="">请选择...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sel single">
+                        <label class="control-label fill">申请日期:</label>
+                        <div class="selBox">
+                            <div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+                                 data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                 data-date-language="zh-CN">
+                                <input type="text" class="form-control uniform-input text required" name="laUpDt" placeholder="申请日期..." readonly>
+                                <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill">交易金额:</label>
+                        <div>
+                            <input name="trAmt" id="trAmt" type="hidden">
+                            <input name="trAmt1" id="trAmt1" type="text" class="form-control input-sm required minMoney lengthMoney  jinE"  maxlength="16" placeholder="请输入交易金额...">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none;">
+                        <label class="control-label">交易码:</label>
+                        <div>
+                            <select name="trCd"  class="form-control trCd"
+                                    data-selectloader-store="trCd"
+                                    data-selectloader-vkey="code" data-selectloader-tkey="name">
+                                <option value="">请选择...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label fill">交易渠道:</label>
+                        <div>
+                            <select name="trChl"  class="form-control trChl required"
+                                    data-selectloader-store="trChl"
+                                    data-selectloader-vkey="code" data-selectloader-tkey="name">
+                                <option value="">请选择...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label ">交易流水号:</label>
+                        <div>
+                            <input name="trSeqNo" id="trSeqNo" type="text" class="form-control input-sm Rnumber"  maxlength="32" placeholder="请输入交易流水号...">
+                        </div>
+                    </div>
+                    <input name="trDt" type="hidden">
+                    <input name="athInd" type="hidden">
+                    <input name="buzSeqNo" type="hidden">
+                    <!--   <input name="trChl" type="hidden">
+                      <input name="trTyp" type="hidden">
+                      <input name="trSeqNo" type="hidden"> -->
+                    <input name="crtDt" type="hidden">
+                    <input name="crtTm" type="hidden">
+                    <input name="brNo" type="hidden">
+                    <input name="laUsId" type="hidden">
+                    <div class="text-center">
+                        <button class="btn sky-blue btn-wid mainCol" id="saveForm">保存</button>
+                        <a class="btn sky-blue btn-wid mainCol" href="lndeptrdinf-index.html">返回</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {{/content}}
+
+    {{#content "content-pagination"}}
+
+    {{/content}}
+
+    <!-- 分页表格和分页页码 pagination-container -->
+    {{#content "pagination-container"}}
+
+        <!-- @Override -->
+    {{/content}}
+    <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+    {{#content "content-free"}}
+        <!-- @Override -->
+    
+    {{/content}}
+    <!-- pagination-free END-->
+
+    <!-- 页面组件模板 -->
+    {{#content "content-component"}}
+    {{/content}}
+{{/extend}}

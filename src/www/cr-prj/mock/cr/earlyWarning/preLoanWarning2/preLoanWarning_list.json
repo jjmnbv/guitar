@@ -1,0 +1,25 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 1,
+      "loanName": "张三1",
+      "ruleSubclass": "-------------",
+      "decResult": "直接通过"
+    },
+    {
+      "varId": 2,
+      "loanName": "张三2",
+      "ruleSubclass": "-------------",
+      "decResult": "直接通过"
+    },
+    {
+      "varId": 3,
+      "loanName": "张三3",
+      "ruleSubclass": "-------------",
+      "decResult": "直接通过"
+    }
+  ]
+}

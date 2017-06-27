@@ -1,0 +1,13 @@
+{
+    "resultCode": "SUCCESS",
+    "id": 71,
+    "version": 3,
+    "name": "模版类型",
+    "desc": "模版类型",
+    "status": "JH",
+    "modelCode": "XT",
+    "createDate": "2016-11-05",
+    "lastUpdate": "2016-12-03",
+    "lastUpdateUserId": 48,
+    "errors": []
+}

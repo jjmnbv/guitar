@@ -1,0 +1,65 @@
+{{{{raw}}}}
+<header>
+    <div class="page-header navbar navbar-fixed-top ">
+        <div class="page-header-inner clearfix">
+            <div class="page-logo">
+                <a href="{{base}}/index.html">
+                    <img src="{{path.app}}/img/logo-big-auto.png" width="116"/>
+                    <h1 class="logo-text">柏诚消费金融业务系统</h1>
+                </a>
+            </div>
+            <div class="pull-right">
+                <ul class="main-menu nav navbar-nav pull-right">
+                    {{#each mainMenus}}
+                        <li>
+                            <a class="nav-item {{#if (menu-active)}} active{{/if}}"
+                                {{#if (has-children)}}
+                               href="javascript:;"
+                                {{else}}
+                               href="{{../base}}{{url}}"
+                                {{/if}}
+                                style="background-image: url({{../cubase}}/cu/cuicons/loadImage?iconNo={{styleObject.iconClassName}}); background-size:25px;"
+                               >{{text}}
+                            </a>
+                            <ul class="sub-menu">
+                                {{#each children}}
+                                    <li class="nav-item">
+                                        <a {{#if (has-children)}}
+                                           href="javascript:;"
+                                           {{else}}
+                                           href="{{../../base}}{{url}}"
+                                           {{/if}}
+                                           class="nav-link{{#if (has-children)}} nav-toggle{{/if}}"
+                                        >
+                                            <span class="title">{{text}}</span>
+                                        {{#if (has-children)}}<img src="{{../../path.app}}/img/nav/daohangjiantou.png"/>{{/if}}
+                                        </a>
+                                        <ul class="{{#if (has-children)}} sub-menu  three-menu{{/if}}" dir="rtl">
+                                            {{#each children}}
+                                                <li class="nav-item">
+                                                    <a href="{{../../../base}}{{url}}"
+                                                       class="nav-link">
+                                                        <span class="title">{{text}}</span>
+                                                        {{#if (has-children)}}<img src="{{../../../path.app}}/1.0.0/img/nav/daohangjiantou.png"/>{{/if}}
+                                                    </a>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="user-status">
+        </div>
+        <!--<div>
+            <div class="menu-toggler sidebar-toggler">
+                <span>我的快捷键</span>
+            </div>
+        </div>-->
+    </div>
+</header>
+{{{{/raw}}}}

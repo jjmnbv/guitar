@@ -1,0 +1,86 @@
+{{#extend "main"}}
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}放款审查 | 影像信息</title>
+{{/content}}
+<!-- 自定义css -->
+{{#content "css-main"}}
+<link rel="stylesheet" href="{{path.app}}/css/cb/common-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/cb/modal-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/cb/loan-application/business-processing.css"/>
+{{/content}}
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<!-- script src="{{path.base}}/script/cb/nucleus-nucleus/nucleus-risk-warning.js"></script> -->
+<script src="{{path.base}}/script/cb/makeloancheck/imageData"></script>
+{{/content}}
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<script src="{{path.app}}/js/bpm/bpm.js"></script>
+{{/content}}
+<!-- 自定义js -->
+{{#content "js-main"}}
+<script src="{{path.app}}/js/cb/common-tools.js"></script>
+<script src="{{path.app}}/js/cb/loan-review/check-image-data.js"></script>
+<script src="{{path.app}}/js/auth-judge.js"></script>
+{{/content}}
+
+<!-- 不使用搜索条件表格  使用这个占位符 去掉原有内容 -->
+{{#content "content-pagination"}}
+{{/content}}
+
+{{#content "content-main"}}
+<!--页面顶部导航-->
+    <div id="ul_div" class="url-boxbg"></div>
+	<div>
+        <form action="" class="bsdForm pagination-form" id="image-data-form" data-view-idname="apply_id">
+           <input name="applyWater" id="applyWater" type="hidden" value=""/>
+		   <input name="sequence" id="sequence" type="hidden" value="0"/>
+        </form>
+        <div class="portlet-body center">
+            <div class="clearfix">
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="previousPage">上一步  </button>
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="nextPage">下一步</button>
+            </div>
+        </div>
+    </div>
+    <!--<form action="app.BRIEF_ADD" class="bsdForm pagination-form add-page-form" id="check-approval-form" data-view-idname="apply_id">
+        {{{{raw}}}}
+        <input name="applyWater" type="hidden" value="{{applyWater}}" class="form-control">
+        {{{{/raw}}}}
+
+        <div class="portlet-body center">
+            <div class="clearfix">
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="previousPage">上一步  </button>
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="nextPage">下一步</button>
+            </div>
+        </div>
+    </form>-->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+
+{{/content}}
+
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+
+<!--页面导航模板-->
+<script type="text/x-handlebars-template" id="url-boxbg">
+    {{{{raw}}}}
+    <ul class="clearfix">
+        <li><a href="check-loan-information.html?taskId={{taskId}}" >贷款信息</a></li>
+        <li class="active"><a href="check-image-data.html?taskId={{taskId}}" >影像信息</a></li>
+        <li><a href="check-approval-information.html?taskId={{taskId}}" >审批信息</a></li>
+    </ul>
+    {{{{/raw}}}}
+</script>
+{{/content}}
+{{/extend}}

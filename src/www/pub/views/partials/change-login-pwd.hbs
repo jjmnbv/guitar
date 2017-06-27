@@ -1,0 +1,46 @@
+{{{{raw}}}}
+<div id="chgloginpwd-modal" class="modal fade modal-scroll" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-edit"></i> <strong><span
+                        id="chgloginpwd-msg">修改登录密码</span></strong>
+                </h4>
+            </div>
+            <div class="modal-body form">
+                <form id="edit-user-passwd" action="{{base}}/cu/update/loginpwd" role="form"
+                      class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 fill">原登录密码</label>
+                            <div class="col-md-8">
+                                <input type="password" name="plainOldPassword" class="form-control"
+                                       data-rule-required="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 fill">新登录密码</label>
+                            <div class="col-md-8">
+                                <input type="password" name="plainNewPassword" id="password"
+                                       class="form-control passwordCheck" data-rule-required="1" minlength="6" maxlength="16"
+                                       data-msg-minlength="密码至少输入六位！">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 fill">新密码确认</label>
+                            <div class="col-md-8">
+                                <input type="password" name="newPassword" class="form-control"
+                                       data-rule-equalto="#password" data-msg-equalto="两次密码不一致"
+                                       data-rule-required="1" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="button" class="btn blue" id="updatePWD">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{{{/raw}}}}

@@ -1,0 +1,33 @@
+<div class="search main-page" id="mainPage">
+    <div class="portlet box">
+        <div class="portlet-title">
+            <div class="caption">全部查询</div>
+            <div class="tools">
+                <a href="javascript:;" class="expand collapse toggleSearch"> </a>
+            </div>
+            <div class="allSearchBox">
+              <div class="allsearch clearfix">
+                  <div class="inputDiv clearfix">
+                      <a href="javascript:;" class="closeSearch" id="closeSearch">
+                          <img src="{{path.app}}/img/icon/closeSearch.png" />
+                      </a>
+                      <input placeholder="全部条件" />
+                  </div>
+                <button>
+                  <img src="../../static/app/1.0.0/img/icon/searchJ.png" title="点击查询"/>
+                </button>
+              </div>
+           </div>
+        </div>
+        <div class="portlet-body form hide">
+            {{#block "pagination-form"}}{{/block}}
+            <div class="search-btn-wrap text-center">
+                <button type="submit" class="btn blue mainCol pagination-query">查询</button>
+                <button type="reset" class="btn blue mainCol pagination-reset">重置</button>
+            </div>
+        </div>
+    </div>
+    <div class="portlet box">
+        {{#block "pagination-container"}}{{/block}}
+    </div>
+</div>

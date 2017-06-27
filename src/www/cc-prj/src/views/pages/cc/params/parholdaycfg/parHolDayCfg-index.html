@@ -1,0 +1,155 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>节假日维护表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/params/parholdaycfg.css"></link>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+  	<script src="{{path.base}}/script/cc/dicts?ids=3034"></script> 
+    <script src="{{path.base}}/script/cc/params/parholdaycfg"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/common/holidayDate.js"></script>
+    <script src="{{path.app}}/js/cc/params/parholdaycfg.js"></script>
+    <script src="{{path.app}}/js/cc/params/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+    <button id="popup" style="display:none;">popup</button>
+    <table cellpadding="0" cellspacing="0" id="1">
+        <tr>
+            <td>
+                <div id="cal">
+                    <div id="top">
+                        公元
+                        <select>
+                        </select>
+                        年
+                        <select>
+                        </select>
+                        月 农历
+                        <span>
+                    </span>
+                        年 [
+                        <span>
+                    </span>
+                        年 ]
+                        <input id="back-toDay" type="button" value="回到今天" class="back-day">
+                        <input id="resetHoliday" type="button" value="初始化全年公休日">
+                    </div>
+
+                    <ul id="wk">
+                        <li>
+                            一
+                        </li>
+                        <li>
+                            二
+                        </li>
+                        <li>
+                            三
+                        </li>
+                        <li>
+                            四
+                        </li>
+                        <li>
+                            五
+                        </li>
+                        <li>
+                            <b>
+                                六
+                            </b>
+                        </li>
+                        <li>
+                            <b>
+                                日
+                            </b>
+                        </li>
+                    </ul>
+                    <div id="cm">
+                        <div class="cell">
+                            <div class="so">5</div>
+                            <div>二十</div>
+                        </div>
+                        <div class="cell">
+                            <div class="so">6</div>
+                            <div>二十一</div>
+                        </div>
+                    </div>
+                    <!--<div id="bm">
+                        2018 年 2 月 6 日 星期二
+                        <br>
+                        <b>农历 腊月廿一</b>
+                        <br>
+                        丁酉年 癸丑月 己巳日
+                    </div>-->
+                </div>
+            </td>
+        </tr>
+    </table>
+  {{/content}}
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "content-pagination"}}
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+      <script type="text/x-handlebars-template" id="form-template">
+          <form action="/PARHOLDAYCFG_UPDATE" method="POST" role="form" class="bsdForm pagination-form" id="holiday-form">
+              <div class="form-row">
+                  <div class="form-group">
+                      <label class="control-label fill">节假日日期:</label>
+                      <div>
+                          <input name="holDt" id="holDt" type="text" class="form-control required">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">节假日类型:</label>
+                      <div>
+                          <select name="holTyp"  id="holTyp" class="form-control holTyp required"
+                                  data-selectloader-store="holTypList"
+                                  data-selectloader-vkey="code" data-selectloader-tkey="name">
+                              <option value="">请选择...</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </script>
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

@@ -1,0 +1,79 @@
+html,
+body,
+ul,
+ol,
+dt,
+dd,
+dl,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+select,
+textarea,
+p,
+img,
+figure,
+figcaption,
+section,
+article,
+aside,
+nav {
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.1px;
+}
+
+body {
+    font-size: 12px;
+    font-family: "Microsoft YaHei", PingFang, Arial, Helvetica, sans-serif;
+    color: #3b3b3b;
+    background-color: inherit;
+    min-width: 1024px;
+    position: relative;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 14px;
+}
+
+img, input, select, textarea {
+    vertical-align: middle
+}
+
+img:focus,
+input[type=radio]:focus,
+input[type=checkbox]:focus,
+select:focus,
+button:focus,
+textarea:focus {
+    outline: 0 none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}

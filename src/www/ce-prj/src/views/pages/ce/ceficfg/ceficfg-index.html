@@ -1,0 +1,361 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>文本读写规则表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/ce/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/ce/modal-form.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+  	<script src="{{path.base}}/script/ce/dicts?ids=3002,3042,3048,3049"></script> 
+    <script src="{{path.base}}/script/ce/ceficfg/ceficfg.js"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/ce/common/app-context.js"></script>
+    <script src="{{path.app}}/js/ce/ceficfg/ceficfg.js"></script>
+    <script src="{{path.app}}/js/ce/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="bsdForm pagination-form">
+      <div class="form-row">    
+            <div class="form-group">
+              <label class="control-label">头文件编号:</label>
+              <div>
+                <input name="hdId" type="text" class="form-control">
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="control-label">编码格式:</label>
+               <div>
+              <select name="fiCh" id="fiCh" class="form-control fiCh"
+                data-selectloader-store="fiChList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+                <option value="">请选择...</option>                           
+             </select>
+            </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">是否定长:</label>
+               <div>
+              <select name="fixLenInd" id="fixLenInd" class="form-control fixLenInd"
+                data-selectloader-store="fixLenIndList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>
+             </select>
+            </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">定长字段填充符:</label>
+              <div>
+                <input name="addCh" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label ">分隔符:</label>
+               <div>
+              <select name="splFlg" id="splFlg" class="form-control splFlg "
+                data-selectloader-store="splFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>
+             </select>
+            </div>
+            </div>
+          <div class="form-group">
+              <label class="control-label ">换行符:</label>
+               <div>
+              <select name="linSepFlg" id="linSepFlg" class="form-control linSepFlg "
+                data-selectloader-store="linSepFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>           
+             </select>
+            </div>
+            </div>  
+            <div class="form-group">
+              <label class="control-label ">对齐方式:</label>
+               <div>
+              <select name="algFlg" id="algFlg" class="form-control algFlg "
+                data-selectloader-store="algFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>            
+             </select>
+            </div>
+            </div>     
+
+            <div class="form-group">
+              <label class="control-label ">结束符:</label>
+               <div>
+              <select name="endFlg" id="endFlg" class="form-control endFlg "
+                data-selectloader-store="endFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>           
+             </select>
+            </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label ">数字类型格式:</label>
+               <div>
+              <select name="numTyp" id="numTyp" class="form-control numTyp "
+                data-selectloader-store="numTypList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>               
+             </select>
+            </div>
+            </div>
+           <!--  <div class="form-group">
+              <label class="control-label">文件最大条数（如果为空不需要校验）:</label>
+              <div>
+                <input name="maxRcdNum" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">文件大小上限（KB）如果为空不需要校验:</label>
+              <div>
+                <input name="maxFiSiz" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">接口类:</label>
+              <div>
+                <input name="impClsNm" type="text" class="form-control">
+              </div>
+            </div> -->
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption">文本读写规则表列表 </div>
+      <div class="actions">
+          <a id="add" href="javascript:;" title="新增" class="add-sign"></a>
+          <a id="edit" href="javascript:;" title="编辑" class="update-sign"></a>
+          <a id="delete" href="javascript:;" title="删除" class="delete-sign"></a>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/CEFICFG_PAGE"
+          data-page-template-id="ceficfg-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <script type="text/x-handlebars-template" id="ceficfg-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>选择</th>
+            <th> 序号 </th>
+            <th> 文件编号 </th>
+            <th> 头文件编号 </th>
+            <th> 编码格式 </th>
+            <th> 是否定长 </th>
+            <th> 定长字段填充符 </th>
+            <th> 分隔符 </th>
+            <th> 换行符 </th>
+            <th> 对齐方式 </th>
+            <th> 结束符 </th>
+            <th> 数字类型格式 </th>
+            <th> 文件最大条数 </th>
+            <th> 文件大小上限（KB）</th>
+            <th> 接口类 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td>
+              <label for="id_{{page-rowindex}}">
+                <input
+                        id="id_{{page-rowindex}}"
+                        data-id="{{fiId}}"
+                        name="radio"
+                        type="radio">
+              </label>
+            </td>
+            <td> {{page-rowindex}} </td>
+            <td> {{fiId}} </td>
+            <td> {{hdId}} </td>
+            <td> {{fiCh-text}} </td>
+            <td> {{fixLenInd-text}} </td>
+            <td> {{addCh-text}} </td>
+            <td> {{splFlg-text}} </td>
+            <td> {{linSepFlg-text}} </td>
+            <td> {{algFlg-text}} </td>
+            <td> {{endFlg}} </td>
+            <td> {{numTyp-text}} </td>
+            <td> {{maxRcdNum}} </td>
+            <td> {{maxFiSiz}} </td>
+            <td> {{impClsNm}} </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+  <script type="text/x-handlebars-template" id="form-template">
+    <form class="bsdForm">
+  				<div class="form-group">
+              <label class="control-label fill">文件编号:</label>
+              <div>
+                <input name="fiId" type="text" class="form-control input-sm  required" maxlength="32" placeholder="请输入头文件编号...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label fill">头文件编号:</label>
+              <div>
+                <input name="hdId" type="text" class="form-control input-sm  required" maxlength="32" placeholder="请输入头文件编号...">
+              </div>
+            </div>
+                <div class="form-group">
+              <label class="control-label fill">编码格式:</label>
+               <div>
+              <select name="fiCh" id="fiCh" class="form-control fiCh required"
+                data-selectloader-store="fiChList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+                <option value="">请选择...</option>              
+             </select>
+            </div>
+            </div>
+    		<div class="form-group">
+              <label class="control-label fill">是否定长:</label>
+               <div>
+              <select name="fixLenInd" id="fixLenInd" class="form-control fixLenInd required"
+                data-selectloader-store="fixLenIndList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>
+             	</select>
+            	</div>
+            </div>          
+            <div class="form-group">
+              <label class="control-label fill">定长字段填充符:</label>
+               <div>
+              <select name="addCh" id="addCh" class="form-control addCh required"
+                data-selectloader-store="addChList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>           
+             </select>
+            </div>
+            </div>
+          
+			<div class="form-group">
+              <label class="control-label ">分隔符:</label>
+               <div>
+              <select name="splFlg" id="splFlg" class="form-control splFlg "
+                data-selectloader-store="splFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>
+             </select>
+            </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label fill">换行符:</label>
+               <div>
+              <select name="linSepFlg" id="linSepFlg" class="form-control linSepFlg required"
+                data-selectloader-store="linSepFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>           
+             </select>
+            </div>
+            </div>
+           <div class="form-group">
+              <label class="control-label fill">对齐方式:</label>
+               <div>
+              <select name="algFlg" id="algFlg" class="form-control algFlg required"
+                data-selectloader-store="algFlgList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>            
+             </select>
+            </div>
+            </div>
+			
+			<div class="form-group">
+              <label class="control-label">结束符:</label>
+              <div>
+                <input name="endFlg" id="endFlg" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入定长字段结束符...">
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label fill">数字类型格式:</label>
+               <div>
+              <select name="numTyp" id="numTyp" class="form-control numTyp required"
+                data-selectloader-store="numTypList"
+                data-selectloader-vkey="code" data-selectloader-tkey="name" readonly="readonly">
+               <option value="">请选择...</option>               
+             </select>
+            </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">文件最大条数（如果为空不需要校验）:</label>
+              <div>
+                <input name="maxRcdNum" type="text" class="form-control input-sm  digits" maxlength="10" placeholder="请输入文件最大条数（如果为空不需要校验）...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">文件大小上限（KB）如果为空不需要校验:</label>
+              <div>
+                <input name="maxFiSiz" type="text" class="form-control input-sm  digits" maxlength="10" placeholder="请输入文件大小上限（KB）如果为空不需要校验...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">接口类:</label>
+              <div>
+                <input name="impClsNm" type="text" class="form-control input-sm" maxlength="60" placeholder="请输入接口类...">
+              </div>
+            </div>
+    </form>
+  </script>
+{{/content}}
+{{/extend}}

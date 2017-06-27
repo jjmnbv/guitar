@@ -1,0 +1,46 @@
+subprojects {
+  apply plugin: 'java'
+  sourceSets {
+    main {
+      java {
+        exclude '**/.DS_Store'
+        srcDir 'src/main/java'
+        srcDir 'src/metamodel/java'
+
+        if (!application.database) return
+        def database = application.database.toLowerCase()
+  
+        srcDir "src/$database/java"
+      }
+      resources {
+        exclude '**/.DS_Store'
+        srcDir 'src/main/resources'
+      }
+    }
+  }
+  [compileJava, compileTestJava]*.options.collect { 
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+    it.bootClasspath = "${System.env.JAVA_HOME}/jre/lib/rt.jar"
+    it.bootClasspath += File.pathSeparator + "${System.env.JAVA_HOME}/jre/lib/jce.jar"
+    it.encoding = 'UTF-8'
+  }
+
+  apply plugin: 'pmd'
+  tasks.withType(Pmd) {
+    ignoreFailures = true
+    reports {
+      xml.enabled = false
+      html.enabled = true
+    }
+  }
+
+  apply plugin: 'findbugs'
+  tasks.withType(FindBugs) {
+    ignoreFailures = true
+    reports {
+      xml.enabled = false
+      html.enabled = true
+    }
+  }
+}

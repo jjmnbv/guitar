@@ -1,0 +1,9 @@
+/*crumbs*/
+.icon-workorder-set{
+	background-image: url(../img/productSet.png);
+}
+
+/*覆盖 common-form*/
+.modal .bsdForm .form-group > label{
+  width: 9em;
+}

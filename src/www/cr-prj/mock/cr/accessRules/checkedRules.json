@@ -1,0 +1,70 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "本信息勾稽规则",
+      "varType": "证件号码+生日",
+      "varDefault": "身份证号码中出生日期与填写出生日期是否一致",
+      "idType": ""
+    },
+    {
+      "varId": 6,
+      "varName": "本信息勾稽规则",
+      "varType": "证件号码+性别",
+      "varDefault": "身份证中性别与申请表中性别是否一致",
+      "idType": ""
+    },
+    {
+      "varId": 7,
+      "varName": "本信息勾稽规则",
+      "varType": "住宅电话",
+      "varDefault": "申请人住宅电话非8或非7位",
+      "idType": ""
+    },
+    {
+      "varId": 8,
+      "varName": "本信息勾稽规则",
+      "varType": "手机号码",
+      "varDefault": "申请人手机号码非11位",
+      "idType": ""
+    },
+    {
+      "varId": 9,
+      "varName": "本信息勾稽规则",
+      "varType": "手机号码",
+      "varDefault": "申请人手机号码和直系亲属手机号码",
+      "idType": ""
+    },
+    {
+      "varId": 10,
+      "varName": "本信息勾稽规则",
+      "varType": "手机号码",
+      "varDefault": "申请人手机号码和配偶手机号码",
+      "idType": "----"
+    },
+    {
+      "varId": 11,
+      "varName": "本信息勾稽规则",
+      "varType": "手机号码",
+      "varDefault": "申请人手机号码和其他联系人手机号码",
+      "idType": ""
+    },
+    {
+      "varId": 12,
+      "varName": "本信息勾稽规则",
+      "varType": "手机号码",
+      "varDefault": "直系亲属手机号码和配偶手机号码",
+      "idType": "----"
+    },
+    {
+      "varId": 13,
+      "varName": "本信息勾稽规则",
+      "varType": "手机号码",
+      "varDefault": "直系亲属手机号码和其他联系人手机号码",
+      "idType": ""
+    }
+  ]
+}

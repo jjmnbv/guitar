@@ -1,0 +1,26 @@
+div.uploader{
+    background-image: none!important;
+    width: 160px!important;
+}
+.filename, .action{
+    display: none!important;
+}
+.btn.default:not(.btn-outline):active:focus, .btn.default:not(.btn-outline):active:hover{
+    background-color: #fff!important;
+    border-color: #fff!important;
+}
+div.uploader input{
+    opacity: 1!important;
+}
+input[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus{
+    outline: none!important;
+}
+.pic-bg{
+    background-color: #E4E4E4;
+    min-height: 39px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+#mainPage .table-scrollable img {
+    margin-top: 5px!important;
+}

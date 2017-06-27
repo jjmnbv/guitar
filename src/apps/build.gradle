@@ -1,0 +1,395 @@
+import org.gradle.plugins.ide.eclipse.model.Facet
+import org.gradle.plugins.ide.eclipse.model.SourceFolder
+import org.gradle.plugins.ide.eclipse.model.Library
+import org.gradle.plugins.ide.eclipse.model.WbDependentModule
+
+buildscript {
+  project.ext {
+    GLOBAL = [ repositoriesRoot: 'http://182.92.165.97:8081/nexus/content' ]
+    GLOBAL.root = project(':').projectDir.parentFile.parentFile
+    GLOBAL.conf = new File(GLOBAL.root, 'conf')
+    GLOBAL.lib = new File(GLOBAL.root, 'lib')
+    GLOBAL.jdbcDrivers = [
+      h2: "com.h2database:h2:1.3.171",
+      mysql: "mysql:mysql-connector-java:5.1.38",
+      postgresql: "org.postgresql:postgresql:9.4.1211.jre7",
+      oracle: files(new File(GLOBAL.lib, 'oracle/ojdbc6.jar')),
+      db2: files(new File(GLOBAL.lib, 'db2/db2jcc.jar')),
+      sql_server: files(new File(GLOBAL.lib, 'sql_server/sqljdbc4.jar'))
+    ]
+
+    group = 'com.xukaiqiang'
+    version = '1.0-SNAPSHOT'
+
+    activationVersion = '1.1.1'
+    activitiVersion = '5.21.0'
+    antVersion = '1.9.3'
+    aspectjVersion = '1.8.9'
+    bcprovVersion = '1.46'
+    cglibVersion = '3.2.0'
+    commonsCodecVersion = '1.10'
+    commonsCollectionsVersion = '3.2.2'
+    commonsEmailVersion = '1.4'
+    commonsFileuploadVersion = '1.3.1'
+    commonsLang3Version = '3.4'
+    commonsBeanUtilsVersion = '1.9.2'
+    c3p0Version = '0.9.5.2'
+    dbcpVersion = '1.4'
+    droolsVersion = '6.5.0.Final'
+    findbugsVersion = '3.0.1'
+    flywaydbVersion = '4.0.3'
+    freemarkerVersion = '2.3.23'
+    groovyVersion = '2.4.7'
+    guavaVersion = '19.0'
+    hessianVersion = '4.0.38'
+    hibernateVersion = '5.1.0.Final'
+    hibernateValidatorVersion = '5.2.4.Final'
+    itextpdf = '5.5.3'
+    jacksonVersion = '2.6.3'
+    javaxElApiVersion = '3.0.0'
+    javaxMailVersion = '1.4.7'
+    javaxServletVersion = '3.1.0'
+    javaxValidationVersion = '1.1.0.Final'
+    jedisVersion = '2.9.0'
+    jodaTimeVersion = '2.6'
+    jstlVersion = '1.2'
+    junitVersion = '4.12'
+    logbackVersion = '1.1.3'
+    log4jVersion = '2.6'
+    mongodbDriverVersion = '3.4.2'
+    mybatisVersion = '3.4.0'
+    mybatisSpringVersion = '1.3.0'
+    oltuOAuth2Version = '1.0.1'
+    poiVersion = '3.14'
+    redissonVersion = '2.2.5'
+    servletVersion = '2.5'
+    shiroVersion = '1.2.4'
+    slf4jVersion = '1.7.21'
+    springDataCommonsVersion = '1.13.1.RELEASE'
+    springDataJpaVersion = '1.11.1.RELEASE'
+    springDataMongodbVersion = '1.10.1.RELEASE'
+    springDataRedisVersion = '1.8.1.RELEASE'
+    springVersion = '4.3.7.RELEASE'
+    thriftVersion = '0.9.3'
+    uruleVersion = '2.0.1-SNAPSHOT'
+  }
+
+  repositories {
+    maven {
+      url "$GLOBAL.repositoriesRoot/repositories/plugins.gradle.org/"
+    }
+    maven {
+      url "$GLOBAL.repositoriesRoot/repositories/jcenter/"
+    }
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+    jcenter()
+  }
+
+  dependencies {
+    classpath "gradle.plugin.com.boxfuse.client:flyway-release:4.0.3"
+    classpath "org.akhikhl.gretty:gretty:1.2.4"
+  }
+}
+
+subprojects {
+  buildscript {
+    project.ext {
+      application = [ properties: new Properties() ]
+
+      def props = file("src/main/resources/application.properties")
+      if ( !props.exists() ) return
+
+      props.withInputStream { stream -> application.properties.load(stream) }
+      application.database = application.properties['jdbc.database']
+
+      if (System.properties['spring.profiles.active'] != 'development') return
+      props = file("src/main/resources/application.development.properties")
+      if ( !props.exists() ) return
+
+      props.withInputStream { stream -> application.properties.load(stream) }
+      application.database = application.properties['jdbc.database']
+    }
+    repositories {
+      maven {
+        url "$GLOBAL.repositoriesRoot/repositories/plugins.gradle.org/"
+      }
+      maven {
+        url "$GLOBAL.repositoriesRoot/repositories/jcenter/"
+      }
+      maven {
+        url "https://plugins.gradle.org/m2/"
+      }
+      jcenter()
+    }
+
+    if (!application.database) return
+    def database = application.database.toLowerCase()
+
+    dependencies {
+      classpath GLOBAL.jdbcDrivers[database]
+    }
+  }
+
+  repositories {
+    maven {
+      url "$GLOBAL.repositoriesRoot/groups/public/"
+    }
+    maven {
+      url "http://repository.jboss.org/nexus/content/groups/public-jboss"
+    }
+    maven {
+      url "http://nexus.bsdn.org/content/groups/public/"
+    }
+    mavenCentral()
+  }
+}
+
+subprojects {
+  configurations {
+    jdbc
+    h2
+    mysql
+    postgresql
+    oracle
+    db2
+    sql_server
+  }
+
+  dependencies {
+    h2 GLOBAL.jdbcDrivers.h2
+    mysql GLOBAL.jdbcDrivers.mysql
+    postgresql GLOBAL.jdbcDrivers.postgresql
+    oracle GLOBAL.jdbcDrivers.oracle
+    db2 GLOBAL.jdbcDrivers.db2
+    sql_server GLOBAL.jdbcDrivers.sql_server
+  }
+
+  apply plugin: 'java'
+  sourceSets {
+    main {
+      java {
+        exclude '**/.DS_Store'
+        srcDir 'src/main/java'
+        srcDir 'src/metamodel/java'
+
+        if (!application.database) return
+        def database = application.database.toLowerCase()
+  
+        srcDir "src/$database/java"
+      }
+      resources {
+        exclude '**/.DS_Store'
+        srcDir 'src/main/resources'
+      }
+    }
+  }
+  [compileJava, compileTestJava]*.options.collect { 
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+    it.bootClasspath = "${System.env.JAVA_HOME}/jre/lib/rt.jar"
+    it.bootClasspath += File.pathSeparator + "${System.env.JAVA_HOME}/jre/lib/jce.jar"
+    it.encoding = 'UTF-8'
+  }
+
+  apply plugin: 'eclipse'
+  eclipse {
+    classpath {
+      downloadSources = true
+      defaultOutputDir = file("build/eclipse")
+      file {
+        withXml { xml ->
+          xml.asNode().classpathentry.each {
+            if (it.@kind == 'src' && it.@path[0] == '/') it.appendNode('attributes').appendNode('attribute', [name: 'org.eclipse.jst.component.nondependency', value: ''])
+          }
+        }
+        whenMerged { classpath ->
+          def outputs = [:]
+          sourceSets.each { ss ->
+            def classesOutput = project.relativePath(ss.output.classesDir)
+            def resourcesOutput = project.relativePath(ss.output.resourcesDir)
+            ss.java.srcDirTrees.each { outputs[project.relativePath(it.dir.absolutePath)] = classesOutput }
+            ss.resources.srcDirTrees.each { outputs[project.relativePath(it.dir.absolutePath)] = resourcesOutput }
+          }
+          classpath.entries.each {
+            if (it instanceof SourceFolder && outputs.containsKey(it.path)) it.output = outputs[it.path]
+          }
+          classpath.entries.sort { a, b ->
+            if (a.path == 'org.eclipse.jst.j2ee.internal.web.container') return 1
+            if (b.path == 'org.eclipse.jst.j2ee.internal.web.container') return -1
+            if (a instanceof Library && b instanceof Library) return a.path.split('/')[-1] <=> b.path.split('/')[-1]
+            if (a instanceof Library) return 1
+            if (b instanceof Library) return -1
+            return 0
+          }
+        }
+      }
+    }
+  }
+
+  apply plugin: 'war'
+  apply plugin: 'eclipse-wtp'
+  eclipse {
+    wtp {
+      facet {
+        facet name: "wst.jsdt.web", type: Facet.FacetType.fixed
+        facet name: "java", type: Facet.FacetType.fixed
+        facet name: "jpt.jpa", type: Facet.FacetType.fixed
+        facet name: "jst.web", type: Facet.FacetType.fixed
+        facet name: "wst.jsdt.web", version: "1.0"
+        facet name: "java", version: "1.7"
+        facet name: "jpt.jpa", version:'2.1'
+        facet name: "jst.web", version: "2.5"
+      }
+    
+      component {
+        contextPath = '/'
+        file {
+          whenMerged { component ->
+            component.wbModuleEntries.sort { a, b ->
+              if (a instanceof WbDependentModule && b instanceof WbDependentModule) return a.handle.split('/')[-1] <=> b.handle.split('/')[-1]
+              if (a instanceof WbDependentModule) return 1
+              if (b instanceof WbDependentModule) return -1
+              return 0
+            }
+          }
+        }
+      }
+      file('.settings').mkdirs()
+      
+      file('.settings/org.eclipse.wst.validation.prefs').write(
+"""
+DELEGATES_PREFERENCE=delegateValidatorList
+USER_BUILD_PREFERENCE=enabledBuildValidatorList
+USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.jst.j2ee.internal.web.validation.UIWarValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;
+eclipse.preferences.version=1
+override=true
+suspend=false
+vals/org.eclipse.jpt.jpa.core.jpaValidator/global=TF01
+vals/org.eclipse.jst.jsf.facelet.ui.FaceletHTMLValidator/global=TF01
+vals/org.eclipse.jst.jsf.ui.JSFAppConfigValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.JSPBatchValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.JSPContentValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.TLDValidator/global=TF01
+vals/org.eclipse.wst.dtd.core.dtdDTDValidator/global=TF01
+vals/org.eclipse.wst.html.core.HTMLValidator/global=TF01
+vals/org.eclipse.wst.wsdl.validation.wsdl/global=TF02158org.eclipse.wst.wsdl.validation.internal.eclipse.Validator
+vals/org.eclipse.wst.xml.core.xml/global=TF03
+vals/org.eclipse.wst.xsd.core.xsd/global=TF02162org.eclipse.wst.xsd.core.internal.validation.eclipse.Validator
+vals/org.eclipse.wst.xsl.core.xsl/global=TF02
+vf.version=3
+""")
+
+      file('.settings/org.eclipse.jpt.core.prefs').write(
+"""
+eclipse.preferences.version=1
+org.eclipse.jpt.core.platform=generic2_1
+org.eclipse.jpt.jpa.core.metamodelSourceFolderName=src/metamodel/java
+problem.PROJECT_NO_CONNECTION=info
+problem.TYPE_MANAGED_BUT_NOT_LISTED_IN_PERSISTENCE_XML=info
+""")
+
+      file('.settings/org.eclipse.wst.common.project.facet.core.prefs.xml').write(
+"""
+<root>
+  <facet id="jpt.jpa">
+    <node name="libprov">
+      <attribute name="provider-id" value="jpa-no-op-library-provider"/>
+    </node>
+  </facet>
+</root>
+""")
+    }
+  }
+
+  apply plugin: 'pmd'
+  tasks.withType(Pmd) {
+    ignoreFailures = true
+    reports {
+      xml.enabled = false
+      html.enabled = true
+    }
+  }
+
+  apply plugin: 'findbugs'
+  tasks.withType(FindBugs) {
+    ignoreFailures = true
+    reports {
+      xml.enabled = false
+      html.enabled = true
+    }
+  }
+
+  if (!application.database) return
+  def database = application.database.toLowerCase()
+
+  apply plugin: 'org.flywaydb.flyway'
+  flyway {
+    driver = application.properties['jdbc.driver']
+    schemas = [ application.properties['jdbc.schema'] ]
+    url = application.properties['jdbc.flyway.url']
+    user = application.properties['jdbc.flyway.user']
+    password = application.properties['jdbc.flyway.password']
+    locations = ["filesystem:$projectDir/scripts/$database"]
+    encoding = 'UTF-8'
+    baselineOnMigrate = true
+  }
+
+  dependencies {
+    jdbc configurations[database]
+    testRuntime configurations[database]
+  }
+}
+
+subprojects {
+  if (!System.properties['codegen.jpa']) return
+
+  configurations {
+    jpamodelgen
+  }
+
+  dependencies {
+    jpamodelgen "org.hibernate:hibernate-jpamodelgen:$hibernateVersion"
+  }
+
+  sourceSets {
+    jpamodel {
+      java {
+        srcDirs = ['src/main/java']
+      }
+    }
+    generated {
+      java {
+        srcDirs = ['src/metamodel/java'] 
+      }
+      compileClasspath += sourceSets.jpamodel.output
+    }
+  }
+
+  task cleanJpaMetamodel(type: Delete) {
+    delete 'src/metamodel/java'
+  }
+
+  task generateJpaMetamodel(type: JavaCompile) {
+    source = sourceSets.jpamodel.java
+    classpath = configurations.compile + configurations.jpamodelgen
+    options.compilerArgs = ['-proc:only', '-AaddGenerationDate=true']
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+  }
+}
+
+task cleanWorkspace {
+  doLast {
+    delete new File(projectDir, 'RemoteSystemsTempFiles')
+    delete new File(projectDir, 'Servers')
+    delete new File(projectDir, '.gradle')
+    delete new File(projectDir, '.metadata')
+    delete new File(projectDir, '.recommenders')
+    subprojects {
+      delete new File(projectDir, '.log')
+      delete new File(projectDir, '.settings')
+      delete new File(projectDir, 'scripts/stdout.log')
+    }
+  }
+}

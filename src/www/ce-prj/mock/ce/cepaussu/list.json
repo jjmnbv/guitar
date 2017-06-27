@@ -1,0 +1,29 @@
+[{
+  "content":[{
+    "buId":1,
+    "ceId":"",
+    "buDt":"",
+    "buTm":"",
+    "payBaNo":"",
+    "paTy":"",
+    "paNo":"",
+    "shAm":"",
+    "acBankNa":"",
+    "acBankNo":"",
+    "acBankBrNa":"",
+    "acBankBrNo":"",
+    "acNo":"",
+    "acNa":"",
+    "chNa":"",
+    "acctTy":"",
+    "priNo":1,
+    "laUpTm":"",
+    "laUpDt":"",
+    "laUpCuId":"",
+    "reAcNa":"",
+    "resDt":"",
+    "resTm":"",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

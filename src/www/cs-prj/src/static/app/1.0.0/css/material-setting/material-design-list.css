@@ -1,0 +1,28 @@
+/*crumbs*/
+.icon-pruduct-set{
+	background-image: url(../../img/product-set/productSet.png);
+}
+.w2em {
+    width: 2em !important;
+}
+
+.bsdForm .form-group-sel > div.selBox {
+    width: 372px;
+}
+
+.bsdForm .form-group-sel > div.selBox > span {
+    padding: 16px;
+}
+
+.no-border .radio {
+    margin-left: .5em;
+}
+
+.no-border label {
+    cursor: pointer;
+}
+.modal .radio > span input.excep{
+	margin-top: -12px !important;
+	margin-left: 1px;
+	opacity: 0;
+}

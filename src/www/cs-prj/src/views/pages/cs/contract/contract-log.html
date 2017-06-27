@@ -1,0 +1,209 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}合同日志</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+{{/content}}
+<!-- 自定义css -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/common-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/contract/constract.css">
+<link rel="stylesheet" href="{{path.app}}/css/contract/constract-log.css">
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<!--加载数据字典-->
+<script src="{{path.base}}/script/cs/dicts?ids=127"></script>
+<script src="{{path.base}}/script/cs/cslocol"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<script src="{{path.app}}/js/cs/common/app-context.js"></script>
+<script src="{{path.app}}/js/cs/contract/contract-log.js"></script>
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+    <div id="ul_div" class="url-boxbg"></div>
+{{/content}}
+
+{{#content "pagination-form"}}
+    <form class="bsdForm pagination-form" id="loanTypeForm">
+        {{{{raw}}}}
+        <input id="selectMatSetNo" type="hidden" name="loCoNo" value="{{request.loCoNo}}" />
+        {{{{/raw}}}}
+    </form>
+{{/content}}
+
+<!-- 分页表格和分页页码 pagination-container -->
+{{#content "pagination-container"}}
+<div class="portlet-title">
+    <div class="caption">合同查看</div>
+</div>
+<div class="portlet-body">
+    <div class="tabbable tabbable-tabdrop" >
+        <div class="pagination-reload"></div>
+        <div class="portlet-body pagination-container"
+             data-page-first-store="first-store"
+             data-page-url="/CONTRACT_LOG"
+             data-page-template-id="table1-page-template">
+        </div>
+    </div>
+</div>
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+{{/content}}
+
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<!--页面列表-->
+<script type="text/x-handlebars-template" id="table1-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>申请流水</th>
+                <th>借据编号</th>
+                <th>操作金额</th>
+                <th>合同操作状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each page.content}}
+            <tr>
+                <td>{{page-rowindex}}</td>
+                <td>{{apTr}}</td>
+                <td>{{lrNo}}</td>
+                <td>{{opAm}}</td>
+                <td>{{opCd-text}} </td>
+                <td>
+                    <a href="javascript:;"  class="check detail"
+                       data-opcd="{{opCd}}"
+                       data-aptr="{{apTr}}"
+                       data-locono="{{loCoNo}}"
+                    >查看</a>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+</script>
+
+<script type="text/x-handlebars-template" id="form-template1">
+    {{{{raw}}}}
+    <form class="bsdForm">
+        <div class="form-group">
+            <label class="control-label">申请流水</label>
+            <div>
+                <input type="text" class="form-control" name="apTr">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">合同操作状态</label>
+            <div>
+                <select
+                        name="opCd"
+                        class="form-control"
+                        data-selectloader-store="opCdList"
+                        data-selectloader-vkey="code"
+                        data-selectloader-tkey="name"
+                        >
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">借据编号</label>
+            <div>
+                <input type="text" class="form-control" name="lrNo" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">创建日期</label>
+            <div>
+                <input type="text" class="form-control" name="crtDt">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">创建时间</label>
+            <div>
+                <input type="text" class="form-control" name="crtTm">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">最后更新时间</label>
+            <div>
+                <input type="text" class="form-control crtDt" name="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">最后更新用户</label>
+            <div>
+                <input type="text" class="form-control" name="opUsLoginNa">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">操作金额</label>
+            <div>
+                <input type="text" class="form-control" name="opAm" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">操作前贷款可用金额</label>
+            <div>
+                <input type="text" class="form-control" name="loCoSa">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">操作前贷款放款金额</label>
+            <div>
+                <input type="text" class="form-control" name="loMlAm">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">操作前放款剩余金额</label>
+            <div>
+                <input type="text" class="form-control" name="loMlSa">
+            </div>
+        </div>
+    </form>
+    {{{{/raw}}}}
+</script>
+
+<!--页面导航模板-->
+<script type="text/x-handlebars-template" id="url-boxbg">
+    {{{{raw}}}}
+    <ul class="clearfix">
+        <li><a href="contract-detils.html?loCoNo=aaa">合同信息</a></li>
+        <li  class="active"><a href="#">合同日志</a></li>
+    </ul>
+    {{{{/raw}}}}
+</script>
+{{/content}}
+{{/extend}}

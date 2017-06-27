@@ -1,0 +1,296 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}费用子信息{{path.updateText}}</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css">
+        <link rel="stylesheet" href="{{path.app}}/css/cost-subInfor/cost-subInfor-update.css">
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <script src="{{path.base}}/script/cs/dicts?ids=2,3,4"></script>
+        <script src="{{path.base}}/script/cs/updatefeetypesub"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cs/cost-subInfor/cost-subInfor-update.js"></script>
+        <!--<script src="{{path.app}}/js/auth-judge.js"></script>-->
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+      <div id="main-template">
+      </div>
+    {{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+  <script type="text/x-handlebars-template" id="main-cont-template">
+  {{{{raw}}}}
+    <form action="" class="bsdForm" id="update-cost-form" data-link="cost-subInfor.html">
+      <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        费用子信息
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                	  <input name="suId" type="hidden" value="{{suId}}"/>
+                	  <div class="form-group">
+                        <label for="feCd" class="control-label fill">费用名称</label>
+                        <div>
+                            <select id="feCd"
+                                    name="feCd"
+                                    class="form-control feCd required"
+                                    data-selectloader-store="feeTypeList"
+                                    data-selectloader-vkey="feCode"
+                                    data-selectloader-tkey="feCa"
+                                    data-selectloader-val="{{feCd}}" disabled>
+                              <option value="">请选择</option>
+                          </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inclToPrYn" class="control-label fill">包含到本金</label>
+                        <div class="no-border">
+                            <div class="radio-list inclToPrYn" 
+                               data-radioloader-name="inclToPrYn"
+                               data-radioloader-val="{{inclToPrYn}}"
+                               data-radioloader-store="inclToPrYnList" 
+                               data-radioloader-vkey="code"
+                               data-radioloader-tkey="name">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="minQlCondQt" class="control-label fill month">贷款期限最小值</label>
+                        <div>
+                          <input type="text" class="form-control required nonnegativeInteger ltTo" name="minQlCondQt" id="minQlCondQt" value="{{minQlCondQt}}" data-gtTo='maxQlCondQt' maxlength="3" max="{{csSyPaC.maxPerQt}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxQlCondQt" class="control-label fill month">贷款期限最大值</label>
+                        <div>
+                          <input type="text" class="form-control required nonnegativeInteger gtTo" name="maxQlCondQt" id="maxQlCondQt" value="{{maxQlCondQt }}" data-ltTo='minQlCondQt' maxlength="3" max="{{csSyPaC.maxPerQt}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="minLoAm" class="control-label fill unitY">贷款最小金额</label>
+                        <div>
+                          <input type="text" class="form-control required minMoney moneyMax bindEvent ltRelateMon"  id="minLoAm" name="minLoAmRe" value="{{minLoAm}}" data-gtRelateMon='maxLoAm' maxlength="14">
+                          <input type="hidden" name="minLoAm"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxLoAm" class="control-label fill unitY">贷款最大金额</label>
+                        <div>
+                          <input type="text" class="form-control required minMoney moneyMax bindEvent gtRelateMon" id="maxLoAm" name="maxLoAmRe" value="{{maxLoAm}}" data-ltRelateMon='minLoAm' maxlength="14">
+                          <input type="hidden" name="maxLoAm"/>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="fePayTyCd" class="control-label fill">费用收取类型</label>
+                        <div>
+                          <select id="fePayTyCd"
+                                  name="fePayTyCd"
+                                  class="form-control fePayTyCd required"
+                                  data-selectloader-store="fePayTyCdList"
+                                  data-selectloader-vkey="code"
+                                  data-selectloader-tkey="name"
+                                  data-selectloader-val="{{fePayTyCd}}">
+                           <option value="">请选择</option>
+                         </select>
+                        </div>
+                    </div>
+                    <div class="form-group instalment-hidden">
+                        <label for="feDa" class="control-label fill">收费日</label>
+                        <div>
+                            <select id="feDa"
+                                    name="feDa"
+                                    class="form-control required feDaList"
+                                    data-selectloader-store="feDaList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name"
+                                    data-selectloader-val="{{feDa}}"
+                                    {{#if (eq feDa '')}}disabled="true"{{/if}}>
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group instalment-hidden">
+                        <label for="fePuCd" class="control-label fill">收费日频率</label>
+                        <div>
+                            <select id="fePuCd"
+                                    name="fePuCd"
+                                    class="form-control required fePuCd"
+                                    data-selectloader-store="fePuCdList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name"
+                                    data-selectloader-val="{{fePuCd}}"
+                                    {{#if (eq fePuCd '')}}disabled="true"{{/if}}>
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group instalment-hidden">
+                        <label for="feFreQt" class="control-label fill">收费间隔数量</label>
+                        <div>
+                            <input type="text" class="form-control required nonnegativeInteger" name="feFreQt" id="feFreQt" value="{{feFreQt}}" max="60" {{#if (eq feFreQt '')}}disabled="true"{{/if}}>
+                        </div>
+                    </div>
+                    <div class="form-group instalment-hidden">
+                        <label for="fePerQt" class="control-label fill month">收费期数</label>
+                        <div>
+                            <input type="text" class="form-control required nonnegativeInteger" name="fePerQt" id="fePerQt" value="{{fePerQt}}" max="60" {{#if (eq fePerQt '')}}disabled="true"{{/if}}>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="payFrCd" class="control-label fill">费用收取来源</label>
+                        <div>
+                        	  <select id="payFrCd"
+                                  name="payFrCd"
+                                  class="form-control payFrCd required"
+                                  data-selectloader-store="payFrCdList"
+                                  data-selectloader-vkey="code"
+                                  data-selectloader-tkey="name"
+                                  data-selectloader-val="{{payFrCd}}">
+                           <option value="">请选择</option>
+                         </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feeCalCd" class="control-label fill">费用计算方式</label>
+                        <div>
+                        	  <select id="feeCalCd"
+                                  name="feeCalCd"
+                                  class="form-control feeCalCd required"
+                                  data-selectloader-store="feeCalCdList"
+                                  data-selectloader-vkey="code"
+                                  data-selectloader-tkey="name"
+                                  data-selectloader-val="{{feeCalCd}}"
+                                      onchange="changeCas(this)">
+                           <option value="">请选择</option>
+                         </select>
+                        </div>
+                    </div>
+                    <div class="fixedCalType {{#if (eq feeCalCd 'BL')}}hide{{/if}}">
+                    	<div class="form-group">
+                        <label for="frPerQt" class="control-label fill month">开始期数</label>
+                        <div>
+                            <input type="text" class="form-control required nonnegativeInteger ltTo maxPerQtTerm" name="frPerQt" id="frPerQt" value="{{feeTypeSubFix.frPerQt}}" data-gtTo='toPerQt' disabled maxlength="3">
+                        </div>
+                    </div>
+                    	 <div class="form-group">
+                        <label for="toPerQt" class="control-label fill month">截至期数</label>
+                        <div>
+                            <input type="text" class="form-control required nonnegativeInteger gtTo maxPerQtTerm" name="toPerQt" id="toPerQt" value="{{feeTypeSubFix.toPerQt}}" data-ltTo='frPerQt' disabled maxlength="3">
+                        </div>
+                     </div>
+                        <div class="form-group">
+                        <label for="feAm" class="control-label fill unitY">费用金额</label>
+                        <div>
+                            <input type="text" class="form-control required minMoney bindEvent"  id="feAm" value="{{feeTypeSubFix.feAm}}" disabled>
+                            <input type="hidden" name="feAm"/>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="scaleType  {{#if (eq feeCalCd 'GD')}}hide{{/if}}">
+                        <div class="form-group">
+                            <label for="" class="control-label fill">是否总费用</label>
+                            <div class="no-border">
+                                <div class="radio-list totFeYn"
+                                     data-radioloader-name="totFeYn"
+                                     data-radioloader-val="{{feeTypeSubPer.totFeYn}}"
+                                     data-radioloader-store="totFeYnList"
+                                     data-radioloader-vkey="code"
+                                     data-radioloader-tkey="name"
+                                     disabled>
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="form-group">
+                        <label for="frPerQt" class="control-label fill month">开始期数</label>
+                        <div>
+                            <input type="text" class="form-control required nonnegativeInteger ltTo maxPerQtTerm" name="frPerQt" id="frPerQtBl" value="{{feeTypeSubPer.frPerQt}}" data-gtTo='toPerQtBl' disabled maxlength="3">
+                        </div>
+                    </div>
+                    	 <div class="form-group">
+                        <label for="toPerQt" class="control-label fill month">截至期数</label>
+                        <div>
+                            <input type="text" class="form-control required nonnegativeInteger gtTo maxPerQtTerm" name="toPerQt" id="toPerQtBl" value="{{feeTypeSubPer.toPerQt}}" data-ltTo='frPerQtBl' disabled maxlength="3">
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label for="fePe" class="control-label fill">收取比例</label>
+                            <div>
+                                <input type="text" class="form-control required HundredZero percentFormat" name="fePeRe" id="fePe" value="{{feeTypeSubPer.fePe}}" disabled>
+                                <input type="hidden" class="" name="fePe">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="minFeAm" class="control-label fill unitY">最小费用</label>
+                            <div>
+                                <input type="text" class="form-control required moneyMax moreZero " name="minFeAmRe" id="minFeAm" value="{{feeTypeSubPer.minFeAm}}" data-gtRelateMon='maxFeAm' disabled>
+                                <input type="hidden" name="minFeAm" value="{{feeTypeSubPer.minFeAm}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label for="maxFeAm" class="control-label fill unitY">最大费用</label>
+                        <div>
+                            <input type="text" class="form-control required moneyMax moreZero " name="maxFeAmRe" id="maxFeAm" value="{{feeTypeSubPer.maxFeAm}}" data-ltRelateMon='minFeAm' disabled>
+                            <input type="hidden" class="" name="maxFeAm" value="{{feeTypeSubPer.maxFeAm}}"/>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body center">
+              <div class="clearfix">
+               <button class="btn sky-blue btn-wid mainCol" id="saveForm" type="button">保存</button>
+               <a class="btn sky-blue btn-wid mainCol" href="cost-subInfor.html">返回</a>
+              </div>
+            </div>
+    </form>
+  {{{{/raw}}}}
+  </script>
+{{/content}}
+
+{{/extend}}

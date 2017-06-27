@@ -1,0 +1,23 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":1,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "taskId":1,
+    "taskNa":"任务名称",
+    "txNo":"交易码",
+    "exOr":1,
+    "ynAv":"是否生效",
+    "enTp":"退出策略",
+    "erQt":1,
+    "ynRp":"是否可重复",
+    "exCd":"执行周期",
+    "exFn":"执行类名",
+    "thQt":1,
+    "resultCode": "SUCCESS"
+  }]
+}

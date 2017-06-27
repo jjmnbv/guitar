@@ -1,0 +1,194 @@
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}费用子信息</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <!-- @Override -->
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/modal-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/cost-subInfor/cost-subInfor.css"/>
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <!-- @Override -->
+        <!--加载数据字典-->
+        <script src="{{path.base}}/script/cs/dicts?ids=2,3,4,63"></script>
+        <script src="{{path.base}}/script/cs/feetypesub"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <!-- @Override -->
+        <script src="{{path.app}}/js/cs/common/app-context.js"></script>
+        <script src="{{path.app}}/js/cs/cost-subInfor/cost-subInfor.js"></script>
+        <script src="{{path.app}}/js/auth-judge.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        <!-- @Override -->
+    {{/content}}
+
+
+
+    <!-- 分页查询条件 pagination-form -->
+    {{#content "pagination-form"}}
+        <!-- @Override -->
+        <!--BEGIN CONDITION SERACH-->
+        <form action="/COST_SUB_LIST" class="bsdForm pagination-form" id="">
+            <div class="form-group">
+                <label class="control-label" for="feCa">费用名称</label>
+                <div>
+                    <input type="text" class="form-control" name="feCa" id="feCa" maxlength="80">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="feTyCd">费用收取类型</label>
+                <div>
+                    <select id="fePayTyCd"
+                            name="fePayTyCd"
+                            class="form-control fePayTyCd"
+                            data-selectloader-store="fePayTyCdList"
+                            data-selectloader-vkey="code"
+                            data-selectloader-tkey="name"
+                    >
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="payFrCd">费用收取来源</label>
+                <div>
+                    <select id="payFrCd"
+                            name="payFrCd"
+                            class="form-control payFrCd"
+                            data-selectloader-store="payFrCdList"
+                            data-selectloader-vkey="code"
+                            data-selectloader-tkey="name"
+                    >
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="feCalCd">费用计算方式</label>
+                <div>
+                    <select id="feeCalCd"
+                            name="feeCalCd"
+                            class="form-control feeCalCd"
+                            data-selectloader-store="feeCalCdList"
+                            data-selectloader-vkey="code"
+                            data-selectloader-tkey="name"
+                    >
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <!--END CONDITION SERACH-->
+    {{/content}}
+
+    <!-- 分页表格和分页页码 pagination-container -->
+    {{#content "pagination-container"}}
+        <!-- @Override -->
+        <div class="portlet box reg">
+            <div class="portlet-title">
+                <div class="caption">列表信息</div>
+                <div class="actions">
+                    <a id="add" href="cost-subInfor-add.html" title="新增" class="add-sign"></a>
+                    <a id="update" href="javascript:;" title="修改" class="update-sign"></a>
+                    <a id="delete" href="javascript:;" title="删除" class="delete-sign"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="tabbable tabbable-tabdrop">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <div class="pagination-reload"></div>
+                            <div class="portlet-body pagination-container"
+                                 data-page-first-store="first-store"
+                                 data-page-url="/COST_SUB_LIST"
+                                 data-page-template-id="table1-page-template">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/content}}
+
+    <!-- 页面模态框 -->
+    {{#content "content-free"}}
+        <!-- @Override -->
+
+    {{/content}}
+
+    <!-- 页面组件模板 -->
+    {{#content "content-component"}}
+        <!-- @Override -->
+        <script type="text/x-handlebars-template" id="table1-page-template">
+        {{{{raw}}}}
+        <div class="table-scrollable">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="12%">选择</th>
+                    <th width="14%">费用名称</th>
+                    <th width="16%">费用收取类型</th>
+                    <th width="16%">费用收取来源</th>
+                    <th width="17%">费用计算方式</th>
+                    <th width="15">收付方向</th>
+                    <th width="">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each page.content}}
+                <tr>
+                    <td>
+                        <div class="icheck-inline">
+                            <label>
+                                <input type="radio" class="icheck" name="checkRow" data-id="{{feCd}}"
+                                       data-value="{{suId}}">
+                            </label>
+                        </div>
+                    </td>
+                    <td>{{feCa}}</td>
+                    <td>{{fePayTyCd-text}}</td>
+                    <td>{{payFrCd-text}}</td>
+                    <td>{{feeCalCd-text}}</td>
+                    <td>{{payDireCd-text}}</td>
+                    <td><a href="cost-subInfor-detail.html?feCd={{feCd}}&suId={{suId}}" class="check">详情</a>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+{{{{/raw}}}}
+    {{> pager}}
+</script>
+{{/content}}
+
+{{/extend}}

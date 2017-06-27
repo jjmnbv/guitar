@@ -1,0 +1,217 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.6.2
+    container_name: xfjr-prod-postgres.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      vlan0:
+        aliases:
+         - pg.xfjr.zkbc.net
+  mysql:
+    image: mysql:5.6
+    container_name: xfjr-prod-mysql.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE=xfjr_image
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      vlan0:
+        aliases:
+         - mysql.xfjr.zkbc.net
+  redis:
+    image: redis:3.2.8
+    container_name: xfjr-prod-redis.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      vlan0:
+        aliases:
+         - redis.xfjr.zkbc.net
+  mongo:
+    image: mongo:3.2
+    container_name: xfjr-prod-mongo.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - mongodata:/data/db
+    networks:
+      vlan0:
+        aliases:
+         - mongo.xfjr.zkbc.net
+  cu:
+    build: ./../dist/apps/cu-prj/docker
+    image: xfjr-prod-cu-prj-tomcat:latest
+    container_name: xfjr-prod-cu-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/cu/app:/opt/var/log/zkbc
+      - ./../logs/prod/cu/tomcat:/usr/local/tomcat/logs
+      - ./../data/prod/cu/fs:/opt/var/zkbc/fs
+    ports:
+      - 9002:8000
+    depends_on:
+      - redis
+    networks:
+      vlan0:
+        aliases:
+         - cu.xfjr.zkbc.net
+  cb:
+    build: ./../dist/apps/cb-prj/docker
+    image: xfjr-prod-cb-prj-tomcat:latest
+    container_name: xfjr-prod-cb-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/cb/app:/opt/var/log/zkbc
+      - ./../logs/prod/cb/tomcat:/usr/local/tomcat/logs
+      - ./../data/prod/cb/fs:/opt/var/zkbc/fs
+    ports:
+      - 9001:8000
+    depends_on:
+      - redis
+      - cu
+    networks:
+      vlan0:
+        aliases:
+         - cb.xfjr.zkbc.net
+  cc:
+    build: ./../dist/apps/cc-prj/docker
+    image: xfjr-prod-cc-prj-tomcat:latest
+    container_name: xfjr-prod-cc-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/cc/app:/opt/var/log/zkbc
+      - ./../logs/prod/cc/tomcat:/usr/local/tomcat/logs
+      - ./../data/prod/cc/fs:/opt/var/zkbc/fs
+    ports:
+      - 9004:8000
+    depends_on:
+      - redis
+      - cu
+    networks:
+      vlan0:
+        aliases:
+         - cc.xfjr.zkbc.net
+  cs:
+    build: ./../dist/apps/cs-prj/docker
+    image: xfjr-prod-cs-prj-tomcat:latest
+    container_name: xfjr-prod-cs-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/cs/app:/opt/var/log/zkbc
+      - ./../logs/prod/cs/tomcat:/usr/local/tomcat/logs
+      - ./../data/prod/cs/fs:/opt/var/zkbc/fs
+    ports:
+      - 9000:8000
+    depends_on:
+      - redis
+      - cu
+    networks:
+      vlan0:
+        aliases:
+         - cs.xfjr.zkbc.net
+  ce:
+    build: ./../dist/apps/ce-prj/docker
+    image: xfjr-prod-ce-prj-tomcat:latest
+    container_name: xfjr-prod-ce-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/ce/app:/opt/var/log/zkbc
+      - ./../logs/prod/ce/tomcat:/usr/local/tomcat/logs
+      - ./../data/prod/ce/fs:/opt/var/zkbc/fs
+    ports:
+      - 9005:8000
+    depends_on:
+      - redis
+      - cu
+    networks:
+      vlan0:
+        aliases:
+         - ce.xfjr.zkbc.net
+  ci:
+    build: ./../dist/apps/ci-prj/docker
+    image: xfjr-prod-ci-prj-tomcat:latest
+    container_name: xfjr-prod-ci-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/ci/app:/opt/var/log/zkbc
+      - ./../logs/prod/ci/tomcat:/usr/local/tomcat/logs
+      - ./../data/prod/ci/fs:/opt/var/zkbc/fs
+    depends_on:
+      - redis
+      - mongo
+      - cu
+    networks:
+      vlan0:
+        aliases:
+         - ci.xfjr.zkbc.net
+  nginx:
+    build: ./../dist/www/docker
+    image: xfjr-prod-nginx:latest
+    container_name: xfjr-prod-nginx.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 80:80
+    depends_on:
+      - cb
+      - cc
+      - cs
+      - ce
+      - ci
+      - cu
+    networks:
+      vlan0:
+        aliases:
+         - ngx.xfjr.zkbc.net
+  yx:
+    build: ../conf/apps/test/yx-prj
+    image: xfjr-prod-yx-prj-tomcat:latest
+    container_name: xfjr-prod-yx-prj.server
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./../logs/prod/yx/app:/opt/var/log/zkbc
+      - ./../logs/prod/yx/tomcat:/usr/local/tomcat/logs
+    ports:
+      - 8003:8080
+    depends_on:
+      - mysql
+    networks:
+      vlan0:
+        aliases:
+         - yx.xfjr.zkbc.net
+networks:
+  vlan0:
+    driver: bridge
+volumes:
+  pgdata:
+  mysqldata:
+  mongodata:

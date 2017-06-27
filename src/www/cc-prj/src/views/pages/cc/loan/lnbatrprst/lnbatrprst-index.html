@@ -1,0 +1,430 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>批量还款结果表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cc/loan/lnbatrprst"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnbatrprst.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="bsdForm pagination-form">
+      <div class="form-row">
+            <div class="form-group">
+              <label class="control-label">借据号:</label>
+              <div>
+                <input name="loNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">申请流水号:</label>
+              <div>
+                <input name="appSeqNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">批次流水号:</label>
+              <div>
+                <input name="batNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">交易渠道:</label>
+              <div>
+                <input name="trChn" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">交易状态:</label>
+              <div>
+                <input name="trSts" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group form-group-sel single">
+              <label class="control-label">交易日期:</label>
+                <div class="selBox">
+                    <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                         data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                         data-date-language="zh-CN">
+                        <input type="text" class="form-control uniform-input text" name="trDt">
+                        <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-group-sel single">
+              <label class="control-label">交易时间:</label>
+                <div class="selBox">
+                    <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                         data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                         data-date-language="zh-CN">
+                        <input type="text" class="form-control uniform-input text" name="trTm">
+                        <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">币种:</label>
+              <div>
+                <input name="curTyp" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款金额:</label>
+              <div>
+                <input name="payAm" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">实扣金额:</label>
+              <div>
+                <input name="rstAmt" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款账号:</label>
+              <div>
+                <input name="payAcNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">银行返回码:</label>
+              <div>
+                <input name="errCde" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">返回信息:</label>
+              <div>
+                <input name="errMsg" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款本金:</label>
+              <div>
+                <input name="payPrAmt" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款利息:</label>
+              <div>
+                <input name="payInAmt" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款罚息:</label>
+              <div>
+                <input name="payOdInAmt" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款复利:</label>
+              <div>
+                <input name="payCmInAmt" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">还款费用:</label>
+              <div>
+                <input name="payFeeAmt" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">成功标志:</label>
+              <div>
+                <input name="sucInd" type="text" class="form-control">
+              </div>
+            </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption">批量还款结果表列表 </div>
+        <div class="actions">
+            <a id="add" href="javascript:;" title="新增" class="add-sign"></a>
+            <a id="edit" href="javascript:;" title="编辑" class="update-sign"></a>
+            <a id="delete" href="javascript:;" title="删除" class="delete-sign"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/LNBATRPRST_PAGE"
+          data-page-template-id="lnbatrprst-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <script type="text/x-handlebars-template" id="lnbatrprst-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>选择</th>
+            <th> 序号 </th>
+            <th> 流水号 </th>
+            <th> 借据号 </th>
+            <th> 申请流水号 </th>
+            <th> 批次流水号 </th>
+            <th> 交易渠道 </th>
+            <th> 交易状态 </th>
+            <th> 交易日期 </th>
+            <th> 交易时间 </th>
+            <th> 币种 </th>
+            <th> 还款金额 </th>
+            <th> 实扣金额 </th>
+            <th> 还款账号 </th>
+            <th> 银行返回码 </th>
+            <th> 返回信息 </th>
+            <th> 还款本金 </th>
+            <th> 还款利息 </th>
+            <th> 还款罚息 </th>
+            <th> 还款复利 </th>
+            <th> 还款费用 </th>
+            <th> 成功标志 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td>
+                <label for="id_{{page-rowindex}}">
+                    <input
+                            id="id_{{page-rowindex}}"
+                            data-id="{{rstSeqNo}}"
+                            name="radio"
+                            type="radio">
+                </label>
+            </td>
+            <td> {{page-rowindex}} </td>
+            <td> {{rstSeqNo}} </td>
+            <td> {{loNo}} </td>
+            <td> {{appSeqNo}} </td>
+            <td> {{batNo}} </td>
+            <td> {{trChn}} </td>
+            <td> {{trSts}} </td>
+            <td> {{trDt}} </td>
+            <td> {{trTm}} </td>
+            <td> {{curTyp}} </td>
+            <td> {{payAm}} </td>
+            <td> {{rstAmt}} </td>
+            <td> {{payAcNo}} </td>
+            <td> {{errCde}} </td>
+            <td> {{errMsg}} </td>
+            <td> {{payPrAmt}} </td>
+            <td> {{payInAmt}} </td>
+            <td> {{payOdInAmt}} </td>
+            <td> {{payCmInAmt}} </td>
+            <td> {{payFeeAmt}} </td>
+            <td> {{sucInd}} </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+  <!-- 页面组件模板 -->
+  {{#content "content-component"}}
+    <script type="text/x-handlebars-template" id="form-template">
+        <form class="bsdForm">
+            <input type="hidden" name="rstSeqNo">
+            <div class="form-group">
+                <label class="control-label">借据号:</label>
+                <div>
+                    <input name="loNo" type="text" class="form-control input-sm" placeholder="请输入借据号...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">申请流水号:</label>
+                <div>
+                    <input name="appSeqNo" type="text" class="form-control input-sm" placeholder="请输入申请流水号...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">批次流水号:</label>
+                <div>
+                    <input name="batNo" type="text" class="form-control input-sm" placeholder="请输入批次流水号...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">交易渠道:</label>
+                <div>
+                    <input name="trChn" type="text" class="form-control input-sm" placeholder="请输入交易渠道...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">交易状态:</label>
+                <div>
+                    <input name="trSts" type="text" class="form-control input-sm" placeholder="请输入交易状态...">
+                </div>
+            </div>
+            <div class="form-group form-group-sel single">
+                <label class="control-label">交易日期:</label>
+                <div class="selBox">
+                    <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                         data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                         data-date-language="zh-CN">
+                        <input type="text" class="form-control uniform-input text" name="trDt" placeholder="请输入交易日期...">
+                        <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-group-sel single">
+                <label class="control-label">交易时间:</label>
+                <div class="selBox">
+                    <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                         data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                         data-date-language="zh-CN">
+                        <input type="text" class="form-control uniform-input text" name="trTm" placeholder="请输入交易时间...">
+                        <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">币种:</label>
+                <div>
+                    <input name="curTyp" type="text" class="form-control input-sm" placeholder="请输入币种...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款金额:</label>
+                <div>
+                    <input name="payAm" type="text" class="form-control input-sm" placeholder="请输入还款金额...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">实扣金额:</label>
+                <div>
+                    <input name="rstAmt" type="text" class="form-control input-sm" placeholder="请输入实扣金额...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款账号:</label>
+                <div>
+                    <input name="payAcNo" type="text" class="form-control input-sm" placeholder="请输入还款账号...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">银行返回码:</label>
+                <div>
+                    <input name="errCde" type="text" class="form-control input-sm" placeholder="请输入银行返回码...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">返回信息:</label>
+                <div>
+                    <input name="errMsg" type="text" class="form-control input-sm" placeholder="请输入返回信息...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款本金:</label>
+                <div>
+                    <input name="payPrAmt" type="text" class="form-control input-sm" placeholder="请输入还款本金...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款利息:</label>
+                <div>
+                    <input name="payInAmt" type="text" class="form-control input-sm" placeholder="请输入还款利息...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款罚息:</label>
+                <div>
+                    <input name="payOdInAmt" type="text" class="form-control input-sm" placeholder="请输入还款罚息...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款复利:</label>
+                <div>
+                    <input name="payCmInAmt" type="text" class="form-control input-sm" placeholder="请输入还款复利...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">还款费用:</label>
+                <div>
+                    <input name="payFeeAmt" type="text" class="form-control input-sm" placeholder="请输入还款费用...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">成功标志:</label>
+                <div>
+                    <input name="sucInd" type="text" class="form-control input-sm" placeholder="请输入成功标志...">
+                </div>
+            </div>
+        </form>
+    </script>
+  {{/content}}
+{{/extend}}

@@ -1,0 +1,208 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>交易流水管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+ 
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+     <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    
+    <script src="{{path.base}}/script/cc/dicts?ids=3043,3054"></script>
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=CurTyp, TrTyp"></script>
+    <script src="{{path.base}}/script/cc/loan/lntrxlog"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/common/loan-prop.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lntrxlog.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+    <script src="{{path.app}}/js/auth-judge.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <form  class="bsdForm pagination-form"  role="form">
+        <div class="form-row">
+            <input type="hidden" name="exDtlId">
+           <div class="form-group">
+              <label class="control-label">流水号:</label>
+              <div >
+                <input name="txSeqNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">借据号:</label>
+                <div class="find">
+                    <div class="line">
+                        <input type="text" name="lnNo" class="form-control" id="loNo">
+                    </div>
+                    <div class="line-use">
+                        <a data-toggle="modal" data-target="#lonoModal">
+                            <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                    type="button"
+                                    data-select2-open="single-prepend-text">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">交易名称</label>
+                <div>
+                    <select name="txNo" class="form-control txNo"
+                            data-selectloader-store="txNo"
+                            data-selectloader-vkey="code"
+                            data-selectloader-tkey="name">
+                        <option value="">请选择...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group form-group-sel single">
+              <label class=" control-label">交易日期:</label>
+              <div class="selBox">
+                  <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                       data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                       data-date-language="zh-CN">
+                      <input type="text" class="form-control uniform-input text" name="txDt">
+                      <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                  </div>
+              </div>
+          </div>
+          </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption">交易流水信息列表 </div>
+      <div class="actions">
+       	 <a id="reversal-oprate" href="javascript:;"  title="冲正交易" class="jinjiantongji-sign"></a>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/LNTRXLOG_PAGE"
+          data-page-template-id="lntrxlog-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+      <!-- 借据选择框 -->
+      {{> loan-prop}}
+   <script type="text/x-handlebars-template" id="lntrxlog-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 选择</th>
+            <th> 流水号 </th>
+            <th> 借据号 </th>
+            <!--<th> 交易码 </th>-->
+            <th> 交易名称 </th>
+            <th> 交易金额 </th>
+            <th> 机构号 </th>
+            <th> 交易日期 </th>
+            <th> 币种</th>
+            <!--<th> 转出账户 </th>-->
+            <!--<th> 转出账户名称 </th>-->
+            <!--<th> 转入账户 </th>-->
+            <!--<th> 转入账户名称 </th>-->
+            <th> 结算状态 </th>
+            <th> 冲正状态 </th>
+            <th> 前置交易  </th>
+            <th> 创建时间 </th>
+            <th> 修改时间 </th>
+            <!--<th> 备注 </th>-->
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+             <td>
+             <label for="id_{{page-rowindex}}">
+              <input
+                      id="id_{{page-rowindex}}"
+                      data-id="{{txSeqNo}}"
+  					  data-corst="{{corSt}}"
+                      name="radio"
+                      type="radio">
+            </label>
+            </td>
+            <td> {{txSeqNo}} </td>
+            <td> {{lnNo}} </td>
+            <!--<td> {{txNo}} </td>-->
+            <td> {{txNa}} </td>
+            <td> {{formatMoney txAmt}} </td>
+            <td> {{bchNo}} </td>
+            <td> {{txDt}} </td>
+            <td> {{curTyp-text}} </td>
+            <!--<td> {{outAcNo}} </td>-->
+            <!--<td> {{outAcNa}} </td>-->
+            <!--<td> {{inAcNo}} </td>-->
+            <!--<td> {{inAcNa}} </td>-->
+            <td> {{setSt-text}} </td>
+            <td> {{corSt-text}} </td>
+            <td> {{prvTxSeq}} </td>
+            <td> {{formatDate crtTm}} </td>
+            <td> {{formatDate updTm}} </td>
+            <!--<td> {{co}} </td>-->
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

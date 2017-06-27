@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+  default-lazy-init="true">
+
+  <bean id="shiroFilter" class="net.zkbc.shiro.web.ShiroDbFilterFactoryBean">
+    <property name="securityManager" ref="defaultWebSecurityManager" />
+    <property name="loginUrl" value="/login" />
+    <property name="successUrl" value="/" />
+    <property name="filterChainDefinitions">
+      <value>
+        / = anon
+        /index = anon
+        /login = authc
+        /logout = logout
+        /favicon.ico = anon
+        /static/** = anon
+        /** = user
+      </value>
+    </property>
+  </bean>
+
+  <bean id="defaultSecurityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+    <property name="realm" ref="shiroDbRealm" />
+    <property name="cacheManager" ref="shiroCacheManager" />
+    <!-- net.zkbc.shiro.AppConfig.defaultSessionManager() -->
+    <property name="sessionManager" ref="defaultSessionManager"/>
+  </bean>
+
+  <bean id="defaultWebSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+    <property name="realm" ref="shiroDbRealm" />
+    <property name="cacheManager" ref="shiroCacheManager" />
+    <!-- net.zkbc.shiro.AppConfig.defaultWebSessionManager() -->
+    <property name="sessionManager" ref="defaultWebSessionManager"/>
+    <!-- net.zkbc.shiro.AppConfig.cookieRememberMeManager() -->
+    <property name="rememberMeManager" ref="cookieRememberMeManager" />
+  </bean>
+
+  <bean id="shiroDbRealm" class="net.zkbc.shiro.realm.ShiroDbRealm">
+    <!-- net.zkbc.shiro.AppConfig.hashedCredentialsMatcher() -->
+    <property name="credentialsMatcher" ref="hashedCredentialsMatcher" />
+  </bean>
+
+  <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+  <beans profile="production">
+    <bean id="shiroCacheManager" class="net.zkbc.shiro.cache.redis.RedisCacheManager">
+      <!-- applicationContext-redis.xml -->
+      <property name="cacheManager" ref="redisCacheManager"/>
+    </bean>
+  </beans>
+
+  <beans profile="development,test">
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+  </beans>
+
+</beans>

@@ -1,0 +1,53 @@
+
+window.app = window.app || {};window.app.dicts = window.app.dicts || {};
+/**
+ * 数据模拟
+ */
+  +function ($, app) {
+ $.extend(app.dicts, {"dict_27":[{"id":28,"code":"集奥","name":"集奥","children":[]},{"id":28,"code":"融360","name":"融360","children":[]}],"dict_28":[{"id":28,"code":"FJ","name":"否决","children":[]},{"id":28,"code":"ZZ","name":"终止","children":[]},{"id":28,"code":"SX","name":"失效","children":[]},{"id":28,"code":"ZT","name":"暂停","children":[]},{"id":28,"code":"JH","name":"激活","children":[]},{"id":28,"code":"CS","name":"初始","children":[]}],"dict_44":[{"id":44,"code":"XJ","name":"现金贷","children":[]},{"id":44,"code":"NY","name":"耐用消费贷款","children":[{"id":46,"code":"02","name":"家具分期","children":[]},{"id":46,"code":"01","name":"手机分期","children":[]}]},{"id":44,"code":"TX","name":"通用消费贷款","children":[{"id":45,"code":"04","name":"装修分期","children":[]},{"id":45,"code":"03","name":"教育分期","children":[]}]}]});
+ } (window.jQuery, window.app);
++function($, app){
+/**
+     * 面包屑导航数据
+     * @type {{icon: string, dt: string, dd: Array}}
+     */
+    app.crumbs = {
+        icon: 'icon-set',
+        dt: {
+            text: '情报系统',
+            url: '#'
+        },
+        dd: [
+            {
+                text: '配置管理',
+                url: '#'
+            },
+            {
+                text: '接口管理',
+                url: '/ci/interface-management/interface-management.html'
+            },
+            {
+                text: '新增',
+                url: '#'
+            }
+        ]
+    };
+    
+    
+    app.chargeTypeList =[
+         {"code":"查询收费","name":"查询收费"},
+         {"code":"命中收费","name":"命中收费"},
+         {"code":"免费","name":"免费"}];
+  app.interfaceTypeList =[
+       {"code":"认证接口","name":"认证接口"},
+       {"code":"查询接口","name":"查询接口"},
+       {"code":"采集接口","name":"采集接口"}];
+  app.interfaceStatusList =[
+       {"code":"接通启用","name":"接通启用"},
+       {"code":"故障","name":"故障"},
+       {"code":"暂停","name":"暂停"},
+       {"code":"未接通","name":"未接通"}];
+       
+   
+
+}(window.jQuery,window.app);

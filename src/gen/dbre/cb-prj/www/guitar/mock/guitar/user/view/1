@@ -1,0 +1,12 @@
+{
+  "id":1,
+  "userName":"用户名",
+  "passWord":"",
+  "roleId":1,
+  "detailId":1,
+  "sex":"性别  N男 V女",
+  "age":1,
+  "nickName":"昵称",
+  "resultCode": "SUCCESS",
+  "errors": []
+}

@@ -1,0 +1,343 @@
+buildscript {
+  repositories {
+    maven {
+      url "http://182.92.165.97:8081/nexus/content/groups/public/"
+    }
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'org.apache.poi:ooxml-schemas:1.3'
+    classpath 'org.apache.poi:poi:3.14'
+    classpath 'org.apache.poi:poi-ooxml:3.14'
+    classpath 'org.freemarker:freemarker:2.3.23'
+  }
+}
+
+import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+import freemarker.template.Configuration
+import freemarker.template.Template
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import static org.apache.poi.ss.usermodel.Cell.*
+
+def renderTemplate = { template, model->
+  StringWriter result = new StringWriter()
+  template.process(model, result)
+  return result.toString()
+}
+
+def renderString = { templateString, model->
+  def libstr = '<#function upper_case str><#return str?upper_case></#function><#function lower_case str><#return str?lower_case></#function><#function uncap_first str><#return str?uncap_first></#function><#function cap_first str><#return str?cap_first></#function>'
+  def template = new Template("default", new StringReader(libstr + templateString), new Configuration())
+  return renderTemplate(template, model)
+}
+
+def renderFile = { root, messagesMetaModel, excludeapi->
+  if(!messagesMetaModel || !root) return
+
+  println messagesMetaModel
+
+  def configuration = new Configuration()
+  configuration.setDirectoryForTemplateLoading(file('freemarker'))
+
+  def render = { template, suffix, context ->
+    def targetFile = new File(root.target, renderString(template.path - file('freemarker/src').path - suffix, context))
+    targetFile.parentFile.mkdirs()
+    targetFile.delete()
+    targetFile << renderTemplate(configuration.getTemplate(template.path - file('freemarker').path, 'UTF-8'), context)
+  }
+
+  fileTree('freemarker/src'){
+    if(excludeapi) {
+      exclude '${projectName}-prj-api/src/main/java/${root.javaPackagePath}/${projectName}/api/protocol'
+      exclude '${projectName}-prj-api/src/main/java/${root.javaPackagePath}/${projectName}/api/service'
+      exclude '${projectName}-prj-api/build.gradle'
+    }
+  }.each { t ->
+    if (t.isDirectory()) {
+      return
+    }
+
+    //
+    //直接拷贝的文件（文本/二进制）
+    //
+    if (!t.path.endsWith('.ftl')) {
+      def context = [ 'root' : root, 'projectName' : root.projectName ]
+      def targetFile = new File(root.target, renderString(t.path - file('freemarker/src').path, context))
+      copy {
+        from t
+        into targetFile.parentFile
+      }
+      return
+    }
+
+    //
+    //拷贝项目内公用文件（文本）
+    //
+    if(t.path.endsWith('.root.ftl')) {
+      def context = [ 'root' : root, 'projectName' : root.projectName, 'messages' : messagesMetaModel ]
+      render(t, '.root.ftl', context)
+      return
+    }
+
+    //
+    //拷贝报文实体模型文件
+    //
+    messagesMetaModel.each { message ->
+      render(t, '.ftl', message)
+    }
+    return
+  }
+}
+
+task generate << {
+  def root = [
+    'projectName' : projectName,
+    'target' : file(target),
+    'corpJavaPackageName' : corpJavaPackageName,
+    'corpJavaPackagePath' : corpJavaPackageName.replaceAll(/\./, '/'),
+    'javaPackageName' : javaPackageName,
+    'javaPackagePath' : javaPackageName.replaceAll(/\./, '/')
+  ]
+
+  def messagesMetaModel = [], fillMessagesMetaModel = { sheet ->
+      def messageMetaModel = [
+        'root': root,
+        'projectName': root.projectName,
+        'requestFields': [],
+        'requestGroups': [],
+        'responseFields': [],
+        'responseGroups': [],
+        'requestGroupsMap': [:],
+        'responseGroupsMap': [:],
+        'requestValids': []
+      ]
+      //
+      //读取报文元数据
+      //
+      def messagePropNames = []
+      //第1行是报文元数据英文名
+      //第2行是报文元数据中文名
+      for (cell in sheet.getRow(0).cellIterator()) {
+        messagePropNames << cell.stringCellValue
+      }
+      //读取报文配置
+      for (cell in sheet.getRow(2).cellIterator()) {
+        def prop = messagePropNames[cell.columnIndex]
+        if (!prop) {
+          continue
+        }
+        messageMetaModel[prop] = (cell.cellType == CELL_TYPE_NUMERIC ? "$cell.numericCellValue" : "$cell.stringCellValue").toString()
+      }
+      messageMetaModel.description = messageMetaModel.messageDesc
+
+      //
+      //读取报文请求元数据
+      //
+      def requestPropNames = []
+      //第5行是报文请求元数据英文名
+      //第6行是报文请求元数据中文名
+      for (cell in sheet.getRow(4).cellIterator()) {
+        requestPropNames << cell.stringCellValue
+      }
+      def responsePropRow = 0
+      //开始读取报文请求配置
+      for (row in sheet.rowIterator()) {
+        if (row.rowNum < 6) {
+          continue
+        }
+
+        if (row.getCell(0).cellType == CELL_TYPE_STRING && row.getCell(0).stringCellValue == 'responseName') {
+          responsePropRow = row.rowNum
+          break
+        }
+        //第7行开始是报文配置
+        def r = [:]
+        for (cell in row.cellIterator()) {
+          def prop = requestPropNames[cell.columnIndex]
+          if (!prop) {
+            continue
+          }
+          r[prop] = (cell.cellType == CELL_TYPE_NUMERIC ? "$cell.numericCellValue" : "$cell.stringCellValue").toString()
+        }
+
+        //添加请求字段
+        if (r.requestName) {
+          // javax.validation.constraints.*
+          if(r.digit && r.digit == 'Y' && !messageMetaModel.requestValids.contains('Digits')) {
+            messageMetaModel.requestValids << 'Digits'
+          }
+          if(r.maxvalue && !messageMetaModel.requestValids.contains('Max')) {
+            messageMetaModel.requestValids << 'Max'
+          }
+          if(r.minvalue && !messageMetaModel.requestValids.contains('Min')) {
+            messageMetaModel.requestValids << 'Min'
+          }
+          if(r.zipcode && r.zipcode == 'Y' && !messageMetaModel.requestValids.contains('Pattern')) {
+            messageMetaModel.requestValids << 'Pattern'
+          }
+          if(r.phonenumber && r.phonenumber == 'Y' && !messageMetaModel.requestValids.contains('Pattern')) {
+            messageMetaModel.requestValids << 'Pattern'
+          }
+          if(r.idcardno && r.idcardno == 'Y' && !messageMetaModel.requestValids.contains('Pattern')) {
+            messageMetaModel.requestValids << 'Pattern'
+          }
+          if(r.bankcardno && r.bankcardno == 'Y' && !messageMetaModel.requestValids.contains('Pattern')) {
+            messageMetaModel.requestValids << 'Pattern'
+          }
+          if(r.qq && r.qq == 'Y' && !messageMetaModel.requestValids.contains('Pattern')) {
+            messageMetaModel.requestValids << 'Pattern'
+          }
+          // org.hibernate.validator.constraints.*
+          if(r.email && r.email == 'Y' && !messageMetaModel.requestValids.contains('Email')) {
+            messageMetaModel.requestValids << 'Email'
+          }
+          if((r.minlength || r.maxlength) && !messageMetaModel.requestValids.contains('Length')) {
+            messageMetaModel.requestValids << 'Length'
+          }
+          if(r.required && r.required == 'Y' && (r.requestClass?:"String") == 'String' && !messageMetaModel.requestValids.contains('NotEmpty')) {
+            messageMetaModel.requestValids << 'NotEmpty'
+          }
+          if(r.required && r.required == 'Y' && (r.requestClass?:"String") != 'String' && !messageMetaModel.requestValids.contains('NotNull')) {
+            messageMetaModel.requestValids << 'NotNull'
+          }
+          def field = [
+            'id': r.requestName,
+            'description': r.requestDesc,
+            'type': r.requestClass?:"String",
+            'valueExample': r.requestExample,
+            'required': r.required?:'N',
+            'minlength': r.minlength,
+            'maxlength': r.maxlength,
+            'minvalue': r.minvalue,
+            'maxvalue': r.maxvalue,
+            'digit': r.digit?:'N',
+            'email': r.email?:'N',
+            'zipcode': r.zipcode?:'N',
+            'phonenumber': r.phonenumber?:'N',
+            'idcardno': r.idcardno?:'N',
+            'bankcardno': r.bankcardno?:'N',
+            'qq': r.qq?:'N'
+          ]
+          if (r.requestGroup) {
+            def group = messageMetaModel.requestGroupsMap[r.requestGroup]?:['id':r.requestGroup,'description':r.requestGroupDesc,'fields':[]]
+            group.fields << field
+            messageMetaModel.requestGroupsMap[r.requestGroup] = group
+          } else {
+            messageMetaModel.requestFields << field
+          }
+        }
+      }
+
+      //
+      //读取报文响应元数据
+      //
+      def responsePropNames = []
+      //第responsePropRow+1行是报文响应元数据英文名
+      //第responsePropRow+2行是报文响应元数据中文名
+      for (cell in sheet.getRow(responsePropRow).cellIterator()) {
+        responsePropNames << cell.stringCellValue
+      }
+      //开始读取豹纹响应配置
+      for (row in sheet.rowIterator()) {
+        if (row.rowNum < (responsePropRow + 2)) {
+          continue
+        }
+
+        //第responsePropRow+3行开始是报文配置
+        def r = [:]
+        for (cell in row.cellIterator()) {
+          def prop = responsePropNames[cell.columnIndex]
+          if (!prop) {
+            continue
+          }
+          r[prop] = (cell.cellType == CELL_TYPE_NUMERIC ? "$cell.numericCellValue" : "$cell.stringCellValue").toString()
+        }
+
+        //添加响应字段
+        if (r.responseName) {
+          def field = [
+            'id': r.responseName,
+            'description': r.responseDesc,
+            'type': r.responseClass?:"String",
+            'valueExample': r.responseExample
+          ]
+          if (r.responseGroup) {
+            def group = messageMetaModel.responseGroupsMap[r.responseGroup]?:['id':r.responseGroup,'description':r.responseGroupDesc,'fields':[]]
+            group.fields << field
+            messageMetaModel.responseGroupsMap[r.responseGroup] = group
+          } else {
+            messageMetaModel.responseFields << field
+          }
+        }
+      }
+
+      //分组数据处理
+      messageMetaModel.requestGroupsMap.each { k, v ->
+        messageMetaModel.requestGroups << v
+      }
+      messageMetaModel.responseGroupsMap.each { k, v ->
+        messageMetaModel.responseGroups << v
+      }
+      messagesMetaModel << messageMetaModel
+  }
+
+  //
+  //从excel读取模型定义
+  //
+  def readerMetaxlsx = { input ->
+    def workbook = new XSSFWorkbook(input)
+
+    for(sheet in workbook.sheetIterator()){
+      if(sheet.sheetName == 'OPTIONS' || sheet.sheetName == 'EMPTY') {
+        continue
+      }
+      //
+      //includes有值时，不在includes中的排除掉
+      //
+      if(includes && !includes.contains(sheet.sheetName)) {
+        continue
+      }
+      //
+      //excludes有值时，在excludes中的排除掉
+      //
+      if(excludes && excludes.contains(sheet.sheetName)) {
+        continue
+      }
+      //
+      //报文配置
+      //
+      fillMessagesMetaModel(sheet)
+    }
+  }
+
+  fileTree(metaxlsx) {
+    include '**/*.xlsx'
+  }.each { xlsx ->
+    xlsx.withInputStream { input ->
+      readerMetaxlsx(input)
+    }
+  }
+
+  renderFile(root, messagesMetaModel, false)
+}
+
+task apiFlushGenerate << {
+  def root = [
+    'projectName' : projectName,
+    'apiJson' : file(apiJson),
+    'target' : file(target),
+    'corpJavaPackageName' : corpJavaPackageName,
+    'corpJavaPackagePath' : corpJavaPackageName.replaceAll(/\./, '/'),
+    'javaPackageName' : javaPackageName,
+    'javaPackagePath' : javaPackageName.replaceAll(/\./, '/')
+  ]
+  def messagesMetaModel = new JsonSlurper().parse(root.apiJson)
+  messagesMetaModel.each { message ->
+    message.root = root
+    message.projectName = root.projectName
+  }
+
+  renderFile(root, messagesMetaModel, true)
+}

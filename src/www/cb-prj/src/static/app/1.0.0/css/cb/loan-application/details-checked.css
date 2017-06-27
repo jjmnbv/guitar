@@ -1,0 +1,128 @@
+.ulBox {
+    height: 110px;
+    line-height: 110px;
+    text-align: center;
+    border-bottom: 1px dashed #C4CCCF;
+}
+
+.nav-tabs {
+    border: none;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0px;
+}
+.tab-box li.hight-linght{
+    background: #FF9448;
+    border: 1px solid #FF9448;
+}
+.tab-box ul{
+    display: inline-block;
+}
+.tab-box li{
+    display: inline-block;
+    background: #f0f0f5;
+    font-size: 14px;
+    height: 38px;
+    width: 175px;
+    color: #9f9f9f;
+    border:1px solid #d6d6da;
+    margin-right: 5px;
+    border-radius: 4px !important;
+    text-underline: none !important;
+    overflow: hidden;
+}
+.tab-box li a{
+    display:inline-block;
+    width: 140px;
+    height: 35px;
+    line-height: 35px;
+}
+.tab-box .img-box{
+    cursor: pointer;
+    height: 25px;
+    margin-top: -28px;
+}
+.tab-box li img:last-child{
+    display:none;
+}
+.tab-box li img:first-child{
+    display: inline-block;
+}
+.tab-box li.hight-linght > img:nth-child(2){
+    display: none !important;
+}
+.tab-box li.hight-linght > img:nth-child(3){
+    display: inline-block !important;
+}
+.tab-box li.hight-linght a{
+   color: #fff;
+}
+.tab-box li a:hover,a:link,a:active,a:visited{
+    text-underline: none !important;
+}
+.tab-box{
+   padding: 18px 0;
+    text-align: center;
+}
+.tab-content .tab-pane:first-child{
+    display: block;
+}
+
+
+.tableBody input{
+   text-align: center;
+}
+.form-group>div.footer-box{
+    border: none !important;
+    margin-left: 130px;
+}
+.left-add.portlet.box>.portlet-title>.save-box {
+    float: right;
+    margin-right: 25px;
+    margin-top: 6px;
+}
+
+#next-applicant{
+    margin: 0 auto;
+}
+.add-with{
+    width:120px ;
+}
+.setBackground[readonly]{
+    background-color: #fff !important;
+}
+/*搜索出现下拉框*/
+.data-box{
+    position: absolute;
+    z-index: 1;
+    width: calc(100% - 20px);
+    background: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+}
+.data-box li{
+    color: #000;
+    line-height: 22px;
+    padding: 0 8px;
+    cursor: pointer;
+}
+.data-box li:hover{
+    background:#efefef;
+    cursor: pointer;
+}
+.table-overflow{
+    overflow: visible !important;
+}
+.tab-content .portlet-body{
+    position: relative;
+}
+.tab-content .portlet-body .left-box{
+   position: absolute;
+    top:50%;
+    left: 2em;
+}
+.delete-eduList-body .portlet-body{
+    border-bottom: 1px solid #EDEDED;
+    margin: 0 15px;
+}

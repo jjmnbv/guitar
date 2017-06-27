@@ -1,0 +1,207 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>还款方式配置字表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cc/params/parpayorddtl.js"></script>
+    <script>
+     $(function(){
+    	var payAmtTyp=[
+    		 {'name':'PRP','text':'本金'},
+    		 {'name':'FEE','text':'费用'},
+    		 {'name':'COM','text':'复利'},
+    		 {'name':'INT','text':'利息'},
+    		 {'name':'OVR','text':'罚息'}
+    	];
+    	$('.payAmtTyp').selectloader({payAmtTyp:payAmtTyp});
+        app.registerTextHelper('payAmtTyp', payAmtTyp, 'name', 'text');  //在调用handlebars模版前调用
+     });
+    </script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/params/parpayord.js"></script>
+    <script src="{{path.app}}/js/cc/params/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="form-horizontal pagination-form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">还款优先级:</label>
+              <div class="col-md-9">
+                <input name="payPro" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption"><i class="fa fa-list"></i> 还款方式配置字表列表 </div>
+      <div class="actions">
+        <div class="btn-group btn-group-devided" data-toggle="buttons">
+          <a href="#" title="新增" data-target="#parpayorddtl-add-modal" data-toggle="modal" class=""><img src="{{path.app}}/img/icon/group_3.png"/></a>
+          <a href="javascript:;" class="pagination-reload"><img src="{{path.app}}/img/icon/group_5.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/PARPAYORDDTL_PAGE"
+          data-page-template-id="parpayorddtl-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <div id="parpayorddtl-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增还款方式配置字表</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/PARPAYORDDTL_CREATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="payOrdCd" readonly="readonly">
+              <input type="hidden" name="payAmtTyp" readonly="readonly">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">还款优先级:</label>
+                    <div class="col-md-9">
+                      <input name="payPro" type="text" class="form-control input-sm" placeholder="请输入还款优先级...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="parpayorddtl-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑还款方式配置字表<span class="edit_parpayorddtl_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/PARPAYORDDTL_UPDATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="payOrdCd" readonly="readonly" required>
+              <input type="hidden" name="payAmtTyp" readonly="readonly" required>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">还款优先级:</label>
+                    <div class="col-md-9">
+                      <input name="payPro" type="text" class="form-control input-sm" placeholder="请输入还款优先级...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="parpayorddtl-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable" id="parpayorddtl-page-template">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th> 还款顺序编码 </th>
+            <th> 还款金额类型 </th>
+            <th> 还款优先级 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{payOrdCd}} </td>
+            <td> {{payAmtTyp-text}} </td>
+            <td> {{payPro}}
+			</td>
+            <td>
+              <a href="#" data-target="#parpayorddtl-edit-modal" data-toggle="modal" data-parpayorddtl-id="?payOrdCd={{payOrdCd}}&payAmtTyp={{payAmtTyp}}"> 编辑 </a>
+		      <a href="javascript:;" data-delete-parpayorddtl-id="{{athNo}}.json">删除</a>
+            </td>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

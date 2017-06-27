@@ -1,0 +1,16 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":1,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "hdId":1,
+    "hdPos":"记录位置（提供字典、文件首行、文件尾行、检验文件）",
+    "hdFiNm":"校验文件名规则",
+    "impClsNm":"头文件接口",
+    "resultCode": "SUCCESS"
+  }]
+}

@@ -1,0 +1,28 @@
+subprojects {
+  task apiMetadata(type: Javadoc) {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    title = ''
+    options.addFileOption("d")
+
+    options.docletpath = project(':').buildscript.configurations.freemarkerdoclet.asType(List)
+    options.doclet = 'br.com.diogoko.doclet.FreeMarkerDoclet'
+    options.addStringOption 'o', (new File(projectDir, "/build/api.json")).path
+    options.addStringOption 'ft', (new File(GLOBAL.src, "boot/rmc/freemarker/Javadoc/api.json.ftl")).path
+  }
+
+  task databaseComments(type: Javadoc) {
+    if (!application.database) return
+    def database = application.database.toLowerCase()
+
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    title = ''
+    options.addFileOption("d")
+
+    options.docletpath = project(':').buildscript.configurations.freemarkerdoclet.asType(List)
+    options.doclet = 'br.com.diogoko.doclet.FreeMarkerDoclet'
+    options.addStringOption 'o', (new File(projectDir, "/scripts/$database/comments.sql")).path
+    options.addStringOption 'ft', (new File(GLOBAL.src, "boot/javadoc/database/$database/comments.ftl")).path
+  }
+}

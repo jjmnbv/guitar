@@ -1,0 +1,28 @@
+{
+    "error": 200,
+    "msg": null,
+    "tianji_api_agente_credit_response": {
+        "MC_NEG": {
+            "IF_OD": "未知",
+            "IF_OC": "未知",
+            "IF_AL": "非在逃",
+            "IF_F": "未知",
+            "IF_CD": "无违法和吸毒记录"
+        },
+        "MC_SINQ_ID": {
+            "STAT_ID": "有效状态",
+            "NAME_USD": "甘磊"
+        },
+        "MC_CINQ_ID": {
+            "DIS_HR": "贵州省毕节地区织金县",
+            "ADD_HR": "阿弓镇以麦村冲头组",
+            "SEX": "男性",
+            "NAT": "汉族",
+            "EMP": "阿弓镇以麦村",
+            "EDUCA": "",
+            "NP": "贵州省毕节地区织金县",
+            "STAT_MA": "未婚",
+            "DATE_BIRTH": "1994-10-11"
+        }
+    }
+}

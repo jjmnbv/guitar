@@ -1,0 +1,24 @@
+subprojects {
+  task dist(dependsOn: 'war') {
+    doLast {
+      delete new File(GLOBAL.root, "dep/dist/apps/$project.name")
+      copy {
+        from zipTree(war.archivePath)
+        into new File(GLOBAL.root, "dep/dist/apps/$project.name/ROOT")
+        exclude 'WEB-INF/classes/application*.properties'
+      }
+      copy {
+        from configurations.jdbc
+        into new File(GLOBAL.root, "dep/dist/apps/$project.name/lib")
+      }
+      copy {
+        from new File(GLOBAL.root, "dep/conf/apps/$activeProfile/shared")
+        into new File(GLOBAL.root, "dep/dist/apps/$project.name")
+      }
+      copy {
+        from new File(GLOBAL.root, "dep/conf/apps/$activeProfile/$project.name")
+        into new File(GLOBAL.root, "dep/dist/apps/$project.name")
+      }
+    }
+  }
+}

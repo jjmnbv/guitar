@@ -1,0 +1,417 @@
+buildscript {
+  project.ext {
+    corpJavaPackageName ='com.xukaiqiang'
+    javaPackageName ='com.xukaiqiang'
+    includes ='%'
+    GLOBAL = [ repositoriesRoot: 'http://182.92.165.97:8081/nexus/content' ]
+    GLOBAL.jdbcDrivers = [
+      h2: "com.h2database:h2:1.3.171",
+      mysql: "mysql:mysql-connector-java:5.1.38",
+      postgresql: "org.postgresql:postgresql:9.4.1211.jre7"
+    ]
+
+    application = [ properties: new Properties() ]
+    file(jdbcProperties).withInputStream {
+      stream -> application.properties.load(stream)
+    }
+
+    application.jdbc = [
+      database : application.properties['jdbc.database'],
+      driver : application.properties['jdbc.driver'],
+      url : application.properties['jdbc.url'],
+      schema : application.properties['jdbc.schema'],
+      username : application.properties['jdbc.username'],
+      password : application.properties['jdbc.password']
+    ]
+
+    application.metadata = [
+      database : application.jdbc.database,
+      driver : application.jdbc.driver,
+      url : application.properties['metadata.url']?:application.jdbc.url,
+      schema : application.properties['metadata.schema']?:application.jdbc.schema,
+      username : application.properties['metadata.username']?:application.jdbc.username,
+      password : application.properties['metadata.password']?:application.jdbc.password
+    ]
+
+    GLOBAL.genDriver = GLOBAL.jdbcDrivers[application.jdbc.database.toLowerCase()]
+  }
+
+  repositories {
+    maven {
+      url "$GLOBAL.repositoriesRoot/groups/public/"
+    }
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'org.freemarker:freemarker:2.3.23'
+  }
+
+}
+
+repositories {
+  maven {
+    url "$GLOBAL.repositoriesRoot/groups/public/"
+  }
+  mavenCentral()
+}
+
+configurations {
+  driver
+}
+
+dependencies {
+  driver GLOBAL.genDriver
+}
+
+//数据库连接驱动下载
+URLClassLoader loader = GroovyObject.class.classLoader
+configurations.driver.each { File file ->
+    loader.addURL(file.toURL())
+}
+
+import groovy.json.JsonOutput
+import groovy.sql.Sql
+import java.util.regex.Pattern
+import freemarker.template.Configuration
+import freemarker.template.Template
+
+def renderTemplate = { template, model->
+  StringWriter result = new StringWriter()
+  template.process(model, result)
+  return result.toString()
+}
+
+def renderString = { templateString, model->
+  def libstr = '<#function upper_case str><#return str?upper_case></#function><#function lower_case str><#return str?lower_case></#function><#function uncap_first str><#return str?uncap_first></#function><#function cap_first str><#return str?cap_first></#function>'
+  def template = new Template("default", new StringReader(libstr + templateString), new Configuration())
+  return renderTemplate(template, model)
+}
+
+def stringToCamel = { str ->
+  def p = Pattern.compile("_[a-z]")
+  def m = p.matcher(str.toLowerCase())
+  def sb = new StringBuffer()
+  while (m.find()) {
+    m.appendReplacement(sb, m.group().substring(1,2).toUpperCase());
+  }
+  m.appendTail(sb)
+  return sb
+}
+
+def capFirst = { str ->
+  return str.replaceFirst(str.substring(0, 1),str.substring(0, 1).toUpperCase())
+}
+
+def convertType = { dbTypeName, schema ->
+  if(dbTypeName.contains(schema)) {
+    dbTypeName = dbTypeName - schema - '""."' - '"'
+  }
+
+  switch (dbTypeName.toLowerCase()) {
+    case 'su_id':
+    case 'day':
+    case 'smallint': return 'Short';
+
+    case 'version':
+    case 'quantity':
+    case 'int4':
+    case 'serial':
+    case 'serial4':
+    case 'integer':
+    case 'int': return 'Integer';
+
+    case 'ref_id':
+    case 'trade_no':
+    case 'id':
+    case 'int8':
+    case 'bigserial':
+    case 'bigint': return 'Long';
+
+    case 'real':
+    case 'float4':
+    case 'float': return 'Float';
+
+    case 'float8':
+    case 'double': return 'Double';
+
+    case 'rate':
+    case 'amount':
+    case 'percent':
+    case 'numeric':
+    case 'decimal': return 'BigDecimal';
+
+    case 'bool':
+    case 'bit': return 'Boolean';
+
+    case 'timestamp':
+    case 'datetime': return 'Date';
+
+    default: return 'String';
+  }
+}
+
+task generate << {
+  def root = [
+    'target' : [
+      'java' : file(javaTarget),
+      'www' : file(wwwTarget)
+    ],
+    'corpJavaPackageName' : corpJavaPackageName,
+    'corpJavaPackagePath' : corpJavaPackageName.replaceAll(/\./, '/'),
+    'javaPackageName' : javaPackageName,
+    'javaPackagePath' : javaPackageName.replaceAll(/\./, '/')
+  ]
+
+  def getSql = { jdbc ->
+    return Sql.newInstance(jdbc.url, jdbc.username, jdbc.password, jdbc.driver);
+  }
+
+  def fillFieldConfig = { frow ->
+    def fieldConfig = [
+      'columnName':frow.db_name,
+      'name':frow.java_name,
+      'tableName':frow.parent_name,
+      'type':frow.field_type,
+      'fieldType':frow.field_type,
+      'ptype':frow.ptype,
+      'joinType':frow.join_type,
+      'joinModule':frow.join_module,
+      'mappedBy':frow.mapped_by,
+      'joinTable':frow.join_table,
+      'joinColumn':frow.join_column,
+      'inverseJoinColumn':frow.inverse_join_column,
+      'description':frow.remarks
+    ]
+    return fieldConfig
+  }
+
+  def fillTablesConfig = { jdbc ->
+    def sql = getSql(jdbc)
+    def tablesConfig = [:]
+    def dbreMetadataTable = 'dbre_metadata'
+    if(jdbc.database.toLowerCase() == 'postgresql') {
+      dbreMetadataTable = jdbc.schema + '.dbre_metadata'
+    }
+    sql.eachRow("select * from " + dbreMetadataTable + " where data_type = 'table' ") { row ->
+      def tableConfig = ['tableName':row.db_name,'entityName':row.java_name,'moduleName':row.parent_name,'entityDescription':row.remarks,'fieldsConfig':[:],'fields':[],'fieldsMap':[:]]
+
+      sql.eachRow("select * from " + dbreMetadataTable + " where ( db_name is not null and db_name <> '' ) and data_type = 'field' and parent_name = '"+tableConfig.tableName+"' ") { frow ->
+        def fieldConfig = fillFieldConfig(frow)
+        tableConfig.fieldsConfig[fieldConfig.columnName] = fieldConfig
+      }
+
+      sql.eachRow("select * from " + dbreMetadataTable + " where ( db_name is null or db_name = '' ) and data_type = 'field' and parent_name = '"+tableConfig.tableName+"' ") { frow ->
+        def fieldConfig = fillFieldConfig(frow)
+        tableConfig.fields << fieldConfig
+        tableConfig.fieldsMap[fieldConfig.name] = fieldConfig
+      }
+
+      tablesConfig[tableConfig.tableName] = tableConfig
+    }
+    return tablesConfig
+  }
+
+  def schemaMetaModel = [], fillSchemaMetaModel = {
+    def sql = getSql(application.jdbc)
+    def schema = application.jdbc.schema
+    //
+    //读取配置表
+    //
+    def tablesConfig = fillTablesConfig(application.metadata)
+
+    //
+    //读取实体元数据
+    //
+    def metadata = sql.connection.metaData
+    def tables = metadata.getTables(null, schema, includes, 'TABLE')
+    while (tables.next()) {
+      def tableName = tables.getString('TABLE_NAME')
+      if(tableName.startsWith('schema_') || tableName == 'dbre_metadata') {
+        continue
+      }
+
+      def tableConfig = tablesConfig[tableName]
+      if(!tableConfig) {
+        continue
+      }
+      def entityMetaModel = [
+        'root' : root,
+        'moduleName' : tableConfig.moduleName,
+        'tableName' : tableName,
+        'entityName' : tableConfig.entityName?:capFirst(stringToCamel(tableName)),
+        'entityDescription' : tableConfig.entityDescription?:(tables.getString('REMARKS')?:'')
+      ]
+
+      if(entityMetaModel.entityDescription) {
+        entityMetaModel.entityDescription = entityMetaModel.entityDescription.replaceAll('\n', '<br>')
+      }
+
+      entityMetaModel.primaryKeys = []
+      entityMetaModel.primaryKeysMap = [:]
+      entityMetaModel.fields = tableConfig.fields?:[]
+      entityMetaModel.fieldsMap = tableConfig.fieldsMap?:[:]
+
+      //
+      //读取表主键
+      //
+      def primaryKeyNames = []
+      def primaryKeys = metadata.getPrimaryKeys(null, schema, tableName)
+      while (primaryKeys.next()) {
+        def primaryKeyName = primaryKeys.getString('COLUMN_NAME')
+        primaryKeyNames << primaryKeyName
+      }
+
+      //
+      //读取字段元数据
+      //
+      def columns = metadata.getColumns(null, schema, tableName, null)
+      while (columns.next()) {
+        def columnName = columns.getString('COLUMN_NAME')
+        def fieldConfig = tableConfig?(tableConfig.fieldsConfig[columnName]?:[:]):[:]
+        def fieldMetaModel = [
+          'columnName' : columnName,
+          'typeName' : columns.getString('TYPE_NAME'),
+          'isAutoincrement' : columns.getString('IS_AUTOINCREMENT')?:'NO',
+          'name' : fieldConfig.name?:stringToCamel(columnName),
+          'description' : fieldConfig.description?:(columns.getString('REMARKS')?:''),
+          'type' : fieldConfig.fieldType?:convertType(columns.getString('TYPE_NAME'), schema),
+          'fieldType' : fieldConfig.fieldType,
+          'ptype' : fieldConfig.ptype,
+          'joinType' : fieldConfig.joinType?:'',
+          'joinModule' : fieldConfig.joinModule,
+          'mappedBy' : fieldConfig.mappedBy
+        ]
+
+        if(fieldMetaModel.description) {
+          fieldMetaModel.description = fieldMetaModel.description.replaceAll('\n|\r', '<br>').replaceAll('(<br>){2,}', '$1')
+        }
+
+        if(fieldMetaModel.ptype && !fieldMetaModel.joinModule) {
+          fieldMetaModel.joinModule = entityMetaModel.moduleName
+        }
+
+        if(fieldMetaModel.ptype && !fieldConfig.fieldType) {
+          switch (fieldMetaModel.joinType) {
+          case 'OneToMany' : fieldMetaModel.fieldType = 'List<T>';break;
+          case 'ManyToMany': fieldMetaModel.fieldType = 'Set<T>';break;
+          default : fieldMetaModel.fieldType = 'T';break; //OneToOne or ManyToOne
+          }
+        }
+
+        if (primaryKeyNames.contains(columnName)) {
+          entityMetaModel.primaryKeys << fieldMetaModel
+          entityMetaModel.primaryKeysMap[fieldMetaModel.name] = fieldMetaModel
+        } else {
+          entityMetaModel.fields << fieldMetaModel
+          entityMetaModel.fieldsMap[fieldMetaModel.name] = fieldMetaModel
+        }
+      }
+
+      schemaMetaModel << entityMetaModel
+
+      // println '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+      // println tableName
+      // println entityMetaModel
+      // println '####################################################################'
+    }
+  }
+
+  def configuration = new Configuration()
+  configuration.setDirectoryForTemplateLoading(file('freemarker'))
+
+  def render = { template, target, source, suffix, context ->
+    def targetFile = new File(target, renderString(template.path - file(source).path - suffix, context))
+    targetFile.parentFile.mkdirs()
+    targetFile.delete()
+    targetFile << renderTemplate(configuration.getTemplate(template.path - file('freemarker').path, 'UTF-8'), context)
+  }
+
+  def generateFile = { t, target, source ->
+    if (t.isDirectory()) {
+      return
+    }
+
+    //
+    //直接拷贝的文件（文本/二进制）
+    //
+    if (!t.path.endsWith('.ftl')) {
+      schemaMetaModel.each { model ->
+        def targetFile = new File(target, renderString(t.path - file(source).path, model))
+        copy {
+          from t
+          into targetFile.parentFile
+        }
+      }
+      return
+    }
+
+    //
+    //拷贝项目内公用文件（文本）
+    //
+    if(t.path.endsWith('.root.ftl')){
+      def context = [ 'root' : root, 'schema' : schemaMetaModel ]
+      render(t, target, source, '.root.ftl', context)
+      return
+    }
+
+    //
+    //拷贝模块内公用文件（文本）
+    //
+    if(t.path.endsWith('.module.ftl')){
+      def modules = [:]
+      schemaMetaModel.each { model ->
+        def module = modules[model.moduleName]?:[ 'root' : root, 'moduleName' : model.moduleName, 'models' : [] ]
+        module.models << model
+        modules[model.moduleName] = module
+      }
+      modules.each { k, v ->
+        render(t, target, source, '.module.ftl', v)
+      }
+      return
+    }
+
+    //
+    //拷贝实体联合主键模型模文件
+    //
+    if(t.path.endsWith('.id.ftl')){
+      schemaMetaModel.each { model ->
+        if(model.primaryKeys && model.primaryKeys.size() > 1) {
+          render(t, target, source, '.id.ftl', model)
+        }
+      }
+      return
+    }
+
+    //
+    //拷贝实体模型文件
+    //
+    schemaMetaModel.each { model ->
+      render(t, target, source, '.ftl', model)
+    }
+    return
+  }
+
+  //
+  //获取数据
+  //
+  fillSchemaMetaModel()
+  //
+  //java相关文件
+  //
+  fileTree('freemarker/src') {
+    exclude 'src/main/webapp/static/lib'
+  }.each { t ->
+    generateFile(t, root.target.java, 'freemarker/src')
+  }
+
+  //
+  //页面相关文件
+  //
+  fileTree('freemarker/www') {
+    // exclude 'src/main/webapp/static/lib'
+  }.each { t ->
+    generateFile(t, root.target.www, 'freemarker/www')
+  }
+
+}

@@ -1,0 +1,150 @@
+{{#extend "main"}}
+
+<!-- title BEGIN -->
+{{#content "title"}}
+<!-- @Override -->
+{{/content}}
+<!-- title END -->
+
+<!-- css-plugins BEGIN -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+{{/content}}
+<!-- css-plugins END -->
+
+<!-- css-main BEGIN -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css">
+{{/content}}
+<!-- css-main END -->
+
+<!-- js-loader BEGIN -->
+{{#content "js-loader"}}
+<!-- @Override -->
+{{/content}}
+<!-- js-loader END -->
+
+<!-- js-plugins BEGIN -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+{{/content}}
+<!-- js-plugins END -->
+
+<!-- js-main BEGIN -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/cc/form-template.js"></script>
+{{/content}}
+<!-- js-main END -->
+
+<!-- content-main BEGIN -->
+{{#content "content-main"}}
+<!-- @Override -->
+<form class="bsdForm pagination-form" id="form-template">
+    <div class="form-row">
+        <div class="form-group">
+            <label class="control-label">账号:</label>
+            <div>
+                <input name="userName" type="text" class="form-control">
+                <!--2.输入框添加class "required"非空验证-->
+                <!--<input name="userName" type="text" class="form-control reuqired">-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">手机号:</label>
+            <div>
+                <input name="phone" type="text" class="form-control">
+                <!--添加readonly属性为只读，disabled属性为禁用-->
+                <!--<input name="phone" type="text" class="form-control" readonly disabled="disabled>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">客户号:</label>
+            <div>
+                <input name="cuNo" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">放款金额:</label>
+            <div>
+                <input name="loanAm" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">身份证号:</label>
+            <div>
+                <input name="idCard" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">银行卡号:</label>
+            <div>
+                <input name="bankId" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">邮政编码:</label>
+            <div>
+                <input name="postNo" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group form-group-sel">
+            <label class="control-label">合适日期</label>
+            <div class="selBox">
+                <div class="input-group input-medium date date-picker-page startDate" data-date="2012-12-02"
+                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                     data-date-language="zh-CN">
+                    <input type="text" class="form-control required" id="beDt" name="beDt">
+                    <span class="input-group-btn hos-data">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+                <span>至</span>
+                <div class="input-group input-medium date date-picker-page endDate" data-date="2012-12-02"
+                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                     data-date-language="zh-CN">
+                    <input type="text" class="form-control required" id="enDt" name="enDt">
+                    <span class="input-group-btn hos-data">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn blue">提交</button>
+        </div>
+    </div>
+</form>
+{{/content}}
+<!-- content-main END -->
+
+<!-- content-pagination BEGIN -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- content-pagination END -->
+
+<!-- pagination-form BEGIN -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-form END -->
+
+<!-- pagination-container BEGIN -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-container END -->
+
+<!-- pagination-free BEGIN -->
+{{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

@@ -1,0 +1,42 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "",
+      "varType": "生日",
+      "varDefault": "身份证中出生日期是否合法",
+      "idType": ""
+    },
+    {
+      "varId": 6,
+      "varName": "",
+      "varType": "证件号码有效期",
+      "varDefault": "申请人身份证件有效期与申请人年龄不符",
+      "idType": ""
+    },
+    {
+      "varId": 7,
+      "varName": "",
+      "varType": "被本司拒绝次数1次及以上",
+      "varDefault": "近三个月当前申请人名下存在一笔及以上因信息不真实而被否决的业务申请",
+      "idType": ""
+    },
+    {
+      "varId": 7,
+      "varName": "",
+      "varType": "被本司拒绝次数3次及以上",
+      "varDefault": "近六个月同一申请人被本司拒绝次数达3次及以上",
+      "idType": ""
+    },
+    {
+      "varId": 7,
+      "varName": "",
+      "varType": "前次风险拒绝",
+      "varDefault": "同一申请人前次申请拒绝的原因为其行业为我司禁入的行业",
+      "idType": ""
+    }
+  ]
+}

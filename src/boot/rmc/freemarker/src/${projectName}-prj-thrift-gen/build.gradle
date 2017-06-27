@@ -1,0 +1,17 @@
+buildscript {
+  dependencies {
+    classpath "gradle.plugin.org.jruyi.gradle:thrift-gradle-plugin:0.4.0"
+  }
+}
+
+apply plugin: "org.jruyi.thrift"
+
+dependencies {
+  compile "org.apache.thrift:libthrift:$thriftVersion"
+}
+
+compileThrift {
+  outputDir(new File(projectDir, 'src/main/java'))
+  createGenFolder false
+  generator 'java', 'beans'
+}

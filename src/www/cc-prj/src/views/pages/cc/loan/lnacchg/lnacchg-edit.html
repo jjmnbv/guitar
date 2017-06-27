@@ -1,0 +1,263 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>增加还款账号变更信息</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnacchg-add.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+  	<script src="{{path.app}}/js/cc/common/loan-prop.js"></script>
+    <script src="{{path.base}}/script/cc/loan/lnacchg-edit.js"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=17,132,3022,3023,3024,3016"></script>
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=CurTyp"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnacchg-edit.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+	{{{{raw}}}}
+    <div class="portlet">
+   	 <div class="portlet-body">
+   	    <form action="/LNACCHG_UPDATE" method="POST" role="form" class="bsdForm " id="edit-lnacchg-form">
+			<div class="form-group">
+              <label class="control-label fill">授权编号:</label>
+              <div>
+                  <input name="athNo" type="text" class="form-control input-sm required" maxlength="32" placeholder="请输入授权编号..." readonly="readonly">
+              </div>
+          </div>
+			<div class="form-group">
+                  <label class="control-label fill">子序号:</label>
+                  <div>
+                      <input name="subNo" type="text" class="form-control input-sm required" maxlength="3" placeholder="请输入子序号..." readonly="readonly">
+                  </div>
+             </div>
+                <div class="form-group " >
+	               <label class="control-label fill">授权状态:</label>
+	               <div>
+	                   <select name="athInd"   class="form-control athInd  required" id="select-athInd"  
+	       			data-selectloader-store="athInd"
+	       			data-selectloader-vkey="code" data-selectloader-tkey="name">
+	       			<option value="">请选择...</option>
+		       		</select>
+	               </div>
+	         		  </div>
+	                  <div class="form-group  ">
+	             <label class="control-label">借据号:</label>
+	              <div>
+	              <input name="loNo" type="text" class="form-control input-sm" maxlength="32" placeholder="请输入借据号..." readonly="readonly">
+	        				</div>
+	        		 </div>
+	                  <div class="form-group">
+	                      <label class="control-label">账户类型:</label>
+	                      <div>
+	                          <select name="acTyp"   class="form-control acTyp" id="select-acTyp" 
+	              			data-selectloader-store="acTyp"
+	              			data-selectloader-vkey="code" data-selectloader-tkey="name">
+	              		<option value="">请选择...</option>
+	       					 </select>
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">原账号:</label>
+	                      <div>
+	                          <input name="oldAcNo" type="text" class="form-control acno input-sm" maxlength="25" placeholder="请输入原账号..." readonly="readonly">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">原账号名称:</label>
+	                      <div>
+	                          <input name="oldAcNa" type="text" class="form-control input-sm"  maxlength="60" placeholder="请输入原账号名词..." readonly="readonly">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label fill">账号:</label>
+	                      <div>
+	                          <input name="acNo" type="text" class="form-control input-sm acno required"  maxlength="25" placeholder="请输入账号...">
+	                          <span  class="help-block help-block-error"></span>
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label fill">账户名称:</label>
+	                      <div>
+	                          <input name="acNa" type="text" class="form-control input-sm required"  maxlength="60" placeholder="请输入账户名称...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">账户币种:</label>
+	                      <div>
+	                            <select name="acCurTyp" class="form-control acCurTyp"
+						data-selectloader-val="NORMAL" data-placeholder="账户币种..."
+						data-selectloader-store="acCurTyp"
+						data-selectloader-vkey="code" data-selectloader-tkey="name">
+						<option value="">请选择...</option>
+					</select>
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">账户类型代码:</label>
+	                      <div>
+	                           <select name="acTypCde" class="form-control acTypCde" 
+						data-selectloader-val="NORMAL" data-placeholder="账户类型代码..."
+						data-selectloader-store="acTypCde"
+						data-selectloader-vkey="code" data-selectloader-tkey="name">
+						<option value="">请选择...</option>
+				</select>
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户证件类型:</label>
+	                      <div>
+	                           <select name="acCertTyp" class="form-control acCertTyp"
+						data-selectloader-val="NORMAL" data-placeholder="账户币种..."
+						data-selectloader-store="acCertTyp"
+						data-selectloader-vkey="code" data-selectloader-tkey="name">
+						<option value="">请选择...</option>
+				</select>
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户证件号:</label>
+	                      <div>
+	                          <input name="acCertId" type="text" class="form-control input-sm" maxlength="32" placeholder="请输入开户证件号...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户银行代码:</label>
+	                      <div>
+	                          <input name="acBankCd" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入开户银行代码...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户银行名称:</label>
+	                      <div>
+	                          <input name="acBankNa" type="text" class="form-control input-sm" maxlength="60" placeholder="请输入开户银行名称...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户银行机构编号:</label>
+	                      <div>
+	                          <input name="acBankBrCd" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入开户银行机构编号...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户银行机构名称:</label>
+	                      <div>
+	                          <input name="acBankBrNa" type="text" class="form-control input-sm" maxlength="60" placeholder="请输入开户银行机构名称...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户银行所属城市代码:</label>
+	                      <div>
+	                          <input name="acBankAreaCd" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入开户银行所属城市代码...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">开户银行地址:</label>
+	                      <div >
+	                          <input name="acBankAdr" type="text" class="form-control input-sm" maxlength="60" placeholder="请输入开户银行地址...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">优先级别:</label>
+	                      <div>
+	                          <input name="acPayPro" type="text" class="form-control input-sm" maxlength="3" placeholder="请输入优先级别...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">机构号:</label>
+	                      <div>
+	                          <input name="brNo" type="text" class="form-control input-sm" maxlength="20" placeholder="请输入机构号...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">用户号:</label>
+	                      <div>
+	                          <input name="laUsId" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入用户号...">
+	                      </div>
+	                  </div>
+	                  <div class="form-group">
+	                      <label class="control-label">用户名称:</label>
+	                      <div>
+	                          <input name="laUsNa" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入用户名称...">
+	                      </div>
+	                  </div>
+	   	 		 	  <div class="form-group form-group-sel single">
+	                      <label class="control-label">申请日期:</label>
+	                      <div class="selBox setTimeGray">
+	                          <div class="input-group input-medium date date-picker-page" data-date="+0d"
+	                               data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+	                               data-date-language="zh-CN">
+	                               <input type="text" class="form-control uniform-input text" name="appDt" id="appDt" placeholder="请输入申请日期...">
+	                              <span class="input-group-btn">
+	                                <button class="btn default" type="button">
+	                                    <i class="fa fa-calendar"></i>
+	                                </button>
+	                            </span>
+	                          </div>
+	                      </div>
+	                  </div>
+			     	  <div class="portlet-body center">
+				           <div class="clearfix">
+				            <button type="button" class="btn sky-blue btn-wid mainCol" id="saveForm">保存</button>
+				            <a class="btn sky-blue btn-wid mainCol cancle" onclick="returnlist()">返回</a>
+				           </div>
+			     	 </div>
+             </form>
+   	 	</div>
+   	</div>
+ 	{{{{/raw}}}}
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- pagination-form END -->
+
+	<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+	{{#content "content-pagination"}}
+	<!-- @Override -->
+	{{/content}}
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <!-- 借据选择框 -->
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+  
+{{/content}}
+{{/extend}}

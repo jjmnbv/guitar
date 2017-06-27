@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="eclipse" default="import" basedir=".">
+  <property environment="env"/>
+  <target name="import">
+    <taskdef name="iep" classname="net.zkbc.toolkit.ant.eclipse.ImportProjects">
+      <classpath>
+        <fileset dir="${env.PRGDIR}/../../lib/zkbc" includes="toolkit-ant-eclipse.jar"/>
+      </classpath>
+    </taskdef>
+
+    <iep locations="${env.PRGDIR},${env.PRGDIR}/../base,${env.PRGDIR}/../apis" excludes="mmc,remotesystemstempfiles,scripts,servers" />
+  </target>
+</project>

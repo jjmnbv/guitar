@@ -1,0 +1,21 @@
+div.radio span.help-block.help-block-error{
+    position: absolute;
+    background: none;
+    right: inherit;
+    font-weight: bold;
+    left: -7px;
+}
+/*crumbs*/
+.icon-pruduct-set{
+	background-image: url(../../img/product-set/productSet.png);
+}
+
+.bsdForm .instalment-hidden{
+     display:none;
+ }
+.bsdForm .instalment-show{
+    display:inline-block;
+}
+.bsdForm .form-group > label{
+    width:10em;
+}

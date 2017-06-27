@@ -1,0 +1,17 @@
+version: '2'
+services:
+  distback:
+    image: gradle:3.4.1-jdk8
+    container_name: xfjr-distback
+    user: root
+    volumes:
+      - ./../..:/ci_xfjr
+      - gradle_cache:/root/.gradle
+    working_dir: /ci_xfjr
+    env_file: ./env.cfg
+    environment:
+      - CI_HOME=/ci_xfjr
+      - TZ=Asia/Shanghai
+    entrypoint: bin/entrypoint-distback.sh
+volumes:
+  gradle_cache:

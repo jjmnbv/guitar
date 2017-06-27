@@ -1,0 +1,29 @@
+.until{
+    text-align: center!important;
+}
+.mt-radio{
+    margin-right: 20px;
+}
+.ifor{
+    vertical-align: bottom;
+}
+.bsdForm .form-group > div.enter{
+    border: 0;
+}
+.bsdForm .form-group-sel > div.cooperationDt{
+    width: 534px;
+}
+.prov{
+    width: 135px!important;
+}
+.ad-details{
+    width: 300px!important;
+}
+.form-control[readonly], fieldset[disabled] .form-control {
+    width: 100%;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fff;
+    opacity: 1;
+}

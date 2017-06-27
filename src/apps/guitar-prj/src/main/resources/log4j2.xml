@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" status="WARN">
+  <Properties>
+    <Property name="APPNAME">cb</Property>
+    <Property name="LOGSDIR">var/log/zkbc/xfjr</Property>
+    <Property name="PATTERN_LAYOUT">[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS}(%t:%c): %m%n</Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="STDOUT">
+      <PatternLayout pattern="${PATTERN_LAYOUT}"/>
+    </Console>
+
+    <RollingFile name="ROLLING" fileName="${LOGSDIR}/${APPNAME}.log" filePattern="${LOGSDIR}/${APPNAME}-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${PATTERN_LAYOUT}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="20"/>
+    </RollingFile>
+
+    <RollingFile name="HIBERNATE" fileName="${LOGSDIR}/hibernate.log" filePattern="${LOGSDIR}/hibernate-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="${PATTERN_LAYOUT}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="20"/>
+    </RollingFile>
+  </Appenders>
+
+  <loggers>
+    <root level="INFO">
+      <appenderRef ref="STDOUT"/>
+      <appenderRef ref="ROLLING"/>
+    </root>
+    <logger level="DEBUG" name="net.zkbc"/>
+    <logger level="INFO" name="org.hibernate" additivity="false">
+      <appenderRef ref="HIBERNATE"/>
+    </logger>
+    <logger level="DEBUG" name="org.hibernate.SQL" additivity="false">
+      <appenderRef ref="HIBERNATE"/>
+    </logger>
+    <logger level="TRACE" name="org.hibernate.type.descriptor.sql" additivity="false">
+      <appenderRef ref="HIBERNATE"/>
+    </logger>
+  </loggers>
+</Configuration>

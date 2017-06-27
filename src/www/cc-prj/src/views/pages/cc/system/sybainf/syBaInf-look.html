@@ -1,0 +1,158 @@
+
+{{#extend "main"}}
+
+ <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+   <!-- 页面 title -->
+{{#content "title"}}
+<title>系统基本信息表</title>
+<!-- @Override -->
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/cc/system/syBaInf-look.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+	<script src="{{path.base}}/script/cc/system/sybainf"></script>
+	<script src="{{path.base}}/script/cc/dicts?ids=3050,3002"></script> 
+	<script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=CurTyp"></script>
+<!-- @Override -->
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+  	<script src="{{path.app}}/js/cc/system/sybainf.js"></script>
+  	<script src="{{path.app}}/js/cc/system/urls.js"></script>
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+    <div class="portlet">
+         <div class="portlet-body">    
+		<form class="bsdForm" id="sybainf-form" >
+             <div class="form-group">
+                <label class=" control-label">系统编号:</label>
+                <div >
+                     <input name="syId" type="text" class="form-control input-sm" maxlength="10" readonly="readonly">
+                </div>
+             </div>
+             <div class="form-group">
+                 <label class=" control-label">系统名称:</label>
+                 <div >
+                     <input name="syNa" type="text" class="form-control input-sm" maxlength="60" readonly="readonly">
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label class=" control-label">法人机构号:</label>
+                 <div >
+                     <input name="brCd" type="text" class="form-control input-sm" maxlength="10" readonly="readonly">
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label class=" control-label">默认币种:</label>
+                 <div >
+                     <select name="dfCrCd" class="form-control dfCrCd"
+		                data-selectloader-store="dfCrCdList"
+		                data-selectloader-vkey="code" data-selectloader-tkey="name">
+		                <option value="">请选择...</option>
+           			</select>
+                 </div>
+             </div>
+             <div class="form-group">
+                  <label class="control-label">当前日期:</label>
+                  <div >
+                     <input name="crDt" type="text" class="form-control input-sm" maxlength="10" readonly="readonly">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class=" control-label">下一日期:</label>
+                  <div >
+                      <input name="nxDt" type="text" class="form-control input-sm" maxlength="10"  readonly="readonly">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label">前一日期:</label>
+                  <div >
+                      <input name="prDt" type="text" class="form-control input-sm" maxlength="10" readonly="readonly">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class=" control-label">日终运行状态:</label>
+                  <div >
+                     <select name="batSts" class="form-control batSts"
+		                data-selectloader-store="batStsList"
+		                data-selectloader-vkey="code" data-selectloader-tkey="name">
+		                <option value="">请选择...</option>
+           			</select>            
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class=" control-label">日终日初标志:</label>
+                  <div>
+                      <select name="ngtInd" class="form-control ngtInd"
+		                data-selectloader-store="ngtIndList"
+		                data-selectloader-vkey="code" data-selectloader-tkey="name">
+		                <option value="">请选择...</option>
+           			</select>           
+                  </div>
+              </div>
+              <div class="form-group">
+                 <label class=" control-label">实时交易日期:</label>
+                 <div >
+                    <input name="onlDt" type="text" class="form-control input-sm"  maxlength="10"  readonly="readonly">                     
+                 </div>
+              </div>
+              <div class="form-group">
+                  <label class=" control-label">实时交易标志:</label>
+                  <div >
+                     <select name="onlInd" class="form-control onlInd"
+		                data-selectloader-store="onlIndList"
+		                data-selectloader-vkey="code" data-selectloader-tkey="name">
+		                <option value="">请选择...</option>
+           			</select>
+                  </div>
+               </div>
+			</form>                
+          </div>
+    </div>
+<!-- @Override -->
+{{/content}}
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}} 
+{{/content}}
+{{/extend}}

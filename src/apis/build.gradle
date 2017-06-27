@@ -1,0 +1,42 @@
+buildscript {
+  project.ext {
+    GLOBAL = [ root: project(':').projectDir.parentFile.parentFile ]
+    GLOBAL.conf = new File(GLOBAL.root, 'conf')
+  }
+  apply from: new File(GLOBAL.conf, 'gradle/global.gradle')
+
+  configurations.create('freemarkerdoclet')
+
+  dependencies {
+    classpath "gradle.plugin.com.boxfuse.client:flyway-release:$flywayVersion"
+    classpath "org.akhikhl.gretty:gretty:$grettyVersion"
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    freemarkerdoclet "br.com.diogoko:freemarker-doclet:$freemarkerDocletVersion"
+  }
+
+  repositories {
+    maven {
+      url "$GLOBAL.repositoriesRoot/repositories/gradle-plugin/"
+    }
+    maven {
+      url "$GLOBAL.repositoriesRoot/repositories/jcenter/"
+    }
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+    jcenter()
+  }
+}
+
+[
+  'application',
+  'java',
+  'jdbc',
+  'eclipse',
+  //'springboot',
+  'codegen.jpa',
+  'codegen.javadoc',
+  'clean'
+].each {
+  apply from: new File(GLOBAL.conf, "gradle/${it}.gradle")
+}

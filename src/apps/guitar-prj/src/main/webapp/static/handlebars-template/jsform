@@ -1,0 +1,136 @@
+<div class="portlet box blue" id="{{htmlId}}">
+  <div class="portlet-title hide">
+    <div class="caption"><i class="fa fa-list"></i>{{name}}</div>
+    <div class="tools"></div>
+  </div>
+  <div class="portlet-body" style="padding-top:0px;">
+    {{#each hiddenInputs}}
+    <input type="hidden" name="{{name}}" class="{{#if class}} {{class}}{{/if}}"{{#if dv}} value="{{dv}}"{{/if}} placeholder="{{placeholder}}">
+    {{/each}}
+    {{#each portlets}}
+    <div class="row portlet box blue" id="{{../htmlId}}_{{htmlId}}">
+      <div class="portlet-title">
+        <div class="caption"><i class="fa fa-cogs"></i>{{name}}</div>
+        <div class="tools"><a href="javascript:;" class="collapse"></a></div>
+      </div>
+      <div class="portlet-body flip-scroll">
+        <div class="form-body">
+          {{#each hiddenInputs}}
+          <input type="hidden" name="{{name}}" class="{{#if class}} {{class}}{{/if}}"{{#if dv}} value="{{dv}}"{{/if}} placeholder="{{placeholder}}">
+          {{/each}}
+          {{#each rows}}
+          <div class="row">
+            {{#each cols}}
+            <div class="col-md-{{width}}">
+              {{#each hiddenInputs}}
+              <input type="hidden" name="{{name}}" class="{{#if class}} {{class}}{{/if}}"{{#if dv}} value="{{dv}}"{{/if}} placeholder="{{placeholder}}">
+              {{/each}}
+              {{#if (ne type 'table')}}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">{{label}}{{#if (eq required 'true')}}<span class="font-red">*</span>{{/if}}</span>
+                  {{#if (eq type 'select')}}
+                  <select name="{{name}}" readonly class="form-control{{#if class}} {{class}}{{/if}}"{{#if dv}} data-selectloader-val="{{dv}}"{{/if}}{{#if textInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{textInput}}"{{/if}}{{#if selectloaderVkey}} data-selectloader-vkey="{{selectloaderVkey}}"{{/if}}{{#if selectloaderTkey}} data-selectloader-tkey="{{selectloaderTkey}}"{{/if}}{{#if (eq required 'true')}} required{{/if}}>
+                    <option value="">请选择...</option>
+                  </select>
+                  {{else if (eq type 'select_dictionary')}}
+                  <select name="{{name}}" readonly class="form-control dictionary{{#if class}} {{class}}{{/if}}" data-selectloader-store="{{dictionary}}"{{#if dv}} data-selectloader-val="{{dv}}"{{/if}}{{#if textInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{textInput}}"{{/if}}{{#if selectloaderVkey}} data-selectloader-vkey="{{selectloaderVkey}}"{{/if}}{{#if selectloaderTkey}} data-selectloader-tkey="{{selectloaderTkey}}"{{/if}}{{#if (eq required 'true')}} required{{/if}}>
+                    <option value="">请选择...</option>
+                  </select>
+                  {{else if (eq type 'radio_dictionary')}}
+                  <div class="form-control radio-list dictionary" data-radioloader-name="{{name}}" data-radioloader-store="{{dictionary}}"{{#if dv}} data-radioloader-val="{{dv}}"{{/if}}{{#if textInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{textInput}}"{{/if}}{{#if radioloaderVkey}} data-radioloader-vkey="{{radioloaderVkey}}"{{/if}}{{#if radioloaderTkey}} data-radioloader-tkey="{{radioloaderTkey}}"{{/if}} style="padding-left:36px;"></div>
+                  {{else if (eq type 'checkbox_dictionary')}}
+                  <div class="form-control checkbox-list dictionary" data-checkboxloader-name="{{name}}" data-checkboxloader-store="{{dictionary}}"{{#if dv}} data-checkboxloader-val="{{dv}}"{{/if}}{{#if textInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{textInput}}"{{/if}}{{#if checkboxloaderVkey}} data-checkboxloader-vkey="{{checkboxloaderVkey}}"{{/if}}{{#if checkboxloaderTkey}} data-checkboxloader-tkey="{{checkboxloaderTkey}}"{{/if}} style="padding-left:36px;"></div>
+                  {{else if (eq type 'select_address')}}
+                  <div class="col-md-3">
+                    <select name="{{pname}}" readonly class="form-control district districtProvince" data-district-province="#{{../../../htmlId}}_{{../../htmlId}} select[name='{{pname}}']" data-district-addr="#{{../../../htmlId}}_{{../../htmlId}} input[name='{{addrName}}']" data-selectloader-nselect="#{{../../../htmlId}}_{{../../htmlId}} select[name='{{cname}}']" data-district-detail="#{{../../../htmlId}}_{{../../htmlId}} input[name='{{dname}}']"{{#if ptextInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{ptextInput}}"{{/if}}{{#if (eq required 'true')}} required{{/if}}>
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <select name="{{cname}}" readonly class="form-control district districtCity" data-district-province="#{{../../../htmlId}}_{{../../htmlId}} select[name='{{pname}}']" data-selectloader-nselect="#{{../../../htmlId}}_{{../../htmlId}} select[name='{{aname}}']"{{#if ctextInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{ctextInput}}"{{/if}}{{#if (eq required 'true')}} required{{/if}}>
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <select name="{{aname}}" readonly class="form-control district districtArea" data-district-province="#{{../../../htmlId}}_{{../../htmlId}} select[name='{{pname}}']"{{#if atextInput}} data-text-input="#{{../../../htmlId}}_{{../../htmlId}} {{atextInput}}"{{/if}}{{#if (eq required 'true')}} required{{/if}}>
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" name="{{dname}}" class="form-control districtDetail" data-district-province="#{{../../../htmlId}}_{{../../htmlId}} select[name='{{pname}}']" placeholder="详细地址...">
+                  </div>
+                  {{else if (eq type 'telephone')}}
+                  <input id="{{phoneType}}-tel" type="hidden" name="{{telName}}">
+                  <div class="col-md-2">
+                    <input type="text" name="{{codeName}}" class="form-control" data-phone-type="{{phoneType}}" placeholder="区号...">
+                  </div>
+                  <div class="col-md-5">
+                    <input type="text" name="{{valueName}}" class="form-control {{phoneType}}-value" placeholder="电话号...">
+                  </div>
+                  <div class="col-md-5">
+                    <input type="text" name="{{extName}}" class="form-control {{phoneType}}-ext" placeholder="分机号...">
+                  </div>
+                  {{else if (eq type 'date_picker')}}
+                  <div class="input-group date date-picker" data-date-format="{{dateFormat}}" style="width:100%;">
+                    <input type="text" class="form-control " readonly name="{{name}}" placeholder="{{placeholder}}">
+                    <span class="input-group-btn"><button class="btn  default" type="button"><i class="fa fa-calendar"></i></button></span>
+                  </div>
+                  {{else if (eq type 'textarea')}}
+                  <textarea name="{{name}}"{{#if (eq readonly 'true')}} readonly{{/if}} class="form-control" rows="3" placeholder="{{placeholder}}"{{#if (eq required 'true')}} required{{/if}}>{{#if dv}}{{dv}}{{/if}}</textarea>
+                  {{else}}
+                  <input type="text" name="{{name}}"{{#if (eq readonly 'true')}} readonly{{/if}} class="form-control{{#if class}} {{class}}{{/if}}"{{#if dv}} value="{{dv}}"{{/if}} placeholder="{{placeholder}}"{{#if (eq required 'true')}} required{{/if}}>
+                  {{/if}}
+                </div>
+              </div>
+              {{else}}
+              <div class="portlet">
+                {{#if title}}
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="icon-social-dribbble font-green"></i>
+                    <span class="caption-subject font-green bold uppercase">{{title}}:</span>
+                  </div>
+                </div>
+                {{/if}}
+                <div class="portlet-body">
+                  <div class="table-scrollable">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          {{#each ths}}
+                          <th>{{name}}</th>
+                          {{/each}}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each tbody_trs}}
+                        <tr>
+                          {{#each tds}}
+                          <td class="form-group">
+                            {{#each hiddenInputs}}
+                            <input type="hidden" name="{{name}}" class="{{#if class}} {{class}}{{/if}}"{{#if dv}} value="{{dv}}"{{/if}} placeholder="{{placeholder}}">
+                            {{/each}}
+                            {{#if (eq type 'label')}}{{label}}{{else}}
+                            <input type="text" name="{{name}}"{{#if htmlId}} id="{{htmlId}}"{{/if}} class="form-control{{#if class}} {{class}}{{/if}}"{{#if dv}} value="{{dv}}"{{/if}}{{#if (eq required 'true')}} required{{/if}} placeholder="{{placeholder}}"/>
+                            {{/if}}
+                          </td>
+                          {{/each}}
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+            {{/each}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

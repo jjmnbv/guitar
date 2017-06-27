@@ -1,0 +1,239 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}我的任务 | 待办任务</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/cb/common-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/cb/modal-form.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<script src="{{path.base}}/script/cb/dicts?ids=44,150,151,154,85"></script>
+<script src="{{path.base}}/script/cb/flowloanapply/getSelectForTaskTodo"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<script src="{{path.app}}/js/bpm/bpm.js"></script>
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<script src="{{path.app}}/js/common/app-context.js"></script>
+<script src="{{path.app}}/js/cb/common-tools.js"></script>
+<script src="{{path.app}}/js/cb/mytask-list/mytask-waiting-list.js"></script>
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+<form class="bsdForm pagination-form" id="loanTypeForm">
+    <div class="form-group">
+        <label for="applyWaterStr" class="control-label">申请编号</label>
+        <div>
+            <input type="text" class="form-control" name="applyWaterStr" id="applyWaterStr">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="loanKindCode" class="control-label">产品类型</label>
+        <div>
+            <select id="loanKindCode"
+                    name="loanKindCode"
+                    class="form-control"
+                    data-selectloader-store="loanKindCode"
+                    data-selectloader-vkey="code"
+                    data-selectloader-tkey="name">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="loanTypeName" class="control-label">金融产品</label>
+        <div>
+            <input type="text" class="form-control" name="loanTypeName" id="loanTypeName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="customerName" class="control-label">客户名称</label>
+        <div>
+            <input type="text" class="form-control" name="customerName" id="customerName">
+        </div>
+    </div>
+    <div class="form-group form-group-sel">
+        <label class="control-label">申请日期</label>
+        <div class="selBox">
+            <div class="input-group input-medium date date-picker-page"
+                 data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                 data-date-language="zh-CN">
+                <input type="text" class="form-control " id="beDt" name="beginDate" readonly>
+                            <span class="input-group-btn hos-data">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+            </div>
+            <span>至</span>
+            <div class="input-group input-medium date date-picker-page"
+                 data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                 data-date-language="zh-CN">
+                <input type="text" class="form-control " id="enDt" name="endDate" readonly>
+                            <span class="input-group-btn hos-data">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="customerManagerName" class="control-label">发起人</label>
+        <div>
+            <input type="text" class="form-control" name="customerManagerName" id="customerManagerName">
+        </div>
+    </div>
+</form>
+{{/content}}
+
+<!-- 分页表格和分页页码 pagination-container -->
+{{#content "pagination-container"}}
+<div class="portlet-title">
+    <div class="caption">待办任务列表</div>
+</div>
+<div class="portlet-body">
+    <div class="tabbable tabbable-tabdrop" id="tab1">
+        <div class="pagination-reload"></div>
+        <div class="portlet-body pagination-container"
+             data-page-first-store="first-store"
+             data-page-url="/MYTASK_WAITING_LIST"
+             data-page-template-id="table1-page-template">
+        </div>
+    </div>
+</div>
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+<div class="modal fade" id="partnerModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog model-list-width">
+        <div class="modal-content" id="partnerListModal">
+            <div data-modal-header="" class="modal-header">
+                <h4 data-modal-title="" class="modal-title"></h4>
+            </div>
+            <div data-modal-body="" class="modal-body">
+                    <div id="partnerTable">
+                    </div>
+
+            </div>
+            <div data-modal-footer="" class="modal-footer model-btn-center">
+                <div class="clearfix">
+                    <button type="button" class="btn sky-blue btn-wid mainCol" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/content}}
+
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<script type="text/x-handlebars-template" id="table1-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>当前节点</th>
+                <th>申请编号</th>
+                <th>申请日期</th>
+                <th>申请时长</th>
+                <th>产品类型</th>
+                <th>金融产品</th>
+                <th>客户名称</th>
+                <th>发起人</th>
+                <th>申请贷款金额</th>
+                <th>流程名称</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each page.content}}
+            <tr>
+                <td>{{page-rowindex}}</td>
+                <td><a data-toggle="modal" class="node-caption" data-applyid="{{applyWater}}" data-taskid="{{flowInstanceId}}" href="#partnerModal">{{thisNodeCaption}}</a>
+                </td>
+                <td>
+                    <a href="javascript:;" onclick="excuteFlow({{flowInstanceId}},{{activityStatus}},{{applyWater}})">{{applyWater}}</a>
+                </td>
+                <td>{{applyDate}}</td>
+                <td>{{applyTimeStr}}</td>
+                <td>{{loanKindCode-text}}</td>
+                <td>{{loanTypeName}}</td>
+                <td>{{customerName}}</td>
+                <td>{{customerManagerName}}</td>
+                <td>{{formatMoney loanApplyAmount}}</td>
+                <td>{{flNa}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+</script>
+<script type="text/x-handlebars-template" id="table4-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>办理环节</th>
+                <th>接受时间</th>
+                <th>完成时间</th>
+                <th>办理人</th>
+                <th>审批状态</th>
+                <th>审批意见</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{list-rowindex}}</td>
+                <td>{{taskName}}</td>
+                <td>{{startTime}}</td>
+                <td>{{endTime}}</td>
+                <td>{{handler}}</td>
+                <td>
+                    {{handleOpinion-opinionId-text}}
+                </td>
+                <td>{{handleOpinion.opinionNote}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+</script>
+{{/content}}
+{{/extend}}

@@ -1,0 +1,116 @@
+import org.gradle.plugins.ide.eclipse.model.Facet
+import org.gradle.plugins.ide.eclipse.model.SourceFolder
+import org.gradle.plugins.ide.eclipse.model.Library
+import org.gradle.plugins.ide.eclipse.model.WbDependentModule
+
+subprojects {
+  apply plugin: 'eclipse'
+  eclipse {
+    classpath {
+      downloadSources = true
+      defaultOutputDir = file("build/eclipse")
+      file {
+        withXml { xml ->
+          xml.asNode().classpathentry.each {
+            if (it.@kind == 'src' && it.@path[0] == '/') it.appendNode('attributes').appendNode('attribute', [name: 'org.eclipse.jst.component.nondependency', value: ''])
+          }
+        }
+        whenMerged { classpath ->
+          def outputs = [:]
+          sourceSets.each { ss ->
+            def classesOutput = project.relativePath(ss.output.classesDir)
+            def resourcesOutput = project.relativePath(ss.output.resourcesDir)
+            ss.java.srcDirTrees.each { outputs[project.relativePath(it.dir.absolutePath)] = classesOutput }
+            ss.resources.srcDirTrees.each { outputs[project.relativePath(it.dir.absolutePath)] = resourcesOutput }
+          }
+          classpath.entries.each {
+            if (it instanceof SourceFolder && outputs.containsKey(it.path)) it.output = outputs[it.path]
+          }
+          classpath.entries.sort { a, b ->
+            if (a.path == 'org.eclipse.jst.j2ee.internal.web.container') return 1
+            if (b.path == 'org.eclipse.jst.j2ee.internal.web.container') return -1
+            if (a instanceof Library && b instanceof Library) return a.path.split('/')[-1] <=> b.path.split('/')[-1]
+            if (a instanceof Library) return 1
+            if (b instanceof Library) return -1
+            return 0
+          }
+        }
+      }
+    }
+  }
+
+  apply plugin: 'war'
+  apply plugin: 'eclipse-wtp'
+  eclipse {
+    wtp {
+      facet {
+        facet name: "wst.jsdt.web", type: Facet.FacetType.fixed
+        facet name: "java", type: Facet.FacetType.fixed
+        facet name: "jpt.jpa", type: Facet.FacetType.fixed
+        facet name: "jst.web", type: Facet.FacetType.fixed
+        facet name: "wst.jsdt.web", version: "1.0"
+        facet name: "java", version: "1.7"
+        facet name: "jpt.jpa", version:'2.1'
+        facet name: "jst.web", version: "2.5"
+      }
+    
+      component {
+        contextPath = '/'
+        file {
+          whenMerged { component ->
+            component.wbModuleEntries.sort { a, b ->
+              if (a instanceof WbDependentModule && b instanceof WbDependentModule) return a.handle.split('/')[-1] <=> b.handle.split('/')[-1]
+              if (a instanceof WbDependentModule) return 1
+              if (b instanceof WbDependentModule) return -1
+              return 0
+            }
+          }
+        }
+      }
+      file('.settings').mkdirs()
+      
+      file('.settings/org.eclipse.wst.validation.prefs').write(
+"""
+DELEGATES_PREFERENCE=delegateValidatorList
+USER_BUILD_PREFERENCE=enabledBuildValidatorList
+USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.jst.j2ee.internal.web.validation.UIWarValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;
+eclipse.preferences.version=1
+override=true
+suspend=false
+vals/org.eclipse.jpt.jpa.core.jpaValidator/global=TF01
+vals/org.eclipse.jst.jsf.facelet.ui.FaceletHTMLValidator/global=TF01
+vals/org.eclipse.jst.jsf.ui.JSFAppConfigValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.JSPBatchValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.JSPContentValidator/global=TF01
+vals/org.eclipse.jst.jsp.core.TLDValidator/global=TF01
+vals/org.eclipse.wst.dtd.core.dtdDTDValidator/global=TF01
+vals/org.eclipse.wst.html.core.HTMLValidator/global=TF01
+vals/org.eclipse.wst.wsdl.validation.wsdl/global=TF02158org.eclipse.wst.wsdl.validation.internal.eclipse.Validator
+vals/org.eclipse.wst.xml.core.xml/global=TF03
+vals/org.eclipse.wst.xsd.core.xsd/global=TF02162org.eclipse.wst.xsd.core.internal.validation.eclipse.Validator
+vals/org.eclipse.wst.xsl.core.xsl/global=TF02
+vf.version=3
+""")
+
+      file('.settings/org.eclipse.jpt.core.prefs').write(
+"""
+eclipse.preferences.version=1
+org.eclipse.jpt.core.platform=generic2_1
+org.eclipse.jpt.jpa.core.metamodelSourceFolderName=src/metamodel/java
+problem.PROJECT_NO_CONNECTION=info
+problem.TYPE_MANAGED_BUT_NOT_LISTED_IN_PERSISTENCE_XML=info
+""")
+
+      file('.settings/org.eclipse.wst.common.project.facet.core.prefs.xml').write(
+"""
+<root>
+  <facet id="jpt.jpa">
+    <node name="libprov">
+      <attribute name="provider-id" value="jpa-no-op-library-provider"/>
+    </node>
+  </facet>
+</root>
+""")
+    }
+  }
+}
