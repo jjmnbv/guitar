@@ -93,3 +93,13 @@
 [TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([role_id6_0_] : [INTEGER]) - [2]
 [TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([sex7_0_] : [VARCHAR]) - [2]
 [TRACE] 2017-06-28 01:57:09.754(qtp1264941544-20:org.hibernate.type.descriptor.sql.BasicExtractor): extracted value ([user_nam8_0_] : [VARCHAR]) - [maxiaojing]
+[INFO ] 2017-06-28 23:05:29.652(main:org.hibernate.jpa.internal.util.LogHelper): HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[INFO ] 2017-06-28 23:05:29.743(main:org.hibernate.Version): HHH000412: Hibernate Core {5.1.0.Final}
+[INFO ] 2017-06-28 23:05:29.745(main:org.hibernate.cfg.Environment): HHH000206: hibernate.properties not found
+[INFO ] 2017-06-28 23:05:29.747(main:org.hibernate.cfg.Environment): HHH000021: Bytecode provider name : javassist
+[INFO ] 2017-06-28 23:05:29.804(main:org.hibernate.annotations.common.Version): HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[INFO ] 2017-06-28 23:05:30.258(main:org.hibernate.dialect.Dialect): HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[WARN ] 2017-06-28 23:05:30.484(main:org.hibernate.boot.internal.SessionFactoryBuilderImpl): Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+[INFO ] 2017-06-28 23:05:30.575(main:org.hibernate.validator.internal.util.Version): HV000001: Hibernate Validator 5.2.4.Final

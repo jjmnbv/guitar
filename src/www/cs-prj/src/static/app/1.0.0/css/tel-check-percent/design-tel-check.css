@@ -1,8 +1,0 @@
-.comment{
-    display: inline-block;
-    width: 200px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    margin: 0!important;
-}

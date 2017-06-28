@@ -1,9 +1,0 @@
-{
-  "resultCode": "SUCCESS",
-  "errors": [],
-  "institutions": [
-    {"value": 0, "text": "机构1"},
-    {"value": 1, "text": "机构2"},
-    {"value": 2, "text": "机构3"}
-  ]
-}

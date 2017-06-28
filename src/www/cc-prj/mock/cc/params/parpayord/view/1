@@ -1,7 +1,0 @@
-{
-  "payOrdCd":1,
-  "payOrdNm":"还款顺序说明",
-  "payOrdSts":"还款顺序状态",
-  "resultCode": "SUCCESS",
-  "errors": []
-}
