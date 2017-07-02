@@ -1,0 +1,11 @@
+{
+  "colFiId":1,
+  "colSeq":1,
+  "colNm":"字段名",
+  "colDesc":"字段描述",
+  "colLen":1,
+  "colValFun":"取数方法（支持直接写入默认值、通过get方法取数等方式，返回均为string类型）",
+  "fmtTyp":"格式转换类型（数据格式转换，可定义字典）",
+  "resultCode": "SUCCESS",
+  "errors": []
+}

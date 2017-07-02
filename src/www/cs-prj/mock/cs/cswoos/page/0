@@ -1,0 +1,26 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":2,
+  "totalElements":40,
+  "pages": [1, 2],
+
+  "content":[{
+    "wooCfgNo":1001,
+    "wooNodCd":"0",
+    "wooTyCd":"0",
+    "wooBaCd":"0",
+    "wooTotQl":8,
+    "defWooQl":5
+  },
+  {
+    "wooCfgNo":1002,
+    "wooNodCd":"1",
+    "wooTyCd":"1",
+    "wooBaCd":"1",
+    "wooTotQl":9,
+    "defWooQl":7
+  }]
+}

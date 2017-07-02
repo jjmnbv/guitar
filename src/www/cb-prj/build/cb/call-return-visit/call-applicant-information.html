@@ -1,0 +1,2317 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <!--  页面信息  -->
+    <meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+
+    <!--  页面标题  -->
+    <title>消费金融平台-业务系统 ｜ 电话回访 | 申请人信息</title>
+
+
+    <link rel="stylesheet"
+          href="/static/lib/google/fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/font-awesome/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/uniform/css/uniform.default.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-toastr/toastr.min.css"/>
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/global/css/components.min.css"
+          id="style_components"
+    />
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/global/css/plugins.min.css"/>
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/layouts/layout/css/layout.min.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/layouts/layout/css/themes/darkblue.min.css"
+          id="style_color"
+    />
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/layouts/layout/css/custom.min.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jstree/dist/themes/default/style.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css"
+    />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="/static/lib/metronic/4.5.2/assets/global/plugins/respond.min.js"></script>
+    <script src="/static/lib/metronic/4.5.2/assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+
+    <!--  第三方css  -->
+    
+    <link rel="shortcut icon" href="/static/app/1.0.0/img/favicon.ico"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/reset.css"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/app.css"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/app-plugins.css"/>
+    <!--  自定义css  -->
+    <link rel="stylesheet" href="/static/app/1.0.0/css/cb/loan-application/details-checked.css">
+<link rel="stylesheet" href="/static/app/1.0.0/css/cb/common-form.css">
+<link rel="stylesheet" href="/static/app/1.0.0/css/cb/loan-application/business-processing.css"/>
+
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div id="bootstrap-select-box" ></div>
+<!-- 生成html填充处  -->
+<div id="app"></div>
+<!-- 首屏数据模板  -->
+<script id="mainTemplate" type="text/x-handlebars-template">
+<header>
+    <div class="page-header navbar navbar-fixed-top ">
+        <div class="page-header-inner clearfix">
+            <div class="page-logo">
+                <a href="{{base}}/index.html">
+                    <img src="{{path.app}}/img/logo-big-auto.png" width="116"/>
+                    <h1 class="logo-text">柏诚消费金融情报系统</h1>
+                </a>
+            </div>
+            <div class="pull-right">
+                <ul class="main-menu nav navbar-nav pull-right">
+                    {{#each mainMenus}}
+                        <li>
+                            <a class="nav-item {{#if (menu-active)}} active{{/if}}"
+                                {{#if (has-children)}}
+                               href="javascript:;"
+                                {{else}}
+                               href="{{../base}}{{url}}"
+                                {{/if}}
+                                style="background-image: url({{../cubase}}/cu/cuicons/loadImage?iconNo={{styleObject.iconClassName}}); background-size:25px;"
+                               >{{text}}
+                            </a>
+                            <ul class="sub-menu">
+                                {{#each children}}
+                                    <li class="nav-item">
+                                        <a {{#if (has-children)}}
+                                           href="javascript:;"
+                                           {{else}}
+                                           href="{{../../base}}{{url}}"
+                                           {{/if}}
+                                           class="nav-link{{#if (has-children)}} nav-toggle{{/if}}"
+                                        >
+                                            <span class="title">{{text}}</span>
+                                        {{#if (has-children)}}<img src="{{../../path.app}}/img/nav/daohangjiantou.png"/>{{/if}}
+                                        </a>
+                                        <ul class="{{#if (has-children)}} sub-menu  three-menu{{/if}}" dir="rtl">
+                                            {{#each children}}
+                                                <li class="nav-item">
+                                                    <a href="{{../../../base}}{{url}}"
+                                                       class="nav-link">
+                                                        <span class="title">{{text}}</span>
+                                                        {{#if (has-children)}}<img src="{{../../../path.app}}/img/nav/daohangjiantou.png"/>{{/if}}
+                                                    </a>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="menu-toggler sidebar-toggler">
+                <span>我的快捷键</span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="page-container">
+<div class="page-sidebar" data-menu-store="menus">
+    <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu">
+        {{#each menus}}
+        <li class="nav-item">
+            <a href="{{../base}}{{url}}"
+               class="nav-link"
+            > {{{menu-icon}}}<span class="title">{{text}}</span>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="page-content-wrapper">
+<div class="page-content">
+    {{#unless forceChangeLoginPassword}}
+    {{#if crumbs}}
+    <div class="page-crumbs clearfix">
+        <dl>
+            <dt class="{{crumbs.icon}}"><a href="{{crumbs.dt.url}}">{{crumbs.dt.text}}</a></dt>
+            {{#each crumbs.dd}}
+            <dd><a href="{{url}}">{{text}}</a></dd>
+            {{/each}}
+            <span  class="custom-date">当前业务日期：<a></a></span>
+        </dl>
+        <div class="loginDiv">
+            <div class="login-info" id="loginInfo">
+                <a id="set_img" href="javascript:;" onclick="showLogin();">
+                    <img  src=""/>
+                    <span>{{userInfo.loginName}}</span>
+                </a>
+                <ul style="display: none">
+                    <li><a href="{{cubase}}/cu/personal-settings/personal-info-maintenance.html">个人信息</a></li>
+                    <li><a href="{{cubase}}/cu/log-view/log-oprate.html">查看日志</a></li>
+                    <li><a href="{{cubase}}/cu/personal-settings/update-password.html">修改登录密码</a></li>
+                    <li class="li-time">上次登录时间</br>{{userInfo.loginTime}}</li>
+                    <li><a href="{{cubase}}/logout">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <!--页面顶部导航-->
+<div>
+    <div id="ul_div" class="url-boxbg"></div>
+    <div id="detail-update-form" style="display:none;"></div>
+    <div id="peopleVar"></div>
+</div>
+
+<!-- @Override -->
+    {{/unless}}
+</div>
+</div>
+    <a href="javascript:;" class="page-quick-sidebar-toggler">
+        <i class="icon-login"></i>
+    </a>
+</div>
+    <footer>
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2016 &copy; 中科柏诚科技(北京)股份有限公司.</div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+    </footer>
+    <div id="chgloginpwd-modal" class="modal fade modal-scroll" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fa fa-edit"></i> <strong><span
+                            id="chgloginpwd-msg">修改登录密码</span></strong>
+                    </h4>
+                </div>
+                <div class="modal-body form">
+                    <form id="edit-user-passwd" action="{{base}}/cu/update/loginpwd" role="form"
+                          class="form-horizontal">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 fill">原登录密码</label>
+                                <div class="col-md-8">
+                                    <input type="password" name="plainOldPassword" class="form-control"
+                                           data-rule-required="1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 fill">新登录密码</label>
+                                <div class="col-md-8">
+                                    <input type="password" name="plainNewPassword" id="password"
+                                           class="form-control passwordCheck" data-rule-required="1" minlength="6" maxlength="16"
+                                           data-msg-minlength="密码至少输入六位！">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 fill">新密码确认</label>
+                                <div class="col-md-8">
+                                    <input type="password" name="newPassword" class="form-control"
+                                           data-rule-equalto="#password" data-msg-equalto="两次密码不一致"
+                                           data-rule-required="1" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions right">
+                            <button type="button" class="btn blue" id="updatePWD">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 弹框类占位符  -->
+
+
+<!-- 提示类弹框  -->
+    <div id="pageModal" class="modal fade" style="display: none;" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div data-modal-size class="modal-dialog">
+            <div class="modal-content">
+                <div data-modal-header class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 data-modal-title class="modal-title">提示</h4>
+                </div>
+                <div data-modal-body class="modal-body">
+                    <p data-modal-text>这是模态框！</p>
+                </div>
+                <div data-modal-footer class="modal-footer">
+                    <button data-modal-cancel type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+                    <button data-modal-ok type="button" class="btn blue">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/js.cookie.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery.blockui.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/uniform/jquery.uniform.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootbox/bootbox.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/scripts/app.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jstree/dist/jstree.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/layouts/layout/scripts/layout.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/layouts/global/scripts/quick-sidebar.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/moment.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+<script src="/static/lib/handlebars/4.0.4/handlebars.js"></script>
+<script src="/static/lib/jquery-deserialize/1.3.3/jquery.deserialize.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- js第三方库  -->
+<script src="/static/app/1.0.0/js/bpm/bpm.js"></script>
+
+<script>
+    /**
+     * 初始化全局app命名空间
+     * @type Object
+     */
+    window.app = window.app || {};
+</script>
+<!-- 公共js文件  -->
+<script src="/static/app/1.0.0/js/helpers.js"></script>
+<script src="/static/app/1.0.0/js/app.js"></script>
+<!-- 公共模拟数据 -->
+<script src="/script/cb/app.js"></script>
+<script>
+    /**
+     * 检测是否已经登录
+     */
+    app.$getJSON(app.base + '/cb/oauth2/checkLogin').done(function (json) {
+        console.log('checkLogin', json);
+        if (app.isOK(json)) {
+            console.log('已经登录.');
+        }
+    });
+</script>
+<script src="/script/cb/availableMenus"></script>
+<script src="/script/cb/oauth2/loginUser"></script>
+<!-- 首屏数据  -->
+<script src="/script/cb/dicts?ids=17,11,73,14,20,22,15,12,16,13,146,147,7,86"></script>
+<script src="/script/cb/callback"></script>
+<script src="/script/cb/queryProvinceCityCountryJson"></script>
+
+<script>
+    $('#app').append(Handlebars.compile($('#mainTemplate').html())(app));
+</script>
+<script src="/static/app/1.0.0/js/init.js"></script>
+<script src="/static/app/1.0.0/js/cb/urls.js"></script>
+<script src="/static/app/1.0.0/js/app-plugins.js"></script>
+<script src="/static/app/1.0.0/js/validation.js"></script>
+<script src="/static/app/1.0.0/js/chgloginpwd.js"></script>
+
+
+<!-- 组件模板类占位符  内容有可能是js文件，也有可能是handlebar模板，所以放在这个位置  -->
+<!--  描述：共同申请人信息-->
+<script type="text/x-handlebars-template" id="peopleList-template">
+    <div class="portlet box">
+        <div class="portlet-body">
+            <div class="tab-box">
+                <ul>
+                    <li class="hight-linght">
+                        <a href="javascript:;" class="active" data-tab="#tab-first">
+                            申请人信息
+                        </a>
+                    </li>
+                    {{#each peopleListOfGS}}
+                    <li>
+                        <a href="javascript:;" data-tab="#tab{{@index}}">
+                            共同申请人
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form action="" class="bsdForm pagination-form" id="detail-update-form1" data-view-idname="apply_id">
+        <input name="applyWater" type="hidden" value="{{applyWater}}" class="form-control">
+        <div class="tab-content">
+            <div class="tab-pane" id="tab-first">
+                <!--申请人基本信息-->
+                <div class="portlet box reg">
+                    <div class="portlet-title">
+                        <div class="caption">申请人基本信息</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-group">
+                            <label class="control-label ">客户编号</label>
+                            <div>
+                                <input type="text" class="form-control  " name="loanApplyPeopleOfZS.customerNo"
+                                       readonly="readonly"
+                                       value="{{loanApplyPeopleOfZS.customerNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">客户类型</label>
+                            <div>
+                                <select id="customerTypeCode"
+                                        name="loanApplyPeopleOfZS.customerTypeCode"
+                                        class="form-control    customerTypeList"
+                                        data-selectloader-store="customerTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{loanApplyPeopleOfZS.customerTypeCode}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">客户经理编号</label>
+                            <div>
+                                <input type="text" class="form-control  " id="cuMaLoginNa" readonly="readonly"
+                                       name="cuMaLoginNa"
+                                       value="{{cuMaLoginNa}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">管理机构编号</label>
+                            <div>
+                                <input type="text" class="form-control  " id="organizationNo" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.organizationNo"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.organizationNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">证件类型</label>
+                            <div>
+                                <select
+                                        name="loanApplyPeopleOfZS.papersTypeCode"
+                                        class="form-control papersTypeCode "
+                                        disabled="disabled"
+                                        data-selectloader-store="papersTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{loanApplyPeopleOfZS.papersTypeCode}}">
+
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">证件号码</label>
+                            <div>
+                                <input type="text" class="form-control" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.papersNo" value="{{loanApplyPeopleOfZS.papersNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">申请人姓名</label>
+                            <div>
+                                <input type="text" class="form-control " readonly="readonly"
+                                       name="loanApplyPeopleOfZS.customerName"
+                                       value="{{loanApplyPeopleOfZS.customerName}}"/>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">出生年月</label>
+                            <div>
+                                <input type="text" class="form-control  birthdayDate"
+                                       readonly="readonly"
+                                       name="loanApplyPeopleOfZS.birthdayDate"
+                                       value="{{loanApplyPeopleOfZS.birthdayDate}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">性别</label>
+                            <div class="raidoBox">
+                                <label class="mt-radio">
+                                    <input type="radio" name="loanApplyPeopleOfZS.sexCode"
+                                           value="N"/>
+                                    <span class="ifor">男</span>
+                                </label>
+                                <label class="mt-radio">
+                                    <input type="radio" name="loanApplyPeopleOfZS.sexCode"
+                                           value="V"/>
+                                    <span class="ifor">女</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">最高学历</label>
+                            <div>
+                                <select id="maxEbCd"
+                                        name="loanApplyPeopleOfZS.maxEbCd"
+                                        class="form-control    maxEbCdList"
+                                        data-selectloader-store="maxEbCdList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{loanApplyPeopleOfZS.maxEbCd}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label prov_city">户籍省、市、区/县</label>
+                            <div class="address  addressSelect" >
+                                <div class="conSelect clearfix">
+                                    <select
+                                            name="loanApplyPeopleOfZS.peopleSub.householdRegistrationProvinceCode"
+                                            class="provCity  add-disabled"
+                                            data-selectloader-store="provinceList"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-val="{{loanApplyPeopleOfZS.peopleSub.householdRegistrationProvinceCode}}"
+                                            data-selectloader-nselect="#city_ZS_MAIN">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="city_ZS_MAIN"
+                                            name="loanApplyPeopleOfZS.peopleSub.householdRegistrationCityCode"
+                                            class=" city-error add-disabled cityCd"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-val="{{loanApplyPeopleOfZS.peopleSub.householdRegistrationCityCode}}"
+                                            data-selectloader-nselect="#dist_ZS_MAIN">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="dist_ZS_MAIN"
+                                            name="loanApplyPeopleOfZS.peopleSub.householdRegistrationDistCode"
+                                            class=" city-error add-disabled distCd"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-val="{{loanApplyPeopleOfZS.peopleSub.householdRegistrationDistCode}}">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">移动电话</label>
+                            <div>
+                                <input type="text" class="form-control  " id="mobileNo" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.mobileNo" value="{{loanApplyPeopleOfZS.mobileNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">家庭电话</label>
+                            <div>
+                                <input type="text" class="form-control  " id="familyTelNo" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.familyTelNo"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.familyTelNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">E-mail</label>
+                            <div>
+                                <input type="text" class="form-control  " id="mail" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.mail"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.mail}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">QQ号码</label>
+                            <div>
+                                <input type="text" class="form-control" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.qqNo"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.qqNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">微信号码</label>
+                            <div>
+                                <input type="text" class="form-control" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.weChatNo"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.weChatNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">驾照号码</label>
+                            <div>
+                                <input type="text" class="form-control" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.driverPassportNo"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.driverPassportNo}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">户口性质</label>
+                            <div>
+                                <select id="hoRegNatCd"
+                                        name="loanApplyPeopleOfZS.peopleSub.hoRegNatCd"
+                                        class="form-control    liveTypeList"
+                                        data-selectloader-store="liveTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{loanApplyPeopleOfZS.peopleSub.hoRegNatCd}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">婚姻状况</label>
+                            <div>
+                                <select
+                                        name="loanApplyPeopleOfZS.peopleSub.marryCode"
+                                        class="form-control marryCodeType"
+                                        disabled="disabled"
+                                        data-selectloader-store="marryCodeTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{loanApplyPeopleOfZS.peopleSub.marryCode}}"
+                                >
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label ">子女人数</label>
+                            <div>
+                                <input type="text" class="form-control" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.peopleSub.childQuantity"
+                                       value="{{loanApplyPeopleOfZS.peopleSub.childQuantity}}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--教育信息-->
+                {{#each loanApplyPeopleOfZS.eduList}}
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            教育信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body parents-num tabs-below">
+                        <div class="form-group">
+                            <label class="control-label " for="educationalStatus">是否在读</label>
+                            <div class="raidoBox">
+                                <label class="mt-radio">
+                                    <input type="radio"
+                                           name="loanApplyPeopleOfZS.eduList[{{@index}}].educationalStatus"
+                                           class=" female"
+                                           value="ZD"/>
+                                    <span class="ifor">在读</span>
+                                </label>
+                                <label class="mt-radio">
+                                    <input type="radio"
+                                           name="loanApplyPeopleOfZS.eduList[{{@index}}].educationalStatus"
+                                           class=" male"
+                                           value="BY"/>
+                                    <span class="ifor">毕业</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">学校名称</label>
+                            <div>
+                                <input type="text" class="form-control" id="papersNo"
+                                       name="loanApplyPeopleOfZS.eduList[{{@index}}].schoolName" readonly="readonly"
+                                       value="{{schoolName}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">学历</label>
+                            <div>
+
+                                <select id="educationalCode"
+                                        name="loanApplyPeopleOfZS.eduList[{{@index}}].educationalCode"
+                                        class="form-control educationalNameCode"
+                                        data-selectloader-store="educationalCodelList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{educationalCode}}"
+                                >
+
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sel setTimeGray">
+                            <label class="control-label ">时间</label>
+                            <div class="selBox">
+                                <div class="input-group input-medium date date-picker-page"
+                                     data-date="2016-01-01"
+                                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                     data-date-language="zh-CN">
+                                    <input type="text" class="form-control   text"
+                                           id="beDt"
+                                           name="loanApplyPeopleOfZS.eduList[{{@index}}].intoSchoolDate"
+                                           value="{{intoSchoolDate}}"
+                                           readonly="readonly">
+                                         <span class="input-group-btn hos-data">
+                                                 <button class="btn default" type="button">
+                                                     <i class="fa fa-calendar"></i>
+                                                 </button>
+                                             </span>
+                                </div>
+                                <span>至</span>
+                                <div class="input-group input-medium date date-picker-page"
+                                     data-date="2016-01-01"
+                                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                     data-date-language="zh-CN">
+                                    <input type="text" class="form-control   text"
+                                           id="enDt"
+                                           name="loanApplyPeopleOfZS.eduList[{{@index}}].outSchoolDate"
+                                           value="{{outSchoolDate}}"
+                                           disabled>
+                                         <span class="input-group-btn hos-data">
+                                                 <button class="btn default" type="button">
+                                                     <i class="fa fa-calendar"></i>
+                                                 </button>
+                                             </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label ">学历性质</label>
+                            <div>
+                                <select id="educationalNameCode"
+                                        name="loanApplyPeopleOfZS.eduList[{{@index}}].educationalNameCode"
+                                        class="form-control educationalNameCode"
+                                        readonly="readonly"
+                                        data-selectloader-store="educationalList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{educationalNameCode}}"
+                                >
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <!-- 描述：单位信息 -->
+                {{#each loanApplyPeopleOfZS.jobList}}
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            单位信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body parents-num tabs-below">
+                        <div class="form-group">
+                            <label class="control-label ">工龄(年)</label>
+                            <div>
+                                <input type="text" class="form-control  eqZeroMore" maxlength="2"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].workAge"
+                                       value="{{workAge}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">单位性质</label>
+                            <div>
+                                <select id="corporationProperty"
+                                        name="loanApplyPeopleOfZS.jobList[{{@index}}].corporationProperty"
+                                        class="form-control  corporationList"
+                                        disabled="disabled"
+                                        data-selectloader-store="corporationList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name" data-selectloader-val="{{corporationProperty}}">
+
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">单位名称</label>
+                            <div>
+                                <input type="text" class="form-control" id="corporationName"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].corporationName"
+                                       readonly="readonly"
+                                       value="{{corporationName}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">职位</label>
+                            <div>
+                                <select id="position"
+                                        name="loanApplyPeopleOfZS.jobList[{{@index}}].position"
+                                        class="form-control  position"
+                                        disabled="disabled"
+                                        data-selectloader-store="positionList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name" data-selectloader-val="{{position}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sel setTimeGray">
+                            <label class="control-label ">时间</label>
+                            <div class="selBox">
+                                <div class="input-group input-medium date date-picker-page" data-date="2016-01-01"
+                                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                     data-date-language="zh-CN">
+                                    <input type="text" class="form-control   text" id="joinDate"
+                                           name="loanApplyPeopleOfZS.jobList[{{@index}}].jobBeginDate"
+                                           value="{{jobBeginDate}}" readonly="">
+                                                         <span class="input-group-btn hos-data">
+                                                                 <button class="btn default" type="button">
+                                                                     <i class="fa fa-calendar"></i>
+                                                                 </button>
+                                                             </span>
+                                </div>
+                                <span>至</span>
+                                <div class="input-group input-medium date date-picker-page" data-date="2016-01-01"
+                                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                     data-date-language="zh-CN">
+                                    <input type="text" class="form-control   text" id="joinDate"
+                                           name="loanApplyPeopleOfZS.jobList[{{@index}}].jobEndDate"
+                                           value="{{jobEndDate}}"
+                                           readonly="">
+                                                         <span class="input-group-btn hos-data">
+                                                                 <button class="btn default" type="button">
+                                                                     <i class="fa fa-calendar"></i>
+                                                                 </button>
+                                                             </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="details-address">
+                            <label class=" control-label ">单位地址</label>
+                            <div class="address company-address">
+                                <div class="conSelect clearfix">
+                                    <select
+                                            name="loanApplyPeopleOfZS.jobList[{{@index}}].householdRegistrationProvinceCode"
+                                            class=" provCity"
+                                            data-selectloader-store="provinceList"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#cityCd{{@index}}"
+                                            data-selectloader-val="{{householdRegistrationProvinceCode}}"
+                                    >
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="cityCd{{@index}}"
+                                            name="loanApplyPeopleOfZS.jobList[{{@index}}].householdCityArea"
+                                            class=" city-error"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#distCode{{@index}}"
+                                            data-selectloader-val="{{householdCityArea}}"
+                                    >
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="distCode{{@index}}"
+                                            name="loanApplyPeopleOfZS.jobList[{{@index}}].householdAreaCode"
+                                            class=" city-error"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect=""
+                                            data-selectloader-val="{{householdAreaCode}}"
+                                    >
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                                <div class="detail-address">
+                                    <input type="text" class="form-control " id="householdAddress" readonly="readonly"
+                                           name="loanApplyPeopleOfZS.jobList[{{@index}}].householdAddress"
+                                           value="{{householdAddress}}" placeholder="详细地址">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">所在部门</label>
+                            <div>
+                                <input type="text" class="form-control" id="workDepartment"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].workDepartment" readonly="readonly"
+                                       value="{{workDepartment}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">单位电话</label>
+                            <div>
+                                <input type="text" class="form-control" id="corporateTelNo" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].corporateTelNo"
+                                       value="{{corporateTelNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">所属行业</label>
+                            <div>
+                                <select id="industryCode"
+                                        name="loanApplyPeopleOfZS.jobList[{{@index}}].industryCode"
+                                        class="form-control  industry"
+                                        disabled="disabled"
+                                        data-selectloader-store="industryList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name" data-selectloader-val="{{industryCode}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">支薪日期</label>
+                            <div>
+                                <select id="wageDate"
+                                        name="loanApplyPeopleOfZS.jobList[{{@index}}].wageDate"
+                                        class="form-control  wageDate"
+                                        disabled="disabled"
+                                        data-selectloader-store="wageDateList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{wageDate}}"
+                                >
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">税后年收入</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent" id="yeIcAm" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].yeIcAm" value="{{yeIcAm}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">证明人</label>
+                            <div>
+                                <input type="text" class="form-control" id="referNa" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].referNa" value="{{referNa}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">证明电话</label>
+                            <div>
+                                <input type="text" class="form-control" id="referTelNo" readonly="readonly"
+                                       name="loanApplyPeopleOfZS.jobList[{{@index}}].referTelNo"
+                                       value="{{referTelNo}}">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {{/each}}
+                <!--  描述：收入信息 -->
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            收入信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body parents-num tabs-below">
+                        <div class="form-group">
+                            <label class="control-label unitY">税后年收入</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent" id="afterTaxAnnualIncome"
+                                       name="loanApplyPeopleOfZS.income.afterTaxAnnualIncome" readonly="readonly"
+                                       value="{{loanApplyPeopleOfZS.income.afterTaxAnnualIncome}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">还款来源</label>
+                            <div>
+                                <select id="paymentFrom"
+                                        name="loanApplyPeopleOfZS.income.paymentFrom"
+                                        class="form-control  paymentFrom"
+                                        disabled="disabled"
+                                        data-selectloader-store="paymentFromList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{loanApplyPeopleOfZS.income.paymentFrom}}"
+                                >
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">月还款能力</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent" id="monthlyRepaymentAbility"
+                                       name="loanApplyPeopleOfZS.income.monthlyRepaymentAbility" readonly="readonly"
+                                       value="{{loanApplyPeopleOfZS.income.monthlyRepaymentAbility}}">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label unitY">月均支出</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent" id="monthlAverageExpenditure"
+                                       name="loanApplyPeopleOfZS.income.monthlAverageExpenditure" readonly="readonly"
+                                       value="{{loanApplyPeopleOfZS.income.monthlAverageExpenditure}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">社保基数</label>
+                            <div>
+                                <input type="text" class="form-control" id="socialSecurityBase"
+                                       name="loanApplyPeopleOfZS.income.socialSecurityBase" readonly="readonly"
+                                       value="{{loanApplyPeopleOfZS.income.socialSecurityBase}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">住房公积金</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent" id="housingProvidentFund"
+                                       name="loanApplyPeopleOfZS.income.housingProvidentFund" readonly="readonly"
+                                       value="{{loanApplyPeopleOfZS.income.housingProvidentFund}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">家庭年收入</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent "
+                                       value="{{loanApplyPeopleOfZS.income.famYeIcAm}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 描述：住房信息-->
+                {{#each loanApplyPeopleOfZS.houseList}}
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            住房信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body parents-num tabs-below">
+
+                        <div class="form-group">
+                            <label class="control-label ">现住房情况</label>
+                            <div>
+                                <select id="housingProperty"
+                                        name="loanApplyPeopleOfZS.houseList[{{@index}}].housingProperty"
+                                        class="form-control  housingProperty"
+                                        disabled="disabled"
+                                        data-selectloader-store="housingPropertyList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{housingProperty}}"
+                                >
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">房贷金额</label>
+                            <div>
+                                <input type="text" class="form-control bindEvent" id="houseLoanAmount"
+                                       name="loanApplyPeopleOfZS.houseList[{{@index}}].houseLoanAmount"
+                                       readonly="readonly"
+                                       value="{{houseLoanAmount}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">房贷年数</label>
+                            <div>
+                                <input type="text" class="form-control" id="hoLoYeQt"
+                                       name="loanApplyPeopleOfZS.houseList[{{@index}}].hoLoYeQt" readonly="readonly"
+                                       value="{{hoLoYeQt}}">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label ">房贷银行</label>
+                            <div>
+                                <input type="text" class="form-control" id="hoLoBankNa"
+                                       name="loanApplyPeopleOfZS.houseList[{{@index}}].hoLoBankNa" readonly="readonly"
+                                       value="{{hoLoBankNa}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label ">产权人名</label>
+                            <div>
+                                <input type="text" class="form-control" id="hoPropNa"
+                                       name="loanApplyPeopleOfZS.houseList[{{@index}}].hoPropNa" readonly="readonly"
+                                       value="{{hoPropNa}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label ">房产所在地址</label>
+                            <div class="textarea-box">
+                        <textarea type="text" class=" text"
+                                  value="">{{householdAddress}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <!-- 描述：地址信息 -->
+                {{#each loanApplyPeopleOfZS.addressList}}
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            地址信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+
+                    </div>
+                    <div class="portlet-body parents-num tabs-below">
+                        <div class="details-address">
+                            <label class=" control-label">地址类型</label>
+                            <div class="address-select">
+                                <select
+                                        class="form-control  addressTypeCodeList"
+                                        data-selectloader-store="addressTypeCodeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{addressTypeCode}}"
+                                >
+
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                            <div class="company-address address detail-compan">
+                                <div class="conSelect clearfix">
+                                    <select
+                                            class=" provCity"
+                                            data-selectloader-store="provinceList"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#cityCd{{@index}}_add "
+                                            data-selectloader-val="{{proviceCode}}"
+                                    >
+
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="cityCd{{@index}}_add"
+                                            class=" city-error"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#distCode{{@index}}_add"
+                                            data-selectloader-val="{{cityCode}}">
+
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="distCode{{@index}}_add"
+                                            class=" city-error"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect=""
+                                            data-selectloader-val="{{distCode}}">
+
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                                <div class="detail-address">
+                                    <input type="text"
+                                           class="form-control "
+                                           value="{{addressCaption}}"
+                                           placeholder="详细地址">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">邮政编号</label>
+                            <div>
+                                <input type="text" class="form-control  papersNo" id="postNo"
+                                       value="{{postNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">居住天数</label>
+                            <div>
+                                <input type="text" class="form-control  eqZeroMore" value="{{liveDays}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label " >是否户籍地址</label>
+                            <div class="raidoBox">
+                                <label class="mt-radio">
+                                    <input type="radio" name="loanApplyPeopleOfZS.addressList[{{@index}}].houRegistAddressYesOrNo" class=""
+                                           value="Y"/>
+                                    <span class="ifor">是</span>
+                                </label>
+                                <label class="mt-radio">
+                                    <input type="radio" name="loanApplyPeopleOfZS.addressList[{{@index}}].houRegistAddressYesOrNo" class=""
+                                           value="N"/>
+                                    <span class="ifor">否</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">当前居住类型</label>
+                            <div>
+                                <select
+                                        class="form-control  homeLiveList"
+                                        data-selectloader-store="homeLiveList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-val="{{homeLiveCode}}"
+                                        data-selectloader-tkey="name">
+
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">租金</label>
+                            <div>
+                                <input type="text" class="form-control  bindEvent" name=""
+                                       value="{{rentAm}}">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                {{/each}}
+                <!--描述：联系人信息 -->
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            联系人信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body tabs-below">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>与申请人关系</th>
+                                    <th>电话</th>
+                                    <th>邮箱号码</th>
+                                    <th>联系地址</th>
+                                    <th>单位名称</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tableBody">
+                                {{#each loanApplyPeopleOfZS.contactList}}
+                                <tr>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control text-border" readonly="readonly"
+                                               name="loanApplyPeopleOfZS.contactList[{{@index}}].contactName"
+                                               value="{{contactName}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <select
+                                                name="loanApplyPeopleOfZS.contactList[{{@index}}].relationship"
+                                                class="form-control relationship"
+                                                disabled="disabled"
+                                                data-selectloader-store="relationshipList"
+                                                data-selectloader-vkey="code"
+                                                data-selectloader-tkey="name"
+                                                data-selectloader-val="{{relationship}}"
+                                        >
+                                            <option value="">请选择...</option>
+                                        </select>
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control" readonly="readonly"
+                                               name="loanApplyPeopleOfZS.contactList[{{@index}}].mobileNo"
+                                               value="{{mobileNo}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control"
+                                               name="loanApplyPeopleOfZS.contactList[{{@index}}].mailNo"
+                                               value="{{mailNo}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control" readonly="readonly"
+                                               name="loanApplyPeopleOfZS.contactList[{{@index}}].permanentAddress"
+                                               value="{{permanentAddress}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control text-border" readonly="readonly"
+                                               name="loanApplyPeopleOfZS.contactList[{{@index}}].corporationName"
+                                               value="{{corporationName}}">
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--描述：共同申请人-->
+            {{#each peopleListOfGS}}
+            <div class="tab-pane  peopleListOfGS" id="tab{{addOne @index}}" data-list-index="{{addOne @index}}">
+                <div class="portlet box reg">
+                    <div class="portlet-title">
+                        <div class="caption">申请人基本信息</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-group">
+                            <label class="control-label ">客户编号</label>
+                            <div>
+                                <input type="text" class="form-control  customerNo"  readonly=""
+                                       name="peopleListOfGS[{{@index}}].customerNo"
+                                       value="{{customerNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">客户类型</label>
+                            <div>
+                                <select
+                                        name="peopleListOfGS[{{@index}}].customerTypeCode"
+                                        class="form-control    customerTypeList"
+                                        data-selectloader-store="customerTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{customerTypeCode}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label ">与主申请人关系</label>
+                            <div>
+                                <select
+                                        name="peopleListOfGS[{{@index}}].applicantRelationship"
+                                        class="form-control relationship"
+                                        data-selectloader-store="relationshipList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-val="{{applicantRelationship}}"
+                                        data-selectloader-tkey="name">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label " for="knownLoanYesOrNo">是否知晓贷款</label>
+                            <div class="raidoBox">
+                                <label class="mt-radio">
+                                    <input type="radio" name="peopleListOfGS[{{@index}}].peopleSub.knownLoanYesOrNo"
+                                           class=" female "
+                                           value="Y"/>
+                                    <span class="ifor">是</span>
+                                </label>
+                                <label class="mt-radio">
+                                    <input type="radio" name="peopleListOfGS[{{@index}}].peopleSub.knownLoanYesOrNo"
+                                           class=" male "
+                                           value="N"/>
+                                    <span class="ifor">否</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">证件类型</label>
+                            <div>
+                                <select
+                                        name="peopleListOfGS[{{@index}}].papersTypeCode"
+                                        class="form-control papersTypeCode"
+                                        data-selectloader-store="papersTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{papersTypeCode}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">证件号码</label>
+                            <div>
+                                <input type="text" class="form-control  papersNo  "
+                                       name="peopleListOfGS[{{@index}}].papersNo" value="{{papersNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">申请人姓名</label>
+                            <div>
+                                <input type="text" class="form-control  customerName"
+                                       name="peopleListOfGS[{{@index}}].customerName" value="{{customerName}}">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sel setTimeGray">
+                            <label class="control-label ">出生年月</label>
+                            <div class="selBox dateBox">
+                                <div class="input-group input-medium date date-picker-page " data-date-end-date="0d"
+                                     data-date-format="yyyy-dd-mm" data-date-viewmode="years" data-date-language="zh-CN">
+                                    <input type="text" class="form-control  birthdayDate"
+                                           name="peopleListOfGS[{{@index}}].birthdayDate" readonly="">
+                                                        <span class="input-group-btn hos-data">
+                                                                <button class="btn default" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label " >性别</label>
+                            <div class="raidoBox sexBox">
+                                <label class="mt-radio">
+                                    <input type="radio" name="peopleListOfGS[{{@index}}].sexCode" class=""
+                                           value="N"/>
+                                    <span class="ifor">男</span>
+                                </label>
+                                <label class="mt-radio">
+                                    <input type="radio" name="peopleListOfGS[{{@index}}].sexCode" class=""
+                                           value="V"/>
+                                    <span class="ifor">女</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">最高学历</label>
+                            <div>
+                                <select id="maxEbCdGS"
+                                        name="peopleListOfGS[{{@index}}].maxEbCd"
+                                        class="form-control    maxEbCdList"
+                                        data-selectloader-store="maxEbCdList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-tkey="name"
+                                        data-selectloader-val="{{maxEbCd}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label prov_city">户籍省、市、区/县</label>
+                            <div class="address addressSelect">
+                                <div class="conSelect clearfix">
+                                    <select
+                                            name="peopleListOfGS[{{@index}}].peopleSub.householdRegistrationProvinceCode"
+                                            class="provCity "
+                                            data-selectloader-store="provinceList"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-val="{{peopleSub.householdRegistrationProvinceCode}}"
+                                            data-selectloader-nselect="#cityCd_{{@index}} ">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="cityCd_{{@index}}"
+                                            name="peopleListOfGS[{{@index}}].peopleSub.householdRegistrationCityCode"
+                                            class="city-error  cityCd"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-val="{{peopleSub.householdRegistrationCityCode}}"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#dictCd_{{@index}}">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                    <select id="dictCd_{{@index}}"
+                                            name="peopleListOfGS[{{@index}}].peopleSub.householdRegistrationDistCode"
+                                            class="city-error  distCd"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-val="{{peopleSub.householdRegistrationDistCode}}"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">移动电话</label>
+                            <div>
+                                <input type="text" class="form-control  isMobilePhone"
+                                       name="peopleListOfGS[{{@index}}].mobileNo"
+                                       value="{{peopleListOfGS.mobileNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">家庭电话</label>
+                            <div>
+                                <input type="text" class="form-control isPhone"
+                                       name="peopleListOfGS[{{@index}}].peopleSub.familyTelNo"
+                                       value="{{peopleListOfGS.peopleSub.familyTelNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">E-mail</label>
+                            <div>
+                                <input type="text" class="form-control isEmail"
+                                       name="peopleListOfGS[{{@index}}].peopleSub.mail" value="{{peopleSub.mail}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">QQ号码</label>
+                            <div>
+                                <input type="text" class="form-control isQQ"
+                                       name="peopleListOfGS[{{@index}}].peopleSub.qqNo" value="{{peopleSub.qqNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">微信号码</label>
+                            <div>
+                                <input type="text" class="form-control letterAndDigit"
+                                       name="peopleListOfGS[{{@index}}].peopleSub.weChatNo"
+                                       value="{{peopleSub.weChatNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">驾照号码</label>
+                            <div>
+                                <input type="text" class="form-control" maxlength="18" minlength="18"
+                                       name="peopleListOfGS[{{@index}}].peopleSub.driverPassportNo"
+                                       value="{{peopleSub.driverPassportNo}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">户口性质</label>
+                            <div>
+                                <select  name="peopleListOfGS[{{@index}}].peopleSub.hoRegNatCd"
+                                         class="form-control    liveTypeList"
+                                         data-selectloader-store="liveTypeList"
+                                         data-selectloader-vkey="code"
+                                         data-selectloader-tkey="name"
+                                         data-selectloader-val="{{peopleSub.hoRegNatCd}}">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label  ">婚姻状况</label>
+                            <div>
+                                <select
+                                        name="peopleListOfGS[{{@index}}].peopleSub.marryCode"
+                                        class="form-control marryCodeType "
+                                        data-selectloader-store="marryCodeTypeList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-val="{{peopleSub.marryCode}}"
+                                        data-selectloader-tkey="name">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">子女人数</label>
+                            <div>
+                                <input type="text" class="form-control  eqZeroMore" maxlength="2"
+                                       name="peopleListOfGS[{{@index}}].peopleSub.childQuantity"
+                                       value="{{peopleSub.childQuantity}}">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--    描述：教育信息-->
+                <div class="delete-eduList-body peopleList-eduList-body">
+                    {{#each eduList}}
+                    <div class="portlet box reg left-add">
+                        <div class="portlet-title">
+
+                            <div class="caption">
+                                教育信息
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                            </div>
+
+
+                        </div>
+                        <div class="portlet-body parents-num tabs-below">
+                            <div class="form-group">
+                                <label class="control-label " for="sexCode">是否在读</label>
+                                <div class="raidoBox">
+                                    <label class="mt-radio">
+                                        <input type="radio"
+                                               name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].educationalStatus"
+                                               class="female "
+                                               value="ZD"/>
+                                        <span class="ifor">在读</span>
+                                    </label>
+                                    <label class="mt-radio">
+                                        <input type="radio"
+                                               name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].educationalStatus"
+                                               class="male "
+                                               value="BY"/>
+                                        <span class="ifor">毕业</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">学校名称</label>
+                                <div>
+                                    <input type="text" class="form-control  isChinese" maxlength="10" minlength="1"
+                                           name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].schoolName"
+                                           value="{{schoolName}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">学历</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].educationalCode"
+                                            class="form-control educationalNameCode"
+                                            data-selectloader-store="educationalCodelList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{educationalCode}}"
+                                            data-selectloader-tkey="name">
+
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sel setTimeGray">
+                                <label class="control-label ">时间</label>
+                                <div class="selBox">
+                                    <div >
+                                        <div class="input-group input-medium date date-picker-page beDt"
+                                             data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                             data-date-language="zh-CN">
+                                            <input type="text" class="form-control  uniform-input text ltTimeValidate "
+                                                   id="peopleListOfGS{{../_index}}_eduList{{@index}}_intoSchoolDate"
+                                                   data-gtTimeValidate="peopleListOfGS{{../_index}}_eduList{{@index}}_outSchoolDate"
+                                                   name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].intoSchoolDate"
+                                                   readonly="">
+                                                          <span class="input-group-btn hos-data">
+                                                                  <button class="btn default" type="button">
+                                                                      <i class="fa fa-calendar"></i>
+                                                                  </button>
+                                                              </span>
+                                        </div>
+                                    </div>
+                                    <span>至</span>
+                                    <div >
+                                        <div class="input-group input-medium date date-picker-page enDt"
+
+                                             data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                             data-date-language="zh-CN">
+                                            <input type="text" class="form-control   uniform-input text gtTimeValidate "
+                                                   id="peopleListOfGS{{../_index}}_eduList{{@index}}_outSchoolDate"
+                                                   data-ltTimeValidate="peopleListOfGS{{../_index}}_eduList{{@index}}_intoSchoolDate"
+                                                   name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].outSchoolDate"
+                                                   readonly="">
+                                                          <span class="input-group-btn hos-data">
+                                                                  <button class="btn default" type="button">
+                                                                      <i class="fa fa-calendar"></i>
+                                                                  </button>
+                                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label ">学历性质</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].eduList[{{@index}}].educationalNameCode"
+                                            class="form-control educationalNameCode"
+                                            data-selectloader-store="educationalList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{educationalNameCode}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+
+                <!-- 描述：单位信息-->
+                <div class="delete-eduList-body peopleList-jobList-body">
+                    {{#each jobList}}
+                    <div class="portlet box reg left-add">
+                        <div class="portlet-title">
+
+                            <div class="caption">
+                                单位信息
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                            </div>
+
+
+                        </div>
+                        <div class="portlet-body parents-num tabs-below">
+                            <div class="form-group">
+                                <label class="control-label ">工龄(年)</label>
+                                <div>
+                                    <input type="text" class="form-control  eqZeroMore" maxlength="2"
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].workAge"
+                                           value="{{workAge}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">职位</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].position"
+                                            class="form-control  position"
+                                            data-selectloader-store="positionList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{position}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">单位性质</label>
+                                <div>
+
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].corporationProperty"
+                                            class="form-control  corporationList"
+                                            data-selectloader-store="corporationList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{corporationProperty}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">单位名称</label>
+                                <div>
+                                    <input type="text" class="form-control  "
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].corporationName"
+                                           value="{{corporationName}}">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sel setTimeGray">
+                                <label class="control-label ">时间</label>
+                                <div class="selBox">
+                                    <div >
+                                        <div class="input-group input-medium date date-picker-page beDt"
+
+                                             data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                             data-date-language="zh-CN">
+                                            <input type="text" class="form-control  uniform-input text ltTimeValidate "
+                                                   id="peopleListOfGS{{../_index}}_jobList{{@index}}_jobBeginDate"
+                                                   data-gtTimeValidate="peopleListOfGS{{../_index}}_jobList{{@index}}_jobEndDate"
+                                                   name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].jobBeginDate"
+                                                   value="{{jobBeginDate}}"
+                                                   readonly="">
+                                                          <span class="input-group-btn hos-data">
+                                                                  <button class="btn default" type="button">
+                                                                      <i class="fa fa-calendar"></i>
+                                                                  </button>
+                                                              </span>
+                                        </div>
+                                    </div>
+                                    <span>至</span>
+                                    <div >
+                                        <div class="input-group input-medium date date-picker-page enDt"
+
+                                             data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                                             data-date-language="zh-CN">
+                                            <input type="text" class="form-control  uniform-input  text gtTimeValidate "
+                                                   name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].jobEndDate"
+                                                   id="peopleListOfGS{{../_index}}_jobList{{@index}}_jobEndDate"
+                                                   data-ltTimeValidate="peopleListOfGS{{../_index}}_jobList{{@index}}_jobBeginDate"
+                                                   value="{{jobEndDate}}"
+                                                   readonly="">
+                                                          <span class="input-group-btn hos-data">
+                                                                  <button class="btn default" type="button">
+                                                                      <i class="fa fa-calendar"></i>
+                                                                  </button>
+                                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="details-address">
+                                <label class=" control-label prov_city">单位地址</label>
+                                <div class="address company-address">
+                                    <div class="conSelect clearfix">
+                                        <select
+                                                name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].householdRegistrationProvinceCode"
+                                                class="provCity "
+                                                data-selectloader-store="provinceList"
+                                                data-selectloader-vkey="districtCode"
+                                                data-selectloader-tkey="districtName"
+                                                data-selectloader-val="{{householdRegistrationProvinceCode}}"
+                                                data-selectloader-nselect="#cityCdpeople{{../_index}}{{@index}}">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                        <select id="cityCdpeople{{../_index}}{{@index}}"
+                                                name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].householdCityArea"
+                                                class="city-error  cityCd"
+                                                data-selectloader-store="children"
+                                                data-selectloader-vkey="districtCode"
+                                                data-selectloader-tkey="districtName"
+                                                data-selectloader-val="{{householdCityArea}}"
+                                                data-selectloader-nselect="#householdAreaCode{{../_index}}{{@index}}">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                        <select id="householdAreaCode{{../_index}}{{@index}}"
+                                                name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].householdAreaCode"
+                                                class="city-error  distCd"
+                                                data-selectloader-store="children"
+                                                data-selectloader-vkey="districtCode"
+                                                data-selectloader-tkey="districtName"
+                                                data-selectloader-val="{{householdAreaCode}}"
+                                                data-selectloader-nselect="">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                    </div>
+                                    <div class="detail-address">
+                                        <input type="text" class="form-control "
+                                               name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].householdAddress"
+                                               placeholder="详细地址">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">所在部门</label>
+                                <div>
+                                    <input type="text" class="form-control  "
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].workDepartment"
+                                           value="{{workDepartment}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">单位电话</label>
+                                <div>
+                                    <input type="text" class="form-control  telNumber"
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].corporateTelNo"
+                                           value="{{corporateTelNo}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">所属行业</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].industryCode"
+                                            class="form-control  industry"
+                                            data-selectloader-store="industryList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{industryCode}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">支薪日期</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].wageDate"
+                                            class="form-control  wageDate"
+                                            data-selectloader-store="wageDateList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{wageDate}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label  unitY">税后年收入</label>
+                                <div>
+                                    <input type="text" name="peopleListOfGS{{../_index}}jobList{{@index}}yeIcAm" class="form-control    minMoney bindEvent  "
+                                           value="{{yeIcAm}}">
+                                    <input type="hidden"
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].yeIcAm" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">证明人</label>
+                                <div>
+                                    <input type="text" class="form-control  isChinese" maxlength="10" minlength="1"
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].referNa"
+                                           value="{{referNa}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">证明电话</label>
+                                <div>
+                                    <input type="text" class="form-control  telNumber"
+                                           name="peopleListOfGS[{{../_index}}].jobList[{{@index}}].referTelNo"
+                                           value="{{referTelNo}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- 描述：收入信息-->
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            收入信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body parents-num tabs-below">
+                        <div class="form-group">
+                            <label class="control-label  unitY">税后年收入</label>
+                            <div>
+                                <input type="text" name="peopleListOfGS{{@index}}incomeafterTaxAnnual" class="form-control    minMoney bindEvent "
+                                       value="{{income.afterTaxAnnualIncome}}">
+                                <input type="hidden"
+                                       name="peopleListOfGS[{{@index}}].income.afterTaxAnnualIncome"
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label ">还款来源</label>
+                            <div>
+                                <select
+                                        name="peopleListOfGS[{{@index}}].income.paymentFrom"
+                                        class="form-control  paymentFrom "
+                                        data-selectloader-store="paymentFromList"
+                                        data-selectloader-vkey="code"
+                                        data-selectloader-val="{{income.paymentFrom}}"
+                                        data-selectloader-tkey="name">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label  unitY">月还款能力</label>
+                            <div>
+                                <input type="text" name="peopleListOfGS{{@index}}incomemonthlyRepaymentAbility" class="form-control    minMoney bindEvent "
+                                       value="{{income.monthlyRepaymentAbility}}">
+                                <input type="hidden"
+                                       name="peopleListOfGS[{{@index}}].income.monthlyRepaymentAbility"
+                                >
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label  unitY">月均支出</label>
+                            <div>
+                                <input type="text" name="peopleListOfGS{{@index}}incomemonthlAverageExpenditure" class="form-control      minMoney bindEvent  "
+                                       value="{{income.monthlAverageExpenditure}}">
+                                <input type="hidden"
+                                       name="peopleListOfGS[{{@index}}].income.monthlAverageExpenditure"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label ">社保基数</label>
+                            <div>
+                                <input type="text" class="form-control  numLength "
+                                       value="{{income.socialSecurityBase}}"  name="peopleListOfGS[{{@index}}].income.socialSecurityBase">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label  unitY">每次缴纳公积金</label>
+                            <div>
+                                <input type="text" name="peopleListOfGS{{@index}}incomehousingProvidentFund" class="form-control   minMoney bindEvent  "
+                                       value="{{income.housingProvidentFund}}">
+                                <input type="hidden"
+                                       name="peopleListOfGS[{{@index}}].income.housingProvidentFund"
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label unitY">家庭年收入</label>
+                            <div>
+                                <input type="text" name="peopleListOfGS{{@index}}incomefamYeIcAm" class="form-control  minMoney bindEvent  "
+                                       value="{{income.famYeIcAm}}">
+                                <input type="hidden"
+                                       name="peopleListOfGS[{{@index}}].income.famYeIcAm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--描述：住房信息peopleListOfGS.houseList-->
+                <div class="delete-houseList-body peopleList-houseList-body">
+                    {{#each houseList}}
+                    <div class="portlet box reg left-add">
+                        <div class="portlet-title">
+
+                            <div class="caption">
+                                住房信息
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                            </div>
+
+
+                        </div>
+                        <div class="portlet-body parents-num tabs-below">
+
+                            <div class="form-group">
+                                <label class="control-label ">现住房情况</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].houseList[{{@index}}].housingProperty"
+                                            class="form-control  housingProperty"
+                                            data-selectloader-store="housingPropertyList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{housingProperty}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label  unitY">房贷金额</label>
+                                <div>
+                                    <input type="text" name="peopleListOfGS{{../_index}}houseList{{@index}}houseLoanAmount" class="form-control   minMoney bindEvent  "
+                                           value="{{houseLoanAmount}}">
+                                    <input type="hidden"
+                                           name="peopleListOfGS[{{../_index}}].houseList[{{@index}}].houseLoanAmount"
+                                    >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">房贷年数</label>
+                                <div>
+                                    <input type="text" class="form-control  eqZeroMore" maxlength="2"
+                                           name="peopleListOfGS[{{../_index}}].houseList[{{@index}}].hoLoYeQt"
+                                           value="{{hoLoYeQt}}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label ">房贷银行</label>
+                                <div>
+                                    <input type="text" class="form-control  isChinese" maxlength="20"
+                                           name="peopleListOfGS[{{../_index}}].houseList[{{@index}}].hoLoBankNa"
+                                           value="{{hoLoBankNa}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label ">产权人名</label>
+                                <div>
+                                    <input type="text" class="form-control  isChinese" maxlength="10"
+                                           name="peopleListOfGS[{{../_index}}].houseList[{{@index}}].hoPropNa"
+                                           value="{{hoPropNa}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label ">房产所在地址</label>
+                                <div class="textarea-box">
+                          <textarea type="text" class=" text"
+                                    name="peopleListOfGS[{{../_index}}].houseList[{{@index}}].householdAddress"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!--  描述：地址信息peopleListOfGS.addressList-->
+                <div class="delete-addressList-body  peopleList-addressList-body">
+                    {{#each addressList}}
+                    <input name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].subId" type="hidden"
+                           value="{{subId}}"/>
+                    <input name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].customerNo" type="hidden"
+                           value="{{customerNo}}"/>
+                    <input name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].applyWater" type="hidden"
+                           value="{{applyWater}}"/>
+                    <div class="portlet box reg left-add">
+                        <div class="portlet-title">
+
+                            <div class="caption">
+                                地址信息
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                            </div>
+
+                        </div>
+                        <div class="portlet-body parents-num tabs-below">
+
+                            <div class="details-address">
+                                <label class=" control-label">地址类型</label>
+                                <div class="address-select">
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].addressTypeCode"
+                                            class="form-control  addressTypeCodeList"
+                                            data-selectloader-store="addressTypeCodeList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{addressTypeCode}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                                <div class="company-address address detail-compan">
+                                    <div class="conSelect clearfix">
+                                        <select
+                                                name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].proviceCode"
+                                                class="provCity "
+                                                data-selectloader-store="provinceList"
+                                                data-selectloader-vkey="districtCode"
+                                                data-selectloader-tkey="districtName"
+                                                data-selectloader-val="{{proviceCode}}"
+                                                data-selectloader-nselect="#cityCd{{../_index}}{{@index}}">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                        <select id="cityCd{{../_index}}{{@index}}"
+                                                name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].cityCode"
+                                                class="city-error  cityCd"
+                                                data-selectloader-store="children"
+                                                data-selectloader-vkey="districtCode"
+                                                data-selectloader-tkey="districtName"
+                                                data-selectloader-val="{{cityCode}}"
+                                                data-selectloader-nselect="#distCode{{../_index}}{{@index}}">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                        <select id="distCode{{../_index}}{{@index}}"
+                                                name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].distCode"
+                                                class="city-error  distCd"
+                                                data-selectloader-store="children"
+                                                data-selectloader-vkey="districtCode"
+                                                data-selectloader-tkey="districtName"
+                                                data-selectloader-val="{{distCode}}"
+                                                data-selectloader-nselect="">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                    </div>
+                                    <div class="detail-address">
+                                        <input type="text" class="form-control "
+                                               name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].addressCaption"
+                                               placeholder="详细地址">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label " >是否户籍地址</label>
+                                <div class="raidoBox">
+                                    <label class="mt-radio">
+                                        <input type="radio" name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].houRegistAddressYesOrNo" class=""
+                                               value="Y"/>
+                                        <span class="ifor">是</span>
+                                    </label>
+                                    <label class="mt-radio">
+                                        <input type="radio" name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].houRegistAddressYesOrNo" class=""
+                                               value="N"/>
+                                        <span class="ifor">否</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">邮政编号</label>
+                                <div>
+                                    <input type="text" class="form-control  isZipCode"
+                                           name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].postNo"
+                                           value="{{postNo}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label ">当前居住类型</label>
+                                <div>
+                                    <select
+                                            name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].homeLiveCode"
+                                            class="form-control  homeLiveList"
+                                            data-selectloader-store="homeLiveList"
+                                            data-selectloader-vkey="code"
+                                            data-selectloader-val="{{homeLiveCode}}"
+                                            data-selectloader-tkey="name">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">居住天数</label>
+                                <div>
+                                    <input type="text" class="form-control  eqZeroMore"
+                                           name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].liveDays">
+                                </div>
+                            </div>
+                            <div class="form-group rent-body">
+                                <label class="control-label unitY">租金</label>
+                                <div>
+                                    <input type="text" name="peopleListOfGS{{../_index}}addressList{{@index}}rentAm" class="form-control   minMoney bindEvent  "
+                                           value="{{rentAm}}">
+                                    <input type="hidden"
+                                           name="peopleListOfGS[{{../_index}}].addressList[{{@index}}].rentAm"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+
+                <!--  描述：联系人信息peopleListOfGS.contactList-->
+                <div class="portlet box reg left-add">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            联系人信息
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                        </div>
+
+
+                    </div>
+                    <div class="portlet-body tabs-below">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>与申请人关系</th>
+                                    <th>电话</th>
+                                    <th>邮箱号码</th>
+                                    <th>联系地址</th>
+                                    <th>单位名称</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tableBody peopleList-contactList-body">
+                                {{#each contactList}}
+                                <tr class="delete-home">
+                                    <td class="form-group">
+                                        <input type="text" class="form-control text-border  isChinese"
+                                               name="peopleListOfGS[{{../_index}}].contactList[{{@index}}].contactName"
+                                               value="{{contactName}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <select
+                                                name="peopleListOfGS[{{../_index}}].contactList[{{@index}}].relationship"
+                                                class="form-control relationship"
+                                                data-selectloader-store="relationshipList"
+                                                data-selectloader-vkey="code"
+                                                data-selectloader-val="{{relationship}}"
+                                                data-selectloader-tkey="name">
+                                            <option value="">请选择...</option>
+                                        </select>
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control telNumber"
+                                               name="peopleListOfGS[{{../_index}}].contactList[{{@index}}].mobileNo"
+                                               value="{{mobileNo}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control isEmail "
+                                               name="peopleListOfGS[{{../_index}}].contactList[{{@index}}].mailNo"
+                                               value="{{mailNo}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control "
+                                               name="peopleListOfGS[{{../_index}}].contactList[{{@index}}].permanentAddress"
+                                               value="{{permanentAddress}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control text-border"
+                                               name="peopleListOfGS[{{../_index}}].contactList[{{@index}}].corporationName"
+                                               value="{{corporationName}}">
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+        <div class="portlet-body center">
+            <div class="clearfix">
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="next-applicant">下一申请人</button>
+            </div>
+        </div>
+        <div class="portlet-body center">
+            <div class="clearfix">
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="previousPage">上一步</button>
+                <button class="btn sky-blue btn-wid mainCol" type="button" id="nextPage">下一步</button>
+            </div>
+        </div>
+    </form>
+</script>
+<!--页面导航模板-->
+<script type="text/x-handlebars-template" id="url-boxbg">
+    <ul class="clearfix">
+        <li><a href="call-loan-information.html?taskId={{taskId}}">贷款信息</a></li>
+        <li class="active"><a href="call-applicant-information.html?taskId={{taskId}}">申请人信息</a></li>
+        <li><a href="call-image-data.html?taskId={{taskId}}">影像信息</a></li>
+        <li><a href="call-risk-warning.html?taskId={{taskId}}">风险预警</a></li>
+        <li><a href="call-history-into-pieces.html?taskId={{taskId}}">进件历史</a></li>
+        <li><a href="call-return-visit.html?taskId={{taskId}}">电话回访</a></li>
+        <li><a href="call-approval-information.html?taskId={{taskId}}">审批信息</a></li>
+    </ul>
+</script>
+
+<!-- 自定义js文件  -->
+<script src="/static/app/1.0.0/js/cb/common-tools.js"></script>
+<script src="/static/app/1.0.0/js/cb/call-return-visit/call-applicant-information.js"></script>
+<script src="/static/app/1.0.0/js/auth-judge.js"></script>
+
+</body>
+</html>

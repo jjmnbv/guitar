@@ -143,8 +143,13 @@
 			var yearTemp =  dates[0] * 1;
 			var monthTemp =  dates[1] * 1 + numTep * 1;
 			if(monthTemp > 12 ){
-				yearTemp = yearTemp + Math.floor(monthTemp/12);
-				monthTemp = monthTemp%12;
+				if(monthTemp%12  != 0){
+					yearTemp = yearTemp + Math.floor(monthTemp/12);
+					monthTemp = monthTemp%12;
+				}else{
+					yearTemp = yearTemp + Math.floor(monthTemp/12) - 1;
+					monthTemp="12";
+				}
 			}
 			if(monthTemp < 10){
 				monthTemp = "0" + monthTemp;

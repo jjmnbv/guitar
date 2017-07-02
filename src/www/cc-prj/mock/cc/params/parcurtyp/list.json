@@ -1,0 +1,12 @@
+[{
+  "content":[{
+    "curCd":1,
+    "curNm":"币种描述",
+    "curSts":"币种状态",
+    "intDays":1,
+    "intPerNum":1,
+    "othCurCd":"对应其他系统币种编码",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

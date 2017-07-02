@@ -1,0 +1,377 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>贷款还款授权表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/params/parPayCfg-edit.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnloinf-lgd.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cc/loan/lnrpt-add.js"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=17,3002,3016,3022,3023,3044,3046,3047,3058"></script>
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=CurTyp"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/common/loan-prop.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnrpt-add.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<!-- @Override -->
+<div class="col-bac">
+    <form class="bsdForm" id="lnrptAdd-form" action="/LNRPT_CREATE">
+        <div class="portlet box reg">
+            <div class="portlet-title">
+                <div class="caption">基本信息</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <input name="athNo" type="hidden">
+                <input name="athInd" type="hidden">
+                <input name="appUsId" type="hidden" >
+                <input name="brNo" type="hidden" >
+                <input name="iscalc" type="hidden" value="true" >
+                <div class="form-group form-group-lono">
+                    <label class="control-label fill">借据号:</label>
+                    <div class="find">
+                        <div class="line propInput">
+                            <input type="text" name="loNo" class="form-control loNo required"
+                                id="loNo" readonly placeholder="请选择借据号">
+                        </div>
+                        <div class="line-use">
+                            <a data-toggle="modal" data-target="#lonoModal">
+                                <button
+                                    class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                    type="button" data-select2-open="single-prepend-text">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">币种:</label>
+                    <div>
+                        <select name="curTyp" class="form-control curTyp"
+                            data-selectloader-val="NORMAL" data-selectloader-store="curTyp"
+                            data-selectloader-vkey="code" data-selectloader-tkey="name" >
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group view-hide-group">
+                    <label class="control-label fill">贷款起息日:</label>
+                    <div class="selBox">
+                        <input type="text" class="form-control" name="inStDt" readonly id="inStDt">
+                    </div>
+                </div>
+                <div class="form-group view-hide-group">
+                    <label class="control-label fill">贷款到期日:</label>
+                    <div class="selBox">
+                        <input type="text" class="form-control " name="laDueDt" readonly id="laDueDt">
+                    </div>
+                </div>
+                <div class="form-group view-hide-group">
+                    <label class="control-label">系统当前日期：</label>
+                    <div class="selBox" >
+                        <input type="text" class="form-control buzDt ltTimeValidate" data-gtTimeValidate="trDt" name="buzDt" readonly id="buzDt">
+                    </div>
+                </div>
+                <div class="form-group view-hide-group">
+                    <label class="control-label">放款金额:</label>
+                    <div>
+                        <input type="hidden" name="loPrAmt">
+                        <input name="loPrAmt1" type="text" class="form-control loPrAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group view-hide-group">
+                    <label class="control-label">借据余额:</label>
+                    <div>
+                        <input type="hidden" name="loPrSa">
+                        <input name="loPrSa1" type="text" class="form-control loPrSa1" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet box reg">
+            <div class="portlet-title">
+                <div class="caption">欠款信息</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group">
+                    <label class="control-label">欠款金额:</label>
+                    <div>
+                        <input type="hidden" name="owPayAmt">
+                        <input name="owPayAmt1" type="text" class="form-control owPayAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">欠款本金:</label>
+                    <div>
+                        <input type="hidden" name="owPayPrAmt">
+                        <input name="owPayPrAmt1" type="text" class="form-control owPayPrAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">欠款利息:</label>
+                    <div>
+                        <input type="hidden" name="owPayInAmt">
+                        <input name="owPayInAmt1" type="text" class="form-control owPayInAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">欠款罚息:</label>
+                    <div>
+                        <input type="hidden" name="owPayOdInAmt">
+                        <input name="owPayOdInAmt1" type="text" class="form-control owPayOdInAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">欠款复利:</label>
+                    <div>
+                        <input type="hidden" name="owPayCmInAmt">
+                        <input name="owPayCmInAmt1" type="text" class="form-control owPayCmInAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">欠款费用:</label>
+                    <div>
+                        <input type="hidden" name="owPayFeeAmt">
+                        <input name="owPayFeeAmt1" type="text" class="form-control owPayFeeAmt1" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet box reg">
+            <div class="portlet-title">
+                <div class="caption">还款信息</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group">
+                    <label class="control-label fill">还款模式:</label>
+                    <div>
+                        <select name="payPatCd" class="form-control required payPatCd"
+                            data-selectloader-val="NORMAL" data-selectloader-store="payPatCd"
+                            data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-group-sel single setTimeGray">
+                    <label class="control-label fill">还款日期:</label>
+                    <div class="selBox">
+                        <div class="input-group input-medium date date-picker-page"
+                            data-date="+0d" data-date-format="yyyy-dd-mm"
+                            data-date-viewmode="years" data-date-language="zh-CN">
+                            <input type="text"
+                                class="form-control uniform-input text required gtTimeValidate"
+                                id="trDt" data-ltTimeValidate="buzDt" name="trDt"
+                                placeholder="还款日期...">
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label fill">还款资金来源:</label>
+                    <div>
+                        <select name="payAmtFrm" class="form-control required payAmtFrm"
+                            data-selectloader-val="NORMAL" data-selectloader-store="payAmtFrm"
+                            data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group depAcAmtDiv">
+                    <label class="control-label">时点内部账户余额：</label>
+                    <div class="selBox">
+                        <input type="hidden" name="depAcAmt">
+                        <input name="depAcAmt1" type="text" class="form-control depAcAmt1" readonly id="depAcAmt1" >
+                    </div>
+                </div>
+                <div class="form-group payAcNoDiv selectpicker">
+                    <label class="control-label payAcNoLabel">还款账号:</label>
+                    <div>
+                        <select name="payAcNo" class="form-control payAcNo"
+                            data-selectloader-val="NORMAL" data-selectloader-store="payAcNo"
+                            data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label class="control-label fill payAmLabel">还款总金额:</label>
+                    <div>
+                        <input name="payAm" type="hidden">
+                        <input name="payAm1" type="text" class="form-control payAm1" id="payAm1" required >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款本金:</label>
+                    <div>
+                        <input type="hidden" name="payPrAmt">
+                        <input name="payPrAmt1" type="text" class="form-control payPrAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款利息:</label>
+                    <div>
+                        <input type="hidden" name="payInAmt">
+                        <input name="payInAmt1" type="text" class="form-control payInAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款罚息:</label>
+                    <div>
+                        <input type="hidden" name="payOdInAmt">
+                        <input name="payOdInAmt1" type="text" class="form-control payOdInAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款复利:</label>
+                    <div>
+                        <input type="hidden" name="payCmInAmt">
+                        <input name="payCmInAmt1" type="text" class="form-control payCmInAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款费用:</label>
+                    <div>
+                        <input type="hidden" name="payFeeAmt">
+                        <input name="payFeeAmt1" type="text" class="form-control payFeeAmt1" readonly>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group inrpt-pre-group">
+                    <label class="control-label advPayAmCdLabel">提前金额方式:</label>
+                    <div>
+                        <select name="advPayAmCd" class="form-control advPayAmCd"
+                            data-selectloader-val="NORMAL"
+                            data-selectloader-store="advPayAmCd"
+                            data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group inrpt-pre-group">
+                    <label class="control-label advPrAmtLabel">提前还款本金:</label>
+                    <div>
+                        <input type="hidden" name="advPrAmt">
+                        <input name="advPrAmt1" type="text" class="form-control advPrAmt1" readonly>
+                    </div>
+                </div>
+                <div class="form-group inrpt-pre-group">
+                    <label class="control-label advInYnLabel">是否归还利息:</label>
+                    <div>
+                        <select name="advInYn" class="form-control advInYn"
+                            data-selectloader-val="NORMAL" data-selectloader-store="advInYn"
+                            data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group inrpt-pre-group advInAmCd-group">
+                    <label class="control-label advInAmCdLabel">利息计算方式:</label>
+                    <div>
+                        <select name="advInAmCd" class="form-control advInAmCd"
+                            data-selectloader-val="NORMAL"
+                            data-selectloader-store="advInAmCd" data-selectloader-vkey="code"
+                            data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group inrpt-pre-group advShoInd-group">
+                    <label class="control-label advShoIndLabel">是否缩期:</label>
+                    <div>
+                        <select name="advShoInd" class="form-control advShoInd"
+                            data-selectloader-val="NORMAL"
+                            data-selectloader-store="advShoInd" data-selectloader-vkey="code"
+                            data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group inrpt-pre-group advShoPerQt-group">
+                    <label class="control-label advShoPerQtLabel">缩期期数:</label>
+                    <div>
+                        <input name="advShoPerQt" type="text" class="form-control advShoPerQt" placeholder="请输入缩期期数...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn sky-blue btn-wid mainCol" id="exec">还款记账</button>
+            <button type="button" class="btn sky-blue btn-wid mainCol" id="confirmR">保存</button>
+            <a class="btn sky-blue btn-wid mainCol cancle" href="lnrpt-index.html">返回</a>
+        </div>
+    </form>
+</div>
+{{/content}}
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-form END -->
+<!-- 分页表格和分页页码 pagination-container -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-container END -->
+<!--占位符-->
+{{#content "content-pagination"}} {{/content}}
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+<!-- 借据选择框 -->
+{{> loan-prop}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}} {{/content}} {{/extend}}

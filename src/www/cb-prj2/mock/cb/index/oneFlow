@@ -1,0 +1,772 @@
+{
+  "states": {
+    "rect1": {
+      "type": "start",
+      "text": {
+        "text": "开始"
+      },
+      "attr": {
+        "x": 159,
+        "y": 113,
+        "width": 50,
+        "height": 50
+      },
+      "props": {
+        "text": {
+          "value": "开始"
+        },
+        "temp1": {
+          "value": "start"
+        }
+      }
+    },
+    "rect2": {
+      "type": "task",
+      "text": {
+        "text": "任务1"
+      },
+      "attr": {
+        "x": 319,
+        "y": 88,
+        "width": 100,
+        "height": 50
+      },
+      "props": {
+        "nodeId": {
+          "value": "任务1"
+        },
+        "nodeName": {
+          "value": "task1"
+        },
+        "nodeT": {
+          "value": ""
+        },
+        "flowTo": {
+          "value": ""
+        },
+        "nodeForm": {
+          "value": ""
+        },
+        "editAuth": {
+          "value": ""
+        },
+        "acceptingOfficer": {
+          "value": ""
+        },
+        "PostToSpecify": {
+          "value": ""
+        },
+        "todoInform": {
+          "value": ""
+        },
+        "isAllowTakeBack": {
+          "value": ""
+        },
+        "isAllowTransfer": {
+          "value": ""
+        },
+        "isAllowReturn": {
+          "value": ""
+        },
+        "isAllowBackTo": {
+          "value": ""
+        },
+        "isAllowEndorse": {
+          "value": ""
+        },
+        "isAllowUrge": {
+          "value": ""
+        },
+        "nodeManageDateLimit": {
+          "value": ""
+        },
+        "informTimes": {
+          "value": ""
+        },
+        "allowExpireDealing": {
+          "value": ""
+        },
+        "expireInterval": {
+          "value": ""
+        },
+        "expireDealTimes": {
+          "value": ""
+        },
+        "dividesStrategy": {
+          "value": ""
+        },
+        "dealType": {
+          "value": ""
+        },
+        "isSignNode": {
+          "value": ""
+        },
+        "signNodeRules": {
+          "value": ""
+        },
+        "callSubFlow": {
+          "value": ""
+        },
+        "subFlowSign": {
+          "value": ""
+        },
+        "ccObject": {
+          "value": ""
+        },
+        "dynamicCallClass": {
+          "value": ""
+        },
+        "methodName": {
+          "value": ""
+        },
+        "isRunScript": {
+          "value": ""
+        },
+        "runScript": {
+          "value": ""
+        },
+        "runningTime": {
+          "value": ""
+        }
+      }
+    },
+    "rect3": {
+      "type": "exclusive_gateway",
+      "text": {
+        "text": "排他网关"
+      },
+      "attr": {
+        "x": 583,
+        "y": 126,
+        "width": 50,
+        "height": 50
+      },
+      "props": {
+        "text": {
+          "value": "排他网关"
+        },
+        "exclusiveDesc": {
+          "value": "排他网关"
+        },
+        "exclusiveId": {
+          "value": "e1"
+        }
+      }
+    },
+    "rect4": {
+      "type": "task",
+      "text": {
+        "text": "任务2"
+      },
+      "attr": {
+        "x": 371,
+        "y": 211,
+        "width": 100,
+        "height": 50
+      },
+      "props": {
+        "nodeId": {
+          "value": "任务2"
+        },
+        "nodeName": {
+          "value": "task2"
+        },
+        "nodeT": {
+          "value": ""
+        },
+        "flowTo": {
+          "value": ""
+        },
+        "nodeForm": {
+          "value": ""
+        },
+        "editAuth": {
+          "value": ""
+        },
+        "acceptingOfficer": {
+          "value": ""
+        },
+        "PostToSpecify": {
+          "value": ""
+        },
+        "todoInform": {
+          "value": ""
+        },
+        "isAllowTakeBack": {
+          "value": ""
+        },
+        "isAllowTransfer": {
+          "value": ""
+        },
+        "isAllowReturn": {
+          "value": ""
+        },
+        "isAllowBackTo": {
+          "value": ""
+        },
+        "isAllowEndorse": {
+          "value": ""
+        },
+        "isAllowUrge": {
+          "value": ""
+        },
+        "nodeManageDateLimit": {
+          "value": ""
+        },
+        "informTimes": {
+          "value": ""
+        },
+        "allowExpireDealing": {
+          "value": ""
+        },
+        "expireInterval": {
+          "value": ""
+        },
+        "expireDealTimes": {
+          "value": ""
+        },
+        "dividesStrategy": {
+          "value": ""
+        },
+        "dealType": {
+          "value": ""
+        },
+        "isSignNode": {
+          "value": ""
+        },
+        "signNodeRules": {
+          "value": ""
+        },
+        "callSubFlow": {
+          "value": ""
+        },
+        "subFlowSign": {
+          "value": ""
+        },
+        "ccObject": {
+          "value": ""
+        },
+        "dynamicCallClass": {
+          "value": ""
+        },
+        "methodName": {
+          "value": ""
+        },
+        "isRunScript": {
+          "value": ""
+        },
+        "runScript": {
+          "value": ""
+        },
+        "runningTime": {
+          "value": ""
+        }
+      }
+    },
+    "rect5": {
+      "type": "task",
+      "text": {
+        "text": "任务3"
+      },
+      "attr": {
+        "x": 627,
+        "y": 224,
+        "width": 100,
+        "height": 50
+      },
+      "props": {
+        "nodeId": {
+          "value": "任务3"
+        },
+        "nodeName": {
+          "value": "task3"
+        },
+        "nodeT": {
+          "value": ""
+        },
+        "flowTo": {
+          "value": ""
+        },
+        "nodeForm": {
+          "value": ""
+        },
+        "editAuth": {
+          "value": ""
+        },
+        "acceptingOfficer": {
+          "value": ""
+        },
+        "PostToSpecify": {
+          "value": ""
+        },
+        "todoInform": {
+          "value": ""
+        },
+        "isAllowTakeBack": {
+          "value": ""
+        },
+        "isAllowTransfer": {
+          "value": ""
+        },
+        "isAllowReturn": {
+          "value": ""
+        },
+        "isAllowBackTo": {
+          "value": ""
+        },
+        "isAllowEndorse": {
+          "value": ""
+        },
+        "isAllowUrge": {
+          "value": ""
+        },
+        "nodeManageDateLimit": {
+          "value": ""
+        },
+        "informTimes": {
+          "value": ""
+        },
+        "allowExpireDealing": {
+          "value": ""
+        },
+        "expireInterval": {
+          "value": ""
+        },
+        "expireDealTimes": {
+          "value": ""
+        },
+        "dividesStrategy": {
+          "value": ""
+        },
+        "dealType": {
+          "value": ""
+        },
+        "isSignNode": {
+          "value": ""
+        },
+        "signNodeRules": {
+          "value": ""
+        },
+        "callSubFlow": {
+          "value": ""
+        },
+        "subFlowSign": {
+          "value": ""
+        },
+        "ccObject": {
+          "value": ""
+        },
+        "dynamicCallClass": {
+          "value": ""
+        },
+        "methodName": {
+          "value": ""
+        },
+        "isRunScript": {
+          "value": ""
+        },
+        "runScript": {
+          "value": ""
+        },
+        "runningTime": {
+          "value": ""
+        }
+      }
+    },
+    "rect6": {
+      "type": "end",
+      "text": {
+        "text": "结束"
+      },
+      "attr": {
+        "x": 515,
+        "y": 284,
+        "width": 50,
+        "height": 50
+      },
+      "props": {
+        "text": {
+          "value": "结束"
+        },
+        "temp1": {
+          "value": "end"
+        }
+      }
+    }
+  },
+  "paths": {
+    "path7": {
+      "from": "rect1",
+      "to": "rect2",
+      "dots": [
+        {
+          "x": 214,
+          "y": 134
+        },
+        {
+          "x": 314,
+          "y": 121
+        }
+      ],
+      "text": {
+        "text": "TO 任务"
+      },
+      "textPos": {
+        "x": 0,
+        "y": -10
+      },
+      "props": {
+        "routeId": {
+          "value": "r1"
+        },
+        "routeName": {
+          "value": "r1"
+        },
+        "text2": {
+          "value": "TO 任务"
+        },
+        "sourceNode": {
+          "value": "start"
+        },
+        "targetNode": {
+          "value": "task1"
+        },
+        "dynamicCallClass2": {
+          "value": ""
+        },
+        "methodName2": {
+          "value": ""
+        },
+        "isRunScript2": {
+          "value": ""
+        },
+        "runScript2": {
+          "value": ""
+        },
+        "routeCondition": {
+          "value": ""
+        }
+      }
+    },
+    "path8": {
+      "from": "rect2",
+      "to": "rect3",
+      "dots": [
+        {
+          "x": 424,
+          "y": 122
+        },
+        {
+          "x": 578,
+          "y": 146
+        }
+      ],
+      "text": {
+        "text": "TO 排他网关"
+      },
+      "textPos": {
+        "x": 0,
+        "y": -10
+      },
+      "props": {
+        "routeId": {
+          "value": "r2"
+        },
+        "routeName": {
+          "value": "r2"
+        },
+        "text2": {
+          "value": "TO 排他网关"
+        },
+        "sourceNode": {
+          "value": "task1"
+        },
+        "targetNode": {
+          "value": "e1"
+        },
+        "dynamicCallClass2": {
+          "value": ""
+        },
+        "methodName2": {
+          "value": ""
+        },
+        "isRunScript2": {
+          "value": ""
+        },
+        "runScript2": {
+          "value": ""
+        },
+        "routeCondition": {
+          "value": ""
+        }
+      }
+    },
+    "path9": {
+      "from": "rect3",
+      "to": "rect4",
+      "dots": [
+        {
+          "x": 578,
+          "y": 165
+        },
+        {
+          "x": 476,
+          "y": 211
+        }
+      ],
+      "text": {
+        "text": "TO 任务"
+      },
+      "textPos": {
+        "x": 0,
+        "y": -10
+      },
+      "props": {
+        "routeId": {
+          "value": "r3"
+        },
+        "routeName": {
+          "value": "r3"
+        },
+        "text2": {
+          "value": "TO 任务"
+        },
+        "sourceNode": {
+          "value": "e1"
+        },
+        "targetNode": {
+          "value": "task2"
+        },
+        "dynamicCallClass2": {
+          "value": ""
+        },
+        "methodName2": {
+          "value": ""
+        },
+        "isRunScript2": {
+          "value": ""
+        },
+        "runScript2": {
+          "value": ""
+        },
+        "routeCondition": {
+          "value": ""
+        }
+      }
+    },
+    "path10": {
+      "from": "rect4",
+      "to": "rect6",
+      "dots": [
+        {
+          "x": 470,
+          "y": 266
+        },
+        {
+          "x": 510,
+          "y": 290
+        }
+      ],
+      "text": {
+        "text": "TO 结束"
+      },
+      "textPos": {
+        "x": 0,
+        "y": -10
+      },
+      "props": {
+        "routeId": {
+          "value": "r5"
+        },
+        "routeName": {
+          "value": "r5"
+        },
+        "text2": {
+          "value": "TO 结束"
+        },
+        "sourceNode": {
+          "value": "task2"
+        },
+        "targetNode": {
+          "value": "end"
+        },
+        "dynamicCallClass2": {
+          "value": ""
+        },
+        "methodName2": {
+          "value": ""
+        },
+        "isRunScript2": {
+          "value": ""
+        },
+        "runScript2": {
+          "value": ""
+        },
+        "routeCondition": {
+          "value": ""
+        }
+      }
+    },
+    "path11": {
+      "from": "rect3",
+      "to": "rect5",
+      "dots": [
+        {
+          "x": 629,
+          "y": 181
+        },
+        {
+          "x": 656,
+          "y": 219
+        }
+      ],
+      "text": {
+        "text": "TO 任务"
+      },
+      "textPos": {
+        "x": 0,
+        "y": -10
+      },
+      "props": {
+        "routeId": {
+          "value": "r4"
+        },
+        "routeName": {
+          "value": "r4"
+        },
+        "text2": {
+          "value": "TO 任务"
+        },
+        "sourceNode": {
+          "value": "e1"
+        },
+        "targetNode": {
+          "value": "task3"
+        },
+        "dynamicCallClass2": {
+          "value": ""
+        },
+        "methodName2": {
+          "value": ""
+        },
+        "isRunScript2": {
+          "value": ""
+        },
+        "runScript2": {
+          "value": ""
+        },
+        "routeCondition": {
+          "value": ""
+        }
+      }
+    },
+    "path12": {
+      "from": "rect5",
+      "to": "rect6",
+      "dots": [
+        {
+          "x": 622,
+          "y": 273
+        },
+        {
+          "x": 570,
+          "y": 296
+        }
+      ],
+      "text": {
+        "text": "TO 结束"
+      },
+      "textPos": {
+        "x": 0,
+        "y": -10
+      },
+      "props": {
+        "routeId": {
+          "value": "r6"
+        },
+        "routeName": {
+          "value": "t6"
+        },
+        "text2": {
+          "value": ""
+        },
+        "sourceNode": {
+          "value": "task3"
+        },
+        "targetNode": {
+          "value": "end"
+        },
+        "dynamicCallClass2": {
+          "value": ""
+        },
+        "methodName2": {
+          "value": ""
+        },
+        "isRunScript2": {
+          "value": ""
+        },
+        "runScript2": {
+          "value": ""
+        },
+        "routeCondition": {
+          "value": ""
+        }
+      }
+    }
+  },
+  "props": {
+    "props": {
+      "name": {
+        "value": "新建流55"
+      },
+      "desc": {
+        "value": "新建流55"
+      },
+      "key": {
+        "value": "ggggg"
+      },
+      "mainForm": {
+        "value": ""
+      },
+      "dealDeadline": {
+        "value": ""
+      },
+      "warningTime": {
+        "value": ""
+      },
+      "infoInterval": {
+        "value": ""
+      },
+      "infoTime": {
+        "value": ""
+      },
+      "overdueDeal": {
+        "value": ""
+      },
+      "allowCommission": {
+        "value": ""
+      },
+      "allowComplaint": {
+        "value": ""
+      },
+      "allowRemove": {
+        "value": ""
+      },
+      "allowSendBack": {
+        "value": ""
+      },
+      "allowHangup": {
+        "value": ""
+      },
+      "allowAwaken": {
+        "value": ""
+      },
+      "allowUrge": {
+        "value": ""
+      },
+      "runAfterDelete": {
+        "value": ""
+      }
+    }
+  }
+}

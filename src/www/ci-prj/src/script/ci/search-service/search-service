@@ -1,0 +1,23 @@
+
+window.app = window.app || {};window.app.dicts = window.app.dicts || {};
+/**
+ * 数据模拟
+ */
++function($, app){
+    app.blackQueryApplyList = [
+                {"code":"002_002","name":"机构G黑名单查询"},
+                {"code":"002_003","name":"天网综合查询黑名单灰名单"},
+                {"code":"002_006","name":"机构B黑名单（新）"},
+                {"code":"002_007","name":"法海网法律名单"},
+                {"code":"002_008","name":"汇法网法律黑名单"},
+                {"code":"002_009","name":"数信网黑名单"},
+                {"code":"002_010","name":"天眼黑名单"},
+                {"code":"002_011","name":"忆美黑名单"},
+                {"code":"002_012","name":"百度黑名单"},
+                {"code":"002_013","name":"百融特殊名单"}
+            ];
+    app.educationApplyList = [
+                {"code":"002_001","name":"融360学历查询"}
+            ];
+
+}(window.jQuery,window.app);

@@ -1,0 +1,465 @@
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<meta content="" name="keyword"/>
+{{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}指标集编号配置</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<!-- @Override -->
+<link rel="stylesheet" href="{{path.app}}/css/cl/common-form.css"/>
+<link rel="stylesheet" href="{{path.app}}/css/cl/modal-form.css"/>
+{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<!--加载数据字典-->
+<!-- @Override -->
+<script src="{{path.base}}/script/cl/indexset"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/cl/common/app-context.js"></script>
+<script src="{{path.app}}/js/cl/quota-allocation/index-set-No-config.js"></script>
+<!--<script src="{{path.app}}/js/auth-judge.js"></script>-->
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<!-- @Override -->
+{{{{raw}}}}
+  <input id="indexSetCode" type="hidden" name="indexSetCode" class="hiddenCondition" value="{{request.indexSetCode}}" />
+{{{{/raw}}}} 
+
+<!--指标类型三个列表-->
+
+<!--
+	作者：
+	时间：2017-06-08
+	描述：指标类型分页
+-->
+<div>
+  <div class="modal fade" id="indexCodeModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="indexCodeModalList">
+        <div data-modal-header="" class="modal-header">
+          <h3 class="modal-title">选择指标编号
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          </h3>
+        </div>
+        <div data-modal-body="" class="modal-body">
+          <div class="">
+            <div id="">
+              <form id="">
+                {{{{raw}}}}
+                <input name="" id="" type="hidden" value="" />
+                {{{{/raw}}}}
+                <div class="pagination-reload"></div>
+                <div class="portlet-body pagination-container" data-page-first-store="first-store" data-page-url="" data-page-template-id="indexCode-page-template"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div data-modal-footer="" class="modal-footer model-btn-center">
+          <div class="portlet-body">
+            <div class="clearfix">
+              <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+              <button class="btn blue" id="confirmCode" data-dismiss="modal">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="modal fade" id="indexOneCodeModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="indexOneCodeModalList">
+        <div data-modal-header="" class="modal-header">
+          <h3 class="modal-title">选择指标编号
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          </h3>
+        </div>
+        <div data-modal-body="" class="modal-body">
+          <div class="">
+            <div >
+              <form >
+                {{{{raw}}}}
+                <input name=""  type="hidden" value="" />
+                {{{{/raw}}}}
+                <div class="pagination-reload"></div>
+                <div class="portlet-body pagination-container" data-page-first-store="first-store" data-page-url="" data-page-template-id="indexCode-page-template"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div data-modal-footer="" class="modal-footer model-btn-center">
+          <div class="portlet-body">
+            <div class="clearfix">
+              <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+              <button class="btn blue" id="confirmOneCode" data-dismiss="modal">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="modal fade" id="indexTwoCodeModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="indexTwoCodeModalList">
+        <div data-modal-header="" class="modal-header">
+          <h3 class="modal-title">选择指标编号
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          </h3>
+        </div>
+        <div data-modal-body="" class="modal-body">
+          <div class="">
+            <div id="">
+              <form id="">
+                {{{{raw}}}}
+                <input name="" id="" type="hidden" value="" />
+                {{{{/raw}}}}
+                <div class="pagination-reload"></div>
+                <div class="portlet-body pagination-container" data-page-first-store="first-store" data-page-url="" data-page-template-id="indexCode-page-template"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div data-modal-footer="" class="modal-footer model-btn-center">
+          <div class="portlet-body">
+            <div class="clearfix">
+              <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+              <button class="btn blue" id="confirmTwoCode" data-dismiss="modal">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/content}}
+
+
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+<!--BEGIN CONDITION SERACH-->
+<form  class="bsdForm pagination-form">
+    <div class="form-group">
+        <label class="control-label">指标集编号</label>
+        <div>
+            <input type="text" class="form-control" name="indexSetNumber" maxlength="32">
+            {{{{raw}}}}
+            <input id="" type="hidden" name="indexSetCode" value="{{request.indexSetCode}}" /> 
+            {{{{/raw}}}} 
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">指标编号</label>
+        <div>
+            <input type="text" class="form-control" name="indexNumber" maxlength="10">
+        </div>
+    </div>
+    
+</form>
+<!--END CONDITION SERACH-->
+{{/content}}
+
+<!-- 分页表格和分页页码 pagination-container -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+<div class="portlet box reg">
+    <div class="portlet-title">
+        <div class="caption">指标集编号列表</div>
+        <div class="actions">
+            <a id="add" href="javascript:;" title="新增" class="add-sign"></a>
+            <a id="update" href="javascript:;" title="修改" class="update-sign"></a>
+            <a id="save" href="javascript:;" title="保存" class="save-sign"></a>
+            <a id="delete" href="javascript:;" title="删除" class="delete-sign"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="tabbable tabbable-tabdrop">
+                    <div class="pagination-reload"></div>
+                    <div class="portlet-body pagination-container"
+                         data-page-first-store="first-store"
+                         data-page-url="/INDEX_SET_NO_LIST"
+                         data-page-template-id="table1-page-template">
+                    </div>
+        </div>
+    </div>
+</div>
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<!-- @Override -->
+<script type="text/x-handlebars-template" id="table1-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th >选择</th>
+                <th >序号</th>
+                <th >指标集编号</th>
+                <th >指标类型</th>
+				        <th >指标编号</th>
+                <th >额度编号</th>
+				        <th >额度名称</th>
+                <th >指标额度</th>
+                <th >单次指标额度</th>
+                <th >备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each page.content}}
+            <tr>
+                <td>
+                    <div>
+                        <label>
+                            <input type="radio" class="icheck" name="checkRow" data-id="{{indexSetNumber}}">
+                        </label>
+                    </div>
+                </td>
+                <td>{{page-rowindex}}</td>
+                <td>{{indexSetNumber}}</td>
+                <td>
+                  {{indexCode-text}}<br />
+                  {{indexOneCode-text}}<br />
+                  {{indexTwoCode-text}}
+                </td>
+				        <td>
+                  {{indexNumber}}<br />
+                  {{indexOneNumber}}<br />
+                  {{indexTwoNumber}}
+                </td>
+                <td>{{indexLimit.limitNumber}}</td>
+				        <td>{{indexLimit.limitName}}</td>
+                <td>{{indexLimit.indexLimitAmount}}</td>
+                <td>{{indexLimit.indexSingleLimitAm}}</td>
+                <td>{{indexLimit.comment}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+</script>
+<script type="text/x-handlebars-template" id="form-template">
+    {{{{raw}}}}
+    <form class="bsdForm">
+        <div class="form-group">
+            <label class="control-label fill">指标集编号</label>
+            <div>
+                <input id="indexSetNumber" type="text" class="form-control required eqZeroMore" name="indexSetNumber" maxlength="32" value="{{indexSetNumber}}">
+                <input type="hidden" class="" name="indexSetCode" value="{{indexSetCode}}">
+            </div>
+        </div>
+        <hr class="visualLine"/>
+        {{#if (ne indexCode null)}}
+        <div class="form-group">
+            <label class="control-label fill">指标类型</label>
+            <div>
+                <select id=""
+                        name=""
+                        class="form-control required dictionarys"
+                        data-selectloader-store="indexCodeList"
+                        data-selectloader-vkey="code"
+                        data-selectloader-tkey="name"
+                        data-selectloader-val="{{indexCode}}"
+                        disabled="">
+                  <option value="">请选择</option>
+                </select>
+                <input name="indexCode" class="" type="hidden" value="{{indexCode}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">指标编号</label>
+            <div class="find">
+              <div class="line">
+                <input type="text" class="form-control required"  id="inCoModalVal" name="indexNumber" value="{{indexNumber}}">
+              </div>
+              <div class="line-use">
+                <a data-toggle="modal" data-target="#indexCodeModal" class="" data-code="{{indexCode}}">
+                  <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                          type="button"
+                          data-select2-open="single-prepend-text">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </a>
+              </div> 
+            </div>
+        </div>
+        {{/if}}
+        {{#if (ne indexOneCode null)}}
+        <div class="form-group">
+            <label class="control-label fill">指标类型</label>
+            <div>
+                <select id=""
+                        name=""
+                        class="form-control required  dictionarys"
+                        data-selectloader-store="indexOneCodeList"
+                        data-selectloader-vkey="code"
+                        data-selectloader-tkey="name"
+                        data-selectloader-val="{{indexOneCode}}"
+                        disabled="">
+                  <option value="">请选择</option>
+                </select>
+                <input name="indexOneCode" class="" type="hidden" value="{{indexOneCode}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">指标编号</label>
+            <div class="find">
+              <div class="line">
+                <input type="text" class="form-control required"  id="indexOneCodeName" name="indexOneNumber" value="{{indexOneNumber}}">
+              </div>
+              <div class="line-use">
+                <a data-toggle="modal" data-target="#indexOneCodeModal" class="" data-code="{{indexOneCode}}">
+                  <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                          type="button"
+                          data-select2-open="single-prepend-text">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </a>
+              </div> 
+            </div>
+        </div>
+        {{/if}}
+        {{#if (ne indexTwoCode null)}}
+        <div class="form-group">
+            <label class="control-label fill">指标类型</label>
+            <div>
+                <select id=""
+                        name=""
+                        class="form-control required  dictionarys"
+                        data-selectloader-store="indexTwoCodeList"
+                        data-selectloader-vkey="code"
+                        data-selectloader-tkey="name"
+                        data-selectloader-val="{{indexTwoCode}}"
+                        disabled="">
+                  <option value="">请选择</option>
+                </select>
+                <input name="indexTwoCode" class="" type="hidden" value="{{indexTwoCode}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">指标编号</label>
+            <div class="find">
+              <div class="line">
+                <input type="text" class="form-control required" id="indexTwoCodeName" name="indexTwoNumber" value="{{indexTwoNumber}}">
+              </div>
+              <div class="line-use">
+                <a data-toggle="modal" data-target="#indexTwoCodeModal" class="" data-code="{{indexTwoCode}}">
+                  <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                          type="button"
+                          data-select2-open="single-prepend-text">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </a>
+              </div> 
+            </div>
+        </div>
+        {{/if}}
+        <hr class="visualLine"/>
+        <div class="form-group">
+            <label class="control-label fill">额度编号</label>
+            <div>
+                <input id="limitNumber" type="text" class="form-control required" name="indexLimit.limitNumber" maxlength="10" value="{{indexLimit.limitNumber}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">额度名称</label>
+            <div>
+                <input type="text" class="form-control required" name="indexLimit.limitName" maxlength="10" value="{{indexLimit.limitName}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">指标额度</label>
+            <div>
+                <input type="text" class="form-control required" name="indexLimit.indexLimitAmount" maxlength="10" value="{{indexLimit.indexLimitAmount}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">单次指标额度</label>
+            <div>
+                <input type="text" class="form-control required" name="indexLimit.indexSingleLimitAm" maxlength="10" value="{{indexLimit.indexSingleLimitAm}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">备注</label>
+            <div>
+                <textarea class="form-control required" name="indexLimit.comment" maxlength="200">{{indexLimit.comment}}</textarea>
+            </div>
+        </div>
+        
+        
+    </form>
+    {{{{/raw}}}}
+</script>
+
+<script type="text/x-handlebars-template" id="indexCode-page-template">
+  {{{{raw}}}}
+  <div class="table-scrollable">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <td>选择</td>
+          <td>指标编号</td>
+          <td>指标名称</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each page.content}}
+        <tr>
+          <td>
+            <label class="">
+              <input type="radio" name="radioCheck" value="" data-indexnumber={{indexNumber}} data-indexName={{indexName}}/>
+            </label>
+          </td>
+          <td>{{indexNumber}}</td>
+          <td>{{indexName}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{{{/raw}}}} {{> pager}}
+</script>
+
+{{/content}}
+
+{{/extend}}

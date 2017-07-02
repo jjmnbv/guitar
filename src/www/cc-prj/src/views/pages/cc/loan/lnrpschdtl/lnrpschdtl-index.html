@@ -1,0 +1,701 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>贷款还款明细表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/params/parPayCfg-edit.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cc/loan/lnrpschdtl"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=3002,3051"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnrpschdtl.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+    <div class="col-bac">
+        <form class="bsdForm" id="rpschdtl-form">
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">基本信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class="control-label">还款计划期数</label>
+                        <div>
+                            <input type="text" name="perQt" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">还款日:</label>
+                        <div >
+                            <input name="dueDt" type="text" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">执行利率(年):</label>
+                        <div >
+                            <input name="inRt" type="hidden">
+                            <input name="inRt1" type="text" class="form-control inRt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">罚息利率(年):</label>
+                        <div >
+                            <input name="ovRt" type="hidden">
+                            <input name="ovRt1" type="text" class="form-control ovRt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">当期剩余本金:</label>
+                        <div >
+                            <input name="prSa" type="hidden">
+                            <input name="prSa1" type="text" class="form-control prSa1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">期供相关信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class=" control-label">期供金额:</label>
+                        <div >
+                            <input name="insAmt" type="hidden">
+                            <input name="insAmt1" type="text" class="form-control insAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应还本金:</label>
+                        <div >
+                            <input name="prAmt" type="hidden">
+                            <input name="prAmt1" type="text" class="form-control prAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应还利息:</label>
+                        <div >
+                            <input name="inAmt" type="hidden">
+                            <input name="inAmt1" type="text" class="form-control inAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应还罚息:</label>
+                        <div >
+                            <input name="ovInAmt" type="hidden">
+                            <input name="ovInAmt1" type="text" class="form-control ovInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应还复利:</label>
+                        <div >
+                            <input name="cmInAmt" type="hidden">
+                            <input name="cmInAmt1" type="text" class="form-control cmInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应还费用:</label>
+                        <div >
+                            <input name="feeAmt" type="hidden">
+                            <input name="feeAmt1" type="text" class="form-control feeAmt1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">还款相关信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class=" control-label">上次还款日期:</label>
+                        <div >
+                            <input name="laPayDt" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">已还本金:</label>
+                        <div >
+                            <input name="payPrAmt" type="hidden">
+                            <input name="payPrAmt1" type="text" class="form-control payPrAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">已还利息:</label>
+                        <div >
+                            <input name="payInAmt" type="hidden">
+                            <input name="payInAmt1" type="text" class="form-control payInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">已还罚息:</label>
+                        <div >
+                            <input name="payOvInAmt" type="hidden">
+                            <input name="payOvInAmt1" type="text" class="form-control payOvInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">已还复利:</label>
+                        <div >
+                            <input name="payCmInAmt" type="hidden">
+                            <input name="payCmInAmt1" type="text" class="form-control payCmInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">已还费用:</label>
+                        <div >
+                            <input name="payFeeAmt" type="hidden">
+                            <input name="payFeeAmt1" type="text" class="form-control payFeeAmt1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">减免相关信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class=" control-label">减免本金:</label>
+                        <div >
+                            <input name="rrPrAmt" type="hidden">
+                            <input name="rrPrAmt1" type="text" class="form-control rrPrAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">减免利息:</label>
+                        <div >
+                            <input name="rrInAmt" type="hidden">
+                            <input name="rrInAmt1" type="text" class="form-control rrInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">减免罚息:</label>
+                        <div >
+                            <input name="rrOvInAmt" type="hidden">
+                            <input name="rrOvInAmt1" type="text" class="form-control rrOvInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">减免复利:</label>
+                        <div >
+                            <input name="rrCmInAmt" type="hidden">
+                            <input name="rrCmInAmt1" type="text" class="form-control rrCmInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">减免费用:</label>
+                        <div >
+                            <input name="rrFeeAmt" type="hidden">
+                            <input name="rrFeeAmt1" type="text" class="form-control rrFeeAmt1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">积数相关信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class=" control-label">上次积数日期:</label>
+                        <div >
+                            <input name="laPdDt" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">本金积数:</label>
+                        <div >
+                            <input name="pdPrAmt" type="hidden">
+                            <input name="pdPrAmt1" type="text" class="form-control pdPrAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">利息积数:</label>
+                        <div >
+                            <input name="pdInAmt" type="hidden">
+                            <input name="pdInAmt1" type="text" class="form-control pdInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">罚息积数:</label>
+                        <div >
+                            <input name="pdOvInAmt" type="hidden">
+                            <input name="pdOvInAmt1" type="text" class="form-control pdOvInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">复利积数:</label>
+                        <div >
+                            <input name="pdCmInAmt" type="hidden">
+                            <input name="pdCmInAmt1" type="text" class="form-control pdCmInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">费用积数:</label>
+                        <div >
+                            <input name="pdFeeAmt" type="hidden">
+                            <input name="pdFeeAmt1" type="text" class="form-control pdFeeAmt1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">税金相关信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class=" control-label">利息税金:</label>
+                        <div >
+                            <input name="txInAmt" type="hidden">
+                            <input name="txInAmt1" type="text" class="form-control txInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">罚息税金:</label>
+                        <div >
+                            <input name="txOvInAmt" type="hidden">
+                            <input name="txOvInAmt1" type="text" class="form-control txOvInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">复利税金:</label>
+                        <div >
+                            <input name="txCmInAmt" type="hidden">
+                            <input name="txCmInAmt1" type="text" class="form-control txCmInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">费用税金:</label>
+                        <div >
+                            <input name="txFeeAmt" type="hidden">
+                            <input name="txFeeAmt1" type="text" class="form-control txFeeAmt1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">结算相关信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class=" control-label">上次计提日期:</label>
+                        <div >
+                            <input name="laAcIntDt" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">已计提利息:</label>
+                        <div >
+                            <input name="acInAmt" type="hidden">
+                            <input name="acInAmt1" type="text" class="form-control acInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">上次结息日期:</label>
+                        <div >
+                            <input name="laBalDt" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应收利息:</label>
+                        <div >
+                            <input name="acReInAmt" type="hidden">
+                            <input name="acReInAmt1" type="text" class="form-control acReInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应收罚息:</label>
+                        <div >
+                            <input name="acOvInAmt" type="hidden">
+                            <input name="acOvInAmt1" type="text" class="form-control acOvInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">应收复利:</label>
+                        <div >
+                            <input name="acCmInAmt" type="hidden">
+                            <input name="acCmInAmt1" type="text" class="form-control acCmInAmt1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">是否结清:</label>
+                        <div >
+                            <select name="clnInd" id="clnInd" class="form-control clnInd"
+                                    data-selectloader-store="clnIndList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name" >
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class=" control-label">是否逾期:</label>
+                        <div >
+                            <select name="odInd" id="odInd" class="form-control odInd"
+                                    data-selectloader-store="odIndList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name" >
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="payAmtLabel" class="portlet box reg" style="display: none">
+                <div class="portlet-title">
+                    <div class="caption">当期欠款信息</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+	                <div class="form-group">
+	                    <label class="control-label">欠款查询日期:</label>
+	                    <div>
+	                        <input id="trDt" name="trDt" type="text" class="form-control" readonly>
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="control-label">欠款总额:</label>
+	                    <div>
+	                        <input id="needPayAmt1" name="needPayAmt1" type="text" class="form-control" readonly>
+	                        <input type="hidden" name="needPayAmt">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="control-label">欠款本金:</label>
+	                    <div>
+	                        <input id="needPayPrAmt1" name="needPayPrAmt1" type="text" class="form-control" readonly>
+	                        <input type="hidden" name="needPayPrAmt">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="control-label">欠款利息:</label>
+	                    <div>
+	                        <input id="needPayInAmt1" name="needPayInAmt1" type="text" class="form-control" readonly>
+	                        <input type="hidden" name="needPayInAmt">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="control-label">欠款罚息:</label>
+	                    <div>
+	                        <input id="needPayOdInAmt1" name="needPayOdInAmt1" type="text" class="form-control" readonly>
+	                        <input type="hidden" name="needPayOdInAmt">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="control-label">欠款复利:</label>
+	                    <div>
+	                        <input id="needPayCmInAmt1" name="needPayCmInAmt1" type="text" class="form-control" readonly>
+	                        <input type="hidden" name="needPayCmInAmt">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="control-label">欠款费用:</label>
+	                    <div>
+	                        <input id="needPayFeeAmt" name="needPayFeeAmt1" type="text" class="form-control" readonly>
+	                        <input type="hidden" name="needPayFeeAmt">
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn blue mainCol" id="schCalc">查看当期欠款</button>
+                <a href="#" class="btn blue mainCol repay-return">返回</a>
+            </div>
+        </form>
+
+        <div class="portlet box reg rpschdtl-page">
+            <div class="portlet-title">
+                <div class="caption">贷款还款明细表列表</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <form class="bsdForm pagination-form">
+                <input name="loNo" type="hidden" class="form-control loNo">
+                <input name="perQt" type="hidden" class="form-control perQt">
+            </form>
+            <div class="portlet-body">
+                <div class="pagination-reload"></div>
+                <div class="tabbable tabbable-tabdrop">
+                    <div class="portlet-body pagination-container"
+                         data-page-first-store="first-store"
+                         data-page-url="/LNRPSCHDTL_PAGE"
+                         data-page-template-id="lnrpschdtl-page-template">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet box reg intball-page">
+            <div class="portlet-title">
+                <div class="caption">贷款结息表列表</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <form class="bsdForm pagination-form">
+                <input name="loNo" type="hidden" class="form-control loNo">
+                <input name="perQt" type="hidden" class="form-control perQt">
+            </form>
+            <div class="portlet-body">
+                <div class="pagination-reload"></div>
+                <div class="tabbable tabbable-tabdrop">
+                    <div class="portlet-body pagination-container"
+                         data-page-first-store="first-store"
+                         data-page-url="/LNINTBALL_PAGE"
+                         data-page-template-id="lnintball-page-template">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet box reg ratchgsec-page">
+            <div class="portlet-title">
+                <div class="caption">贷款利率分段列表</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <form class="bsdForm pagination-form">
+                <input name="loNo" type="hidden" class="form-control loNo">
+                <input name="perQt" type="hidden" class="form-control perQt">
+            </form>
+            <div class="portlet-body">
+                <div class="pagination-reload"></div>
+                <div class="tabbable tabbable-tabdrop">
+                    <div class="portlet-body pagination-container"
+                         data-page-first-store="first-store"
+                         data-page-url="/LNRATCHGSEC_PAGE"
+                         data-page-template-id="lnratchgsec-page-template">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+   <script type="text/x-handlebars-template" id="lnratchgsec-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+         <tr>
+            <th> 序号 </th>
+            <th> 期数 </th>
+            <th> 调整日期 </th>
+            <th> 原执行利率 </th>
+            <th> 新执行利率 </th>
+            <th> 原罚息利率 </th>
+            <th> 新罚息利率 </th>
+            <th> 剩余本金积数 </th>
+            <th> 本金积数 </th>
+            <th> 利息积数 </th>
+            <th> 罚息积数 </th>
+            <th> 复利积数 </th>
+            <th> 费用积数 </th>
+            <th> 结清标志 </th>
+            <th> 已结息标志 </th>
+            <th> 减免本金积数 </th>
+            <th> 减免利息积数 </th>
+            <th> 减免罚息积数 </th>
+            <th> 减免复利积数 </th>
+            <th> 减免复利积数 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{perQt}} </td>
+            <td> {{valDt}} </td>
+            <td> {{formatPercentDecimals oldExRt}} </td>
+            <td> {{formatPercentDecimals newExRt}} </td>
+            <td> {{formatPercentDecimals oldOvRt}} </td>
+            <td> {{formatPercentDecimals newOvRt}} </td>
+            <td> {{formatMoney pdPrSa}} </td>
+            <td> {{formatMoney pdPrAmt}} </td>
+            <td> {{formatMoney pdInAmt}} </td>
+            <td> {{formatMoney pdOvInAmt}} </td>
+            <td> {{formatMoney pdCmInAmt}} </td>
+            <td> {{formatMoney pdFeeAmt}} </td>
+            <td> {{clnInd-text}} </td>
+            <td> {{balInd-text}} </td>
+            <td> {{formatMoney rrPdPrAmt}} </td>
+            <td> {{formatMoney rrPdInAmt}} </td>
+            <td> {{formatMoney rrPdOvInAmt}} </td>
+            <td> {{formatMoney rrPdCmInAmt}} </td>
+            <td> {{formatMoney rrPdFeeAmt}} </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+  
+  <script type="text/x-handlebars-template" id="lnrpschdtl-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th> 还款日期 </th>
+            <th> 已还本金 </th>
+            <th> 已还利息 </th>
+            <th> 已还罚息 </th>
+            <th> 已还复利 </th>
+            <th> 已还费用 </th>
+            <th> 撤销标志 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{trDt}} </td>
+            <td> {{formatMoney payPrAmt}} </td>
+            <td> {{formatMoney payInAmt}} </td>
+            <td> {{formatMoney payOvInAmt}} </td>
+            <td> {{formatMoney payCmInAmt}} </td>
+            <td> {{formatMoney payFeeAmt}} </td>
+            <td> {{rrInd-text}} </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+  <script type="text/x-handlebars-template" id="lnintball-page-template">
+      {{{{raw}}}}
+      <div class="table-scrollable">
+          <table class="table table-striped table-bordered table-hover">
+              <thead>
+              <tr>
+                  <th> 序号 </th>
+                  <th> 结息日期 </th>
+                  <th> 计息开始日期 </th>
+                  <th> 计息结束日期 </th>
+                  <th> 结息计算方式 </th>
+                  <th> 逾期利率 </th>
+                  <th> 本金积数 </th>
+                  <th> 利息积数 </th>
+                  <th> 罚息积数 </th>
+                  <th> 复利积数 </th>
+                  <th> 费用积数 </th>
+                  <th> 结息罚息金额 </th>
+                  <th> 结息复利金额 </th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each page.content}}
+              <tr>
+                  <td> {{page-rowindex}} </td>
+                  <td> {{trDt}} </td>
+                  <td> {{stDt}} </td>
+                  <td> {{endDt}} </td>
+                  <td> {{balCalTyp-text}} </td>
+                  <td> {{formatPercentDecimals ovRt}} </td>
+                  <td> {{formatMoney pdPrAmt}} </td>
+                  <td> {{formatMoney pdInAmt}} </td>
+                  <td> {{formatMoney pdOvInAmt}} </td>
+                  <td> {{formatMoney pdCmInAmt}} </td>
+                  <td> {{formatMoney pdFeeAmt}} </td>
+                  <td> {{formatMoney ovInAmt}} </td>
+                  <td> {{formatMoney cmInAmt}} </td>
+              </tr>
+              {{/each}}
+              </tbody>
+          </table>
+      </div>
+    {{{{/raw}}}}
+        {{> pager}}
+    </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+  <!-- 页面组件模板 -->
+  {{#content "content-component"}}
+
+  {{/content}}
+    {{#content "content-pagination"}}
+    <!-- @Override -->
+    {{/content}}
+{{/extend}}

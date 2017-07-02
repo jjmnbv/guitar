@@ -1,0 +1,427 @@
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}产品新增</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <!-- @Override -->
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/product-set/product-set-add.css"/>
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <!--加载数据字典-->
+        <script src="{{path.base}}/script/cs/dicts?ids=28,44,66,18"></script>
+        <!-- @Override -->
+        <script src="{{path.base}}/script/cs/loantypeadd"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <!-- @Override -->
+        <script src="{{path.app}}/js/cs/product-set/product-set-add.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-pagination"}}{{/content}}
+    {{#content "content-main"}}
+        <!-- @Override -->
+        <div class="portlet box">
+            <div class="portlet light">
+                <div class="portlet-body">
+                    <div class="tabbable tabbable-tabdrop">
+                        <div class="ulBox">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab1" data-toggle="tab">
+                                        <img src="{{path.app}}/img/product-set/Group19.png"/>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab2" data-toggle="tab">
+                                        <img src="{{path.app}}/img/product-set/Group18.png"/>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab3" data-toggle="tab">
+                                        <img src="{{path.app}}/img/product-set/Group17.png"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+                                <div class="portlet-body">
+                                    <form action="" class="bsdForm clearfix form-minwid required" id="addFormStep01"
+                                          name="addFormStep01">
+                                        <div class="clearfix">
+                                        <div class="left-part">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">贷款类型</label>
+                                                    <div>
+                                                        <select id="loKiCd"
+                                                                name="loKiCd"
+                                                                class="form-control required"
+                                                                data-selectloader-store="loKiCdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                                data-selectloader-nselect="#loKiSubCd">
+                                                          <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">贷款子类型</label>
+                                                    <div>
+                                                        <select id="loKiSubCd"
+                                                                name="loKiSubCd"
+                                                                class="form-control required"
+                                                                data-selectloader-store="children"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name">
+                                                          <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">金融产品名称</label>
+                                                    <div>
+                                                        <input type="text" class="form-control required" name="loTyNa"
+                                                               id="loTyNa" maxlength="30">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group mar-btom">
+                                                    <label class="control-label fill">金融产品描述</label>
+                                                    <div>
+                                                        <input type="text" class="form-control required" name="loTyDe"
+                                                               id="loTyDe" maxlength="50">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right-part">
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    贷款类型主要包括：现金类贷款和消费分期类贷款
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    名称不超过30个汉字，设置的金融产品将用于借款用户贷款申请
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    产品描述不超过50个汉字
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-12 text-center">
+                                            <button type="button" class="btn blue mainCol" id="jumpStep02">下一步</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab2">
+                                <div class="portlet-body">
+                                    <form action="#" class="bsdForm clearfix form-minwid" id="addFormStep02">
+                                      <div class="clearfix">
+                                        <div class="left-part">
+                                        	<div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">单笔最小金额</label>
+                                                    <div>
+                                                        <input type="text" class="form-control required  minMoney moneyMax bindEvent ltRelateMon" id="minLoAm" data-gtRelateMon='maxLoAm' name="minLoAmRe">
+                                                        <input type="hidden" name="minLoAm" class="">      
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">单笔最大金额</label>
+                                                    <div>
+                                                        <input type="text" class="form-control required minMoney moneyMax bindEvent gtRelateMon" id="maxLoAm" data-ltRelateMon='minLoAm' name="maxLoAmRe">
+                                                        <input type="hidden" name="maxLoAm" class="">       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">最小贷款利率</label>
+                                                    <div>
+                                                        <input type="text" class="form-control required notEmpty rate rateFormat ltRelatePer"
+                                                               id="minLoRt" name="minLoRtRe" data-gtRelatePer='maxLoRt'>
+                                                        <input type="hidden" class="" name="minLoRt">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">最大贷款利率</label>
+                                                    <div>
+                                                        <input type="text" class="form-control required notEmpty rate rateFormat gtRelatePer"
+                                                               id="maxLoRt" name="maxLoRtRe" data-ltRelatePer='minLoRt'>
+                                                       <input type="hidden" class="" name="maxLoRt">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">支付方式</label>
+                                                    <div>
+                                                        <select id="payCd"
+                                                                name="payCd"
+                                                                class="form-control required"
+                                                                data-selectloader-store="payCdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                                onchange="selDirecPay(this)">
+                                                          <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group mar-btom">
+                                                    <label class="control-label fill">放款方式</label>
+                                                    <div>
+                                                        <select id="mlTyCd"
+                                                                name="mlTyCd"
+                                                                class="form-control required"
+                                                                data-selectloader-store="mlTyCdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                                data-selectloader-append=0
+                                                                >
+                                                          <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right-part">
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    单笔最小金额用于限定借款用户申请金额，低于最小金额则按照最小金额申请贷款
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    单笔最大金额用于限定借款用户申请金额，高于最大金额则按照最大金额申请贷款
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    用于限定利率，当计算后执行利率低于最小贷款利率则按照最小贷款利率
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    用于限定利率，当计算后执行利率高于最大贷款利率则按照最大贷款利率
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    受托支付是指贷款人根据借款人的提款申请和支付委托，将贷款资金支付给符合合同约定用途的借款人交易对象
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    立即放款：审批通过，一次性放款；分期放款：审批通过，多次放款
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" class="btn blue mainCol" id="backStep01">上一步</button>
+                                            <button type="button" class="btn blue mainCol" id="jumpStep03">下一步</button>
+                                        </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="tab3">
+                                <div class="portlet-body">
+                                    <form action="#" class="bsdForm clearfix form-minwid" id="addFormStep03">
+                                      <div class="clearfix">
+                                        <div class="left-part">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">关联材料集</label>
+                                                    <div>
+                                                        <select id="matId"
+                                                                name="matId"
+                                                                class="form-control required"
+                                                                data-selectloader-store="matIdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                        >
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">打印模板</label>
+                                                    <div>
+                                                        <select id="prnTeId"
+                                                                name="prnTeId"
+                                                                class="form-control required"
+                                                                data-selectloader-store="prnTeIdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                        >
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">债项评级</label>
+                                                    <div>
+                                                        <select id="drId"
+                                                                name="drId"
+                                                                class="form-control required"
+                                                                data-selectloader-store="drIdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                        >
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label class="control-label fill">审批权限</label>
+                                                    <div>
+                                                        <select id="lotusAmountId"
+						                                        name="lotusAmountId"
+						                                        class="form-control loanTypeLotusAmountDic required"
+						                                        data-selectloader-store="loanTypeLotusAmountDicList"
+						                                        data-selectloader-vkey="code"
+						                                        data-selectloader-tkey="name"
+						                                >
+						                                    <option value="">请选择</option>
+						                                </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group mar-btom">
+                                                    <label class="control-label fill">电核项目</label>
+                                                    <div>
+                                                        <select id="tcRuCd"
+                                                                name="tcRuCd"
+                                                                class="form-control required"
+                                                                data-selectloader-store="tcRuCdList"
+                                                                data-selectloader-vkey="code"
+                                                                data-selectloader-tkey="name"
+                                                        >
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right-part">
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    关联材料集用于配置借款用户申请时收取材料内容
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    打印模板用于配置贷款申请合同内容
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    用于对借款用户评级授信
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    用于设定业务流转过程中各操作岗位、人员的审批额度
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="text">
+                                                    配置该类型贷款产品电话核查内容
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-12 text-center">
+                                            <button type="button" class="btn blue mainCol" id="backStep02">上一步</button>
+                                            <button type="button" class="btn blue mainCol" id="jumpStepFinish">保存
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/content}}
+
+
+
+    <!-- 分页查询条件 pagination-form -->
+    {{#content "pagination-form"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 分页表格和分页页码 pagination-container -->
+    {{#content "pagination-container"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 页面模态框 -->
+    {{#content "content-free"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 页面组件模板 -->
+    {{#content "content-component"}}
+        <!-- @Override -->
+    {{/content}}
+
+{{/extend}}

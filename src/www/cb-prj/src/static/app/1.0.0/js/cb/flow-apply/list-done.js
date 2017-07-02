@@ -25,18 +25,17 @@
     var getHistoryTasks = function(){
         $.Bpm.getHistoryTasks(function(data){
             for(var i=0;i<data.length;i++){
-                if(data[i].handleOpinion == "撤销"){
-                    data[i].handleOpinion = '{"opinionId":"NH"}';
-                }
                 if(data[i].handleOpinion!=null) {
                     if (!data[i].handleOpinion.match("^\{(.+:.+,*){1,}\}$")) {
                         data[i].handleOpinion = $.parseJSON('{"opinionId":"TG", "opinionNote":"'+ data[i].handleOpinion +'"}');
                     } else {
                         data[i].handleOpinion = $.parseJSON(data[i].handleOpinion);
                     }
-                }else {
+                }else if(data[i].endTime){
                     data[i].handleOpinion = $.parseJSON('{"opinionId":"TG"}');
-                }
+                }else{
+					data[i].handleOpinion = $.parseJSON('{"opinionId":""}');
+				}
             }
             var tpl = Handlebars.compile($('#table4-page-template').html())({data:data});
             $("#partnerTable").html(tpl);

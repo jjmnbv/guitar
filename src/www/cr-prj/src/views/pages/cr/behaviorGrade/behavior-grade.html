@@ -1,0 +1,661 @@
+{{#extend "main"}}
+
+<!-- title BEGIN -->
+{{#content "title"}}
+<!-- @Override -->
+<title>行为评分</title>
+{{/content}}
+<!-- title END -->
+
+<!-- css-plugins BEGIN -->
+{{#content "css-plugins"}}
+{{/content}}
+<!-- css-plugins END -->
+
+<!-- css-main BEGIN -->
+{{#content "css-main"}}
+<!-- @Override -->
+{{/content}}
+<!-- css-main END -->
+
+<!-- js-loader BEGIN -->
+{{#content "js-loader"}}
+<script src="{{path.base}}/script/cr/behaviorGrade/behavior-grade.js"></script>
+{{/content}}
+<!-- js-loader END -->
+
+<!-- js-plugins BEGIN -->
+{{#content "js-plugins"}}
+{{/content}}
+<!-- js-plugins END -->
+
+<!-- js-main BEGIN -->
+{{#content "js-main"}}
+<!-- @Override -->
+<script src="{{path.app}}/js/cr/behaviorGrade/behavior-grade.js"></script>
+{{/content}}
+<!-- js-main END -->
+
+<!-- content-main BEGIN -->
+{{#content "content-main"}}
+<div id="innerLayout">
+    <div class="ui-layout-center">
+        <div class="pane-toggler" id="paneToggler"></div>
+        <form class="bsdForm dynamic-query-box" id="dynamicQueryBox" action="#">
+            <div class="dynamicCondRow">
+                <div class="form-group choose-input">
+                    <div>
+                        <select class="form-control" name="condition" id="firstCondition">
+                            <option value="0">请选择</option>
+                            <option value="1">实体唯一编号</option>
+                            <option value="2">实体名称</option>
+                            <option value="3">实体简称</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group choose-input">
+                    <div>
+                        <select class="form-control" name="express">
+                            <option value="1">等于</option>
+                            <option value="2">大于</option>
+                            <option value="3">小于</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group choose-input">
+                    <div>
+                        <input class="form-control" type="text" placeholder="具体值" name="queryVal">
+                    </div>
+                </div>
+                <div class="form-group opt-btn">
+                        <button id="addDynamic" class="btn btn-sm btn-info" type="button">+</button>
+                </div>
+                <div class="form-group">
+                        <button class="btn btn-sm btn-warning" id="query" type="button">查询</button>
+                </div>
+            </div>
+
+        </form>
+        <div class="portlet portlet-table">
+            <div class="table-info text-right"><span id="allBlacklistCount"></span>项</div>
+        </div>
+        <div class="ui-layout-content">
+            <table class="table table-striped table-bordered table-hover" width="99.9%" id="allBlacklistTable">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>借款人</th>
+                    <th>产品种类</th>
+                    <th>申请金额</th>
+                    <th>申请日期</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--<div class="ui-layout-north">North</div>-->
+    <!--<div class="ui-layout-south">South</div>-->
+    <div class="ui-layout-east portlet">
+            <div class="portlet-title clearfix">
+                <!--<div class="caption">贷款审批</div>-->
+                <div class="btn-on-title actions clearfix">
+                    <a href="javascript:;" title="刷新" id="refresh" class="Refresh-sign" data-toggle="tooltip"
+                       data-placement="bottom"></a>
+                    <a href="javascript:;" title="导出" id="export-excel" class="export-excel-sign" data-toggle="tooltip"
+                       data-placement="bottom"></a>
+                </div>
+            </div>
+            <div class="portlet-body ui-layout-content">
+                <div id="formBox1">
+
+                </div>
+            </div>
+
+
+        <!--<div class="tool-box">+ c x e s r</div>-->
+        <!---->
+        <!--<DIV class="ui-state-default" style="padding: 3px 5px 5px; text-align: center;"-->
+        <!--onMouseOver="$(this).addClass('ui-state-hover')" onMouseOut="$(this).removeClass('ui-state-hover')">-->
+        <!--Footer for the West-pane-->
+        <!--</DIV>-->
+    </div>
+    <!--<div class="ui-layout-west">West</div>-->
+</div>
+{{/content}}
+<!-- content-main END -->
+
+<!-- content-pagination BEGIN -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- content-pagination END -->
+
+<!-- pagination-form BEGIN -->
+{{#content "pagination-form"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-form END -->
+
+<!-- pagination-container BEGIN -->
+{{#content "pagination-container"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-container END -->
+
+<!-- pagination-free BEGIN -->
+{{#content "content-free"}}
+<script id="dynamicCondTmpl" type="text/x-handlebars-template">
+    <div class="dynamicCondRow">
+        <div class="form-group choose-input">
+            <div>
+                <select class="form-control" name="condition">
+                    <option value="0">请选择</option>
+                    <option value="1">实体唯一编号</option>
+                    <option value="2">实体名称</option>
+                    <option value="3">实体简称</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group choose-input">
+            <div>
+                <select class="form-control" name="express">
+                    <option value="1">等于</option>
+                    <option value="2">大于</option>
+                    <option value="3">小于</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group choose-input">
+            <div>
+                <input class="form-control" type="text" placeholder="具体值" name="queryVal">
+            </div>
+        </div>
+        <div class="form-group opt-btn">
+                <button class="btn btn-sm btn-info removeDynamic" type="button">-</button>
+        </div>
+    </div>
+</script>
+<script id="formTmpl1" type="text/x-handlebars-template">
+    <form class="bsdForm apySco-form">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">业务申请</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group one-row">
+                    <label class="control-label">业务流水号:</label>
+                    <div>
+                        <input type="text" class="form-control" name="brNo" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">产品种类:</label>
+                    <div>
+                        <select name="prdTyp"
+                                class="form-control prdTyp"
+                                id="prdTyp"
+                                data-selectloader-store="prdTyp"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">申请金额:</label>
+                    <div>
+                        <input type="text" class="form-control" name="apyAmt" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">申请日期:</label>
+                    <div>
+                        <input type="text" class="form-control" name="apyDate" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">货币代码:</label>
+                    <div>
+                        <input type="text" class="form-control" name="curNo" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">贷款用途:</label>
+                    <div>
+                        <select name="loanUse"
+                                class="form-control loanUse"
+                                id="loanUse"
+                                data-selectloader-store="loanUse"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款方式:</label>
+                    <div>
+                        <select name="repTyp"
+                                class="form-control repTyp"
+                                id="repTyp"
+                                data-selectloader-store="repTyp"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">申请年限:</label>
+                    <div>
+                        <select name="apyYear"
+                                class="form-control apyYear"
+                                id="apyYear"
+                                data-selectloader-store="apyYear"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">申请编号:</label>
+                    <div>
+                        <input type="text" class="form-control" name="apyNo" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">实体信息</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group one-row">
+                    <label class="control-label">实体唯一编号:</label>
+                    <div>
+                        <input type="text" class="form-control" name="enityNo" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">ID:</label>
+                    <div>
+                        <input type="text" class="form-control" name="ID" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">证件类型:</label>
+                    <div>
+                        <select name="idType"
+                                class="form-control idType"
+                                id="idType"
+                                data-selectloader-store="idType"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">证件号码:</label>
+                    <div>
+                        <input type="text" class="form-control" name="idNo" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">年龄:</label>
+                    <div>
+                        <input type="text" class="form-control" name="age" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">居住地址:</label>
+                    <div>
+                        <input type="text" class="form-control" name="address" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">工资银行卡号:</label>
+                    <div>
+                        <input type="text" class="form-control" name="bankNo" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">婚姻状况:</label>
+                    <div>
+                        <select name="isMale"
+                                class="form-control isMale"
+                                id="isMale"
+                                data-selectloader-store="isMale"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">QQ号:</label>
+                    <div>
+                        <input type="text" class="form-control" name="qq" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">邮箱:</label>
+                    <div>
+                        <input type="text" class="form-control" name="email" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">学历:</label>
+                    <div>
+                        <select name="eduTyp"
+                                class="form-control eduTyp"
+                                id="eduTyp"
+                                data-selectloader-store="eduTyp"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">是否有私家车:</label>
+                    <div>
+                        <select name="isCar"
+                                class="form-control isCar"
+                                id="isCar"
+                                data-selectloader-store="isCar"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">是否有社保/公积金:</label>
+                    <div>
+                        <select name="isSecurity"
+                                class="form-control isSecurity"
+                                id="isSecurity"
+                                data-selectloader-store="isSecurity"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">决策结果</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group one-row">
+                    <label class="control-label">借款人违约PD:</label>
+                    <div>
+                        <input type="text" class="form-control" name="decResult" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+<!--<script id="formTmpl1" type="text/x-handlebars-template">
+    <form class="bsdForm">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">业务申请</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group one-row">
+                    <label for="brNo" class="control-label fill">业务流水号</label>
+                    <div>
+                        <input type="text" class="form-control required" name="brNo" id="brNo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prdTyp" class="control-label fill">产品种类</label>
+                    <div>
+                        <select name="prdTyp"
+                                class="form-control required prdTyp"
+                                id="prdTyp"
+                                data-selectloader-store="prdTyp"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label fill">申请金额</label>
+                    <div>
+                        <input type="text" class="form-control" name="apyAmt" id="apyAmt">
+                    </div>
+                </div>
+                <div class="form-group form-group-sel single">
+                    <label class="control-label">申请日期</label>
+                    <div class="selBox">
+                        <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                             data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                             data-date-language="zh-CN">
+                            <input type="text" class="form-control uniform-input text" name="bizDt">
+                            <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">货币代码</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">贷款用途</label>
+                    <div>
+                        <select name="loanUse"
+                                class="form-control loanUse"
+                                id="loanUse"
+                                data-selectloader-store="loanUse"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">还款方式</label>
+                    <div>
+                        <select name="repTyp"
+                                class="form-control repTyp"
+                                id="repTyp"
+                                data-selectloader-store="repTyp"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">申请年限</label>
+                    <div>
+                        <select name="apyYear"
+                                class="form-control apyYear"
+                                id="apyYear"
+                                data-selectloader-store="apyYear"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">申请编号</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">实体信息</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group one-row">
+                    <label for="brNo" class="control-label fill">实体唯一编号</label>
+                    <div>
+                        <input type="text" class="form-control required" name="brNo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">ID</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">证件类型</label>
+                    <div>
+                        <select name="idType"
+                                class="form-control idType"
+                                id="idType"
+                                data-selectloader-store="idType"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">证件号码</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">年龄</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">居住地址</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">工资银行卡号</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">婚姻状况</label>
+                    <div>
+                        <select name="isMale"
+                                class="form-control isMale"
+                                id="isMale"
+                                data-selectloader-store="isMale"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">QQ号</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">邮箱</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">学历</label>
+                    <div>
+                        <select name="eduTyp"
+                                class="form-control eduTyp"
+                                id="eduTyp"
+                                data-selectloader-store="eduTyp"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">是否有私家车</label>
+                    <div>
+                        <select name="isCar"
+                                class="form-control isCar"
+                                id="isCar"
+                                data-selectloader-store="isCar"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">是否有社保/公积金</label>
+                    <div>
+                        <select name="isSecurity"
+                                class="form-control isSecurity"
+                                id="isSecurity"
+                                data-selectloader-store="isSecurity"
+                                data-selectloader-vkey="code"
+                                data-selectloader-tkey="name">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">决策结果</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group one-row">
+                    <label class="control-label">申请评分决策结果</label>
+                    <div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>-->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

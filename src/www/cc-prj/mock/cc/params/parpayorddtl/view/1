@@ -1,0 +1,7 @@
+{
+  "payOrdCd":1,
+  "payAmtTyp":1,
+  "payPro":1,
+  "resultCode": "SUCCESS",
+  "errors": []
+}

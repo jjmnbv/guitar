@@ -1,0 +1,17 @@
+.portlet{
+   background: #fff;
+   padding:15px 0;
+ }
+td .form-control{
+	background-color:#FFF0DF;
+	text-align:center;
+}
+/*.show-style{
+    background:#FFF0DF;
+}
+.edit-style{
+    background: #fff;
+}*/
+.edit-input-hidden{
+    display: none !important;
+}

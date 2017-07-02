@@ -1,0 +1,92 @@
+/*     标签页切换样式覆盖   start     */
+.tabbable-bgwhite{
+    padding-bottom: 10px;
+
+}
+.tab-title-bor{
+    position: relative;
+}
+.page-content,
+.portlet.light{
+    background-color: #F5F5F5;
+}
+.portlet.light.bordered {
+    border: 0 none !important;
+    background: #fff;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #FDC587;
+    padding-left: 0;
+    position:relative;
+}
+.nav-tabs > li > a {
+    display: block;
+    width:130px;
+    color: #3b3b3b;
+    background: none;
+    height:44px;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover ,
+.nav-tabs>li>a:focus,
+.nav-tabs>li>a:hover{
+    border: 0;
+    border-bottom: 3px solid #FDC587;
+    color: #FDC587;
+    background: no-repeat;
+}
+
+/*     标签页切换样式覆盖   end     */
+.bsdForm{
+    background: #fff;
+}
+.form-row{
+    padding:15px 0;
+}
+.search-btn-wrap{
+    padding-bottom:15px;
+}
+.portlet-list{
+    overflow: hidden;
+}
+.protlet-le{
+    width:30%;
+    height:400px;
+    overflow-y: scroll;
+    padding-left:15px;
+}
+.td-record{
+   overflow: hidden;
+}
+.td-record span, .td-record label{
+    display: block;
+    float: left;
+}
+.td-record span{
+    max-width:160px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.margin-bottom{
+    margin-bottom: 15px;
+}
+.protlet-ri{
+    width:70%;
+    min-height:350px;
+    padding:15px;
+}
+.protlet-ri .table-scrollable{
+    min-height:inherit !important;
+}
+.tabbable-tabdrop{
+    position: relative;
+}
+.btn-back{
+    position: absolute;
+    bottom:0;
+    right:0;
+}

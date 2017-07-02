@@ -1,0 +1,12 @@
+[{
+  "content":[{
+    "id":1,
+    "batId":"",
+    "batNa":"",
+    "exDt":"",
+    "exSt":"",
+    "erMsg":"",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

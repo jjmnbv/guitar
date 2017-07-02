@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "text": "主页",
+  "url": "/index",
+  "style": "{\"iconClassName\":\"icon-home\"}",
+  "level": 1,
+  "dispOrder": 0,
+  "createTime": null,
+  "updateTime": null,
+  "children": [],
+  "actions": [],
+  "styleObject": null
+}

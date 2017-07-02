@@ -1,0 +1,79 @@
+.login-tit {
+    text-align: center;
+    background-color: #fff;
+    padding-top: 100px;
+}
+
+.login-tit h1 {
+    font-size: 48px;
+    color: #ff4e00;
+    font-weight: normal;
+}
+
+.login-tit P {
+    font-size: 24px;
+    color: #ff8c59;
+}
+.login-bg{
+    background: url("/static/app/1.0.0/img/login/login-backgrounds.png");
+    background-size:100% 100%;
+    background-position: center top;
+    padding-top: 110px;
+    padding-bottom: 80px;
+}
+.login-content {
+    width: 684px;
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-bottom: 55px;
+    background-color: #f8f8f8;
+    background-image: url("/static/app/1.0.0/img/login/logo.png");
+    background-repeat: no-repeat;
+    background-position: 40px 50%;
+}
+
+.login-cont {
+    margin-left: 300px;
+}
+
+.login-input {
+    margin-top: 15px;
+    margin-bottom: 18px;
+}
+
+.login-input input {
+    width: 285px;
+    height: 40px;
+    font-size: 18px;
+    color: #dcdcdc;
+    padding-left: 15px;
+    border: 1px solid #dedada;
+}
+
+.login-btn {
+    width: 300px;
+    height: 40px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(#47b2f6,#0d8ad0);
+    border: none;
+    margin-top: 30px;
+}
+
+.wrong{
+    color: #ff0000;
+}
+.copyright{
+    text-align: center;
+    padding-top: 75px;
+    padding-bottom: 150px;
+    background-color: #fff;
+}
+.copyright p{
+    font-size: 14px;
+    color: #dfdad8;
+    line-height: 20px;
+}
+.copyright span{
+    margin-left: 28px;
+}

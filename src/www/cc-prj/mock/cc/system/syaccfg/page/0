@@ -1,0 +1,25 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "acCd":1,
+    "busTyp":1,
+    "amtTyp":1,
+    "acSubCd":"科目子序号",
+    "acNm":"科目名称",
+    "ioTyp":"表内外标志",
+    "cdTyp":"金额方向",
+    "ldInd":"是否记账",
+    "acInd":"是否生成分户账",
+    "neInd":"发生额是否允许为负数",
+    "acNeInd":"分户余额是否允许为负数",
+    "acStChk":"结清检查",
+    "sendInd":"是否发生外部系统",
+    "resultCode": "SUCCESS"
+  }]
+}

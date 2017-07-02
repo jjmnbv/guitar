@@ -1,0 +1,16 @@
+{
+    "pkId": {
+        "id": 53,
+        "code": "GS"
+    },
+    "version": 1,
+    "name": "共同申请人",
+    "status": "JH",
+    "subId": null,
+    "subCode": null,
+    "dispOrder": 2,
+    "ciCode": "A",
+    "createDate": "2016-11-05",
+    "lastUpdate": "2016-11-05",
+    "lastUpdateUserId": 1
+}

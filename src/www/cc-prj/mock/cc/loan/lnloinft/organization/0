@@ -1,0 +1,43 @@
+{
+    "content":[
+        {
+            "id":0,
+            "code":"2012301230123",
+            "name":"机构名称1",
+            "description":"机构描述",
+            "nodeLevel":"机构级别"
+        },
+        {
+            "id":1,
+            "code":"201230122123",
+            "name":"机构名称1",
+            "description":"机构描述",
+            "nodeLevel":"机构级别"
+        },
+        {
+            "id":2,
+            "code":"201211122123",
+           "name":"机构名称1",
+           "description":"机构描述",
+           "nodeLevel":"机构级别"
+        },
+        {
+            "id":3,
+            "code":"2122230122123",
+            "name":"机构名称1",
+            "description":"机构描述",
+            "nodeLevel":"机构级别"
+        }
+    ],
+    "resultCode":"SUCCESS",
+    "totalElements": 23,
+    "totalPages": 3,
+    "size": 9,
+    "number": 0,
+    "numberOfElements": 20,
+    "pages": [
+        1,
+        2,
+        3
+    ]
+}

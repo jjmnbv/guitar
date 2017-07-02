@@ -25,9 +25,11 @@ $(function () {
                     } else {
                         data[i].handleOpinion = $.parseJSON(data[i].handleOpinion);
                     }
-                }else {
+                }else if(data[i].endTime){
                     data[i].handleOpinion = $.parseJSON('{"opinionId":"TG"}');
-                }
+                }else{
+					data[i].handleOpinion = $.parseJSON('{"opinionId":""}');
+				}
             }
             var tpl = Handlebars.compile($('#table4-page-template').html())({data:data});
             $("#partnerTable").html(tpl);

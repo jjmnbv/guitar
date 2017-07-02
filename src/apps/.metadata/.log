@@ -1,4 +1,4 @@
-!SESSION 2017-06-28 23:00:08.781 -----------------------------------------------
+!SESSION 2017-07-01 10:50:39.902 -----------------------------------------------
 eclipse.buildId=4.5.2.M20160212-1500
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
@@ -6,12 +6,12 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
 Framework arguments:  -product org.eclipse.epp.package.jee.product -application org.eclipse.ant.core.antRunner -buildfile /Users/xukaiqiang/Documents/workspace/jee/src/apps/scripts/eclipse.xml
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/jee/src/apps -application org.eclipse.ant.core.antRunner -buildfile /Users/xukaiqiang/Documents/workspace/jee/src/apps/scripts/eclipse.xml
 
-!ENTRY org.eclipse.core.net 1 0 2017-06-28 23:00:12.333
+!ENTRY org.eclipse.core.net 1 0 2017-07-01 10:50:43.499
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY org.eclipse.core.resources 2 10035 2017-06-28 23:00:13.762
+!ENTRY org.eclipse.core.resources 2 10035 2017-07-01 10:50:44.924
 !MESSAGE The workspace will exit with unsaved changes in this session.
-!SESSION 2017-06-28 23:00:33.100 -----------------------------------------------
+!SESSION 2017-07-01 10:51:00.119 -----------------------------------------------
 eclipse.buildId=4.5.2.M20160212-1500
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
@@ -19,31 +19,31 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/jee/src/apps
 
-!ENTRY org.eclipse.core.resources 2 10035 2017-06-28 23:00:34.670
+!ENTRY org.eclipse.core.resources 2 10035 2017-07-01 10:51:01.722
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 
-!ENTRY org.eclipse.ui 2 0 2017-06-28 23:00:35.231
+!ENTRY org.eclipse.ui 2 0 2017-07-01 10:51:02.309
 !MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
-!SUBENTRY 1 org.eclipse.ui 2 0 2017-06-28 23:00:35.231
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-01 10:51:02.309
 !MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
 
-!ENTRY org.eclipse.core.net 1 0 2017-06-28 23:00:35.331
+!ENTRY org.eclipse.core.net 1 0 2017-07-01 10:51:02.437
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY org.eclipse.ui 2 0 2017-06-28 23:00:36.230
+!ENTRY org.eclipse.ui 2 0 2017-07-01 10:51:03.165
 !MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
-!SUBENTRY 1 org.eclipse.ui 2 0 2017-06-28 23:00:36.230
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-01 10:51:03.165
 !MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
 
-!ENTRY org.eclipse.jface 2 0 2017-06-28 23:00:40.438
+!ENTRY org.eclipse.jface 2 0 2017-07-01 10:51:06.650
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2017-06-28 23:00:40.438
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-07-01 10:51:06.650
 !MESSAGE A conflict occurred for ALT+COMMAND+T:
 Binding(ALT+COMMAND+T,
 	ParameterizedCommand(Command(pl.szpinda.plugin.tomcat.commands.tomcatStartStop,Tomcat start,stop,
 		,
 		Category(pl.szpinda.plugin.tomcat.commands.category.key,Tomcat keys,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5eff5e4c,
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5b5a89d1,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -51,74 +51,7 @@ Binding(ALT+COMMAND+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu,Show Refactor Quick Menu,
 		Shows the refactor quick menu,
 		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2fe2fcc2,
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@267b678f,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,cocoa,system)
-
-!ENTRY org.eclipse.jdt.launching 4 113 2017-06-28 23:04:57.487
-!MESSAGE Failed to connect to remote VM. Connection refused.
-!STACK 0
-java.net.ConnectException: Connection refused (Connection refused)
-	at java.net.PlainSocketImpl.socketConnect(Native Method)
-	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.net.Socket.connect(Socket.java:589)
-	at java.net.Socket.connect(Socket.java:538)
-	at java.net.Socket.<init>(Socket.java:434)
-	at java.net.Socket.<init>(Socket.java:211)
-	at org.eclipse.jdi.internal.connect.SocketTransportService$2.run(SocketTransportService.java:148)
-	at java.lang.Thread.run(Thread.java:748)
-
-!ENTRY org.eclipse.ui.navigator.resources 4 0 2017-06-28 23:05:44.870
-!MESSAGE Could not acquire INavigatorContentService: Project Explorer not found.
-
-!ENTRY org.eclipse.epp.logging.aeri.ide 2 10 2017-06-28 23:10:42.618
-!MESSAGE Updating the index from remote failed. ; version: 1.100.0.v20160217-0435
-!STACK 0
-java.io.EOFException: Unexpected end of ZLIB input stream
-	at java.util.zip.InflaterInputStream.fill(InflaterInputStream.java:240)
-	at java.util.zip.InflaterInputStream.read(InflaterInputStream.java:158)
-	at java.util.zip.ZipInputStream.read(ZipInputStream.java:194)
-	at java.io.FilterInputStream.read(FilterInputStream.java:107)
-	at com.google.common.io.ByteStreams.copy(ByteStreams.java:169)
-	at com.google.common.io.ByteSink.writeFrom(ByteSink.java:134)
-	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.Zips.unzip(Zips.java:82)
-	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerProblemsHistory$UpdateIndexJob.run(ServerProblemsHistory.java:293)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-
-!ENTRY org.eclipse.egit.core 4 0 2017-06-28 23:58:06.905
-!MESSAGE An exception occurred during push on URI https://github.com/supermanxkq/jee.git: https://github.com/supermanxkq/jee.git: Error writing request body to server
-!STACK 0
-org.eclipse.jgit.errors.TransportException: https://github.com/supermanxkq/jee.git: Error writing request body to server
-	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:218)
-	at org.eclipse.jgit.transport.TransportHttp$SmartHttpPushConnection.doPush(TransportHttp.java:807)
-	at org.eclipse.jgit.transport.BasePackPushConnection.push(BasePackPushConnection.java:153)
-	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:166)
-	at org.eclipse.jgit.transport.Transport.push(Transport.java:1200)
-	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:197)
-	at org.eclipse.egit.ui.internal.push.PushOperationUI.execute(PushOperationUI.java:167)
-	at org.eclipse.egit.ui.internal.push.PushOperationUI$1.run(PushOperationUI.java:229)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-Caused by: java.io.IOException: Error writing request body to server
-	at sun.net.www.protocol.http.HttpURLConnection$StreamingOutputStream.checkError(HttpURLConnection.java:3518)
-	at sun.net.www.protocol.http.HttpURLConnection$StreamingOutputStream.write(HttpURLConnection.java:3501)
-	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:122)
-	at org.eclipse.jgit.util.TemporaryBuffer.write(TemporaryBuffer.java:160)
-	at org.eclipse.jgit.util.io.TimeoutOutputStream.write(TimeoutOutputStream.java:113)
-	at org.eclipse.jgit.internal.storage.pack.PackOutputStream.write(PackOutputStream.java:126)
-	at org.eclipse.jgit.internal.storage.file.PackFile.copyAsIs2(PackFile.java:548)
-	at org.eclipse.jgit.internal.storage.file.PackFile.copyAsIs(PackFile.java:363)
-	at org.eclipse.jgit.internal.storage.file.WindowCursor.copyObjectAsIs(WindowCursor.java:189)
-	at org.eclipse.jgit.internal.storage.pack.PackWriter.writeObjectImpl(PackWriter.java:1482)
-	at org.eclipse.jgit.internal.storage.pack.PackWriter.writeObject(PackWriter.java:1459)
-	at org.eclipse.jgit.internal.storage.pack.PackOutputStream.writeObject(PackOutputStream.java:164)
-	at org.eclipse.jgit.internal.storage.file.WindowCursor.writeObjects(WindowCursor.java:195)
-	at org.eclipse.jgit.internal.storage.pack.PackWriter.writeObjects(PackWriter.java:1447)
-	at org.eclipse.jgit.internal.storage.pack.PackWriter.writeObjects(PackWriter.java:1435)
-	at org.eclipse.jgit.internal.storage.pack.PackWriter.writePack(PackWriter.java:998)
-	at org.eclipse.jgit.transport.BasePackPushConnection.writePack(BasePackPushConnection.java:306)
-	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:198)
-	... 8 more

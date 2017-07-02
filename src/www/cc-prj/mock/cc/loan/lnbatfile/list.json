@@ -1,0 +1,25 @@
+[{
+  "content":[{
+    "batNo":1,
+    "subNo":1,
+    "trDt":"交易日期",
+    "sysId":"系统标识",
+    "fiSts":"文件状态",
+    "sndStep":"发送步骤",
+    "fiNm":"文件名",
+    "chkFlNm":"校验文件名",
+    "rtnFiNm":"回执文件名",
+    "rtnChkFlNm":"回执校验文件名",
+    "sendTm":"发送时间",
+    "sendNum":1,
+    "sendCnt":1,
+    "sendAmt":1,
+    "rtnTm":"取回时间",
+    "rtnNum":1,
+    "rtnCnt":1,
+    "rtnAmt":1,
+    "sucInd":"成功标志",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

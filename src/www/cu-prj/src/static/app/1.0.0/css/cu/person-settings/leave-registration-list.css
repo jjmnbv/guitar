@@ -1,0 +1,43 @@
+
+.portlet > .portlet-title {
+    background-color: #ffffff;
+    position: relative;
+    padding: 0 10px;
+}
+
+/*.search .portlet .search-btn-wrap {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+}*/
+
+.portlet .search-btn-wrap .btn {
+    font-weight: normal;
+}
+
+.portlet > .portlet-title > .tools {
+    float: left;
+    margin-left: 14px;
+}
+
+.portlet > .portlet-title > .caption {
+    color: #3c3c3c;
+    font-size: 14px;
+    padding: 0;
+    line-height: 35px;
+}
+
+.portlet > .portlet-title > .actions a {
+    margin-right: 1em;
+}
+.portlet > .portlet-title > .actions a {
+    margin-right: 1em;
+}
+.portlet>.portlet-title{
+    margin-bottom: 0px!important;
+    height: 35px;
+    border: none;
+}
+.portlet>.portlet-title>.actions {
+    padding: 3px 0!important;
+}

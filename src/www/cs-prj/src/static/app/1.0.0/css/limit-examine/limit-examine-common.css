@@ -1,0 +1,78 @@
+.bsdForm{
+    width: 100% !important;
+}
+.bsdForm .form-group > label{
+    width: 19em;
+}
+.bsdForm .portlet > .portlet-title {
+    background-color: #eaebeb;
+    position: relative;
+}
+.bsdForm .portlet>.portlet-title>.caption{
+    color: #3c3c3c;
+    font-size: 14px;
+    padding: 0;
+    line-height: 3;
+}
+.bsdForm .form-group > div{
+    width: 180px!important;
+}
+.bsdForm .date-picker-page span.input-group-btn{
+    display: inline;
+    position: absolute;
+    top: 0px;
+    right: 36px;
+}
+.bsdForm .form-group > div > input[readonly] {
+    background-color: #fff;
+}
+.form-horizontal .radio{
+    padding-top: 0px!important;
+}
+.center{
+    text-align: center;
+}
+.table td input{
+    text-align: center;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fff;
+    opacity: 1;
+}
+
+.bsdForm .form-group span.help-block {
+    bottom: -25px;
+    /*right: 106px;*/
+}
+input.uniform-input, select.uniform-multiselect, textarea.uniform{
+    background-image: none!important;
+    background-color: #ffffff;
+}
+input.uniform-input.hover, input.uniform-input.focus, select.uniform-multiselect.hover, select.uniform-multiselect.focus, textarea.uniform.hover, textarea.uniform.focus{
+    border-color: #cccccc;
+}
+
+.tableBody td{
+    padding:5px 10px!important;
+
+}
+.tableBody input{
+    text-align: center;
+}
+
+.shell,.shell-text{
+    display: inline-block;
+    vertical-align: middle;
+   /* margin-top: -17px;*/
+}
+.bsdForm .form-group > div.shell{
+    width: 80%!important;
+}
+.bsdForm .form-group > div.shell-text{
+    width: 17%!important;
+    padding-top: 5px;
+}
+.shell span{
+    top: 25px;
+}
+

@@ -1,0 +1,713 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>收付记录信息表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cc/loan/lnrepainf"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/loan/lnrepainf.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="form-horizontal pagination-form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">借据号:</label>
+              <div class="col-md-9">
+                <input name="loNo" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">收付类型:</label>
+              <div class="col-md-9">
+                <input name="rpTyp" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">生效日期:</label>
+              <div class="col-md-9">
+                <input name="valDt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">币种:</label>
+              <div class="col-md-9">
+                <input name="curTyp" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">收付金额:</label>
+              <div class="col-md-9">
+                <input name="rpAmt" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">账号:</label>
+              <div class="col-md-9">
+                <input name="acNo" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">科目编号:</label>
+              <div class="col-md-9">
+                <input name="subCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">账户名称:</label>
+              <div class="col-md-9">
+                <input name="acNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">账户币种:</label>
+              <div class="col-md-9">
+                <input name="acCurTyp" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">结算状态:</label>
+              <div class="col-md-9">
+                <input name="setlSts" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">账户代码:</label>
+              <div class="col-md-9">
+                <input name="acCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">账户类型代码:</label>
+              <div class="col-md-9">
+                <input name="acTypCde" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户证件类型:</label>
+              <div class="col-md-9">
+                <input name="acCertTyp" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户证件号:</label>
+              <div class="col-md-9">
+                <input name="acCertId" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户银行代码:</label>
+              <div class="col-md-9">
+                <input name="acBankCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户银行名称:</label>
+              <div class="col-md-9">
+                <input name="acBankNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户银行机构编号:</label>
+              <div class="col-md-9">
+                <input name="acBankBrCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户银行机构名称:</label>
+              <div class="col-md-9">
+                <input name="acBankBrNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户银行所属城市代码:</label>
+              <div class="col-md-9">
+                <input name="acBankAreaCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">开户银行地址:</label>
+              <div class="col-md-9">
+                <input name="acBankAdr" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">账户别名:</label>
+              <div class="col-md-9">
+                <input name="acAnoNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption"><i class="fa fa-list"></i> 收付记录信息表列表 </div>
+      <div class="actions">
+        <div class="btn-group btn-group-devided" data-toggle="buttons">
+          <a href="#" title="新增" data-target="#lnrepainf-add-modal" data-toggle="modal" class=""><img src="{{path.app}}/img/icon/group_3.png"/></a>
+          <a href="javascript:;" class="pagination-reload"><img src="{{path.app}}/img/icon/group_5.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/LNREPAINF_PAGE"
+          data-page-template-id="lnrepainf-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <div id="lnrepainf-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增收付记录信息表</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/LNREPAINF_CREATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="buzSeqNo" readonly="readonly">
+              <input type="hidden" name="subNo" readonly="readonly">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">借据号:</label>
+                    <div class="col-md-9">
+                      <input name="loNo" type="text" class="form-control input-sm" placeholder="请输入借据号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">收付类型:</label>
+                    <div class="col-md-9">
+                      <input name="rpTyp" type="text" class="form-control input-sm" placeholder="请输入收付类型...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">生效日期:</label>
+                    <div class="col-md-9">
+                      <input name="valDt" type="text" class="form-control input-sm" placeholder="请输入生效日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">币种:</label>
+                    <div class="col-md-9">
+                      <input name="curTyp" type="text" class="form-control input-sm" placeholder="请输入币种...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">收付金额:</label>
+                    <div class="col-md-9">
+                      <input name="rpAmt" type="text" class="form-control input-sm" placeholder="请输入收付金额...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账号:</label>
+                    <div class="col-md-9">
+                      <input name="acNo" type="text" class="form-control input-sm" placeholder="请输入账号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">科目编号:</label>
+                    <div class="col-md-9">
+                      <input name="subCd" type="text" class="form-control input-sm" placeholder="请输入科目编号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户名称:</label>
+                    <div class="col-md-9">
+                      <input name="acNa" type="text" class="form-control input-sm" placeholder="请输入账户名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户币种:</label>
+                    <div class="col-md-9">
+                      <input name="acCurTyp" type="text" class="form-control input-sm" placeholder="请输入账户币种...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">结算状态:</label>
+                    <div class="col-md-9">
+                      <input name="setlSts" type="text" class="form-control input-sm" placeholder="请输入结算状态...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户代码:</label>
+                    <div class="col-md-9">
+                      <input name="acCd" type="text" class="form-control input-sm" placeholder="请输入账户代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户类型代码:</label>
+                    <div class="col-md-9">
+                      <input name="acTypCde" type="text" class="form-control input-sm" placeholder="请输入账户类型代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户证件类型:</label>
+                    <div class="col-md-9">
+                      <input name="acCertTyp" type="text" class="form-control input-sm" placeholder="请输入开户证件类型...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户证件号:</label>
+                    <div class="col-md-9">
+                      <input name="acCertId" type="text" class="form-control input-sm" placeholder="请输入开户证件号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行代码:</label>
+                    <div class="col-md-9">
+                      <input name="acBankCd" type="text" class="form-control input-sm" placeholder="请输入开户银行代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行名称:</label>
+                    <div class="col-md-9">
+                      <input name="acBankNa" type="text" class="form-control input-sm" placeholder="请输入开户银行名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行机构编号:</label>
+                    <div class="col-md-9">
+                      <input name="acBankBrCd" type="text" class="form-control input-sm" placeholder="请输入开户银行机构编号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行机构名称:</label>
+                    <div class="col-md-9">
+                      <input name="acBankBrNa" type="text" class="form-control input-sm" placeholder="请输入开户银行机构名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行所属城市代码:</label>
+                    <div class="col-md-9">
+                      <input name="acBankAreaCd" type="text" class="form-control input-sm" placeholder="请输入开户银行所属城市代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行地址:</label>
+                    <div class="col-md-9">
+                      <input name="acBankAdr" type="text" class="form-control input-sm" placeholder="请输入开户银行地址...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户别名:</label>
+                    <div class="col-md-9">
+                      <input name="acAnoNa" type="text" class="form-control input-sm" placeholder="请输入账户别名...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lnrepainf-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑收付记录信息表<span class="edit_lnrepainf_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/LNREPAINF_UPDATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="buzSeqNo" readonly="readonly" required>
+              <input type="hidden" name="subNo" readonly="readonly" required>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">借据号:</label>
+                    <div class="col-md-9">
+                      <input name="loNo" type="text" class="form-control input-sm" placeholder="请输入借据号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">收付类型:</label>
+                    <div class="col-md-9">
+                      <input name="rpTyp" type="text" class="form-control input-sm" placeholder="请输入收付类型...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">生效日期:</label>
+                    <div class="col-md-9">
+                      <input name="valDt" type="text" class="form-control input-sm" placeholder="请输入生效日期...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">币种:</label>
+                    <div class="col-md-9">
+                      <input name="curTyp" type="text" class="form-control input-sm" placeholder="请输入币种...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">收付金额:</label>
+                    <div class="col-md-9">
+                      <input name="rpAmt" type="text" class="form-control input-sm" placeholder="请输入收付金额...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账号:</label>
+                    <div class="col-md-9">
+                      <input name="acNo" type="text" class="form-control input-sm" placeholder="请输入账号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">科目编号:</label>
+                    <div class="col-md-9">
+                      <input name="subCd" type="text" class="form-control input-sm" placeholder="请输入科目编号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户名称:</label>
+                    <div class="col-md-9">
+                      <input name="acNa" type="text" class="form-control input-sm" placeholder="请输入账户名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户币种:</label>
+                    <div class="col-md-9">
+                      <input name="acCurTyp" type="text" class="form-control input-sm" placeholder="请输入账户币种...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">结算状态:</label>
+                    <div class="col-md-9">
+                      <input name="setlSts" type="text" class="form-control input-sm" placeholder="请输入结算状态...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户代码:</label>
+                    <div class="col-md-9">
+                      <input name="acCd" type="text" class="form-control input-sm" placeholder="请输入账户代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户类型代码:</label>
+                    <div class="col-md-9">
+                      <input name="acTypCde" type="text" class="form-control input-sm" placeholder="请输入账户类型代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户证件类型:</label>
+                    <div class="col-md-9">
+                      <input name="acCertTyp" type="text" class="form-control input-sm" placeholder="请输入开户证件类型...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户证件号:</label>
+                    <div class="col-md-9">
+                      <input name="acCertId" type="text" class="form-control input-sm" placeholder="请输入开户证件号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行代码:</label>
+                    <div class="col-md-9">
+                      <input name="acBankCd" type="text" class="form-control input-sm" placeholder="请输入开户银行代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行名称:</label>
+                    <div class="col-md-9">
+                      <input name="acBankNa" type="text" class="form-control input-sm" placeholder="请输入开户银行名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行机构编号:</label>
+                    <div class="col-md-9">
+                      <input name="acBankBrCd" type="text" class="form-control input-sm" placeholder="请输入开户银行机构编号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行机构名称:</label>
+                    <div class="col-md-9">
+                      <input name="acBankBrNa" type="text" class="form-control input-sm" placeholder="请输入开户银行机构名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行所属城市代码:</label>
+                    <div class="col-md-9">
+                      <input name="acBankAreaCd" type="text" class="form-control input-sm" placeholder="请输入开户银行所属城市代码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">开户银行地址:</label>
+                    <div class="col-md-9">
+                      <input name="acBankAdr" type="text" class="form-control input-sm" placeholder="请输入开户银行地址...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">账户别名:</label>
+                    <div class="col-md-9">
+                      <input name="acAnoNa" type="text" class="form-control input-sm" placeholder="请输入账户别名...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="lnrepainf-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th> 业务流水号 </th>
+            <th> 子序号 </th>
+            <th> 借据号 </th>
+            <th> 收付类型 </th>
+            <th> 生效日期 </th>
+            <th> 币种 </th>
+            <th> 收付金额 </th>
+            <th> 账号 </th>
+            <th> 科目编号 </th>
+            <th> 账户名称 </th>
+            <th> 账户币种 </th>
+            <th> 结算状态 </th>
+            <th> 账户代码 </th>
+            <th> 账户类型代码 </th>
+            <th> 开户证件类型 </th>
+            <th> 开户证件号 </th>
+            <th> 开户银行代码 </th>
+            <th> 开户银行名称 </th>
+            <th> 开户银行机构编号 </th>
+            <th> 开户银行机构名称 </th>
+            <th> 开户银行所属城市代码 </th>
+            <th> 开户银行地址 </th>
+            <th> 账户别名 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{buzSeqNo}} </td>
+            <td> {{subNo}} </td>
+            <td> {{loNo}} </td>
+            <td> {{rpTyp}} </td>
+            <td> {{valDt}} </td>
+            <td> {{curTyp}} </td>
+            <td> {{rpAmt}} </td>
+            <td> {{acNo}} </td>
+            <td> {{subCd}} </td>
+            <td> {{acNa}} </td>
+            <td> {{acCurTyp}} </td>
+            <td> {{setlSts}} </td>
+            <td> {{acCd}} </td>
+            <td> {{acTypCde}} </td>
+            <td> {{acCertTyp}} </td>
+            <td> {{acCertId}} </td>
+            <td> {{acBankCd}} </td>
+            <td> {{acBankNa}} </td>
+            <td> {{acBankBrCd}} </td>
+            <td> {{acBankBrNa}} </td>
+            <td> {{acBankAreaCd}} </td>
+            <td> {{acBankAdr}} </td>
+            <td> {{acAnoNa}} </td>
+            <td>
+              <a href="#" data-target="#lnrepainf-edit-modal" data-toggle="modal" data-lnrepainf-id="?buzSeqNo={{buzSeqNo}}&subNo={{subNo}}"> 编辑 </a>
+              <a href="javascript:;" data-delete-lnrepainf-buzseqno="{{buzSeqNo}}" data-delete-lnrepainf-subno="{{subNo}}">删除</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

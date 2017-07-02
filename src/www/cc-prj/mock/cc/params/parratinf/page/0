@@ -1,0 +1,15 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "ratTyp":1,
+    "valDt":1,
+    "inRa":1,
+    "resultCode": "SUCCESS"
+  }]
+}

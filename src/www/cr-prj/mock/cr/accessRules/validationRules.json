@@ -1,0 +1,70 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "贷款金额22222222222222",
+      "varType": "string string string",
+      "varDefault": "------------",
+      "idType": "身份证023125876321"
+    },
+    {
+      "varId": 6,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": "----",
+      "idType": "驾驶证"
+    },
+    {
+      "varId": 7,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 2,
+      "idType": "身份证"
+    },
+    {
+      "varId": 8,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 3,
+      "idType": "身份证"
+    },
+    {
+      "varId": 9,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 4,
+      "idType": "身份证"
+    },
+    {
+      "varId": 10,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 5,
+      "idType": "----"
+    },
+    {
+      "varId": 11,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 6,
+      "idType": "身份证"
+    },
+    {
+      "varId": 12,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 7,
+      "idType": "----"
+    },
+    {
+      "varId": 13,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varDefault": 8,
+      "idType": "身份证"
+    }
+  ]
+}

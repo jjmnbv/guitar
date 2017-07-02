@@ -1,0 +1,273 @@
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}开户机构管理</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+    {{/content}}
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <!-- @Override -->
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/modal-form.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/lending-institution.css"/>
+        <link rel="stylesheet" href="{{path.app}}/css/open-account/open-account-organization.css"/>
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <script src="{{path.base}}/script/region-data.js"></script>
+        <script src="{{path.base}}/script/cs/csmabrtomlbrc"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cs/common/app-context.js"></script>
+        <script src="{{path.app}}/js/cs/open-account/open-account-organization.js"></script>
+        <script src="{{path.app}}/js/auth-judge.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        <!-- @Override -->
+    {{/content}}
+
+    <!-- 分页查询条件 pagination-form -->
+    {{#content "pagination-form"}}
+        <form class="bsdForm pagination-form" id="loanTypeForm">
+            <div class="form-group">
+                <label for="openBankBrNo" class="control-label">开户机构代码</label>
+                <div>
+                    <input type="text" class="form-control" name="openBankBrNo" id="openBankBrNo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="openBankBrNa" class="control-label">开户机构名称</label>
+                <div>
+                    <input type="text" class="form-control" name="openBankBrNa" id="openBankBrNa">
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="control-label">状态</label>
+                <div>
+                    <select id="st"
+                            name="st"
+                            class="form-control"
+                            data-selectloader-store="stList"
+                            data-selectloader-vkey="code"
+                            data-selectloader-tkey="name">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>-->
+        </form>
+    {{/content}}
+    <!-- 分页表格和分页页码 pagination-container -->
+    {{#content "pagination-container"}}
+        <!--<div id="lending-list"></div>-->
+        <div class="portlet-title clearfix">
+            <div class="caption">放款机构配置列表</div>
+            <div class="btn-on-title actions clearfix">
+                <a href="javascript:;" title="新增" id="add" class="add-sign"></a>
+                <a href="javascript:;" title="修改" id="update" class="update-sign"></a>
+                <a href="javascript:;" title="保存" id="save" class="save-sign"></a>
+                <a href="javascript:;" title="删除" id="delete" class="delete-sign"></a>
+                <!-- <a href="javascript:;" title="激活" id="active" class="jihuo-sign"></a>
+                 <a href="javascript:;" title="失效" id="unActive" class="shixiao-sign"></a>-->
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="tabbable tabbable-tabdrop" id="tab1">
+                <div class="pagination-reload"></div>
+                <div class="portlet-body pagination-container"
+                     data-page-first-store="first-store"
+                     data-page-url="/OPEN_ACCOUNT_ORGANIZATION"
+                     data-page-template-id="accountList-template-set">
+                </div>
+            </div>
+        </div>
+    {{/content}}
+
+    <!-- 页面模态框 -->
+    {{#content "content-free"}}
+        <div class="modal fade" id="regionModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="regionModalCont">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">请选择地区
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        </h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <form class="bsdForm">
+                            <div class="address">
+                                <div class="conSelect clearfix">
+                                    <select id="provCd"
+                                            name="provCd"
+                                            class="required"
+                                            data-selectloader-store="provinceList"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#cityCd">
+                                        <option value="">请选择...</option>
+                                    </select>
+
+                                    <select id="cityCd"
+                                            name="cityCd"
+                                            class="required"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName"
+                                            data-selectloader-nselect="#distCd">
+                                        <option value="">请选择...</option>
+                                    </select>
+
+                                    <select id="distCd"
+                                            name="distCd"
+                                            class="required"
+                                            data-selectloader-store="children"
+                                            data-selectloader-vkey="districtCode"
+                                            data-selectloader-tkey="districtName">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn sky-blue btn-wid mainCol" data-dismiss="modal" id="confirm">确定
+                                </button>
+                                <button class="btn sky-blue btn-wid mainCol" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/content}}
+
+    <!-- 页面组件模板 -->
+    {{#content "content-component"}}
+        <!--放款机构配置列表-->
+
+        <script type="text/x-handlebars-template" id="accountList-template-set">
+            {{{{raw}}}}
+                <form>
+                    <div class="table-scrollable">
+                        <div class="bank-details"><span>开户银行代码：</span><span>开户银行名称：</span><span>卡BIN号：</span></div>
+                        <table class="table table-striped table-bordered table-hover" id="accountTable">
+                            <thead>
+                            <tr>
+                                <td width="10%">选择</td>
+                                <td width="30%">开户机构代码</td>
+                                <td width="30%">开户机构名称</td>
+                                <td width="30%">开户地区</td>
+                                <!-- <td width="15%">状态</td>-->
+                            </tr>
+                            </thead>
+                            <tbody id="organization-tbody">
+                            {{#each page.content}}
+                            <tr class="lendingList-tr-num">
+                                <td>
+                                    <label class="mt-radio">
+                                        <input type="radio" name="" value="{{id}}" data-status="nc"/>
+                                        <span></span>
+                                    </label>
+                                </td>
+                                <td class="show-style update-style">
+                                    <input type="text" class="form-control openBankBrNo required"
+                                           name="content[{{@index}}].openBankBrNo" value="{{openBankBrNo}}" disabled/>
+                                </td>
+                                <td class="show-style update-style">
+                                    <input type="text" class="form-control openBankBrNa required"
+                                           name="content[{{@index}}].openBankBrNa" value="{{openBankBrNa}}" disabled/>
+                                </td>
+                                <td class="show-style update-style">
+                                    <span class="region-text">{{cityNo}}</span>
+                                    <div class="find hiddenI">
+                                        <div class="line">
+                                            <input type="hidden" name="sshzscooNo" class="regionHidden">
+                                            <input type="text" class="form-control region" value="{{cityNo}}" readonly>
+                                        </div>
+                                        <div class="line-use">
+                                            <a data-toggle="modal" href="#regionModal">
+                                                <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                                        type="button"
+                                                        data-select2-open="single-prepend-text">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            {{{{/raw}}}}
+            {{> pager}}
+        </script>
+        <!--放款机构配置列表 增加  -->
+        <script type="text/x-handlebars-template" id="accountList-template">
+            {{{{raw}}}}
+            <tr class="organizationList-tr-num">
+                <td>
+                    <label for="id_{{add index 1}}">
+                        <input
+                                id="id_{{add index 1}}"
+                                type="radio"
+                                name="id"
+                                data-newtr="newTr"
+                                data-status="nw"/>
+                    </label>
+                </td>
+                <td class="form-group">
+                    <input type="text" class="form-control openBankBrNo"
+                           name="content[{{index}}].openBankBrNo" value=""/>
+                </td>
+                <td class="form-group">
+                    <input type="text" class="form-control openBankBrNa"
+                           name="content[{{index}}].openBankBrNa" value=""/>
+                </td>
+                <td class="form-group">
+                    <div class="find">
+                        <div class="line">
+                            <input type="hidden" name="content[{{index}}].cityNo" class="regionHidden">
+                            <input type="text" class="form-control region" readonly>
+                        </div>
+                        <div class="line-use">
+                            <a data-toggle="modal" href="#regionModal">
+                                <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                        type="button"
+                                        data-select2-open="single-prepend-text">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+{{{{/raw}}}}
+</script>
+
+{{/content}}
+{{/extend}}

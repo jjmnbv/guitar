@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:cache="http://www.springframework.org/schema/cache"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+  default-lazy-init="true">
+
+
+  <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+    <property name="hostName" value="${redis.host:localhost}"/>
+    <property name="port" value="${redis.port:6379}"/>
+  </bean>
+
+  <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+    <property name="connectionFactory" ref="jedisConnectionFactory"/>
+  </bean>
+
+  <bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+    <constructor-arg ref="redisTemplate"/>
+    <property name="usePrefix" value="true"/>
+    <property name="expires">
+      <map>
+        <entry key="${shiro.activeSessionsCacheName}" value="${shiro.sessionTimeout}"/>
+        <entry key="CACHE_RESET_LOGIN_PWD_VFCODE" value="${admin.user.resetLoginPassword.vfcode.expires}"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="guavaCacheManager" class="org.springframework.cache.guava.GuavaCacheManager">
+    <property name="cacheSpecification" value="concurrencyLevel=8,expireAfterAccess=86400s,expireAfterWrite=86400s" />
+  </bean>
+
+  <beans profile="production">
+    <cache:annotation-driven cache-manager="redisCacheManager"/>
+    <alias name="redisCacheManager" alias="cacheManager"/>
+  </beans>
+
+  <beans profile="development,test">
+    <cache:annotation-driven cache-manager="guavaCacheManager"/>
+    <alias name="guavaCacheManager" alias="cacheManager"/>
+  </beans>
+
+</beans>

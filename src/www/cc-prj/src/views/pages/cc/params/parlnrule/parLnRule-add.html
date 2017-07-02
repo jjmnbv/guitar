@@ -1,0 +1,315 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>核算规则信息管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/params/parPayCfg-edit.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=PayOrdCd"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=3002,3019,3035,3047,3046,3051,3052"></script>
+    <script src="{{path.base}}/script/cc/params/parlnrule"></script>
+    <script src="{{path.base}}/script/cc/params/parlnrule-add.js"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/params/parlnrule.js"></script>
+    <script src="{{path.app}}/js/cc/params/parlnrule-add.js"></script>
+    <script src="{{path.app}}/js/cc/params/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+     <div class="portlet">
+        <div class="portlet-body">
+         <form  class="bsdForm" id="parlnrule-form"  action="/PARLNRULE_CREATE">
+	   	  <div class="form-group " >
+	         <label class=" control-label fill">核算编号:</label>
+	         <div >
+	           <input name="ruNo" type="text" class="form-control input-sm required Rnumber" maxlength="10" placeholder="请输入核算编号...">
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">法人机构号:</label>
+	         <div >
+	           <input name="brCd" type="text" class="form-control input-sm Rnumber required" maxlength="10" placeholder="请输入法人机构号...">
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label ">核算规则描述:</label>
+	         <div >
+	           <input name="rnDesc" type="text" class="form-control input-sm " maxlength="200" placeholder="请输入核算规则描述...">
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">到期日规则:</label>
+	         <div >
+	            <select name="lstDueDayTyp" class="form-control lstDueDayTyp required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="到期日规则..."
+	                 data-selectloader-store="lstDueDayTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group form-hide">
+	         <label class=" control-label fill">利息保留位数:</label>
+	         <div >
+	           <select name="intPerNum" class="form-control intPerNum required " 
+	                 data-selectloader-val="NORMAL" data-placeholder="利息保留位数..."
+	                 data-selectloader-store="intPerNum"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group form-hide">
+	         <label class=" control-label fill">罚息保留位数:</label>
+	         <div >
+	           <select name="ovIntPerNum" class="form-control ovIntPerNum required"  
+	                 data-selectloader-val="NORMAL" data-placeholder="罚息保留位数..."
+	                 data-selectloader-store="ovIntPerNum"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group form-hide">
+	         <label class=" control-label fill">费用保留位数:</label>
+	         <div >
+	            <select name="feePerNum" class="form-control feePerNum required"
+	                 data-selectloader-val="NORMAL" data-placeholder="费用保留位数..."
+	                 data-selectloader-store="feePerNum"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">罚息计算方式:</label>
+	         <div >
+	           <select name="ovIntCalTyp" class="form-control ovIntCalTyp required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="罚息计算方式..."
+	                 data-selectloader-store="ovIntCalTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">最小罚息金额:</label>
+	         <div >
+				<input name="minOvIntl" type="text" class="form-control moreZero required input-sm" maxlength='16' id="minOvIntl" placeholder="请输入最小罚息金额...">
+				<input name="minOvInt" type="hidden" maxlength="16">
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">是否计算复利:</label>
+	         <div >
+	           <select name="calCmIntInd" class="form-control calCmIntInd required"  
+	                 data-selectloader-val="NORMAL" data-placeholder="是否计算复利..."
+	                 data-selectloader-store="calCmIntInd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group from-cmincaltype">
+	         <label class=" control-label fill">复利计算方式:</label>
+	         <div>
+	           <select name="cmIntCalTyp" class="form-control cmIntCalTyp required" id="cmIntCalTyp"
+	                 data-selectloader-val="NORMAL" data-placeholder="复利计算方式..."
+	                 data-selectloader-store="cmIntCalTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">是否允许提前还款:</label>
+	         <div >
+	            <select name="advPayInd" class="form-control advPayInd required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="复利计算方式..."
+	                 data-selectloader-store="advPayInd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">主动还款金额代码:</label>
+	         <div >
+	            <select name="advPayAmCd" class="form-control advPayAmCd required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="主动还款金额代码..."
+	                 data-selectloader-store="advPayAmCd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">是否归还提前还款的利息:</label>
+	         <div >
+	             <select name="advInYn" class="form-control advInYn required"  
+	                 data-selectloader-val="NORMAL" data-placeholder="是否归还提前还款的利息..."
+	                 data-selectloader-store="advInYn"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">利息计算方式:</label>
+	         <div >
+	             <select name="advInAmCd" class="form-control advInAmCd required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="利息计算方式..."
+	                 data-selectloader-store="advInAmCd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">扣款方式:</label>
+	         <div >
+	           <select name="payTyp" class="form-control payTyp required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="扣款方式..."
+	                 data-selectloader-store="payTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">正常扣款顺序:</label>
+	         <div>
+				 <select name="norPayOrd" class="form-control norPayOrd required"    
+	                 data-selectloader-val="NORMAL" data-placeholder="正常扣款顺序..."
+	                 data-selectloader-store="norPayOrd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">逾期/表外扣款顺序:</label>
+	         <div >
+				 <select name="outPayOrd" class="form-control outPayOrd required"  
+	                 data-selectloader-val="NORMAL" data-placeholder="逾期扣款顺序..."
+	                 data-selectloader-store="outPayOrd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">减值后扣款顺序:</label>
+	         <div >
+				<select name="devPayOrd" class="form-control devPayOrd required"  
+	                 data-selectloader-val="NORMAL" data-placeholder="减值后扣款顺序..."
+	                 data-selectloader-store="devPayOrd"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class=" control-label fill">宽限期类型:</label>
+	         <div >
+	             <select name="grcTyp" class="form-control grcTyp required" 
+	                 data-selectloader-val="NORMAL" data-placeholder="宽限期类型..."
+	                 data-selectloader-store="grcTyp"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		</select>
+	         </div>
+	       </div>
+	       <div class="form-group form-grcDay">
+	         <label class=" control-label fill">宽限期天数:</label>
+	         <div >
+	           <input name="grcDay" type="text" class="form-control grcDay input-sm nonnegativeInteger required" maxlength="3" placeholder="请输入宽限期天数...">
+	         </div>
+	       </div>
+	       <div class="form-group">
+	         <label class= "control-label">用户号:</label>
+	         <div >
+	           <input name="laUsId" type="text" class="form-control input-sm Rnumber" maxlength="10" placeholder="请输入用户号...">
+	         </div>
+	       </div>
+		   <div class="form-group form-group-sel single">
+           		<label class="control-label ">修改日期:</label>
+           		<div class="selBox">
+          			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+	             	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+	             	 	data-date-language="zh-CN">
+	               	   	 <input name="lsUpDt" type="text"  id="lsUpDt"  class="form-control uniform-input text"  placeholder="修改日期..." readonly>
+	                	<span class="input-group-btn">
+	                     <button class="btn default" type="button">
+	                        <i class="fa fa-calendar"></i>
+	                     </button>
+	                	</span>
+          			</div>
+            	</div>
+      		</div>
+          	<div class="text-center">
+                 <button type="button" class="btn blue mainCol ok" id="confirmR">保存</button>
+                 <a href="parLnRuleIndex.html" class="btn blue mainCol" >返回</a>
+            </div>
+  	 </form>
+    </div>
+  </div> 
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+  <!--占位符-->
+  {{#content "content-pagination"}}
+  {{/content}}
+  
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-free END-->
+
+  <!-- 页面组件模板 -->
+ {{#content "content-component"}}
+ {{/content}}
+ 
+{{/extend}}

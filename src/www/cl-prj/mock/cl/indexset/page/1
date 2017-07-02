@@ -1,0 +1,236 @@
+{
+    "resultCode": "SUCCESS",
+    "totalPages": 4,
+    "totalElements": 70,
+    "number": 1,
+    "size": 20,
+    "pages": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "content": [
+        {
+            "id": 51,
+            "version": 1,
+            "name": "材料阶段类型",
+            "desc": "材料阶段类型",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 50,
+            "version": 1,
+            "name": "产品促销",
+            "desc": "产品促销",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 49,
+            "version": 1,
+            "name": "电核对象代码",
+            "desc": "电核对象代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 48,
+            "version": 1,
+            "name": "贷款分类条件代码",
+            "desc": "贷款分类条件代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 47,
+            "version": 1,
+            "name": "五级分类代码",
+            "desc": "五级分类代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 46,
+            "version": 1,
+            "name": "耐用消费贷款",
+            "desc": "耐用消费贷款",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 45,
+            "version": 1,
+            "name": "通用消费贷款",
+            "desc": "通用消费贷款",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 44,
+            "version": 1,
+            "name": "贷款类型",
+            "desc": "贷款类型",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 43,
+            "version": 1,
+            "name": "业务流程",
+            "desc": "业务流程",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 42,
+            "version": 1,
+            "name": "还款组成代码",
+            "desc": "还款组成代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 41,
+            "version": 1,
+            "name": "还款方式种类代码",
+            "desc": "还款方式种类代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 40,
+            "version": 1,
+            "name": "利息计算基础代码",
+            "desc": "利息计算基础代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 39,
+            "version": 1,
+            "name": "计息周期代码",
+            "desc": "计息周期代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 38,
+            "version": 1,
+            "name": "放款本金比例代码",
+            "desc": "放款本金比例代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 37,
+            "version": 1,
+            "name": "还款方式类型",
+            "desc": "还款方式类型",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 36,
+            "version": 1,
+            "name": "核心交易码",
+            "desc": "核心交易码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 35,
+            "version": 1,
+            "name": "消息代码",
+            "desc": "消息代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 34,
+            "version": 1,
+            "name": "企业分类代码",
+            "desc": "企业分类代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 33,
+            "version": 1,
+            "name": "企业证件代码",
+            "desc": "企业证件代码",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        },
+        {
+            "id": 32,
+            "version": 1,
+            "name": "黑名单状态",
+            "desc": "黑名单状态",
+            "status": "JH",
+            "modelCode": "XT",
+            "createDate": "2016-11-05",
+            "lastUpdate": "2016-11-05",
+            "lastUpdateUserId": 1
+        }
+    ],
+    "errors": []
+}

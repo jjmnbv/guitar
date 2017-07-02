@@ -1,0 +1,282 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>路由规则配置</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/ce/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/ce/modal-form.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/ce/dicts?ids=3001,3056,3057"></script>
+    <script src="{{path.base}}/script/ce/cerourulc"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/ce/cerourulc/cerourulc.js"></script>
+    <script src="{{path.app}}/js/ce/common/app-context.js"></script>
+    <script src="{{path.app}}/js/ce/urls.js"></script>
+    <script src="{{path.app}}/js/auth-judge.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="bsdForm pagination-form">
+      <div class="form-row">
+             <div class="form-group">
+             <label class="control-label">交易类型:</label>
+               <div>
+                 <select name="traTyp" id="traTyp"  class="form-control "
+                         data-selectloader-store="traTypList"
+                         data-selectloader-vkey="code"
+                         data-selectloader-tkey="name">
+                  <option value="">请选择</option>
+                 </select>
+                </div>
+         </div>
+            <div class="form-group">
+              <label class="control-label">交易码</label>
+              <div>
+                <input name="traNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+             <label class="control-label">路由规则状态:</label>
+               <div>
+                 <select name="rulSt" id="rulSt"  class="form-control "
+                         data-selectloader-store="rulStList"
+                         data-selectloader-vkey="code"
+                         data-selectloader-tkey="name">
+                  <option value="">请选择</option>
+                 </select>
+                </div>
+         </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption"> 路由规则表列表 </div>
+        <div class="actions">
+            <a id="add" href="javascript:;" title="新增" class="add-sign"></a>
+            <a id="edit" href="javascript:;" title="编辑" class="update-sign"></a>
+            <a id="delete" href="javascript:;" title="删除" class="delete-sign"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/CEROURULC_PAGE"
+          data-page-template-id="cerourulc-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <script type="text/x-handlebars-template" id="cerourulc-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>选择</th>
+            <th> 序号 </th>
+            <th> 交易类型 </th>
+            <th> 条件描述 </th>
+            <th> 关系符</th>
+            <th> 字段类型 </th>
+            <th> 取值字段 </th>
+            <th> 取值方法 </th>
+            <th> 判断值 </th>
+            <th> 优先级 </th>
+            <th> 交易码 </th>
+            <th> 开始时间 </th>
+            <th> 结束时间 </th>
+            <th> 路由规则状态 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td>
+                <label for="id_{{page-rowindex}}">
+                    <input
+                            id="id_{{page-rowindex}}"
+                            data-id="{{rulId}}"
+                            name="radio"
+                            type="radio">
+                </label>
+            </td>
+            <td> {{page-rowindex}} </td>
+            <td> {{traTyp-text}} </td>
+            <td> {{condDe}} </td>
+            <td> {{relaSym}} </td>
+            <td> {{fieTyp-text}} </td>
+            <td> {{fieNa}} </td>
+            <td> {{fieMet}} </td>
+            <td><div style="width:100px;word-break:break-all;text-overflow:ellipsis;overflow:hidden;margin:0 auto;"> {{judVal}}</div> </td>
+            <td> {{prioOr}} </td>
+            <td> {{traNo}} </td>
+            <td> {{beTm}} </td>
+            <td> {{enTm}} </td>
+            <td> {{rulSt-text}} </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<script type="text/x-handlebars-template" id="form-template">
+    <form class="bsdForm" >
+        <input type="hidden" name="rulId" readonly>
+        <div class="form-group" >
+                    <label class="control-label fill">交易类型:</label>
+                    <div>
+                        <select name="traTyp"  class="form-control traTyp required"
+                                data-selectloader-store="traTypList"
+                                data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">条件描述</label>
+            <div>
+                <input name="condDe" type="text" maxlength='200' class="form-control input-sm" placeholder="请输入条件描述">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">关系符</label>
+            <div>
+                <input name="relaSym" type="text" maxlength='20' class="form-control input-sm required" placeholder="请输入关系符">
+            </div>
+        </div>
+		<div class="form-group" >
+                    <label class="control-label fill">字段类型:</label>
+                    <div>
+                        <select name="fieTyp"  class="form-control fieTyp required"
+                                data-selectloader-store="fieTypList"
+                                data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">取值字段</label>
+            <div>
+                <input name="fieNa" type="text" maxlength='30' class="form-control input-sm required" placeholder="请输入取值字段">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">取值方法</label>
+            <div>
+                <input name="fieMet" type="text" maxlength='60' class="form-control input-sm required" placeholder="请输入取值方法">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">判断值</label>
+            <div>
+                <input name="judVal" type="text" maxlength='2000' class="form-control input-sm required" placeholder="请输入判断值">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">优先级</label>
+            <div>
+                <input name="prioOr" type="text" maxlength='20' class="form-control input-sm digits required" placeholder="请输入优先级">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">交易码</label>
+            <div>
+                <input  name="traNo" type="text" maxlength='40' class="form-control input-sm required" placeholder="请输入交易码">
+            </div>
+        </div>
+        <div class="form-group form-group-sel single">
+            <label class="control-label">开始时间:</label>
+            <div class="selBox">
+                <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                     data-date-language="zh-CN">
+                    <input type="text" class="form-control uniform-input text ltTimeValidate" id="beTm" data-gtTimeValidate="enTm" name="beTm" readonly>
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-group-sel single">
+            <label class="control-label">结束时间:</label>
+            <div class="selBox">
+                <div class="input-group input-medium date date-picker-page" data-date="+0d"
+                     data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                     data-date-language="zh-CN">
+                    <input type="text" class="form-control uniform-input text gtTimeValidate" id="enTm" data-ltTimeValidate="beTm" name="enTm" readonly>
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+		<div class="form-group" >
+                    <label class="control-label fill">路由规则状态:</label>
+                    <div>
+                        <select name="rulSt"  class="form-control rulSt required"
+                                data-selectloader-store="rulStList"
+                                data-selectloader-vkey="code" data-selectloader-tkey="name">
+                            <option value="">请选择...</option>
+                        </select>
+                    </div>
+        </div>
+    </form>
+</script>
+{{/content}}
+{{/extend}}

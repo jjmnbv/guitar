@@ -243,6 +243,7 @@ function setCustomerList(){
             $('#cuMaNa').removeAttr('disabled');
             $('#cuMaNa').html('<option value="">请选择...</option>');
             $('#cuMaNa').selectloader({'customerList': $.parseJSON(JSON.stringify(res.content))});
+            //如果当前登录的用户不是客户经理
             return;
         }
         app.alertError(res.errors.join('\n'));
@@ -269,7 +270,7 @@ function judgeIsCustomer(){
             if(res.cuMaYn == "1" || res.cuMaYn =="Y"){
                 //表示当前用户是客户经理
                 setCustomerAppoint(res.name);
-                $('#cuMaLoginNa').val(res.userId);
+                $('#cuMaLoginNa').val(res.loginName);
                 $('#cuMaMoNo').val(res.telphone);
             }else{
                 setCustomerList();

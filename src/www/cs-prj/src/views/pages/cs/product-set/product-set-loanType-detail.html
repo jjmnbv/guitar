@@ -1,0 +1,849 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+<!-- 页面meta  作者，关键字，描述 -->
+{{#content "meta"}}
+<meta content="" name="description" />
+<meta content="" name="author" />
+<meta content="" name="keyword" /> {{/content}}
+
+<!-- 页面 title -->
+{{#content "title"}}
+<title>{{path.platform}}{{path.subSystem}}产品设置{{path.detailText}}</title>
+{{/content}}
+
+<!-- css插件 -->
+{{#content "css-plugins"}} {{/content}}
+
+<!-- 自定义css -->
+{{#content "css-main"}}
+<link rel="stylesheet" href="{{path.app}}/css/product-set/product-set-loanType-detail.css">
+<link rel="stylesheet" href="{{path.app}}/css/common-form.css">
+<link rel="stylesheet" href="{{path.app}}/css/common-form.css"> 
+	{{/content}}
+
+<!-- 首屏渲染数据js-loader -->
+{{#content "js-loader"}}
+<script src="{{path.base}}/script/region-data.js"></script>
+<!--加载数据字典-->
+<script src="{{path.base}}/script/cs/dicts?ids=28,44,18,66,1,67"></script>
+<!-- @Override -->
+<script src="{{path.base}}/script/cs/loantypesetdetail"></script>
+{{/content}}
+
+<!-- js插件 -->
+{{#content "js-plugins"}} {{/content}}
+
+<!-- 自定义js -->
+{{#content "js-main"}}
+<script src="{{path.app}}/js/cs/common/app-context.js"></script>
+<script src="{{path.app}}/js/cs/product-set/product-set-loanType-detail.js"></script>
+{{/content}}
+
+<!-- 页面主体 -->
+{{#content "content-main"}}
+<div id="main-template">
+</div>
+{{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}} {{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+<script type="text/x-handlebars-template" id="main-cont-template">
+	{{{{raw}}}}
+	<form action="" class="bsdForm" id="detail-proSet-form" data-link="product-set.html">
+		
+		<div class="portlet box">
+			<div class="portlet box reg">
+				<div class="portlet-title">
+					<div class="caption">
+						版本信息
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<input name="loTyNo" value="{{loTyNo}}" type="hidden" id="loTyNoHidden"/>
+					<!--<input name="loTyDe" value="{{loTyDe}}" type="hidden" id="loTyDeHidden"/>-->
+					<input name="loKiCd" value="{{loKiCd}}" type="hidden" id="loKiCdHidden"/>
+					<input name="loTyNa" value="{{loTyNa}}" type="hidden" id="loTyNaHidden"/>
+					
+					<div class="form-group">
+						<label class="control-label fill">当前版本号</label>
+						<div class="">
+							<select id="loanTypeVersionList"
+                      name="currVe"
+                      class="form-control required"
+                      data-selectloader-store="loanTypeVersionList"
+                      data-selectloader-vkey="ve"
+                      data-selectloader-tkey="ve"
+                      data-selectloader-val="{{currVe}}">
+                <!--<option value="">请选择</option>-->
+               </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<button class="btn sky-blue btn-wid mainCol creatNewVer" type="button">创建新版本</button>
+						<button class="btn sky-blue btn-wid mainCol cancleCret" type="button">撤销</button>
+					</div>
+				</div>
+			</div>
+			<div class="portlet box reg baseInfor">
+				<div class="portlet-title">
+					<div class="caption">
+						基本信息
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<div class="form-group">
+						<label class="control-label fill">金融产品编号</label>
+						<div class="">
+							<input id="loTyNo" name="loTyNo" class="form-control" readonly="readonly" value="{{loTyNo}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">版本号</label>
+						<div class="">
+							<input id="currVe" name="currVe" class="form-control" readonly="readonly" value="{{currVe}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">货款类型</label>
+						<div class="">
+							<select id="loKiCd" name="loKiCd" class="form-control required" data-selectloader-store="loKiCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-nselect="#loKiSubCd" data-selectloader-val="{{loKiCd}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">货款子类型</label>
+						<div class="">
+							<select id="loKiSubCd" name="loKiSubCd" class="form-control" data-selectloader-store="children" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{loKiSubCd}}">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">金融产品名称</label>
+						<div class="">
+							<input id="loTyNa" name="loTyNa" class="form-control required" value="{{loTyNa}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">金融产品描述</label>
+						<div class="">
+							<textarea class="form-control required" id="loTyDe" name="loTyDe" title="{{loTyDe}}">{{loTyDe}}</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">客户经理</label>
+						<div class="">
+							<select id="cuMaLoginNa" name="cuMaLoginNa" class="form-control" data-selectloader-store="loanTypeCustomerDicList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{cuMaLoginNa}}" data-text-input="#cuMaNa">
+							<option value="">请选择</option>
+							</select>
+							<input type="hidden" 
+                     name="cuMaNa" 
+                     id="cuMaNa"
+                     value="{{cuMaNa}}"
+                     data-listener-select-target="#cuMaLoginNa"/>
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">所属机构</label>
+						<div class="">
+							<select id="brNo" name="brNo" class="form-control required" data-selectloader-store="topCuBrsDicList" data-selectloader-vkey="code" data-selectloader-tkey="name"  data-selectloader-val="{{brNo}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<!--<div class="form-group">
+						<label class="control-label fill">金融机构名称</label>
+						<div class="">
+							<select id="brNa" name="brNa" class="form-control" data-selectloader-store="brNaList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{brNa}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>-->
+				</div>
+			</div>
+
+			<div class="portlet box reg controlBox">
+				<div class="portlet-title">
+					<div class="caption">
+						控制信息
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<div class="form-group">
+						<label class="control-label fill">单笔最小金额</label>
+						<div class="">
+							<input type="text" class="form-control required bindEvent ltRelateMon" id="minLoAm"  value="{{minLoAm}}" name="minLoAmRe" data-gtRelateMon='maxLoAm'>
+							<input type="hidden" name="minLoAm"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">单笔最大金额</label>
+						<div class="">
+							<input type="text" class="form-control required bindEvent gtRelateMon" id="maxLoAm"  value="{{maxLoAm}}" name="maxLoAmRe" data-ltRelateMon='minLoAm'>
+							<input type="hidden" name="maxLoAm"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">最小贷款利率</label>
+						<div class="">
+							<input type="text" class="form-control required percentFormat ltRelatePer" id="minLoRt" value="{{minLoRt}}" name="minLoRtRe" data-gtRelatePer='maxLoRt'>
+							<input type="hidden" class=" " name="minLoRt">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">最大贷款利率</label>
+						<div class="">
+							<input type="text" class="form-control required percentFormat gtRelatePer" id="maxLoRt" value="{{maxLoRt}}" name="maxLoRtRe" data-ltRelatePer='minLoRt'>
+						  <input type="hidden" class="" name="maxLoRt">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">首付比例</label>
+						<div class="">
+							<input type="text" class="form-control required percentFormat" id="min_first_repay" value="{{fiPayRa}}" name="fiPayRaRe">
+							<input type="hidden" class="" name="fiPayRa">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">宽限期天数</label>
+						<div class="">
+							<input type="text" class="form-control required" id="grDaQt" name="grDaQt" value="{{grDaQt}}" max="28">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">是否授信</label>
+						<div class="">
+							<select id="cgYn" name="cgYn" class="form-control required" data-selectloader-store="cgYnList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{cgYn}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">支付方式</label>
+						<div class=" ">
+							<select id="payCd" name="payCd" class="form-control required" data-selectloader-store="payCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{payCd}}" onchange="selDirecPay(this)">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">放款方式</label>
+						<div class="">
+							<select id="mlTyCd" name="mlTyCd" class="form-control required" data-selectloader-store="mlTyCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{mlTyCd}}" >
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<br />
+					<div class="clearfix">
+						<div class="selTerm">
+							<div class="form-group">
+						    <label class="control-label fill">产品期限</label>
+						    <div>
+						      <select id="notSepTerm" name="notSepTerm" class="form-control required" data-selectloader-store="sepTermList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{notSepTerm}}" onchange="changeYN(this)">
+								  </select>
+								</div>
+						  </div>
+							<div class="noTerm {{#if (eq notSepTerm 1)}}hide{{/if}} form-group">
+						    <label class="control-label fill month">最小期限</label>
+						    <div>
+						      <input type="text" name="minPlQt" id="minPlQt" value="{{minPlQt}}" class=" form-control required nonnegativeInteger ltTo" data-gtTo='maxPlQt' max="{{csSyPaC.maxPerQt}}" {{#if (eq notSepTerm 1)}}disabled=""{{/if}}/>
+						    </div>
+						    </div>
+						  <div class="noTerm {{#if (eq notSepTerm 1)}}hide{{/if}} form-group">
+						    <label class="control-label fill month">最大期限</label>
+						    <div>
+						      <input type="text" name="maxPlQt" id="maxPlQt" value="{{maxPlQt}}" class=" form-control required nonnegativeInteger gtTo" data-ltTo='minPlQt' max="{{csSyPaC.minPerQt}}" {{#if (eq notSepTerm 1)}}disabled=""{{/if}}/>
+						    </div>
+						  </div>
+								<div class="form-group radioBox {{#if (eq notSepTerm 0)}}hide{{/if}}">
+									  <label class="control-label fill">分期选择</label>
+										  <div class="no-border radioDiv">
+                        <div class="checkbox-list loanTypePlOpList" 
+                                 data-checkboxloader-name="loanTypePlOpList"
+                                 data-checkboxloader-store="loanTypePlOpList" 
+                                 data-checkboxloader-vkey="code"
+                                 data-checkboxloader-tkey="name">
+                        </div>
+                      </div>
+								</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">允许提前还款</label>
+						<div class="">
+							<select id="pre_repay" name="preYn" class="form-control" data-selectloader-store="pre_repayList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{preYn}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="portlet box reg rulesBox">
+				<div class="portlet-title">
+					<div class="caption">
+						业务规则
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<div class="form-group">
+						<label class="control-label">关联规则</label>
+						<div class="">
+							<select id="ruId" name="ruId" class="form-control required" data-selectloader-store="ruIdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{ruId}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">关联流程</label>
+						<div class="">
+							<select id="auFlId" name="auFlId" class="form-control required" data-selectloader-store="auFlIdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{auFlId}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">审批权限</label>
+						<div class="">
+							<select id="lotusAmountId"
+                                    name="lotusAmountId"
+                                    class="form-control loanTypeLotusAmountDic required"
+                                    data-selectloader-store="loanTypeLotusAmountDicList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name"
+                                    data-selectloader-val="{{lotusAmountId}}"
+                            >
+                                <option value="">请选择</option>
+                            </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">关联材料集</label>
+						<div class="">
+							<select id="matId" name="matId" class="form-control required" data-selectloader-store="matIdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{matId}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">打印模板</label>
+						<div class="">
+							<select id="prnTeId" name="prnTeId" class="form-control required" data-selectloader-store="prnTeIdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{prnTeId}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">债项评级</label>
+						<div class="">
+							<select id="drId" name="drId" class="form-control required" data-selectloader-store="drIdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{drId}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<!--<div class="form-group">
+						<label class="control-label fill">额度控制</label>
+						<div class="">
+							<select id="" name="" class="form-control" data-selectloader-store="" data-selectloader-vkey="code" data-selectloader-tkey="name">
+							</select>
+						</div>
+					</div>-->
+					<!--<div class="form-group">
+						<label class="control-label fill">贷款分类</label>
+						<div class="">
+							<select id="loClaSetCd" name="loClaSetCd" class="form-control" data-selectloader-store="loClaSetCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{loClaSetCd}}">
+							</select>
+						</div>
+					</div>-->
+					<div class="form-group">
+						<label class="control-label">业务表单应用</label>
+						<div class="">
+							<select id="foSeId" name="foSeId" class="form-control required" data-selectloader-store="foSeIdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{foSeId}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label email">核算规则</label>
+						<div class="">
+							<select id="acoTypNo" name="acoTypNo" class="form-control required" data-selectloader-store="acoTypNoList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{acoTypNo}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">电核项目</label>
+						<div class="">
+							<select id="tcRuCd" name="tcRuCd" class="form-control required" data-selectloader-store="tcRuCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{tcRuCd}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">电核比例</label>
+						<div class="">
+							<select id="tcPeRuCd" name="tcPeRuCd" class="form-control required" data-selectloader-store="tcPeRuCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{tcPeRuCd}}">
+							<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">回访电核项目</label>
+						<div class="">
+							<select id="tcRevRuCd" name="tcRevRuCd" class="form-control required" data-selectloader-store="tcRevRuCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{tcRevRuCd}}">
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label fill">回访电核比例</label>
+						<div class="">
+							<select id="tcRevPeRuCd" name="tcRevPeRuCd" class="form-control required" data-selectloader-store="tcRevPeRuCdList" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{tcRevPeRuCd}}">
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!--
+                作者：85319019@qq.com
+                时间：2016-12-01
+                描述：渠道范围
+            -->
+			<div class="portlet box reg channelBox">
+				<div class="portlet-title">
+					<div class="caption">
+						渠道范围
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+					<div class="actions">
+						<a href="javascript:;" id="addChannel" class="add-sign"></a>
+						<a href="javascript:;" id="removeChannel" class="delete-sign"></a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<div class="table-scrollable">
+						<table class="table table-striped table-bordered table-hover bsdForm">
+							<thead>
+								<tr>
+									<th width="10%">选择</th>
+									<th width="15%">序号</th>
+									<th width="22%">渠道代码</th>
+									<th width="22%">渠道分类</th>
+									<th width="22%">渠道名称</th>
+								</tr>
+							</thead>
+							<tbody id="channelTableBody">
+								{{#each loanTypeAccessList}}
+								<!--隐藏域-->
+								
+								<tr>
+									<td class="form-group">
+                    <label>
+					            <input type="radio" class="icheck" name="checkRow" id="id_{{@index}}" data-id="{{@index}}">
+                    </label>
+									</td>
+									<td class="form-group" data-index>{{list-rowindex}}</td>
+									<td class="form-group">
+										<input id="loanTypeAccessList{{@index}}_input" class="form-control required" value="{{acNo}}" readonly/>
+									</td>
+									<td class="form-group">
+										<select id="loanTypeAccessList{{@index}}_acTyCd" 
+											      name="loanTypeAccessList[{{@index}}].acTyCd" 
+											      class="form-control loanTypeAccessDic required" 
+											      data-selectloader-store="loanTypeAccessDicList" 
+											      data-selectloader-vkey="code" 
+											      data-selectloader-tkey="name" 
+											      data-selectloader-val="{{acTyCd}}" 
+											      data-selectloader-nselect="#loanTypeAccessList{{@index}}_acNo" 
+											      onchange="selAccessName(this)">
+											<option value="">请选择</option>
+										</select>
+									</td>
+									<td class="form-group">
+										<select id="loanTypeAccessList{{@index}}_acNo" name="loanTypeAccessList[{{@index}}].acNo" class="form-control required" data-selectloader-store="children" data-selectloader-vkey="code" data-selectloader-tkey="name" data-selectloader-val="{{acNo}}" data-value-input="#loanTypeAccessList{{@index}}_input" data-text-input="#loanTypeAccessList{{@index}}_text">
+											<option value="">请选择</option>
+										</select>
+									</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!--
+                作者：85319019@qq.com
+                时间：2016-12-01
+                描述：费用计算
+            -->
+			<div class="portlet box reg feeBox">
+				<div class="portlet-title">
+					<div class="caption">
+						费用计算
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+					<div class="actions">
+						<a href="javascript:;" id="addFee" class="add-sign"></a>
+						<a href="javascript:;" id="removeFee" class="delete-sign"></a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<div class="table-scrollable">
+						<table class="table table-striped table-bordered table-hover bsdForm">
+							<thead>
+								<tr>
+									<th width="10%">选择</th>
+									<th width="15%">序号</th>
+									<th width="22%">费用代码</th>
+									<th width="22%">收费名称</th>
+									<th width="22%">操作</th>
+								</tr>
+							</thead>
+							<tbody id="feeTableBody">
+								{{#each loanTypeFeeList}}
+								<!--隐藏域-->
+								
+								<tr>
+									<td class="form-group">
+										<label>
+										  <input type="radio" class="icheck" name="checkRow" id="id_{{@index}}" data-id="{{@index}}">
+									  </label>
+									</td>
+									<td class="form-group" data-index>{{list-rowindex}}</td>
+									<td class="form-group">
+										<input id="loanTypeFeeList{{@index}}_input" class="form-control required" value="{{feCd}}" readonly/>
+									</td>
+									<td class="form-group">
+										<select id="loanTypeFeeList{{@index}}_feCd" 
+											      name="loanTypeFeeList[{{@index}}].feCd" 
+											      class="form-control loanTypeFeeDic required" 
+											      data-selectloader-store="loanTypeFeeDicList" 
+											      data-selectloader-vkey="code" 
+											      data-selectloader-tkey="name" 
+											      data-selectloader-val="{{feCd}}" 
+											      data-value-input="#loanTypeFeeList{{@index}}_input" 
+											      data-text-input="#loanTypeFeeList{{@index}}_text"
+											      onchange="putFecd(this)">
+										<option value="">请选择</option>
+										</select>
+									</td>
+									<td class="form-group">
+										<a href="javascript:;" class="check detail" data-code="{{feCd}}">费用计算详情</a>
+									</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!--
+        作者：85319019@qq.com
+        时间：2016-12-01
+        描述：还款方式
+    -->
+			<div class="portlet box reg repayBox">
+				<div class="portlet-title">
+					<div class="caption">
+						还款方式
+					</div>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"> </a>
+					</div>
+					<div class="actions">
+						<a href="javascript:;" id="addRepayMode" class="add-sign"></a>
+						<a href="javascript:;" id="removeRepayMode" class="delete-sign"></a>
+					</div>
+				</div>
+				<div class="portlet-body tabs-below">
+					<div class="table-scrollable">
+						<table class="table table-striped table-bordered table-hover bsdForm">
+							<thead>
+								<tr>
+									<th width="10%">选择</th>
+									<th width="12%">序号</th>
+									<th width="18%">支持期限</th>
+									<th width="18%">执行利率(年)</th>
+									<th width="18%">还款方式</th>
+									<th width="18%">操作</th>
+								</tr>
+							</thead>
+							<tbody id="repayTableBody">
+								{{#each loanTypePayMethodList}}
+								<!--隐藏域-->
+								
+								<tr>
+									<td class="form-group">
+										<label>
+											<input type="radio" class="icheck" name="checkRow" data-id="{{@index}}">
+									  </label>
+									</td>
+									<td class="form-group" data-index>{{list-rowindex}}</td>
+									<td class="form-group">
+										<select id="loanTypePayMethodList[{{@index}}].plOp" 
+											      name="loanTypePayMethodList[{{@index}}].plOp" 
+											      class="form-control loPayMeListPlop required"
+											      data-selectloader-store="loPayMeListPlopList" 
+											      data-selectloader-vkey="code" 
+											      data-selectloader-tkey="name" 
+											      data-selectloader-val="{{loanTypePayMethodId.plOp}}"
+											      data-selectloader-append='0'>
+										<option value="">请选择</option>
+										</select>
+									</td>
+									<td class="form-group">
+										<input id="loanTypePayMethodList[{{@index}}].cuRa" name="loanTypePayMethodList[{{@index}}].cuRaRe" class="form-control required percentFormat strikeRate" value="{{cuRa}}"/>
+                     <input type="hidden" name="loanTypePayMethodList[{{@index}}].cuRa" value="{{cuRa}}"/>
+									</td>
+									<td class="form-group">
+										<select id="loanTypePayMethodList[{{@index}}].pmId" 
+											      name="loanTypePayMethodList[{{@index}}].pmId" 
+											      class="form-control loanTypePayMethodDic required" 
+											      data-selectloader-store="loanTypePayMethodDicList" 
+											      data-selectloader-vkey="code" 
+											      data-selectloader-tkey="name" 
+											      data-selectloader-val="{{pmId}}" 
+											      onchange="putLoPmId(this)">
+										<option value="">请选择</option>
+										</select>
+									</td>
+									<td class="form-group">
+										<a href="../repay-mode/repay-mode-detail.html?loPmId={{pmId}}" target="_blank" class="check">还款方式详情</a>
+									</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="center">
+				<div class="clearfix">
+					<a class="btn sky-blue btn-wid mainCol" id="goback" href="product-set.html">返回</a>
+					<button class="btn sky-blue btn-wid mainCol" id="saveBtn">保存</button>
+					<button class="btn sky-blue btn-wid mainCol" id="releaseBtn">发布</button>				
+				</div>
+			</div>
+
+	</form>
+	{{{{/raw}}}}
+</script>
+
+<!--
+	作者：85319019@qq.com
+	时间：2017-03-24
+	描述：增加一行模版3个
+-->
+<script type="text/x-handlebars-template" id="table-row1-template">
+	{{{{raw}}}}
+	<tr>
+		<td class="form-group">
+    <label>
+        <input type="radio" class="icheck" name="checkRow" id="id_{{listIndex index}}" data-id="{{listIndex index}}">
+    </label>
+		</td>
+		<td class="form-group" data-index>{{index}}</td>
+		<td class="form-group">
+			<input id="loanTypeAccessList{{listIndex index}}_input" class="form-control required" readonly/>
+			<input type="hidden" id="loanTypeAccessList{{listIndex index}}_text" name="loanTypeAccessList[{{listIndex index}}].acTyNa" />
+		</td>
+		<td class="form-group">
+			<select id="loanTypeAccessList{{listIndex index}}_acTyCd" 
+				      name="loanTypeAccessList[{{listIndex index}}].acTyCd" 
+				      class="form-control loanTypeAccessDic required selectExe"
+				      data-selectloader-store="loanTypeAccessDicList" 
+				      data-selectloader-vkey="code" 
+				      data-selectloader-tkey="name" 
+				      data-selectloader-nselect="#loanTypeAccessList{{listIndex index}}_acNo"
+				      onchange="selAccessClass(this)">
+				<option value="">请选择</option>
+			</select>
+		</td>
+		<td class="form-group">
+			<select id="loanTypeAccessList{{listIndex index}}_acNo" 
+				      name="loanTypeAccessList[{{listIndex index}}].acNo" 
+				      class="form-control required selectExe"
+				      data-selectloader-store="children" 
+				      data-selectloader-vkey="code" 
+				      data-selectloader-tkey="name" 
+				      data-value-input="#loanTypeAccessList{{listIndex index}}_input" 
+				      data-text-input="#loanTypeAccessList{{listIndex index}}_text"
+				      onchange="selAccessName(this)">
+				<option value="">请选择</option>
+			</select>
+			<span class="help-block"></span>
+		</td>
+	</tr>
+	{{{{/raw}}}}
+</script>
+
+<script type="text/x-handlebars-template" id="table-row2-template">
+	{{{{raw}}}}
+	<tr>
+		<td class="form-group">
+		<label>
+			<input type="radio" class="icheck" name="checkRow" data-id="{{listIndex index}}">
+	  </label>
+		</td>
+		<td class="form-group" data-index>{{index}}</td>
+		<td class="form-group">
+			<!--<input type="text" class="form-control" value="{{feCd}}" name="loanTypeFeeList[{{listIndex index}}].feCd">-->
+			<input id="loanTypeFeeList{{listIndex index}}_input" class="form-control required" readonly/>
+		</td>
+		<td class="form-group">
+			<select id="loanTypeFeeList{{listIndex index}}_feCd" 
+				      name="loanTypeFeeList[{{listIndex index}}].feCd" 
+				      class="form-control loanTypeFeeDic required selectExe"
+				      data-selectloader-store="loanTypeFeeDicList" 
+				      data-selectloader-vkey="code" 
+				      data-selectloader-tkey="name" 
+				      data-value-input="#loanTypeFeeList{{listIndex index}}_input" 
+				      data-text-input="#loanTypeFeeList{{listIndex index}}_text"  
+				      onchange="putFecd(this)">
+			<option value="">请选择</option>
+			</select>
+			<span class="help-block"></span>
+			<input type="hidden" id="loanTypeFeeList{{listIndex index}}_text" name="loanTypeFeeList[{{listIndex index}}].feCa" />
+		</td>
+		<td class="form-group">
+      <a href="javascript:;" class="check detail" data-code=""></a>
+		</td>
+	</tr>
+	{{{{/raw}}}}
+</script>
+
+<script type="text/x-handlebars-template" id="table-row3-template">
+	{{{{raw}}}}
+	<tr>
+		<td class="form-group">
+		<label>
+			<input type="radio" class="icheck" name="checkRow" data-id="{{listIndex index}}">
+	  </label>
+		</td>
+		<td class="form-group" data-index>{{index}}</td>
+		<td class="form-group">
+			<select id="loanTypePayMethodList[{{listIndex index}}].plOp" 
+							name="loanTypePayMethodList[{{listIndex index}}].plOp" 
+							class="form-control loPayMeListPlop required"
+							data-selectloader-store="loPayMeListPlopList" 
+							data-selectloader-vkey="code" 
+							data-selectloader-tkey="name"
+							data-selectloader-append='0'>
+		    <option value="">请选择</option>
+			</select>
+		</td>
+		<td class="form-group">
+      <input id="loanTypePayMethodList[{{listIndex index}}].cuRa" name="loanTypePayMethodList[{{listIndex index}}].cuRaRe" class="form-control required percentFormat strikeRate"/>
+      <input type="hidden" name="loanTypePayMethodList[{{listIndex index}}].cuRa"/>
+    </td>
+		<td class="form-group">
+			<select id="loanTypePayMethodList[{{listIndex index}}].pmId"
+				      name="loanTypePayMethodList[{{listIndex index}}].pmId" 
+				      class="form-control loanTypePayMethodDic required selectExe"
+				      data-selectloader-store="loanTypePayMethodDicList" 
+				      data-selectloader-vkey="code" 
+				      data-selectloader-tkey="name" 
+				      onchange="putLoPmId(this)">
+			<option value="">请选择</option>
+			</select>
+			<span class="help-block"></span>
+		</td>
+		<td class="form-group">
+			<a href="#" class="check" target="_blank"></a>
+		</td>
+	</tr>
+	{{{{/raw}}}}
+</script>
+<script type="text/x-handlebars-template" id="form-template">
+            {{{{raw}}}}
+                <form class="bsdForm">
+                    <div class="form-group">
+                        <label for="feCa" class="control-label fill">费用名称</label>
+                        <div>
+                        	  <input type="text" class="form-control required" name="feCa" id="feCa" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="feTyCd" class="control-label fill">费用类型</label>
+                        <div>
+                            <select id="feTyCd"
+                                    name="feTyCd"
+                                    class="form-control required"
+                                    data-selectloader-store="feTyCdList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="amNaCd" class="control-label fill">金额名称</label>
+                        <div>
+                            <select id="amNaCd"
+                                    name="amNaCd"
+                                    class="form-control required"
+                                    data-selectloader-store="amNaCdList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amYn" class="control-label">是否摊销</label>
+                        <div>
+                          <select id="amYn"
+                                    name="amYn"
+                                    class="form-control required"
+                                    data-selectloader-store="amYnList"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name"
+                                    >
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="feDe" class="control-label">费用描述</label>
+                        <div>
+                            <textarea class="form-control required" name="feDe"
+                                      id="feDe"></textarea>
+                        </div>
+                    </div>
+                </form>
+            {{{{/raw}}}}
+        </script>
+{{/content}} {{/extend}}

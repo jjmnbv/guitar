@@ -1,0 +1,137 @@
+{
+  "recordsTotal": 5,
+  "recordsFiltered": 5,
+  "data": [
+    {
+      "id": 5,
+      "audits": [
+        {
+          "id": 5
+        },
+        {
+          "id": 6
+        },
+        {
+          "id": 7
+        }
+      ],
+      "coverImg": "c_1479262675457.JPG",
+      "createDate": "2016-11-16T02:18:35Z",
+      "folder": "sensible_photo_1479262452571",
+      "homeShow": 0,
+      "intro": "九寨走一遭",
+      "name": "九寨行",
+      "photo": {
+        "id": 1
+      },
+      "removeDate": "2016-11-16T02:18:35Z",
+      "status": 1,
+      "type": "photo",
+      "user": {
+        "id": 4
+      },
+      "video": null,
+      "viewer": 292
+    },
+    {
+      "id": 4,
+      "audits": [
+        {
+          "id": 4
+        }
+      ],
+      "coverImg": "c_1479029304268.png",
+      "createDate": "2016-11-13T09:29:23Z",
+      "folder": "true_video_1479029290631",
+      "homeShow": 0,
+      "intro": null,
+      "name": "城市剪影——我们的上海",
+      "photo": null,
+      "removeDate": "2016-11-13T09:29:23Z",
+      "status": 1,
+      "type": "video",
+      "user": {
+        "id": 1
+      },
+      "video": {
+        "id": 4
+      },
+      "viewer": 241
+    },
+    {
+      "id": 3,
+      "audits": [
+        {
+          "id": 2
+        }
+      ],
+      "coverImg": "c_1479028912324.png",
+      "createDate": "2016-11-13T09:22:36Z",
+      "folder": "true_video_1479028779418",
+      "homeShow": 0,
+      "intro": null,
+      "name": "岫岩沟汤温泉",
+      "photo": null,
+      "removeDate": "2016-11-13T09:22:36Z",
+      "status": 1,
+      "type": "video",
+      "user": {
+        "id": 1
+      },
+      "video": {
+        "id": 3
+      },
+      "viewer": 290
+    },
+    {
+      "id": 2,
+      "audits": [
+        {
+          "id": 3
+        }
+      ],
+      "coverImg": "c_1479028576411.png",
+      "createDate": "2016-11-13T09:16:59Z",
+      "folder": "true_video_1479028495313",
+      "homeShow": 0,
+      "intro": null,
+      "name": "桂平白石山航拍",
+      "photo": null,
+      "removeDate": "2016-11-13T09:16:59Z",
+      "status": 1,
+      "type": "video",
+      "user": {
+        "id": 1
+      },
+      "video": {
+        "id": 2
+      },
+      "viewer": 258
+    },
+    {
+      "id": 1,
+      "audits": [
+        {
+          "id": 1
+        }
+      ],
+      "coverImg": "c_1479027819371.png",
+      "createDate": "2016-11-13T09:04:39Z",
+      "folder": "true_video_1479027752681",
+      "homeShow": 0,
+      "intro": null,
+      "name": "2016石家庄（正定）国际马拉松赛",
+      "photo": null,
+      "removeDate": "2016-11-13T09:04:39Z",
+      "status": 1,
+      "type": "video",
+      "user": {
+        "id": 1
+      },
+      "video": {
+        "id": 1
+      },
+      "viewer": 323
+    }
+  ]
+}

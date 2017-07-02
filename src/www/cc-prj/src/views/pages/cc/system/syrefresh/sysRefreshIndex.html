@@ -1,0 +1,84 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>系统刷新缓存管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+   <script src="{{path.base}}/script/cc/system/sysrefresh.js"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/system/sysrefresh.js"></script>
+    <script src="{{path.app}}/js/cc/system/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption">刷新系统缓存 </div>
+      <div class="actions">
+          <a id="refresh" href="javascript:;" title="刷新" class="chongzhi-sign"></a>
+      </div>
+    </div>
+   <!--  <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/PARTRCFG_PAGE"
+          data-page-template-id="partrcfg-page-template">
+        </div>
+      </div>
+    </div> -->
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+{{/content}}
+{{/extend}}

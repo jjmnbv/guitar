@@ -1,0 +1,31 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 1,
+      "belongerName": "金额22222222222222",
+      "discribe": "一手住宅房",
+      "dataSource": "------------",
+      "attr1": "身份证023125876321",
+      "attr2":"--------------"
+    },
+    {
+      "varId":2,
+      "belongerName": "金额22222222222222",
+      "discribe": "二手住宅房",
+      "dataSource": "------------",
+      "attr1": "身份证023125876321",
+      "attr2":"--------------"
+    },
+    {
+      "varId": 3,
+      "belongerName": "金额22222222222222",
+      "discribe": "商品房",
+      "dataSource": "------------",
+      "attr1": "身份证023125876321",
+      "attr2":"--------------"
+    }
+  ]
+}

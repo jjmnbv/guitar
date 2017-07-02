@@ -1,0 +1,275 @@
+{{#extend "main"}}
+
+    <!-- title BEGIN -->
+    {{#content "title"}}
+        <title>{{path.platform}} | {{path.subSystem}} | 个人信息维护</title>
+    {{/content}}
+    <!-- title END -->
+
+    <!-- css-plugins BEGIN -->
+    {{#content "css-plugins"}}
+    <!-- @Override -->
+    {{/content}}
+    <!-- css-plugins END -->
+
+    <!-- css-main BEGIN -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/cu/person-settings/person-info-maintenance.css">
+    {{/content}}
+    <!-- css-main END -->
+
+    <!-- js-loader BEGIN -->
+    {{#content "js-loader"}}
+       <script src="{{path.base}}/script/cu/dicts?ids=28,17,10"></script>
+       <script src="{{path.base}}/script/cu/cuusss/self"></script>
+    {{/content}}
+    <!-- js-loader END -->
+
+    <!-- js-plugins BEGIN -->
+    {{#content "js-plugins"}}
+    <!-- @Override -->
+    {{/content}}
+    <!-- js-plugins END -->
+
+    <!-- js-main BEGIN -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/helpers-ext.js"></script>
+        <script src="{{path.app}}/js/cu/common/app-context.js"></script>
+        <script src="{{path.app}}/js/cu/personal-settings/personal-info-maintenance.js"></script>
+    {{/content}}
+    <!-- js-main END -->
+
+    <!-- content-main BEGIN -->
+    {{#content "content-main"}}
+        <!--<div class="page-crumbs">-->
+            <!--<dl>-->
+                <!--<dt class="icon-index"><a href="index.html">首页</a></dt>-->
+                <!--<dt class="icon-index">个人信息维护</dt>-->
+            <!--</dl>-->
+        <!--</div>-->
+        {{{{raw}}}}
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>个人信息维护 </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        <!--<a href="" class="fullscreen" data-original-title="全屏" title="全屏"> </a>-->
+                    </div>
+                </div>
+                <div class="portlet-body" id="personalInfoBody"></div>
+            </div>
+
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>其他信息 </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                       <!-- <a href="" class="fullscreen" data-original-title="全屏" title="全屏"> </a>-->
+                    </div>
+                    <div class="actions">
+                        <a id="edit" data-toggle="modal" href="#updateModal" class="btn btn-default btn-sm">
+                            <i class="fa fa-pencil"></i> 修改 </a>
+                    </div>
+                </div>
+                <div class="portlet-body" id="otherInfoBody"></div>
+            </div>
+        {{{{/raw}}}}
+
+
+    {{/content}}
+    <!-- content-main END -->
+
+    <!-- content-pagination BEGIN -->
+    {{#content "content-pagination"}}
+    <!-- @Override -->
+    {{/content}}
+    <!-- content-pagination END -->
+
+    <!-- pagination-form BEGIN -->
+    {{#content "pagination-form"}}
+    <!-- @Override -->
+    {{/content}}
+    <!-- pagination-form END -->
+
+    <!-- pagination-container BEGIN -->
+    {{#content "pagination-container"}}
+    <!-- @Override -->
+    {{/content}}
+    <!-- pagination-container END -->
+
+    <!-- pagination-free BEGIN -->
+    {{#content "content-free"}}
+        <script id="personal-info-form-template" type="text/x-handlebars-template">
+            {{{{raw}}}}
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">登录用户名</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="" value="{{user.loginNa}}" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">所在机构</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="" value="{{user.cubrs.brNa}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">所在岗位</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {{#each user.postSet}}
+                                <span class="label label-success">{{postNa}}</span>
+                                {{/each}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">所在角色</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {{#each user.rosSet}}
+                                <span class="label label-info">{{roNa}}</span>
+                                {{/each}}
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            {{{{/raw}}}}
+        </script>
+        <script id="other-info-form-template" type="text/x-handlebars-template">
+            {{{{raw}}}}
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户姓名</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user.usNa}}" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">性别</label>
+                         <div class="radio-noborder">
+                                    <div id="sexCd" class="radio-list sexCd"
+                                         data-radioloader-val="{{user.sexCd}}"
+                                         data-radioloader-name="sexCd"
+                                         data-radioloader-store="sexCd"
+                                         data-radioloader-vkey="code"
+                                         data-radioloader-tkey="name"
+                                         required>
+                                    </div>
+                                </div>
+                            <!--<div class="radio-list">-->
+                                <!--<label class="radio-inline">-->
+                                    <!--<input type="radio" name="optionsRadios" id="optionsRadios25" value="option1" checked=""> 男-->
+                                <!--</label>-->
+                                <!--<label class="radio-inline">-->
+                                    <!--<input type="radio" name="optionsRadios" id="optionsRadios26" value="option2"> 女-->
+                                <!--</label>-->
+                            <!--</div>-->
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">证件类型</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user-paTyCd-text}}" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">证件号码</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user.paNo}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">联系电话</label>
+                        <div class="col-sm-3">
+                           <!-- <p class="form-control-static" id="tel">{{user.moNo}}</p>-->
+                            <input type="text" class="form-control" id="tel" value="{{user.moNo}}" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">邮箱地址</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="email" value="{{user.mailNo}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">上级机构</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user.cubrs.parent.brNa}}" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">机构编码</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user.cubrs.parent.brNo}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">是否主管</label>
+                        <div class="col-sm-3">
+                            <div id="exeYn" class="radio-list boolean-radio"
+                                 data-radioloader-val="{{user.exeYn}}"
+                                 data-radioloader-name="exeYn"
+                                 data-radioloader-store="exeYn"
+                                 data-radioloader-vkey="code"
+                                 data-radioloader-tkey="name">
+                            </div>
+                        </div>
+                        <label class="col-sm-2 control-label">上级主管</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user.parentCuUsSNa}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">状态</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user-st-text}}" readonly>
+                        </div>
+                        <label class="col-sm-2 control-label">工作状态</label>
+                        <div id="holYn" class="col-sm-3">
+                            <input type="text" class="form-control" value="{{user-holYn-text}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">备注</label>
+                        <div class="col-sm-3">
+                            <!--<p class="form-control-static">
+                                {{user.co}}
+                            </p>-->
+                            <input type="text" class="form-control" value="{{user.co}}" readonly>
+                        </div>
+                    </div>
+                </form>
+            {{{{/raw}}}}
+        </script>
+
+        <div class="modal fade" id="updateModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="rolesListModal">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">修改信息</h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <form action="/COMMIT_PERSONAL_INFO_DATA" class="form-horizontal updateForm" role="form">
+                            <!--<input type="hidden" name="id" value="1">-->
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label fill">联系电话</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control  telNumber" required name="moNo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label">邮箱地址</label>
+                                <div class="col-sm-5">
+                                    <input type="email" class="form-control email" name="mailNo">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+                                <button class="btn sky-blue btn-wid mainCol" id="ok">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/content}}
+    <!-- pagination-free END-->
+
+{{/extend}}

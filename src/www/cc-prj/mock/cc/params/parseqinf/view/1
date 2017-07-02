@@ -1,0 +1,15 @@
+{
+  "seqCde":1,
+  "seqNm":"流水名称",
+  "curSeqNum":1,
+  "seqLen":1,
+  "seqPreFix":"前充字符",
+  "seqSubFix":"后充字符",
+  "genForm":"生成规则表达式",
+  "genClass":"生成实现类",
+  "seqParam":"过滤条件",
+  "seqParVal":"条件数值",
+  "setTyp":"重置类型(N:不重置,D:按天,W按周,M:按月,Q:按季度,Y:按年)",
+  "resultCode": "SUCCESS",
+  "errors": []
+}

@@ -1,0 +1,316 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>{{path.platform}}{{path.subSystem}}打印模板管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+    <link rel="stylesheet" href="{{path.app}}/css/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/printtemplate/printtemplate.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/cs/dicts?ids=71"></script>
+	  <script src="{{path.base}}/script/cs/printtemplate"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cs/printtemplate.js"></script>
+	<script src="{{path.app}}/js/auth-judge.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+    {{{{raw}}}}
+    <input type="hidden" name="setNo" value="{{request.setNo}}" class="hiddenCondition">
+    {{{{/raw}}}}
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="form-horizontal pagination-form bsdForm">
+      <div class="form-body">
+        <div>
+          {{{{raw}}}}
+          <input type="hidden" name="setNo" value="{{request.setNo}}">
+          {{{{/raw}}}}
+          <div class="form-group">
+            <label class="control-label">模板名称:</label>
+            <div>
+              <input name="name" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">模板类型:</label>
+            <div>
+              <select name="typeCode" class="dictionarys form-control"
+                  data-selectloader-store="dict_71"
+                  data-selectloader-vkey="code"
+                  data-selectloader-tkey="name"
+				  data-selectloader-append='0'>
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group-sel">
+            <label class="control-label">创建日期</label>
+            <div class="selBox">
+              <div class="date date-picker date-picker-page data-wid" data-date-format="yyyy-dd-mm">
+                <input type="text" class="form-control" name="createDateFrom">
+                <span class="input-group-btn">
+                  <button class="btn default" type="button">
+                    <i class="fa fa-calendar"></i>
+                  </button>
+                </span>
+              </div>
+              <span>至</span>
+              <div class="date date-picker date-picker-page data-wid" data-date-format="yyyy-dd-mm">
+                <input type="text" class="form-control" name="createDateTo">
+                <span class="input-group-btn">
+                  <button class="btn default" type="button">
+                    <i class="fa fa-calendar"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption">打印模板列表 </div>
+      <div class="actions">
+          <a id="add" class="add-sign" href="#" title="新增" data-target="#printtemplate-add-modal" data-toggle="modal"></a>
+          <a class="pagination-reload Refresh-sign" href="javascript:;" title="刷新"></a>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/PRINTTEMPLATE_PAGE"
+          data-page-template-id="printtemplate-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <div id="printtemplate-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增打印模板</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/PRINTTEMPLATE_CREATE" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
+            <div class="form-body">
+              <input type="hidden" name="setNo" readonly="readonly">
+              <div class="row">
+                <!--<div class="col-md-12">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">模板编号:</label>
+                    <div class="col-md-9">
+                      <input name="name" type="text" class="form-control input-sm isNotSpecialCharacter" required placeholder="请输入模板代码..." readonly>
+                    </div>
+                  </div>
+                </div>-->
+                <div class="col-md-12">
+                  <div class="form-group template-type">
+                    <label class="col-md-3 control-label">模板类型:</label>
+                    <div class="col-md-9">
+                      <select name="typeCode" class="dictionarys form-control required"
+                          data-selectloader-store="dict_71"
+                          data-selectloader-vkey="code"
+                          data-selectloader-tkey="name"
+                          data-selectloader-append='0'>
+                        <option value="">请选择</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+    	              <div class="form-group">
+                    <label class="col-md-3 control-label">模版名称:</label>
+                    <div class="col-md-9">
+                      <!--<form action="/cs/printtemplate/uploadFile" id="upload_form" enctype="multipart/form-data"  method="POST" role="form" class="form-horizontal">-->
+                        <!--<input type="hidden" name="setNo" readonly="readonly" value="21" required>
+                        <input type="hidden" name="name" readonly="readonly" value="15" required>-->
+                        <input type="text" name="name" id="teNa" readonly="" class="fileType" required>
+                        <input type="file" id='file' name="file"  onchange="setName(this);"/>
+                        <!--<input type="button" value="上传文件" id="printUpload" onclick="uploadSubmit()" />-->
+                      <!--</form>-->
+                   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+            <button type="button" class="btn blue ok">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="printtemplate-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑打印模板<span class="edit_printtemplate_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/PRINTTEMPLATE_UPDATE" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
+            <div class="form-body">
+              <input type="hidden" name="setNo" readonly="readonly">
+              <div class="row">
+                <!--<div class="col-md-12">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">模板编号:</label>
+                    <div class="col-md-9">
+                      <input name="name" type="text" class="form-control input-sm" readonly required placeholder="请输入模板代码...">
+                    </div>
+                  </div>
+                </div>-->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">模板类型:</label>
+                    <div class="col-md-9">
+                      <select name="typeCode" class="dictionarys form-control required"
+                          data-selectloader-store="dict_71"
+                          data-selectloader-vkey="code"
+                          data-selectloader-tkey="name"
+                          data-selectloader-append='0'>
+                        <option value="">请选择</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">模板名称:</label>
+                    <div class="col-md-9">
+                      <input type="text" name="name" id="teNaUp" readonly=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+    	              <div class="form-group">
+                    <label class="col-md-3 control-label">上传文件(rpx):</label>
+                    <div class="col-md-9">
+                      <!--<form action="/cs/printtemplate/uploadFile" id="upload_form" enctype="multipart/form-data"  method="POST" role="form" class="form-horizontal">-->
+                        <!--<input type="hidden" name="setNo" readonly="readonly" value="21" required>
+                        <input type="hidden" name="name" readonly="readonly" value="15" required>-->
+                        <input type="text"  id='uploadName' class="fileType required"  readonly=""/>
+                        <input type="file" id='fileUp' name="file"  onchange="setName(this);"/>
+                        <!--<input type="button" value="上传文件" id="printUpload" onclick="uploadSubmit()" />-->
+                      <!--</form>-->
+                   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+            <button type="button" class="btn blue ok">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--
+  	新增预览弹窗
+  -->
+  <div id="printtemplate-preview-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">预览打印模板</h4>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn blue">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/x-handlebars-template" id="printtemplate-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th> 模板名称 </th>
+            <th> 模板类型</th>
+            <th> 创建日期 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{name}} </td>
+            <th> {{typeCode-text}} </th>
+            <th> {{createDate}} </th>
+            <td>
+              <a href="#" data-target="#printtemplate-edit-modal" data-toggle="modal" data-printtemplate-id="?setNo={{setNo}}&typeCode={{typeCode}}"> 编辑 </a>
+              <a href="javascript:;" data-delete-printtemplate-id="?setNo={{setNo}}&typeCode={{typeCode}}">删除</a>
+              <a href="#" data-target="#printtemplate-preview-modal" data-toggle="modal" data-printtemplate-id="?setNo={{setNo}}&typeCode={{typeCode}}">预览</a>
+              <a href="javascript:;" data-exporttemplate-id="?setNo={{setNo}}&typeCode={{typeCode}}" class="exportBtn">导出</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

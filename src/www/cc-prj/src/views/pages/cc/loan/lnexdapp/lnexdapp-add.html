@@ -1,0 +1,271 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>增加贷款展期信息管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+  <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+  <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+  <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnexdapp-add.css"/> 
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.app}}/js/cc/common/loan-prop.js"></script>
+    <script src="{{path.base}}/script/cc/loan/lnexdapp-add.js"></script>
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=RatTyp"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=17,3005,3006,3010,3011,3016,3017,3018,3022,3023,3033"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnexdapp-add.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    {{{{raw}}}}
+    <div class="portlet">
+    <div class="portlet-body">
+ 	<form action="/LNEXDAPP_CREATE" method="POST" role="form" class="bsdForm" id="add-lnexdapp-form">
+         <div class="form-group">
+            <label class="control-label fill">借据号:</label>
+            <div class="find">
+                <div class="line propInput">
+                    <input type="text"  name="loNo" class="form-control required" id="loNo" maxlength="32" readonly placeholder="请选择借据号...">
+                </div>
+                <div class="line-use">
+                    <a data-toggle="modal" href="#lonoModal">
+                        <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                type="button" data-select2-open="single-prepend-text">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">展期期限类型:</label>
+            <div>
+ 			<select name="exdPlTyp"   class="form-control exdPlTyp required"
+          			data-selectloader-store="exdPlTyp"
+          			data-selectloader-vkey="code" data-selectloader-tkey="name">
+          			<option value="">请选择...</option>
+   		 	</select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label fill">展期期限:</label>
+            <div>
+                <input name="exdPlNum" type="text" class="form-control input-sm nonnegativeInteger required" maxlength="3"  placeholder="请输入展期期限...">
+            </div>
+        </div>
+       	<div class="form-group form-exdamt-hidden">
+           <label class="control-label">展期金额:</label>
+           <div>
+			 <input type="hidden" name="exdAmt" id="exdAmt"  maxlength="16">
+  			 <input type="text" class="form-control input-sm exdAmtl " name="exdAmtl" maxlength="16" id="exdAmtl" placeholder="请输入展期金额...">
+           </div>
+       	</div>
+		<div class="form-group form-group-sel single form-exdapp-hidden">
+          <label class="control-label ">原到期日:</label>
+      	  <div class="selBox">
+   			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+        	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+        	 	data-date-language="zh-CN">
+        	   	 	<input name="oldLaDueDt" type="text"  id="oldLaDueDt"  class="form-control uniform-input text"  placeholder="原到期日..." readonly>
+         			<span class="input-group-btn">
+                	<button class="btn default" type="button">
+                     <i class="fa fa-calendar"></i>
+                 	</button>
+         		</span>
+   			</div>
+    	 </div>
+		</div>
+	 	<div class="form-group form-group-sel single form-exdapp-hidden">
+			<label class="control-label ">到期日:</label>
+        		<div class="selBox">
+       			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+	           	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+	           	 	data-date-language="zh-CN">
+            	   	 <input name="laDueDt" type="text"  id="laDueDt"  class="form-control uniform-input text"  placeholder="到期日..." readonly>
+             		 <span class="input-group-btn">
+                     <button class="btn default" type="button">
+                         <i class="fa fa-calendar"></i>
+                     </button>
+             		</span>
+       			</div>
+       		</div>
+      	</div>
+        <div class="form-group">
+            <label class="control-label fill">还款类型:</label>
+            <div>
+                <select name="loPayTyp"   class="form-control loPayTyp selectpicker  required" id="select-lopaytyp"
+        		data-selectloader-store="loPayTyp"
+        		data-selectloader-vkey="code" data-selectloader-tkey="name">
+        		<option value="">请选择...</option>
+ 				</select>
+            </div>
+        </div>
+        <div class="form-group  form-lopaycde-hidden">
+            <label class="control-label ">还款方式:</label>
+            <div>
+                <select name="loPayCde"   class="form-control loPayCde " disabled
+        		data-selectloader-store="loPayCde"
+        		data-selectloader-vkey="code" data-selectloader-tkey="name">
+        		<option value="">请选择...</option>
+ 		 		</select>
+            </div>
+        </div>
+        <div class="form-group">
+             <label class="control-label">还款期限类型:</label>
+             <div>
+				<select name="loPayPlTyp"   class="form-control loPayPlTyp"
+         			data-selectloader-store="loPayPlTyp"
+         			data-selectloader-vkey="code" data-selectloader-tkey="name">
+         			<option value="">请选择...</option>
+  		 		</select>
+             </div>
+         </div>
+          <div class="form-group form-exdapp-hidden">
+              <label class="control-label">基准利率:</label>
+              <div>
+				  <input type="hidden" name="baRt">
+                  <input name="baRtl" type="text" class="form-control  percentRange amtLength" maxlength="16" placeholder="请输入利率..." readonly="readonly">
+              </div>
+          </div>
+          <div class="form-group form-exdapp-hidden">
+              <label class="control-label">利率浮点:</label>
+              <div>
+                  <input type="hidden" name="rtAd">
+                  <input name="rtAdl" type="text" class="form-control  percentRange amtLength" maxlength="16" placeholder="请输入利率..." >
+              </div>
+          </div>
+          <div class="form-group form-exdapp-hidden">
+              <label class="control-label">利率浮比:</label>
+              <div>
+                  <input type="hidden" name="rtPe">
+                  <input name="rtPel" type="text" class="form-control  percentRange amtLength" maxlength="16" placeholder="请输入利率..." >
+              </div>
+          </div>
+          <div class="form-group form-exdapp-hidden">
+              <label class="control-label ">执行利率:</label>
+              <div>
+				  <input type="hidden" name="exRt" >
+                  <input name="exRtl" type="text" class="form-control  percentRange amtLength" placeholder="请输入利率..."  readonly="readonly">
+              </div>
+          </div>  
+          <div class="form-group form-exdapp-hidden">
+              <label class="control-label">罚息利率浮比:</label>
+              <div>
+                  <input type="hidden" name="ovPe">
+                  <input name="ovPel" type="text" class="form-control  percentRange amtLength" placeholder="请输入利率..." >
+              </div>
+          </div>
+         <div class="form-group form-exdapp-hidden">
+              <label class="control-label">罚息利率:</label>
+              <div>
+				  <input type="hidden" name="ovRt">
+                  <input name="ovRtl" type="text" class="form-control  percentRange amtLength" placeholder="请输入利率..." readonly="readonly">
+              </div>
+          </div> 
+        <div class="form-group">
+            <label class="control-label fill">生效类型:</label>
+            <div>
+				<select name="valTyp"   class="form-control valTyp required"
+        			data-selectloader-store="valTyp"
+        			data-selectloader-vkey="code" data-selectloader-tkey="name">
+        			<option value="">请选择...</option>
+ 		 		</select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">机构号:</label>
+            <div>
+                <input name="brNo" type="text" class="form-control input-sm Rnumber" maxlength="20" placeholder="请输入机构号...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">用户号:</label>
+            <div>
+                <input name="laUsId" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入用户号...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">用户名称:</label>
+            <div>
+                <input name="laUsNa" type="text" class="form-control input-sm" maxlength="10" placeholder="请输入用户名称...">
+            </div>
+        </div>
+	  	<div class="form-group form-group-sel single">
+       		<label class="control-label ">申请日期:</label>
+       		<div class="selBox">
+      			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+	           	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+	           	 	data-date-language="zh-CN">
+           	   	 	<input name="appDt" type="text"  id="appDt"  class="form-control uniform-input text"  placeholder="申请日期..." readonly>
+            		<span class="input-group-btn">
+	                     <button class="btn default" type="button">
+	                         <i class="fa fa-calendar"></i>
+	                     </button>
+            		</span>
+      		  </div>
+     		 </div>
+       	 </div>
+      	 <div class="portlet-body center">
+             <div class="clearfix">
+              <button class="btn sky-blue btn-wid mainCol" id="saveForm" type="button">保存</button>
+              <a class="btn sky-blue btn-wid mainCol" onclick="returnlist()">返回</a>
+             </div>
+       	 </div>
+  </form>
+   </div>
+   </div>
+ {{{{/raw}}}}
+    <!-- @Override -->
+  {{/content}}
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+  <!-- @Override -->
+{{/content}}
+  
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+  
+  <!-- 借据选择框 -->
+  {{> loan-prop}}
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}} 
+{{/content}}
+{{/extend}}

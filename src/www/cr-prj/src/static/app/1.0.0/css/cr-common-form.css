@@ -1,0 +1,41 @@
+.form-group.one-row-title{
+    display: block;
+    color: #2196F3;
+}
+.form-group.one-row{
+    display: block;
+}
+.bsdForm .form-group.one-row > div{
+    width: 371px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.bsdForm .form-group > label{
+    width: 102px;
+    text-align: right;
+}
+.form-group.one-row-title> label{
+    text-align: left;
+    width: inherit;
+}
+.bsdForm .form-group.long-label > label{
+    width: 355px;
+}
+.bsdForm .form-group > div{
+    width: 117px;
+}
+.bsdForm .form-group-sel > div.selBox > div{
+    width:117px !important;
+    height:20px;
+}
+.bsdForm .form-group-sel > div.selBox span.input-group-btn .btn {
+    padding:1px 2px;
+    right:-20px;
+}
+.bsdForm .portlet > .portlet-body {
+    padding-top: 5px !important;
+}
+.bsdForm .form-group > div .form-control{
+    font-size: 12px;
+}

@@ -1,0 +1,11 @@
+{
+    "id": 53,
+    "version": 1,
+    "name": "申请人类型",
+    "desc": "申请人类型",
+    "status": "JH",
+    "modelCode": "XT",
+    "createDate": "2016-11-05",
+    "lastUpdate": "2016-11-05",
+    "lastUpdateUserId": 1
+}

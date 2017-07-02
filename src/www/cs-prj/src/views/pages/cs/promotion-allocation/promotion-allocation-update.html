@@ -1,0 +1,454 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}促销配置{{path.updateText}}</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css">
+        <link rel="stylesheet" href="{{path.app}}/css/promotion-allocation/promotion-allocation-update.css">
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <script src="{{path.base}}/script/cs/dicts?ids=50,4"></script>
+        <script src="{{path.base}}/script/cs/updatecsproms"></script>
+        <script src="{{path.base}}/script/region-data.js"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cs/promotion-allocation/promotion-allocation-update.js"></script>
+        <script src="{{path.app}}/js/auth-judge.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        <div id="main-template">
+        
+        </div>
+
+{{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+  <script type="text/x-handlebars-template" id="main-cont-template">
+  	  {{{{raw}}}}
+  	    <form action="" class="bsdForm" id="update-promotion-form" data-link = "promotion-allocation.html">
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        新增促销信息
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                	  <div class="form-group">
+                        <label for="promNo" class="control-label fill">促销编号</label>
+                        <div>
+                            <input type="text" class="form-control required" name="promNo" id="promNo" value="{{promNo}}" readonly="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="promNa" class="control-label fill">促销名称</label>
+                        <div>
+                          <input type="text" class="form-control required" name="promNa" id="promNa" value="{{promNa}}">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="co" class="control-label fill">促销描述</label>
+                        <div>
+                          <input type="text" class="form-control required" name="co" id="co" value="{{co}}">
+                        </div>
+                    </div>-->
+                    <div class="form-group form-group-sel single">
+                      <label for="beDt" class="control-label fill">生效日期</label>
+                      <div class="selBox">
+                          <div class="date date-picker date-picker-page beDt" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                              <input type="text" class="form-control required ltTimeValidate" name="beDt" id="beDt"
+                                     value="{{beDt}}" data-gtTimeValidate="enDt">
+                          <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                              <i class="fa fa-calendar"></i>
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-sel single">
+                      <label for="enDt" class="control-label fill">失效日期</label>
+                      <div class="selBox">
+                        <div class="date date-picker date-picker-page enDt" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                          <input type="text" class="form-control required gtTimeValidate" name="enDt" id="enDt"
+                                 value="{{enDt}}"  data-ltTimeValidate="beDt">
+                          <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                              <i class="fa fa-calendar"></i>
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        利率优惠
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" id="rateDisAdd" class="add-sign"></a>
+                        <a href="javascript:;" id="rateDisDelete" class="delete-sign"></a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                        <div class="table-scrollable">
+                            
+                            <table class="table table-striped table-bordered table-hover bsdForm" id="rateDisTable">
+                                <thead>
+                                <tr>
+                                    <th width="10%">选择</th>
+                                    <!--<th width="10%">序号</th>-->
+                                    <th width="17%">促销优惠</th>
+                                    <th width="17%">还款方式</th>
+                                    <th width="17%">促销利率 </th>
+                                    <th width="19%">促销最小期限</th>
+                                    <th>促销最大期限</th>
+                                </tr>
+                                </thead>
+                                <tbody id="rateDisTableBody">
+                                	<!--{{#if llcsPromSuSList}}-->
+                                	{{#each llcsPromSuSList}}
+                                  <tr>
+                                    <td class="form-group">
+                                    	<label>
+                                        <input type="radio" class="icheck" name="checkRow" data-id="{{@index}}">
+                                    </label>
+                                    </td>
+                                    <!--<td class="form-group" data-index>
+                                    	{{list-rowindex}}
+                                    </td>-->
+                                    <td class="form-group">
+                                      <select id="llcsPromSuSList[{{@index}}].promBeneCd"
+                                              name="llcsPromSuSList[{{@index}}].promBeneCd"
+                                              class="form-control promBeneYh required"
+                                              data-selectloader-store="promBeneYhList"
+                                              data-selectloader-vkey="code"
+                                              data-selectloader-tkey="name"
+                                              data-selectloader-val="{{promBeneCd}}"
+                                              onchange="llPromoSel(this)">
+                                        <option value="">请选择</option>
+                                     </select>
+                                    </td>
+                                    <td class="form-group">
+                                    	  <select id="llcsPromSuSList[{{@index}}].promCondPmId"
+                                               name="llcsPromSuSList[{{@index}}].promCondPmId"
+                                               class="form-control promCondPmId required"
+                                               data-selectloader-store="promCondPmIdList"
+                                               data-selectloader-vkey="loPmId"
+                                               data-selectloader-tkey="pmNa"
+                                               data-selectloader-val="{{promCondPmId}}">
+                                        <option value="">请选择</option>
+                                      </select>
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control percentFormat zxlv" value="{{promBenePc}}" class="" name="llcsPromSuSList[{{@index}}].RepromBenePc" {{#if (eq promBeneCd 'QM')}}readonly{{/if}}>
+                                        <input type="hidden" class="" name="llcsPromSuSList[{{@index}}].promBenePc">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control required notEmpty nonnegativeInteger isInclude ltTo promCondMinPlQt" name="llcsPromSuSList[{{@index}}].promCondMinPlQt" value="{{promCondMinPlQt}}"
+                                        id="llcspromCondMinPlQt{{@index}}" data-gtTo="llcspromCondMaxPlQt{{@index}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control required notEmpty nonnegativeInteger isInclude gtTo promCondMaxPlQt" name="llcsPromSuSList[{{@index}}].promCondMaxPlQt" value="{{promCondMaxPlQt}}"
+                                        id="llcspromCondMaxPlQt{{@index}}" data-ltTo="llcspromCondMinPlQt{{@index}}">
+                                     </td>
+                                   </tr>
+                                  {{/each}}
+                                </tbody>
+                                <!--{{else}}
+                                {{{{/raw}}}}
+                                </tbody>
+                                <tfoot class="empty">
+                                	<tr>
+            	                      <td colspan="6">
+            		                      <img src="{{path.app}}/img/icon/nothing.png" alt="暂无记录！">
+                                    <p>暂无记录！</p>
+            	                      </td>
+            	                     </tr>
+                                </tfoot>
+                                {{{{raw}}}}
+                                {{/if}}-->
+                            </table>
+                        </div>
+                </div>
+            </div>
+            <!--
+            	作者：85319019@qq.com
+            	时间：2016-12-20
+            	描述：以下是费用优惠
+            -->
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        费用优惠
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" id="feeDisAdd" class="add-sign"></a>
+                        <a href="javascript:;" id="feeDisDelete" class="delete-sign"></a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                        <div class="table-scrollable">
+                            
+                            <table class="table table-striped table-bordered table-hover bsdForm" id="feeDisTable">
+                                <thead>
+                                <tr>
+                                    <th width="8%">选择</th>
+                                    <!--<th width="8%">序号</th>-->
+                                    <th width="11%">费用名称</th>
+                                    <th width="11%">费用计算方式</th>
+                                    <th width="11%">促销优惠</th>
+                                    <th width="14%">浮动比例</th>
+                                    <th width="14%">浮动金额</th>
+                                    <th width="13%">促销最小期限</th>
+                                    <th width="13%">促销最大期限</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody id="feeDisTableBody">
+                                	<!--{{#if fycsPromSuSList}}-->
+                                  {{#each fycsPromSuSList}}
+                                  <tr>
+                                    <td class="form-group">
+                                      <label>
+                                        <input type="radio" class="icheck" name="checkRow" data-id="{{@index}}">
+                                      </label>
+                                    </td>
+                                    <!--<td class="form-group" data-index>
+                                    {{list-rowindex}}
+                                    </td>-->
+                                    <td class="form-group">
+                                    	  <select id="fycsPromSuSList{{@index}}_feCd"
+                                               name="fycsPromSuSList[{{@index}}].feCd"
+                                               class="form-control feCd required"
+                                               data-selectloader-store="feeTypeList"
+                                               data-selectloader-vkey="feCode"
+                                               data-selectloader-tkey="feCa"
+                                               data-selectloader-nselect="#fycsPromSuSList{{@index}}_feCalCd"
+                                               data-selectloader-val="{{feCd}}">
+                                         <option value="">请选择</option>
+                                      </select>
+                                    </td>
+                                    <td class="form-group">
+                                    	  <select id="fycsPromSuSList{{@index}}_feCalCd"
+                                    	  	        name="fycsPromSuSList[{{@index}}].feCalCd"
+                                               class="form-control feCalCd required"
+                                               data-selectloader-store="feeTypeSub"
+                                               data-selectloader-vkey="feeCalCd"
+                                               data-selectloader-tkey="feeCalName" 
+                                               data-selectloader-val="{{feeCalCd}}">
+                                               <option value="">请选择</option>
+                                      </select>
+                                    </td>
+                                    <td class="form-group">
+                                    	  <select id="fycsPromSuSList[{{@index}}].promBeneCd"
+                                               name="fycsPromSuSList[{{@index}}].promBeneCd"
+                                               class="form-control promBeneCd required"
+                                               data-selectloader-store="promBeneCdList"
+                                               data-selectloader-vkey="code"
+                                               data-selectloader-tkey="name"
+                                               data-selectloader-val="{{promBeneCd}}"
+                                               onchange="fypromSel(this)">
+                                          <option value="">请选择</option>
+                                       </select>
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control  percentFormat fdbl" value="{{promBenePc}}" name="fycsPromSuSList{{@index}}.promBenePcRe" {{#if (ne promBeneCd 'FB')}}readonly{{/if}}>
+                                        <input type="hidden" class="" name="fycsPromSuSList[{{@index}}].promBenePc">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control bindEvent fdje minMoney" value="{{promBeneAm}}" name="fycsPromSuSList[{{@index}}].promBeneAmRe" {{#if (ne promBeneCd 'FJ')}}readonly{{/if}}>
+                                        <input type="hidden" name="fycsPromSuSList[{{@index}}].promBeneAm">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control required notEmpty nonnegativeInteger ltTo" name="fycsPromSuSList[{{@index}}].promCondMinPlQt" value="{{promCondMinPlQt}}"
+                                               id="fycspromCondMinPlQt{{index}}" data-gtTo="fycspromCondMaxPlQt{{index}}">
+                                    </td>
+                                    <td class="form-group">
+                                        <input type="text" class="form-control required notEmpty nonnegativeInteger gtTo" name="fycsPromSuSList[{{@index}}].promCondMaxPlQt" value="{{promCondMaxPlQt}}"
+                                               id="fycspromCondMaxPlQt{{index}}" data-ltTo="fycspromCondMinPlQt{{index}}">
+                                    </td>
+                                   </tr>
+                                  {{/each}}
+                                </tbody>
+                                <!--{{else}}
+                                </tbody>
+                                {{{{/raw}}}}
+                                <tfoot class="empty">
+                                	<tr>
+            	                      <td colspan="8">
+            		                      <img src="{{path.app}}/img/icon/nopic.png" alt="暂无记录！">
+                                    <span>暂无记录！</span>
+            	                      </td>
+            	                     </tr>
+                                </tfoot>
+                                {{{{raw}}}}
+                                {{/if}}-->
+                            </table>
+                        </div>
+                </div>
+            </div>
+            
+            <div class="portlet-body center">
+              <div class="clearfix">
+               <button class="btn sky-blue btn-wid mainCol" type="button" id="saveForm">保存</button>
+               <a class="btn sky-blue btn-wid mainCol" href="promotion-allocation.html">返回</a>
+              </div>
+            </div>
+          </form>
+  	  {{{{/raw}}}}
+  	  </script>
+  <script type="text/x-handlebars-template" id="table-row1-template">
+  	  {{{{raw}}}}
+  	    <tr>
+            <td class="form-group">
+            	  <label>
+                <input type="radio" class="icheck" name="checkRow" data-id="{{listIndex index}}">
+              </label>
+            </td>
+        <!--<td class="form-group" data-index>
+          {{index}}
+        </td>-->
+        <td class="form-group">
+          <select id="llcsPromSuSList[{{listIndex index}}].promBeneCd"
+                  name="llcsPromSuSList[{{listIndex index}}].promBeneCd"
+                  class="form-control promBeneYh required"
+                  data-selectloader-store="promBeneYhList"
+                  data-selectloader-vkey="code"
+                  data-selectloader-tkey="name"
+                  onchange="llPromoSel(this)">
+           <option value="">请选择</option>
+          </select>
+        </td>
+        <td class="form-group">
+            <select id="llcsPromSuSList[{{listIndex index}}].promCondPmId"
+                    name="llcsPromSuSList[{{listIndex index}}].promCondPmId"
+                    class="form-control promCondPmId required"
+                    data-selectloader-store="promCondPmIdList"
+                    data-selectloader-vkey="loPmId"
+                    data-selectloader-tkey="pmNa">
+              <option value="">请选择</option>
+            </select>
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control percentFormat zxlv required" name="llcsPromSuSList[{{listIndex index}}].RepromBenePc">
+            <input type="hidden" class="" name="llcsPromSuSList[{{listIndex index}}].promBenePc">
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control notEmpty nonnegativeInteger required isInclude ltTo promCondMinPlQt" name="llcsPromSuSList[{{listIndex index}}].promCondMinPlQt"
+                   id="promCondMinPlQt{{index}}" data-gtTo="promCondMaxPlQt{{index}}">
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control notEmpty nonnegativeInteger required isInclude gtTo promCondMaxPlQt" name="llcsPromSuSList[{{listIndex index}}].promCondMaxPlQt"
+                   id="promCondMaxPlQt{{index}}" data-ltTo="promCondMinPlQt{{index}}">
+        </td>
+      </tr>
+  	  {{{{/raw}}}}
+  	</script>
+  	
+  	<script type="text/x-handlebars-template" id="table-row2-template">
+  	  {{{{raw}}}}
+  	    <tr>
+        <td class="form-group">
+        	  <label>
+            <input type="radio" class="icheck" name="checkRow" data-id="{{listIndex index}}">
+          </label>
+        </td>
+        <!--<td class="form-group" data-index>
+          {{index}}
+        </td>-->
+        
+        <td class="form-group">
+            <select id="fycsPromSuSList{{listIndex index}}_feCd"
+                    name="fycsPromSuSList[{{listIndex index}}].feCd"
+                    class="form-control feCd required"
+                    data-selectloader-store="feeTypeList"
+                    data-selectloader-vkey="feCode"
+                    data-selectloader-tkey="feCa"
+                    data-selectloader-nselect="#fycsPromSuSList{{listIndex index}}_feCalCd">
+              <option value="">请选择</option>
+            </select>
+        </td>
+        <td class="form-group">
+          	  <select id="fycsPromSuSList{{listIndex index}}_feCalCd"
+                    name="fycsPromSuSList[{{listIndex index}}].feCalCd"
+                    class="form-control feCalCd required"
+                    data-selectloader-store="feeTypeSub"
+                    data-selectloader-vkey="feeCalCd"
+                    data-selectloader-tkey="feeCalName">
+              <option value="">请选择</option>
+            </select>
+        </td>
+        <td class="form-group">
+          	  <select id="fycsPromSuSList{{listIndex index}}.promBeneCd"
+                    name="fycsPromSuSList[{{listIndex index}}].promBeneCd"
+                    class="form-control promBeneCd required"
+                    data-selectloader-store="promBeneCdList"
+                    data-selectloader-vkey="code"
+                    data-selectloader-tkey="name"
+                    onchange="fypromSel(this)">
+              <option value="">请选择</option>
+            </select>
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control HundredZero percentFormat fdbl" id="promBenePc{{index}}" name="fycsPromSuSList{{listIndex index}}.promBenePcRe">
+            <input type="hidden" class="" name="fycsPromSuSList[{{listIndex index}}].promBenePc">
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control  bindEvent fdje minMoney"  id="promBeneAm_{{index}}">
+            <input type="hidden" name="fycsPromSuSList[{{listIndex index}}].promBeneAm">
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control notEmpty nonnegativeInteger required ltTo"
+                   name="fycsPromSuSList[{{listIndex index}}].promCondMinPlQt" id="promCondMinPlQt{{index}}" data-gtTo="promCondMaxPlQt{{index}}">
+        </td>
+        <td class="form-group">
+            <input type="text" class="form-control notEmpty nonnegativeInteger required gtTo"
+                   name="fycsPromSuSList[{{listIndex index}}].promCondMaxPlQt" id="promCondMaxPlQt{{index}}" data-ltTo="promCondMinPlQt{{index}}">
+        </td>
+      </tr>
+  	  {{{{/raw}}}}
+  	</script>
+{{/content}}
+
+{{/extend}}

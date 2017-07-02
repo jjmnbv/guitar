@@ -1,0 +1,275 @@
+<!-- 此文件作为基础开发文件，需要开发新页面时，直接复制到相应位置，重命名即可 -->
+{{#extend "main"}}
+
+    <!-- 页面meta  作者，关键字，描述 -->
+    {{#content "meta"}}
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <meta content="" name="keyword"/>
+    {{/content}}
+
+    <!-- 页面 title -->
+    {{#content "title"}}
+        <title>{{path.platform}}{{path.subSystem}}还款方式{{path.addText}}</title>
+    {{/content}}
+
+    <!-- css插件 -->
+    {{#content "css-plugins"}}
+    {{/content}}
+
+    <!-- 自定义css -->
+    {{#content "css-main"}}
+        <link rel="stylesheet" href="{{path.app}}/css/common-form.css">
+        <link rel="stylesheet" href="{{path.app}}/css/repay-mode/repay-mode-add.css">
+    {{/content}}
+
+    <!-- 首屏渲染数据js-loader -->
+    {{#content "js-loader"}}
+        <!--加载数据字典-->
+        <script src="{{path.base}}/script/cs/dicts?ids=37,38,39,28,40,41,42"></script>
+        <script src="{{path.base}}/script/region-data.js"></script>
+        <script src="{{path.base}}/script/cs/paymentmethodadd"></script>
+    {{/content}}
+
+    <!-- js插件 -->
+    {{#content "js-plugins"}}
+    {{/content}}
+
+    <!-- 自定义js -->
+    {{#content "js-main"}}
+        <script src="{{path.app}}/js/cs/repay-mode/repay-mode-add.js"></script>
+        <script src="{{path.app}}/js/auth-judge.js"></script>
+    {{/content}}
+
+    <!-- 页面主体 -->
+    {{#content "content-main"}}
+        <div>
+        <form action="" class="bsdForm" id="add-repay-form" data-link="repay-mode.html">
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        基本信息
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                	{{{{raw}}}}
+                	  <div class="form-group">
+                        <label for="loPmId" class="control-label fill">还款方式编号</label>
+                        <div>
+                            <input type="text" class="form-control required" name="loPmId" id="loPmId" value="{{loPmId}}" readonly="">
+                        </div>
+                    </div>
+                    {{{{/raw}}}}
+                    <div class="form-group">
+                        <label for="pmNa" class="control-label fill">还款方式名称</label>
+                        <div>
+                            <input type="text" class="form-control required" name="pmNa" id="pmNa" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pmDe" class="control-label fill">还款方式描述</label>
+                        <div>
+                          <textarea class="form-control required padd-cen" name="pmDe" id="pmDe" maxlength="255"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="st" class="control-label fill">还款方式种类</label>
+                        <div>
+                            <select id="pmCd"
+                                    name="pmCd"
+                                    class="form-control required pmCd"
+                                    data-selectloader-store="pmCd"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name"
+                                    onchange="changeCas(this);">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="perProYn" class="control-label fill">是否期供</label>
+                        <div class="no-border">
+                          <div class="radio-list perProYn" 
+                               data-radioloader-name="perProYn"
+                               data-radioloader-val="Y"
+                               data-radioloader-store="perProYnList" 
+                               data-radioloader-vkey="code"
+                               data-radioloader-tkey="name">
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        还款方式策略
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                	  <div class="form-group">
+                        <label for="inCalPerCd" class="control-label fill">利息计算周期</label>
+                        <div>
+                            <select id="inCalPerCd"
+                                    name="inCalPerCd"
+                                    class="form-control required inCalPerCd"
+                                    data-selectloader-store="inCalPerCd"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inCalBaCd" class="control-label fill">利息计算基础</label>
+                        <div>
+                            <select id="inCalBaCd"
+                                    name="inCalBaCd"
+                                    class="form-control required inCalBaCd"
+                                    data-selectloader-store="inCalBaCd"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name"
+                                    data-selectloader-val="">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="perQt" class="control-label fill">支持期数</label>
+                        <div>
+                          <input type="text" class="form-control required nonnegativeInteger" name="perQt" id="perQt" max="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label fill">放款本金比例类型</label>
+                        <div>
+                            <select id="principlePer"
+                                    name="principlePer"
+                                    class="form-control required mlPrPeCd"
+                                    data-selectloader-store="mlPrPeCd"
+                                    data-selectloader-vkey="code"
+                                    data-selectloader-tkey="name">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstPayPer" class="control-label fill">首次放款比例</label>
+                        <div>
+                          <input type="text" class="form-control required HundredZero percentFormat" id="firstPayPer" name="firstPayPerRe">
+                          <input type="hidden" class="" name="firstPayPer">
+                          <i></i>
+                        </div>
+                    </div>
+                    <div class="form-group prSpQt hide">
+                        <label for="prSpQt" class="control-label fill">本金间隔周期</label>
+                        <div>
+                          <input type="text" class="form-control required prSpQt" name="prSpQt" id="prSpQt">
+                        </div>
+                    </div>
+                    <div class="form-group hide inCalPerQt">
+                        <label for="inCalPerQt" class="control-label fill">利息计算期限</label>
+                        <div>
+                          <input type="text" class="form-control required inCalPerQt" name="inCalPerQt" id="inCalPerQt">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box reg">
+                <div class="portlet-title">
+                    <div class="caption">
+                        &nbsp;
+                    </div>
+                    
+                    <div class="actions">
+                        <a href="javascript:;" id="repayModeAdd" class="add-sign"></a>
+                        <a href="javascript:;" id="hiddenAdd" class="add-sign"></a>
+                        <a href="javascript:;" id="repayModeDelete" class="delete-sign"></a>
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-bordered table-hover bsdForm" id="repayModeTable">
+                                <thead>
+                                <tr>
+                                    <th width="10%">选择</th>
+                                    <th width="15%">期数</th>
+                                    <th width="18%">本金比例</th>
+                                    <th width="25%">还款方式种类</th>
+                                    <th width="22%">还款组成</th>
+                                </tr>
+                                </thead>
+                                <tbody id="repayTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+            <div class="portlet-body center">
+              <div class="clearfix">
+               <button class="btn sky-blue btn-wid mainCol" id="saveForm" type="button">保存</button>
+               <a class="btn sky-blue btn-wid mainCol" href="repay-mode.html">返回</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+{{/content}}
+
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+{{/content}}
+<!-- 页面组件模板 -->
+{{#content "content-component"}}
+  <script type="text/x-handlebars-template" id="table-row1-template">
+  	{{{{raw}}}}
+  <tr>
+    <td class="form-group">
+        <input type="radio" class="icheck checkRow" name="checkRow" data-id="{{listIndex index}}">
+    </td>
+    
+    <td class="form-group">
+        <input type="text" class="form-control required nonnegativeInteger perQt" name="paymentMethodList[{{listIndex index}}].perQt" id="paymentMethodList[{{listIndex index}}].perQt">
+    </td>
+    <td class="form-group">
+        <input type="text" class="form-control required  HundredZero percentFormat prnPe" id="paymentMethodList[{{listIndex index}}].prnPe">
+        <input type="hidden" class="required prnPeH"  name="paymentMethodList[{{listIndex index}}].prnPe">
+    </td>
+    <td class="form-group">
+       <select id="paymentMethodList[{{listIndex index}}].pmTyCd"
+               name="paymentMethodList[{{listIndex index}}].pmTyCd"
+               class="form-control pmTyCd required"
+               data-selectloader-store="pmTyCd"
+               data-selectloader-vkey="code"
+               data-selectloader-tkey="name">
+         <option value="">请选择</option>
+       </select>
+    </td>
+    <td class="form-group">
+        <select id="paymentMethodList[{{listIndex index}}].payComCd"
+                name="paymentMethodList[{{listIndex index}}].payComCd"
+                class="form-control payComCd required"
+                data-selectloader-store="payComCd"
+                data-selectloader-vkey="code"
+                data-selectloader-tkey="name">
+          <option value="">请选择</option>
+        </select>
+    </td>
+  </tr>
+  {{{{/raw}}}}
+  	</script>
+{{/content}}
+
+{{/extend}}

@@ -1,0 +1,70 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "手机号码",
+      "varType": "申请人手机号码与我司黑名单手机号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "配偶移动电话",
+      "varType": "配偶移动电话与我司黑名单手机号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "直系亲属移动电话",
+      "varType": "直系亲属住宅电话与我司黑名单手机号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "其他联系人移动电话",
+      "varType": "其他联系人移动电话与我司黑名单手机号码是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "直系亲属住宅电话",
+      "varType": "直系亲属住宅电话与我司黑名单单位电话相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "直系亲属住宅电话",
+      "varType": "直系亲属住宅电话与我司黑名单住宅电话是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "直系亲属住宅电话",
+      "varType": "其他联系人住宅电话与我司黑名单单位电话相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "其他联系人住宅电话",
+      "varType": "其他联系人住宅电话与我司黑名单住宅电话是否相同",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "其他联系人住宅电话",
+      "varType": "bbbbbb",
+      "varDefault": "",
+      "idType": ""
+    }
+  ]
+}

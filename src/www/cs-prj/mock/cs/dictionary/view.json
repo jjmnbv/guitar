@@ -1,0 +1,16 @@
+{
+    "resultCode": "SUCCESS",
+    "id": 71,
+    "code": "SQ",
+    "version": 4,
+    "name": "贷款申请",
+    "status": "JH",
+    "subId": "",
+    "subCode": "",
+    "dispOrder": 2,
+    "ciCode": "A",
+    "createDate": "2016-11-05",
+    "lastUpdate": "2016-12-01",
+    "lastUpdateUserId": 1,
+    "errors": []
+}

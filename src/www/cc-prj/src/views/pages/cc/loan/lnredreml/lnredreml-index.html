@@ -1,0 +1,418 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>交易冲正表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+    <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+ 	 <script src="{{path.base}}/script/cc/dicts?ids=3002"></script> 
+     <script src="{{path.base}}/script/cc/loan/lnredreml"></script>
+     <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=CurTyp,TrTyp"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnredreml.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="bsdForm pagination-form">
+      <div class="form-row">
+            <div class="form-group">
+              <label class="control-label">业务流水号:</label>
+              <div>
+                <input name="buzSeqNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">借据号:</label>
+              <div>
+                <input name="loNo" type="text" class="form-control">
+              </div>
+            </div>
+           <!--  <div class="form-group form-group-sel single">
+              <label class="control-label">交易日:</label>
+                <div class="selBox">
+                    <div class="input-group input-medium date date-picker-page" data-date="2012-12-02"
+                         data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                         data-date-language="zh-CN">
+                        <input type="text" class="form-control uniform-input text" name="trDt">
+                        <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                    </div>
+                </div>
+            </div> -->
+         
+           
+            <div class="form-group">
+              <label class="control-label">交易币种:</label>
+              <div>
+                 <select name="curTyp" class="form-control curTyp"
+						data-selectloader-store="curTyp"
+						data-selectloader-vkey="code" data-selectloader-tkey="name">
+						<option value="">请选择...</option>
+                 </select>
+              </div>
+            </div>
+        
+            <div class="form-group">
+              <label class="control-label">交易码:</label>
+              <div>
+                <!-- <input name="trCd" type="text" class="form-control"> -->
+                 <select name="trCd" class="form-control trCd"
+						data-selectloader-store="trCd"
+						data-selectloader-vkey="code" data-selectloader-tkey="name">
+						<option value="">请选择...</option>
+                 </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">交易名称:</label>
+              <div>
+                <input name="trNa" type="text" class="form-control">
+              </div>
+            </div>
+          
+            <div class="form-group">
+              <label class="control-label">撤销标志:</label>
+              <div>
+                 <select name="rrInd"   class="form-control rrInd"
+	                 data-selectloader-store="rrIndList"
+	                 data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                 <option value="">请选择...</option>
+           		 </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">原交易流水:</label>
+              <div>
+                <input name="oldSeqNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">机构号:</label>
+              <div>
+                <input name="brNo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">用户号:</label>
+              <div>
+                <input name="laUsId" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">用户名称:</label>
+              <div>
+                <input name="laUsNa" type="text" class="form-control">
+              </div>
+            </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption">交易冲正表列表 </div>
+      <div class="actions">
+        <div class="btn-group btn-group-devided" data-toggle="buttons">
+            <a id="add" href="javascript:;" title="新增"><img src="{{path.app}}/img/icon/group_3.png"/></a>
+            <a id="edit" href="javascript:;" title="编辑">
+                <img src="{{path.app}}/img/icon/group_4.png"/>
+            </a>
+            <a id="delete" href="javascript:;" title="删除">
+                <img src="{{path.app}}/img/icon/group_9.png"/>
+            </a>
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/LNREDREML_PAGE"
+          data-page-template-id="lnredreml-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <script type="text/x-handlebars-template" id="lnredreml-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>选择</th>
+            <th> 序号 </th>
+            <th> 冲正编号 </th>
+            <th> 业务流水号 </th>
+            <th> 借据号 </th>
+            <th> 交易日 </th>
+            <th> 创建日期 </th>
+            <th> 创建时间 </th>
+            <th> 交易币种 </th>
+            <th> 冲正金额 </th>
+            <th> 交易码 </th>
+            <th> 交易名称 </th>
+            <th> 冲正说明 </th>
+            <th> 撤销标志 </th>
+            <th> 原交易流水 </th>
+            <th> 机构号 </th>
+            <th> 用户号 </th>
+            <th> 用户名称 </th>
+            <th> 申请日期 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td>
+                <label for="id_{{page-rowindex}}">
+                    <input
+                            id="id_{{page-rowindex}}"
+                            data-id="{{rrNo}}"
+							data-rrAmt="{{rrAmt}}"
+                            name="radio"
+                            type="radio">
+                </label>
+            </td>
+            <td> {{page-rowindex}} </td>
+            <td> {{rrNo}} </td>
+            <td> {{buzSeqNo}} </td>
+            <td> {{loNo}} </td>
+            <td> {{trDt}} </td>
+            <td> {{crtDt}} </td>
+            <td> {{crtTm}} </td>
+            <td> {{curTyp-text}}</td>
+            <td> {{formatMoney rrAmt}} </td>
+            <td> {{trCd-text}} </td>
+            <td> {{trNa}} </td>
+            <td> {{rrDesc}} </td>
+            <td> {{rrInd-text}} </td>
+            <td> {{oldSeqNo}} </td>
+            <td> {{brNo}} </td>
+            <td> {{laUsId}} </td>
+            <td> {{laUsNa}} </td>
+            <td> {{appDt}} </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+ <!-- 页面组件模板 -->
+{{#content "content-component"}}
+      <script type="text/x-handlebars-template" id="form-template">
+  <form action="/LNREDREML_CREATE" method="POST" role="form" class="bsdForm pagination-form">
+      <div class="form-row">
+          <!--<input type="hidden" name="rrNo" readonly="readonly">-->
+				  <div class="form-group">
+                      <label class="control-label fill">冲正编号:</label>
+                      <div>
+                          <input name="rrNo" type="text" class="form-control input-sm required" maxlength='32'  placeholder="请输入冲正编号...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">业务流水号:</label>
+                      <div>
+                          <input name="buzSeqNo" type="text" class="form-control input-sm required"  maxlength='20' placeholder="请输入业务流水号...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">借据号:</label>
+                      <div>
+                          <input name="loNo" type="text" class="form-control input-sm required " maxlength='32'  placeholder="请输入借据号...">
+                      </div>
+                  </div>
+                  <div class="form-group form-group-sel single">
+              		<label class="control-label fill ">交易日:</label>
+              		<div class="selBox">
+             			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+                	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                	 	data-date-language="zh-CN">
+                  	   	 <input name="trDt" type="text"  id="trDt"  class="form-control uniform-input text required"  placeholder="交易日期..." readonly>
+                   		<span class="input-group-btn">
+                           <button class="btn default" type="button">
+                               <i class="fa fa-calendar"></i>
+                           </button>
+                   		</span>
+             			</div>
+            		</div>
+          		  </div>
+                  <!--<div class="form-group form-group-sel single">
+                      <label class="control-label fill">创建日期:</label>
+                      <div class="selBox">
+                          <div class="input-group input-medium date date-picker-page" data-date="2012-12-02"
+                               data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                               data-date-language="zh-CN">
+                              <input type="text" class="form-control uniform-input text required" name="crtDt" placeholder="请输入创建日期...">
+                              <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                          </div>
+                      </div>
+                  </div>-->
+                  <!--<div class="form-group form-group-sel single">
+                      <label class="control-label fill">创建时间:</label>
+                      <div class="selBox">
+                          <div class="input-group input-medium date date-picker-page" data-date="2012-12-02"
+                               data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                               data-date-language="zh-CN">
+                              <input type="text" class="form-control uniform-input text required" name="crtTm" placeholder="请输入创建时间...">
+                              <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                          </div>
+                      </div>
+                  </div>-->
+                  <div class="form-group">
+                      <label class="control-label fill">交易币种:</label>
+                      <div>
+                          <!--<input name="curTyp" type="text" class="form-control input-sm"  maxlength='3'  placeholder="请输入交易币种...">-->
+							 <select name="curTyp" class="form-control curTyp required"
+										data-selectloader-val="NORMAL" data-placeholder="币种类型..."
+										data-selectloader-store="curTyp"
+										data-selectloader-vkey="code" data-selectloader-tkey="name">
+										<option value="">请选择...</option>
+                              </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">冲正金额:</label>
+                      <div>
+                          <!--<input name="rrAmt" type="text" class="form-control input-sm" maxlength='16' placeholder="请输入冲正金额...">-->
+						  <input type="hidden" name="rrAmt" id="rrAmt">
+				          <input type="text" class="form-control input-sm rrAmtl required" name="rrAmtl" id="rrAmtl" placeholder="请输入冲正金额...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">交易码:</label>
+                      <div>
+						  <select name="trCd" class="form-control trCd required"
+								data-selectloader-val="NORMAL" data-placeholder="交易码类型..."
+								data-selectloader-store="trCd"
+								data-selectloader-vkey="code" data-selectloader-tkey="name">
+								<option value="">请选择...</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">交易名称:</label>
+                      <div>
+                          <input name="trNa" type="text" class="form-control input-sm required" maxlength='60' placeholder="请输入交易名称...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">冲正说明:</label>
+                      <div>
+                          <input name="rrDesc" type="text" class="form-control input-sm" maxlength='200'  placeholder="请输入冲正说明...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">撤销标志:</label>
+                      <div>
+                        <!--<input name="rrInd" type="text" class="form-control input-sm"   placeholder="请输入撤销标志...">-->
+						<select name="rrInd"  class="form-control rrInd"
+	                 		data-selectloader-store="rrIndList"
+	                        data-selectloader-vkey="code" data-selectloader-tkey="name">
+	                        <option value="">请选择...</option>
+           		 		</select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label fill">原交易流水:</label>
+                      <div>
+                          <input name="oldSeqNo" type="text" class="form-control input-sm required" maxlength='20' placeholder="请输入原交易流水...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">机构号:</label>
+                      <div>
+                          <input name="brNo" type="text" class="form-control input-sm" maxlength='10'  placeholder="请输入机构号...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">用户号:</label>
+                      <div>
+                          <input name="laUsId" type="text" class="form-control input-sm" maxlength='10' placeholder="请输入用户号...">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">用户名称:</label>
+                      <div>
+                          <input name="laUsNa" type="text" class="form-control input-sm" maxlength='60' placeholder="请输入用户名称...">
+                      </div>
+                  </div>
+				 <div class="form-group form-group-sel single">
+	             <label class="control-label ">申请日期:</label>
+	             <div class="selBox">
+	             	<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+	                        data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+	                        data-date-language="zh-CN">
+	               <input name="laUpDt" type="text" class="form-control uniform-input text" placeholder="申请日期..." readonly>
+	               <span class="input-group-btn">
+	                      <button class="btn default" type="button">
+	                          <i class="fa fa-calendar"></i>
+	                      </button>
+	                </span>
+	               </div>
+	             </div>
+         	  </div>
+      </div>
+  </form>
+ </script>
+{{/content}}
+{{/extend}}

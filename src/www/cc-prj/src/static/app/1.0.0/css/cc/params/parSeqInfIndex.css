@@ -1,0 +1,13 @@
+.bsdForm .serial-no{
+  width:95%;
+}
+.bsdForm .serial-no > div {
+  width:70%;
+  border: 0;
+}
+.serial-no .genForm{
+  width:100%;
+  line-height: 29px;
+  border: 0;
+  background: #fff !important;
+}

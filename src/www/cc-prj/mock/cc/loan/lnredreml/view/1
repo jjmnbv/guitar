@@ -1,0 +1,21 @@
+{
+  "rrNo":1,
+  "buzSeqNo":1,
+  "loNo":"借据号",
+  "trDt":"交易日",
+  "crtDt":"创建日期",
+  "crtTm":"创建时间",
+  "curTyp":"交易币种",
+  "rrAmt":1,
+  "trCd":"交易码",
+  "trNa":"交易名称",
+  "rrDesc":"冲正说明",
+  "rrInd":"撤销标志",
+  "oldSeqNo":1,
+  "brNo":"机构号",
+  "laUsId":"用户号",
+  "laUsNa":"用户名称",
+  "appDt":"申请日期",
+  "resultCode": "SUCCESS",
+  "errors": []
+}

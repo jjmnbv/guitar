@@ -1,0 +1,41 @@
+{
+    "content":[
+        {
+             "id":0,
+            "acTyp":"放款账号",
+            "acCurTyp":"人民币",
+            "acNa":"张三",
+            "acNo":"12345654321"
+        },
+        {
+            "id":1,
+            "acTyp":"放款账号",
+            "acCurTyp":"人民币",
+            "acNa":"张三",
+            "acNo":"12345654321"
+        },
+        {
+            "id":2,
+            "acTyp":"放款账号",
+            "acCurTyp":"人民币",
+            "acNa":"张三",
+            "acNo":"12345654321"
+        },
+        {
+            "id":3,
+            "acTyp":"放款账号",
+            "acCurTyp":"人民币",
+            "acNa":"张三",
+            "acNo":"12345654321"
+        }
+    ],
+    "resultCode":"SUCCESS",
+    "totalElements": 23,
+    "totalPages": 1,
+    "size": 9,
+    "number": 0,
+    "numberOfElements": 20,
+    "pages": [
+        1
+    ]
+}

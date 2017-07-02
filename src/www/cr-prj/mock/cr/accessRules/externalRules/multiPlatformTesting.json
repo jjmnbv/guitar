@@ -1,0 +1,49 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "多平台借贷申请检测",
+      "varType": "7天内申请人在多个平台申请借款",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "多平台借贷申请检测",
+      "varType": "1个月内申请人在多个平台申请借款",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "多平台借贷申请检测",
+      "varType": "3个月内申请人在多个平台申请借款",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "多平台借贷申请检测",
+      "varType": "6个月内申请人在多个平台申请借款",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "多平台借贷申请检测",
+      "varType": "12个月内申请人在多个平台申请借款",
+      "varDefault": "",
+      "idType": ""
+    },
+    {
+      "varId": 5,
+      "varName": "多平台借贷申请检测",
+      "varType": "24个月内申请人在多个平台申请借款",
+      "varDefault": "",
+      "idType": ""
+    }
+  ]
+}

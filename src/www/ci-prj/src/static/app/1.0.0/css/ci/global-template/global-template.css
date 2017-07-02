@@ -1,0 +1,45 @@
+#common-show{
+    background: #fff;
+}
+.portlet-body ul{
+    padding: 15px;
+}
+.portlet-body ul li.kv-group{
+    float: left;
+    width: 50%;
+    border:1px solid #f5f5f5;
+    line-height: 30px;
+}
+.portlet-body ul li.kv-group:nth-child(n+3){
+    border-top:none;
+}
+.portlet-body ul li.kv-group:nth-child(even){
+    border-left:none;
+}
+ul li.kv-group div{
+    float: left;
+    width: 70%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+ul li.kv-group div:first-child{
+    width: 30%;
+    border-right:1px solid #f5f5f5;
+}
+.bsdForm .portlet > .portlet-body{
+    padding-top: 0px !important;
+}
+
+ul.isodd li.kv-group{
+     width: 100%;
+}
+ul.isodd li.kv-group div:last-child{
+    width: 75%;
+}
+.bsdForm .portlet > .listBody{
+    padding: 15px !important;
+}
+tr#thLength {
+    border-bottom:1px solid #f5f5f5;
+}

@@ -402,9 +402,9 @@
     return chineseStr;
   };
   
-  //lyf将百分比形式转换为数值格式
+  //lyf判断是否是正确的数字形式
   app.isNumberBool = function(value) {
-    var isNumberBV =/^(([1-9]?[0-9](?:\.[0-9]{1,2})?)(%)?)$/.test(value);
+    var isNumberBV =/^[0-9]+(.[0-9]{0,6})?$/.test(value);
     return isNumberBV;
   }
 

@@ -1,0 +1,164 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>贷款减免明细表管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+  <link rel="stylesheet" href="{{path.app}}/css/cc/common-form.css"/>
+ <link rel="stylesheet" href="{{path.app}}/css/cc/modal-form.css"/>
+ <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnrrdtl-edit.css"/>
+  <link rel="stylesheet" href="{{path.app}}/css/cc/loan/lnloinf-lgd.css"/>
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.app}}/js/cc/common/loan-prop.js"></script>
+    <script src="{{path.base}}/script/cc/loan/lnrrinf-add.js"></script>
+    <script src="{{path.base}}/cc/params/csdicfg/getDiCfgs?ids=TrTyp"></script>
+    <script src="{{path.base}}/script/cc/dicts?ids=17,3002,3022,3023"></script> 
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/cc/common/app-context.js"></script>
+    <script src="{{path.app}}/js/cc/loan/lnrrinf-add.js"></script>
+    <script src="{{path.app}}/js/cc/loan/urls.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    {{{{raw}}}}
+     <div class="portlet">
+     	 <div class="portlet-body">
+     	 	<form action="/LNRRINF_CREATE" method="POST" role="form" class="bsdForm " id="add-lnrrinf-form">
+            <div class="form-row">
+                <div class="form-group">
+                  <label class="control-label fill">借据号:</label>
+                  <div class="find">
+                      <div class="line propInput">
+                          <input type="text"  name="loNo" class="form-control required" id="loNo" maxlength="32" readonly placeholder="请选择借据号...">
+                      </div>
+                      <div class="line-use">
+                          <a data-toggle="modal" href="#lonoModal">
+                              <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                      type="button" data-select2-open="single-prepend-text">
+                                  <span class="glyphicon glyphicon-search"></span>
+                              </button>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+                <div class="form-group form-group-sel single form-hide">
+              		<label class="control-label ">交易日期:</label> 
+              		<div class="selBox">
+             			<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+                	 	data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+                	 	data-date-language="zh-CN">
+                  	   	 <input name="trDt" type="text"  id="trDt"  class="form-control uniform-input "  placeholder="交易日期..." readonly>
+                   		<span class="input-group-btn">
+                           <button class="btn default" type="button">
+                               <i class="fa fa-calendar"></i>
+                           </button>
+                   		</span>
+             			</div>
+            		</div>
+          		</div>
+              <div class="form-group">
+                <label class=" control-label fill">减免说明:</label>
+                <div >
+                  <textarea name="rrDesc"   class="form-control input-sm required" placeholder="请输入减免说明..."  maxlength="200"  wrap="hard"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" control-label fill">是否减免本金:</label>
+                <div >
+                  <select name="rrPrInd" class="form-control rrPrInd required"
+                          data-selectloader-store="rrPrIndList"
+                          data-selectloader-vkey="code" data-selectloader-tkey="name">
+                      <option value="">请选择...</option>
+             	</select>
+               </div>
+              </div>
+              <div class="form-group  ">
+                <label class=" control-label ">机构号:</label>
+                <div >
+                  <input name="brNo" type="text" class="form-control input-sm " maxlength="10" placeholder="请输入机构号..." readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group ">
+                <label class=" control-label ">用户号:</label>
+                <div >
+                  <input name="laUsId" type="text" class="form-control input-sm " maxlength="10" placeholder="请输入用户号..." readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group form-group-sel single form-hide">
+	             <label class="control-label ">申请日期:</label>
+	             <div class="selBox">
+	             	<div class="input-group input-medium date date-picker-page data-wid" data-date="+0d"
+	                        data-date-format="yyyy-dd-mm" data-date-viewmode="years"
+	                        data-date-language="zh-CN">
+	               <input name="laUpDt" type="text" class="form-control uniform-input text" placeholder="申请日期..." readonly>
+	               <span class="input-group-btn">
+	                      <button class="btn default" type="button">
+	                          <i class="fa fa-calendar"></i>
+	                      </button>
+	                </span>
+	               </div>
+	             </div>
+         	  </div>
+             <div class="text-center">
+	              <button class="btn sky-blue btn-wid mainCol" id="saveForm" type="button">保存</button>
+	              <a class="btn sky-blue btn-wid mainCol" onclick="returnlist()">返回</a>
+        	</div>
+            </div>
+          </form>
+     	 </div>
+     </div>
+    {{{{/raw}}}}
+    <!-- @Override -->
+  {{/content}}
+
+<!-- 分页查询条件 pagination-form -->
+{{#content "pagination-form"}}
+  <!-- @Override -->
+{{/content}}
+  
+<!-- 搜索按钮组，筛选条件，表格，分页的总容器 -->
+{{#content "content-pagination"}}
+<!-- @Override -->
+{{/content}}
+<!-- 页面模态框 -->
+{{#content "content-free"}}
+
+   <!-- 借据选择框 -->
+  {{> loan-prop}}
+
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+<!-- 页面组件模板 -->
+{{#content "content-component"}} 
+{{/content}}
+{{/extend}}

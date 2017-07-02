@@ -1,0 +1,23 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":1,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "code":3,
+    "name":"现金贷产品",
+    "createDate":"2016-12-13",
+    "lastUpdate":"2016-12-13",
+    "resultCode": "SUCCESS"
+  },
+  {
+    "code":4,
+    "name":"现金贷产品",
+    "createDate":"2016-12-13",
+    "lastUpdate":"2016-12-13",
+    "resultCode": "SUCCESS"
+  }]
+}

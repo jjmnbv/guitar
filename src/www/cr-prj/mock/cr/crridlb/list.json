@@ -1,0 +1,61 @@
+{
+  "recordsTotal": 9,
+  "recordsFiltered": 9,
+  "draw":1,
+  "data": [
+    {
+      "varId": 5,
+      "varName": "贷款金额22222222222222",
+      "varType": "string string string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 6,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 7,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 8,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 9,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 10,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 11,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 12,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    },
+    {
+      "varId": 13,
+      "varName": "贷款金额",
+      "varType": "string",
+      "varapyDate": "2013-03-20"
+    }
+  ]
+}
