@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import com.xukaiqiang.shared.protocol.OutputMessage;
 import com.xukaiqiang.shared.util.CopierUtils;
 
@@ -20,6 +19,15 @@ public class UserResponse extends OutputMessage implements Serializable {
 	private String sex;
 	private Integer age;
 	private String nickName;
+	private String result;
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
 
 	/**
 	 * @return 主键
@@ -54,7 +62,7 @@ public class UserResponse extends OutputMessage implements Serializable {
 	}
 
 	/**
-	 * @return 
+	 * @return
 	 */
 	public String getPassWord() {
 		return passWord;
@@ -102,14 +110,14 @@ public class UserResponse extends OutputMessage implements Serializable {
 	}
 
 	/**
-	 * @return 性别  N男 V女
+	 * @return 性别 N男 V女
 	 */
 	public String getSex() {
 		return sex;
 	}
 
 	/**
-	 * 性别  N男 V女
+	 * 性别 N男 V女
 	 *
 	 * @param sex
 	 */

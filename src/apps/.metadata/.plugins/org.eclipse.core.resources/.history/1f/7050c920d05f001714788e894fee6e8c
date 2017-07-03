@@ -1,0 +1,5 @@
+package com.xukaiqiang.guitar.mgt.util;
+
+public class HttpUtils {
+
+}

@@ -13,6 +13,33 @@ public class UserFilterRequest implements Serializable {
 	private String sex;
 	private Integer age;
 	private String nickName;
+	private String code;
+	private String encryptedData;
+	private String iv;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getEncryptedData() {
+		return encryptedData;
+	}
+
+	public void setEncryptedData(String encryptedData) {
+		this.encryptedData = encryptedData;
+	}
+
+	public String getIv() {
+		return iv;
+	}
+
+	public void setIv(String iv) {
+		this.iv = iv;
+	}
 
 	/**
 	 * @return 主键
@@ -47,7 +74,7 @@ public class UserFilterRequest implements Serializable {
 	}
 
 	/**
-	 * @return 
+	 * @return
 	 */
 	public String getPassWord() {
 		return passWord;
@@ -95,14 +122,14 @@ public class UserFilterRequest implements Serializable {
 	}
 
 	/**
-	 * @return 性别  N男 V女
+	 * @return 性别 N男 V女
 	 */
 	public String getSex() {
 		return sex;
 	}
 
 	/**
-	 * 性别  N男 V女
+	 * 性别 N男 V女
 	 *
 	 * @param sex
 	 */
