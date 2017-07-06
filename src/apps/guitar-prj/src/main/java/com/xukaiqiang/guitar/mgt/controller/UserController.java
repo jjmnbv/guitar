@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.xukaiqiang.shared.SharedVars;
+import com.xukaiqiang.shared.controller.BaseController;
+import com.xukaiqiang.shared.protocol.OutputMessage;
+import com.xukaiqiang.shared.util.Executor;
 import com.xukaiqiang.guitar.mgt.protocol.UserCreateRequest;
 import com.xukaiqiang.guitar.mgt.protocol.UserListResponse;
 import com.xukaiqiang.guitar.mgt.protocol.UserPageResponse;
@@ -28,10 +32,6 @@ import com.xukaiqiang.guitar.mgt.util.Urls;
 import com.xukaiqiang.guitar.mgt.util.Views;
 import com.xukaiqiang.guitar.orm.entity.User;
 import com.xukaiqiang.guitar.orm.protocol.UserFilterRequest;
-import com.xukaiqiang.shared.SharedVars;
-import com.xukaiqiang.shared.controller.BaseController;
-import com.xukaiqiang.shared.protocol.OutputMessage;
-import com.xukaiqiang.shared.util.Executor;
 
 /**
  * 用户管理控制器
@@ -100,8 +100,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = Urls.USER_PAGE, method = RequestMethod.GET)
 	@ResponseBody
 	public UserPageResponse listPage(@PathVariable("pageNumber") final Integer pageNumber,
-			@RequestParam(value = "pageSize", required = false) final Integer pageSize, final UserFilterRequest filter,
-			Locale locale) {
+			@RequestParam(value = "pageSize", required = false) final Integer pageSize, final UserFilterRequest filter, Locale locale) {
 		UserPageResponse pageResponse = Executor.execute(new Executor() {
 			@Override
 			protected Object execute() {
@@ -114,7 +113,7 @@ public class UserController extends BaseController {
 		}
 
 		Page<User> payload = (Page<User>) pageResponse.getPayload();
-		if (payload == null) {
+		if(payload == null) {
 			return pageResponse;
 		}
 
@@ -144,7 +143,7 @@ public class UserController extends BaseController {
 		}
 
 		List<User> payload = (List<User>) listResponse.getPayload();
-		if (payload == null) {
+		if(payload == null) {
 			return listResponse;
 		}
 
@@ -173,7 +172,7 @@ public class UserController extends BaseController {
 		}
 
 		User payload = (User) userResponse.getPayload();
-		if (payload == null) {
+		if(payload == null) {
 			return userResponse;
 		}
 
@@ -191,8 +190,7 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = Urls.USER_CREATE, method = RequestMethod.POST)
 	@ResponseBody
-	public UserResponse create(@Valid UserCreateRequest createRequtest, BindingResult result, final User user,
-			Locale locale) {
+	public UserResponse create(@Valid UserCreateRequest createRequtest, BindingResult result, final User user, Locale locale) {
 		UserResponse userResponse = Executor.execute(new Executor() {
 			@Override
 			protected Object execute() {
@@ -205,7 +203,7 @@ public class UserController extends BaseController {
 		}
 
 		User payload = (User) userResponse.getPayload();
-		if (payload == null) {
+		if(payload == null) {
 			return userResponse;
 		}
 
@@ -224,8 +222,7 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = Urls.USER_UPDATE, method = RequestMethod.POST)
 	@ResponseBody
-	public UserResponse update(@Valid UserUpdateRequest updateRequtest, BindingResult result,
-			@ModelAttribute(BINDING) final User user, Locale locale) {
+	public UserResponse update(@Valid UserUpdateRequest updateRequtest, BindingResult result, @ModelAttribute(BINDING) final User user, Locale locale) {
 		UserResponse userResponse = Executor.execute(new Executor() {
 			@Override
 			protected Object execute() {
@@ -238,7 +235,7 @@ public class UserController extends BaseController {
 		}
 
 		User payload = (User) userResponse.getPayload();
-		if (payload == null) {
+		if(payload == null) {
 			return userResponse;
 		}
 

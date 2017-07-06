@@ -1,0 +1,10 @@
+[{
+  "content":[{
+    "id":1,
+    "userId":1,
+    "name":"门店名称",
+    "address":"门店地址",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

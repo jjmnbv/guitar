@@ -1,49 +1,49 @@
-!SESSION 2017-07-01 10:50:39.902 -----------------------------------------------
+!SESSION 2017-07-06 18:15:04.556 -----------------------------------------------
 eclipse.buildId=4.5.2.M20160212-1500
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
-Framework arguments:  -product org.eclipse.epp.package.jee.product -application org.eclipse.ant.core.antRunner -buildfile /Users/xukaiqiang/Documents/workspace/jee/src/apps/scripts/eclipse.xml
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/jee/src/apps -application org.eclipse.ant.core.antRunner -buildfile /Users/xukaiqiang/Documents/workspace/jee/src/apps/scripts/eclipse.xml
+Framework arguments:  -product org.eclipse.epp.package.jee.product -application org.eclipse.ant.core.antRunner -buildfile /Users/xukaiqiang/Documents/workspace/guitar/src/apps/scripts/eclipse.xml
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/guitar/src/apps -application org.eclipse.ant.core.antRunner -buildfile /Users/xukaiqiang/Documents/workspace/guitar/src/apps/scripts/eclipse.xml
 
-!ENTRY org.eclipse.core.net 1 0 2017-07-01 10:50:43.499
+!ENTRY org.eclipse.core.net 1 0 2017-07-06 18:15:07.743
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY org.eclipse.core.resources 2 10035 2017-07-01 10:50:44.924
+!ENTRY org.eclipse.core.resources 2 10035 2017-07-06 18:15:09.139
 !MESSAGE The workspace will exit with unsaved changes in this session.
-!SESSION 2017-07-01 10:51:00.119 -----------------------------------------------
+!SESSION 2017-07-06 18:15:19.973 -----------------------------------------------
 eclipse.buildId=4.5.2.M20160212-1500
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
 Framework arguments:  -product org.eclipse.epp.package.jee.product
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/jee/src/apps
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/guitar/src/apps
 
-!ENTRY org.eclipse.core.resources 2 10035 2017-07-01 10:51:01.722
+!ENTRY org.eclipse.core.resources 2 10035 2017-07-06 18:15:21.631
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 
-!ENTRY org.eclipse.ui 2 0 2017-07-01 10:51:02.309
+!ENTRY org.eclipse.ui 2 0 2017-07-06 18:15:22.203
 !MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
-!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-01 10:51:02.309
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-06 18:15:22.203
 !MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
 
-!ENTRY org.eclipse.core.net 1 0 2017-07-01 10:51:02.437
+!ENTRY org.eclipse.core.net 1 0 2017-07-06 18:15:22.378
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY org.eclipse.ui 2 0 2017-07-01 10:51:03.165
+!ENTRY org.eclipse.ui 2 0 2017-07-06 18:15:23.475
 !MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
-!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-01 10:51:03.165
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-06 18:15:23.475
 !MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
 
-!ENTRY org.eclipse.jface 2 0 2017-07-01 10:51:06.650
+!ENTRY org.eclipse.jface 2 0 2017-07-06 18:15:27.583
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2017-07-01 10:51:06.650
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-07-06 18:15:27.583
 !MESSAGE A conflict occurred for ALT+COMMAND+T:
 Binding(ALT+COMMAND+T,
 	ParameterizedCommand(Command(pl.szpinda.plugin.tomcat.commands.tomcatStartStop,Tomcat start,stop,
 		,
 		Category(pl.szpinda.plugin.tomcat.commands.category.key,Tomcat keys,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5b5a89d1,
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@69926b6e,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -51,51 +51,44 @@ Binding(ALT+COMMAND+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu,Show Refactor Quick Menu,
 		Shows the refactor quick menu,
 		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@267b678f,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.contexts.window,,cocoa,system)
-!SESSION 2017-07-03 16:42:23.275 -----------------------------------------------
-eclipse.buildId=4.5.2.M20160212-1500
-java.version=1.8.0_131
-java.vendor=Oracle Corporation
-BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
-Framework arguments:  -product org.eclipse.epp.package.jee.product
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -data /Users/xukaiqiang/Documents/workspace/jee/src/apps
-
-!ENTRY org.eclipse.core.resources 2 10035 2017-07-03 16:42:25.156
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY org.eclipse.ui 2 0 2017-07-03 16:42:25.853
-!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
-!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-03 16:42:25.853
-!MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
-
-!ENTRY org.eclipse.ui 2 0 2017-07-03 16:42:26.342
-!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
-!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-03 16:42:26.342
-!MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
-
-!ENTRY org.eclipse.jface 2 0 2017-07-03 16:42:29.433
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2017-07-03 16:42:29.433
-!MESSAGE A conflict occurred for ALT+COMMAND+T:
-Binding(ALT+COMMAND+T,
-	ParameterizedCommand(Command(pl.szpinda.plugin.tomcat.commands.tomcatStartStop,Tomcat start,stop,
-		,
-		Category(pl.szpinda.plugin.tomcat.commands.category.key,Tomcat keys,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7b44e98e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.contexts.window,,,system)
-Binding(ALT+COMMAND+T,
-	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu,Show Refactor Quick Menu,
-		Shows the refactor quick menu,
-		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1e2bc241,
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7ea8224b,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,cocoa,system)
 
-!ENTRY org.eclipse.core.net 1 0 2017-07-03 16:42:30.094
-!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2017-07-06 18:15:36.729
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] failed: Read timed out. ; version: 1.100.0.v20160217-0435
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] failed: Read timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.request(IO.java:205)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:68)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:171)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1375)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1403)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1387)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.createLayeredSocket(SSLConnectionSocketFactory.java:290)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:259)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more

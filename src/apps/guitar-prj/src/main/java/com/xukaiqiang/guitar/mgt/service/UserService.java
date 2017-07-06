@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.xukaiqiang.guitar.mgt.protocol.UserResponse;
 import com.xukaiqiang.guitar.orm.entity.User;
 import com.xukaiqiang.guitar.orm.protocol.UserFilterRequest;
 
@@ -58,7 +57,5 @@ public interface UserService {
 	 * @param id
 	 */
 	void removeUser(Integer id);
-
-	UserResponse login(UserFilterRequest request);
 
 }

@@ -1,0 +1,23 @@
+[{
+  "content":[{
+    "id":1,
+    "userId":1,
+    "category":"工作性质 GR个人  GQ国企 SQ私企",
+    "workAge":"工龄",
+    "beginTime":"工作开始时间",
+    "endTime":"工作结束时间",
+    "addressCity":"市",
+    "addressArea":"地区",
+    "addressProvince":"省",
+    "addressDetail":"详细地址",
+    "salary":"薪水",
+    "commont":"工作描述",
+    "musicStyle":"音乐类型  MY民谣 电吉他DJT 古典吉他GD",
+    "haveBand":"是否有乐队  Y是  N否",
+    "bandName":"乐队名称",
+    "havePro":"是否有作品 Y是N否",
+    "proName":"作品名称",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

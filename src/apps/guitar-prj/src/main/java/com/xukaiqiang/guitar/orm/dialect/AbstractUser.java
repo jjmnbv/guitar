@@ -34,21 +34,13 @@ public abstract class AbstractUser implements Serializable {
 		 */
 		public static final String USER_ID = "id";
 		/**
-		 * USER.USERNAME
+		 * USER.LOGINNAME
 		 */
-		public static final String USER_USERNAME = "user_name";
+		public static final String USER_LOGINNAME = "login_name";
 		/**
 		 * USER.PASSWORD
 		 */
 		public static final String USER_PASSWORD = "pass_word";
-		/**
-		 * USER.ROLEID
-		 */
-		public static final String USER_ROLEID = "role_Id";
-		/**
-		 * USER.DETAILID
-		 */
-		public static final String USER_DETAILID = "detail_Id";
 		/**
 		 * USER.SEX
 		 */
@@ -61,6 +53,18 @@ public abstract class AbstractUser implements Serializable {
 		 * USER.NICKNAME
 		 */
 		public static final String USER_NICKNAME = "nick_name";
+		/**
+		 * USER.REALNAME
+		 */
+		public static final String USER_REALNAME = "real_name";
+		/**
+		 * USER.ROLEID
+		 */
+		public static final String USER_ROLEID = "role_id";
+		/**
+		 * USER.REMARKS
+		 */
+		public static final String USER_REMARKS = "remarks";
 	}
 
 }

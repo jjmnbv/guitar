@@ -6,13 +6,14 @@ public class UserCreateRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
-	private String userName;
+	private String loginName;
 	private String passWord;
-	private String roleId;
-	private String detailId;
 	private String sex;
 	private String age;
 	private String nickName;
+	private String realName;
+	private String roleId;
+	private String remarks;
 
 	/**
 	 * @return 主键
@@ -33,17 +34,17 @@ public class UserCreateRequest implements Serializable {
 	/**
 	 * @return 用户名
 	 */
-	public String getUserName() {
-		return userName;
+	public String getLoginName() {
+		return loginName;
 	}
 
 	/**
 	 * 用户名
 	 *
-	 * @param userName
+	 * @param loginName
 	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
 	}
 
 	/**
@@ -60,38 +61,6 @@ public class UserCreateRequest implements Serializable {
 	 */
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
-	}
-
-	/**
-	 * @return 角色编号
-	 */
-	public String getRoleId() {
-		return roleId;
-	}
-
-	/**
-	 * 角色编号
-	 *
-	 * @param roleId
-	 */
-	public void setRoleId(String roleId) {
-		this.roleId = roleId;
-	}
-
-	/**
-	 * @return 详情编号
-	 */
-	public String getDetailId() {
-		return detailId;
-	}
-
-	/**
-	 * 详情编号
-	 *
-	 * @param detailId
-	 */
-	public void setDetailId(String detailId) {
-		this.detailId = detailId;
 	}
 
 	/**
@@ -140,6 +109,54 @@ public class UserCreateRequest implements Serializable {
 	 */
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+
+	/**
+	 * @return 真实姓名
+	 */
+	public String getRealName() {
+		return realName;
+	}
+
+	/**
+	 * 真实姓名
+	 *
+	 * @param realName
+	 */
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	/**
+	 * @return 角色编号
+	 */
+	public String getRoleId() {
+		return roleId;
+	}
+
+	/**
+	 * 角色编号
+	 *
+	 * @param roleId
+	 */
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+
+	/**
+	 * @return 备注
+	 */
+	public String getRemarks() {
+		return remarks;
+	}
+
+	/**
+	 * 备注
+	 *
+	 * @param remarks
+	 */
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 
 }

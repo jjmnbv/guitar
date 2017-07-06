@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
-import com.xukaiqiang.guitar.mgt.protocol.UserResponse;
 import com.xukaiqiang.guitar.mgt.service.UserService;
-import com.xukaiqiang.guitar.mgt.util.HttpUtils;
 import com.xukaiqiang.guitar.orm.entity.User;
 import com.xukaiqiang.guitar.orm.protocol.UserFilterRequest;
 import com.xukaiqiang.guitar.orm.repository.UserRepository;
@@ -51,7 +49,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public User createUser(User user) {
-		// TODO 主键处理
+		//TODO 主键处理
 		return userRepos.save(user);
 	}
 
@@ -86,16 +84,6 @@ public class UserServiceImpl implements UserService {
 			return;
 		}
 		userRepos.delete(user);
-	}
-
-	@Override
-	public UserResponse login(UserFilterRequest request) {
-		UserResponse res = new UserResponse();
-		String httpUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=wxe30cb2ecd2e62ac4&secret=554e460f5b51b6f631eaeba2dcba3e9f&js_code="
-				+ request.getCode() + "&grant_type=authorization_code";
-		String result = HttpUtils.submitGet(httpUrl);
-		res.setResult(result);
-		return res;
 	}
 
 }

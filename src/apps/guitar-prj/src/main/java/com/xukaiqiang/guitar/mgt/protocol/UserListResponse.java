@@ -18,13 +18,14 @@ public class UserListResponse extends OutputMessage implements Serializable {
 		private static final long serialVersionUID = 1L;
 
 		private Integer id;
-		private String userName;
+		private String loginName;
 		private String passWord;
-		private Integer roleId;
-		private Integer detailId;
 		private String sex;
 		private Integer age;
 		private String nickName;
+		private String realName;
+		private Integer roleId;
+		private String remarks;
 
 		/**
 		 * @return 主键
@@ -45,17 +46,17 @@ public class UserListResponse extends OutputMessage implements Serializable {
 		/**
 		 * @return 用户名
 		 */
-		public String getUserName() {
-			return userName;
+		public String getLoginName() {
+			return loginName;
 		}
 
 		/**
 		 * 用户名
 		 *
-		 * @param userName
+		 * @param loginName
 		 */
-		public void setUserName(String userName) {
-			this.userName = userName;
+		public void setLoginName(String loginName) {
+			this.loginName = loginName;
 		}
 
 		/**
@@ -72,38 +73,6 @@ public class UserListResponse extends OutputMessage implements Serializable {
 		 */
 		public void setPassWord(String passWord) {
 			this.passWord = passWord;
-		}
-
-		/**
-		 * @return 角色编号
-		 */
-		public Integer getRoleId() {
-			return roleId;
-		}
-
-		/**
-		 * 角色编号
-		 *
-		 * @param roleId
-		 */
-		public void setRoleId(Integer roleId) {
-			this.roleId = roleId;
-		}
-
-		/**
-		 * @return 详情编号
-		 */
-		public Integer getDetailId() {
-			return detailId;
-		}
-
-		/**
-		 * 详情编号
-		 *
-		 * @param detailId
-		 */
-		public void setDetailId(Integer detailId) {
-			this.detailId = detailId;
 		}
 
 		/**
@@ -152,6 +121,54 @@ public class UserListResponse extends OutputMessage implements Serializable {
 		 */
 		public void setNickName(String nickName) {
 			this.nickName = nickName;
+		}
+
+		/**
+		 * @return 真实姓名
+		 */
+		public String getRealName() {
+			return realName;
+		}
+
+		/**
+		 * 真实姓名
+		 *
+		 * @param realName
+		 */
+		public void setRealName(String realName) {
+			this.realName = realName;
+		}
+
+		/**
+		 * @return 角色编号
+		 */
+		public Integer getRoleId() {
+			return roleId;
+		}
+
+		/**
+		 * 角色编号
+		 *
+		 * @param roleId
+		 */
+		public void setRoleId(Integer roleId) {
+			this.roleId = roleId;
+		}
+
+		/**
+		 * @return 备注
+		 */
+		public String getRemarks() {
+			return remarks;
+		}
+
+		/**
+		 * 备注
+		 *
+		 * @param remarks
+		 */
+		public void setRemarks(String remarks) {
+			this.remarks = remarks;
 		}
 
 	}

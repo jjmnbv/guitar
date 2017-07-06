@@ -1,0 +1,9 @@
+[{
+  "content":[{
+    "id":1,
+    "userId":1,
+    "schoolName":"学校名称",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

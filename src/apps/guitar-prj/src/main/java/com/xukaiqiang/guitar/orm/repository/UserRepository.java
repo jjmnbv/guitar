@@ -1,6 +1,6 @@
 package com.xukaiqiang.guitar.orm.repository;
 
-import static com.xukaiqiang.shared.util.JpaSpecUtils.merge;
+import static com.xukaiqiang.shared.util.JpaSpecUtils.*;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 
 					return cb.and(merge(
 
-					// TODO
+							//TODO
 
 					));
 				}
@@ -54,7 +54,7 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 
 					return cb.and(merge(
 
-					// TODO
+							//TODO
 
 					));
 				}
@@ -71,7 +71,7 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 
 					return cb.and(merge(
 
-					// TODO
+							//TODO
 
 					));
 				}

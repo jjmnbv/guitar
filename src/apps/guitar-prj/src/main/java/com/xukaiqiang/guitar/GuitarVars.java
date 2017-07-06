@@ -30,7 +30,7 @@ public class GuitarVars {
 	 */
 	public static final String JSON_FMT_DATETIME = "yyyy-MM-dd HH:mm:ss";
 
-	/** 
+	/**
 	 * 数据库日期format
 	 */
 	public static final DateFormat DB_DATE_FORMAT = new SimpleDateFormat(FORM_FMT_DATE);

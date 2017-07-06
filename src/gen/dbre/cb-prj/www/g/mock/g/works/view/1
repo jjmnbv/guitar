@@ -1,0 +1,8 @@
+{
+  "id":1,
+  "userId":1,
+  "name":"作品名称",
+  "url":"作品地址",
+  "resultCode": "SUCCESS",
+  "errors": []
+}

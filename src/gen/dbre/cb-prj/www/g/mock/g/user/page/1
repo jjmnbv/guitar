@@ -1,0 +1,21 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":1,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "id":1,
+    "loginName":"用户名",
+    "passWord":"",
+    "sex":"性别  N男 V女",
+    "age":1,
+    "nickName":"昵称",
+    "realName":"真实姓名",
+    "roleId":1,
+    "remarks":"备注",
+    "resultCode": "SUCCESS"
+  }]
+}
