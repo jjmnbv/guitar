@@ -21,8 +21,8 @@ import org.springframework.data.domain.Page;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import net.zkbc.shared.protocol.PageResponse;
-import net.zkbc.shared.util.CopierUtils;
+import com.xukaiqiang.shared.protocol.PageResponse;
+import com.xukaiqiang.shared.util.CopierUtils;
 
 @JsonInclude(Include.NON_NULL)
 public class ${entityName}PageResponse extends PageResponse implements Serializable {

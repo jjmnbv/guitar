@@ -29,7 +29,7 @@ gulp.task('bs', function () {
  */
 gulp.task('bs-proxy', function () {
     bs.init({
-        proxy: "http://192.168.2.9:8012",
+        proxy: "http://localhost:7000",
         serveStatic: ['./build', './src', '../pub'],
         port: 3030
     });

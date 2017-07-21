@@ -1,0 +1,1333 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>商户管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/pr/merchantpr.js"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/pr/merchantpr.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="form-horizontal pagination-form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">年成交额:</label>
+              <div class="col-md-9">
+                <input name="annualTurnover" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户电话-区号:</label>
+              <div class="col-md-9">
+                <input name="areaCode" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">学员出勤率:</label>
+              <div class="col-md-9">
+                <input name="attendance" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教师平均课时费:</label>
+              <div class="col-md-9">
+                <input name="averHourFee" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">分支机构总数:</label>
+              <div class="col-md-9">
+                <input name="branchNum" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教师流失率:</label>
+              <div class="col-md-9">
+                <input name="churnRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户简称:</label>
+              <div class="col-md-9">
+                <input name="coAbbNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户id:</label>
+              <div class="col-md-9">
+                <input name="coAssId" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">公司属性名称:</label>
+              <div class="col-md-9">
+                <input name="coAttrCa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">公司属性编码:</label>
+              <div class="col-md-9">
+                <input name="coAttrCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户证件编码:</label>
+              <div class="col-md-9">
+                <input name="coBuLicNo" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户类型名称:</label>
+              <div class="col-md-9">
+                <input name="coIndKiCa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户类型编码:</label>
+              <div class="col-md-9">
+                <input name="coIndKiCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户名称:</label>
+              <div class="col-md-9">
+                <input name="coNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">经营方式名称:</label>
+              <div class="col-md-9">
+                <input name="coRuTyCa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">经营方式编码:</label>
+              <div class="col-md-9">
+                <input name="coRuTyCd" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">学员投诉率:</label>
+              <div class="col-md-9">
+                <input name="complaintRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">覆盖区域:</label>
+              <div class="col-md-9">
+                <input name="coverageArea" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">:</label>
+              <div class="col-md-9">
+                <input name="cultureCycle" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教学设备配比:</label>
+              <div class="col-md-9">
+                <input name="equipmentRatio" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">成立年限:</label>
+              <div class="col-md-9">
+                <input name="estYears" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户电话-分机号码:</label>
+              <div class="col-md-9">
+                <input name="extNu" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">高管姓名:</label>
+              <div class="col-md-9">
+                <input name="ggNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">近3年招生增长率:</label>
+              <div class="col-md-9">
+                <input name="growthRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">商户电话-主机号码:</label>
+              <div class="col-md-9">
+                <input name="hostNu" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">法人身份证号:</label>
+              <div class="col-md-9">
+                <input name="legalPaNo" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">法人姓名:</label>
+              <div class="col-md-9">
+                <input name="legalPeNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">实操通过率:</label>
+              <div class="col-md-9">
+                <input name="operPassRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教务员与讲师配比:</label>
+              <div class="col-md-9">
+                <input name="personRatio" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">讲师团队自有比例:</label>
+              <div class="col-md-9">
+                <input name="proportion" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">遍布省份:</label>
+              <div class="col-md-9">
+                <input name="province" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">抽样合格率:</label>
+              <div class="col-md-9">
+                <input name="qualRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">注册资金:</label>
+              <div class="col-md-9">
+                <input name="registerCapial" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">再培训频率:</label>
+              <div class="col-md-9">
+                <input name="retrainRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">退课率:</label>
+              <div class="col-md-9">
+                <input name="returnRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">主要股东姓名:</label>
+              <div class="col-md-9">
+                <input name="shareholderNa" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">主要股东身份证号码:</label>
+              <div class="col-md-9">
+                <input name="shareholderPaNo" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教学面积:</label>
+              <div class="col-md-9">
+                <input name="teachArea" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教学场地环境:</label>
+              <div class="col-md-9">
+                <input name="teachGroundEnvir" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">教学场地性质:</label>
+              <div class="col-md-9">
+                <input name="teachGroundNature" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">测评通过率:</label>
+              <div class="col-md-9">
+                <input name="testPassRate" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">年培训收入:</label>
+              <div class="col-md-9">
+                <input name="trainIncome" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">年培训人数:</label>
+              <div class="col-md-9">
+                <input name="trainNum" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">学期内培训次数:</label>
+              <div class="col-md-9">
+                <input name="trainTimes" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">主讲老师平均授课年限:</label>
+              <div class="col-md-9">
+                <input name="workYears" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption"><i class="fa fa-list"></i> 商户列表 </div>
+      <div class="actions">
+        <div class="btn-group btn-group-devided" data-toggle="buttons">
+          <a href="#" title="新增" data-target="#merchantpr-add-modal" data-toggle="modal" class=""><img src="{{path.app}}/img/icon/group_3.png"/></a>
+          <a href="javascript:;" class="pagination-reload"><img src="{{path.app}}/img/icon/group_5.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/MERCHANTPR_PAGE"
+          data-page-template-id="merchantpr-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <div id="merchantpr-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增商户</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/MERCHANTPR_CREATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="coId" readonly="readonly">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">年成交额:</label>
+                    <div class="col-md-9">
+                      <input name="annualTurnover" type="text" class="form-control input-sm" placeholder="请输入年成交额...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户电话-区号:</label>
+                    <div class="col-md-9">
+                      <input name="areaCode" type="text" class="form-control input-sm" placeholder="请输入商户电话-区号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">学员出勤率:</label>
+                    <div class="col-md-9">
+                      <input name="attendance" type="text" class="form-control input-sm" placeholder="请输入学员出勤率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教师平均课时费:</label>
+                    <div class="col-md-9">
+                      <input name="averHourFee" type="text" class="form-control input-sm" placeholder="请输入教师平均课时费...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">分支机构总数:</label>
+                    <div class="col-md-9">
+                      <input name="branchNum" type="text" class="form-control input-sm" placeholder="请输入分支机构总数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教师流失率:</label>
+                    <div class="col-md-9">
+                      <input name="churnRate" type="text" class="form-control input-sm" placeholder="请输入教师流失率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户简称:</label>
+                    <div class="col-md-9">
+                      <input name="coAbbNa" type="text" class="form-control input-sm" placeholder="请输入商户简称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户id:</label>
+                    <div class="col-md-9">
+                      <input name="coAssId" type="text" class="form-control input-sm" placeholder="请输入商户id...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">公司属性名称:</label>
+                    <div class="col-md-9">
+                      <input name="coAttrCa" type="text" class="form-control input-sm" placeholder="请输入公司属性名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">公司属性编码:</label>
+                    <div class="col-md-9">
+                      <input name="coAttrCd" type="text" class="form-control input-sm" placeholder="请输入公司属性编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户证件编码:</label>
+                    <div class="col-md-9">
+                      <input name="coBuLicNo" type="text" class="form-control input-sm" placeholder="请输入商户证件编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户类型名称:</label>
+                    <div class="col-md-9">
+                      <input name="coIndKiCa" type="text" class="form-control input-sm" placeholder="请输入商户类型名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户类型编码:</label>
+                    <div class="col-md-9">
+                      <input name="coIndKiCd" type="text" class="form-control input-sm" placeholder="请输入商户类型编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户名称:</label>
+                    <div class="col-md-9">
+                      <input name="coNa" type="text" class="form-control input-sm" placeholder="请输入商户名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">经营方式名称:</label>
+                    <div class="col-md-9">
+                      <input name="coRuTyCa" type="text" class="form-control input-sm" placeholder="请输入经营方式名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">经营方式编码:</label>
+                    <div class="col-md-9">
+                      <input name="coRuTyCd" type="text" class="form-control input-sm" placeholder="请输入经营方式编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">学员投诉率:</label>
+                    <div class="col-md-9">
+                      <input name="complaintRate" type="text" class="form-control input-sm" placeholder="请输入学员投诉率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">覆盖区域:</label>
+                    <div class="col-md-9">
+                      <input name="coverageArea" type="text" class="form-control input-sm" placeholder="请输入覆盖区域...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">:</label>
+                    <div class="col-md-9">
+                      <input name="cultureCycle" type="text" class="form-control input-sm" placeholder="请输入...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学设备配比:</label>
+                    <div class="col-md-9">
+                      <input name="equipmentRatio" type="text" class="form-control input-sm" placeholder="请输入教学设备配比...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">成立年限:</label>
+                    <div class="col-md-9">
+                      <input name="estYears" type="text" class="form-control input-sm" placeholder="请输入成立年限...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户电话-分机号码:</label>
+                    <div class="col-md-9">
+                      <input name="extNu" type="text" class="form-control input-sm" placeholder="请输入商户电话-分机号码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">高管姓名:</label>
+                    <div class="col-md-9">
+                      <input name="ggNa" type="text" class="form-control input-sm" placeholder="请输入高管姓名...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">近3年招生增长率:</label>
+                    <div class="col-md-9">
+                      <input name="growthRate" type="text" class="form-control input-sm" placeholder="请输入近3年招生增长率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户电话-主机号码:</label>
+                    <div class="col-md-9">
+                      <input name="hostNu" type="text" class="form-control input-sm" placeholder="请输入商户电话-主机号码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">法人身份证号:</label>
+                    <div class="col-md-9">
+                      <input name="legalPaNo" type="text" class="form-control input-sm" placeholder="请输入法人身份证号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">法人姓名:</label>
+                    <div class="col-md-9">
+                      <input name="legalPeNa" type="text" class="form-control input-sm" placeholder="请输入法人姓名...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">实操通过率:</label>
+                    <div class="col-md-9">
+                      <input name="operPassRate" type="text" class="form-control input-sm" placeholder="请输入实操通过率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教务员与讲师配比:</label>
+                    <div class="col-md-9">
+                      <input name="personRatio" type="text" class="form-control input-sm" placeholder="请输入教务员与讲师配比...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">讲师团队自有比例:</label>
+                    <div class="col-md-9">
+                      <input name="proportion" type="text" class="form-control input-sm" placeholder="请输入讲师团队自有比例...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">遍布省份:</label>
+                    <div class="col-md-9">
+                      <input name="province" type="text" class="form-control input-sm" placeholder="请输入遍布省份...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">抽样合格率:</label>
+                    <div class="col-md-9">
+                      <input name="qualRate" type="text" class="form-control input-sm" placeholder="请输入抽样合格率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">注册资金:</label>
+                    <div class="col-md-9">
+                      <input name="registerCapial" type="text" class="form-control input-sm" placeholder="请输入注册资金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">再培训频率:</label>
+                    <div class="col-md-9">
+                      <input name="retrainRate" type="text" class="form-control input-sm" placeholder="请输入再培训频率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">退课率:</label>
+                    <div class="col-md-9">
+                      <input name="returnRate" type="text" class="form-control input-sm" placeholder="请输入退课率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">主要股东姓名:</label>
+                    <div class="col-md-9">
+                      <input name="shareholderNa" type="text" class="form-control input-sm" placeholder="请输入主要股东姓名...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">主要股东身份证号码:</label>
+                    <div class="col-md-9">
+                      <input name="shareholderPaNo" type="text" class="form-control input-sm" placeholder="请输入主要股东身份证号码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学面积:</label>
+                    <div class="col-md-9">
+                      <input name="teachArea" type="text" class="form-control input-sm" placeholder="请输入教学面积...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学场地环境:</label>
+                    <div class="col-md-9">
+                      <input name="teachGroundEnvir" type="text" class="form-control input-sm" placeholder="请输入教学场地环境...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学场地性质:</label>
+                    <div class="col-md-9">
+                      <input name="teachGroundNature" type="text" class="form-control input-sm" placeholder="请输入教学场地性质...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">测评通过率:</label>
+                    <div class="col-md-9">
+                      <input name="testPassRate" type="text" class="form-control input-sm" placeholder="请输入测评通过率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">年培训收入:</label>
+                    <div class="col-md-9">
+                      <input name="trainIncome" type="text" class="form-control input-sm" placeholder="请输入年培训收入...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">年培训人数:</label>
+                    <div class="col-md-9">
+                      <input name="trainNum" type="text" class="form-control input-sm" placeholder="请输入年培训人数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">学期内培训次数:</label>
+                    <div class="col-md-9">
+                      <input name="trainTimes" type="text" class="form-control input-sm" placeholder="请输入学期内培训次数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">主讲老师平均授课年限:</label>
+                    <div class="col-md-9">
+                      <input name="workYears" type="text" class="form-control input-sm" placeholder="请输入主讲老师平均授课年限...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="merchantpr-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑商户<span class="edit_merchantpr_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/MERCHANTPR_UPDATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="coId" readonly="readonly" required>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">年成交额:</label>
+                    <div class="col-md-9">
+                      <input name="annualTurnover" type="text" class="form-control input-sm" placeholder="请输入年成交额...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户电话-区号:</label>
+                    <div class="col-md-9">
+                      <input name="areaCode" type="text" class="form-control input-sm" placeholder="请输入商户电话-区号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">学员出勤率:</label>
+                    <div class="col-md-9">
+                      <input name="attendance" type="text" class="form-control input-sm" placeholder="请输入学员出勤率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教师平均课时费:</label>
+                    <div class="col-md-9">
+                      <input name="averHourFee" type="text" class="form-control input-sm" placeholder="请输入教师平均课时费...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">分支机构总数:</label>
+                    <div class="col-md-9">
+                      <input name="branchNum" type="text" class="form-control input-sm" placeholder="请输入分支机构总数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教师流失率:</label>
+                    <div class="col-md-9">
+                      <input name="churnRate" type="text" class="form-control input-sm" placeholder="请输入教师流失率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户简称:</label>
+                    <div class="col-md-9">
+                      <input name="coAbbNa" type="text" class="form-control input-sm" placeholder="请输入商户简称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户id:</label>
+                    <div class="col-md-9">
+                      <input name="coAssId" type="text" class="form-control input-sm" placeholder="请输入商户id...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">公司属性名称:</label>
+                    <div class="col-md-9">
+                      <input name="coAttrCa" type="text" class="form-control input-sm" placeholder="请输入公司属性名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">公司属性编码:</label>
+                    <div class="col-md-9">
+                      <input name="coAttrCd" type="text" class="form-control input-sm" placeholder="请输入公司属性编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户证件编码:</label>
+                    <div class="col-md-9">
+                      <input name="coBuLicNo" type="text" class="form-control input-sm" placeholder="请输入商户证件编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户类型名称:</label>
+                    <div class="col-md-9">
+                      <input name="coIndKiCa" type="text" class="form-control input-sm" placeholder="请输入商户类型名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户类型编码:</label>
+                    <div class="col-md-9">
+                      <input name="coIndKiCd" type="text" class="form-control input-sm" placeholder="请输入商户类型编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户名称:</label>
+                    <div class="col-md-9">
+                      <input name="coNa" type="text" class="form-control input-sm" placeholder="请输入商户名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">经营方式名称:</label>
+                    <div class="col-md-9">
+                      <input name="coRuTyCa" type="text" class="form-control input-sm" placeholder="请输入经营方式名称...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">经营方式编码:</label>
+                    <div class="col-md-9">
+                      <input name="coRuTyCd" type="text" class="form-control input-sm" placeholder="请输入经营方式编码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">学员投诉率:</label>
+                    <div class="col-md-9">
+                      <input name="complaintRate" type="text" class="form-control input-sm" placeholder="请输入学员投诉率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">覆盖区域:</label>
+                    <div class="col-md-9">
+                      <input name="coverageArea" type="text" class="form-control input-sm" placeholder="请输入覆盖区域...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">:</label>
+                    <div class="col-md-9">
+                      <input name="cultureCycle" type="text" class="form-control input-sm" placeholder="请输入...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学设备配比:</label>
+                    <div class="col-md-9">
+                      <input name="equipmentRatio" type="text" class="form-control input-sm" placeholder="请输入教学设备配比...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">成立年限:</label>
+                    <div class="col-md-9">
+                      <input name="estYears" type="text" class="form-control input-sm" placeholder="请输入成立年限...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户电话-分机号码:</label>
+                    <div class="col-md-9">
+                      <input name="extNu" type="text" class="form-control input-sm" placeholder="请输入商户电话-分机号码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">高管姓名:</label>
+                    <div class="col-md-9">
+                      <input name="ggNa" type="text" class="form-control input-sm" placeholder="请输入高管姓名...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">近3年招生增长率:</label>
+                    <div class="col-md-9">
+                      <input name="growthRate" type="text" class="form-control input-sm" placeholder="请输入近3年招生增长率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">商户电话-主机号码:</label>
+                    <div class="col-md-9">
+                      <input name="hostNu" type="text" class="form-control input-sm" placeholder="请输入商户电话-主机号码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">法人身份证号:</label>
+                    <div class="col-md-9">
+                      <input name="legalPaNo" type="text" class="form-control input-sm" placeholder="请输入法人身份证号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">法人姓名:</label>
+                    <div class="col-md-9">
+                      <input name="legalPeNa" type="text" class="form-control input-sm" placeholder="请输入法人姓名...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">实操通过率:</label>
+                    <div class="col-md-9">
+                      <input name="operPassRate" type="text" class="form-control input-sm" placeholder="请输入实操通过率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教务员与讲师配比:</label>
+                    <div class="col-md-9">
+                      <input name="personRatio" type="text" class="form-control input-sm" placeholder="请输入教务员与讲师配比...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">讲师团队自有比例:</label>
+                    <div class="col-md-9">
+                      <input name="proportion" type="text" class="form-control input-sm" placeholder="请输入讲师团队自有比例...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">遍布省份:</label>
+                    <div class="col-md-9">
+                      <input name="province" type="text" class="form-control input-sm" placeholder="请输入遍布省份...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">抽样合格率:</label>
+                    <div class="col-md-9">
+                      <input name="qualRate" type="text" class="form-control input-sm" placeholder="请输入抽样合格率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">注册资金:</label>
+                    <div class="col-md-9">
+                      <input name="registerCapial" type="text" class="form-control input-sm" placeholder="请输入注册资金...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">再培训频率:</label>
+                    <div class="col-md-9">
+                      <input name="retrainRate" type="text" class="form-control input-sm" placeholder="请输入再培训频率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">退课率:</label>
+                    <div class="col-md-9">
+                      <input name="returnRate" type="text" class="form-control input-sm" placeholder="请输入退课率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">主要股东姓名:</label>
+                    <div class="col-md-9">
+                      <input name="shareholderNa" type="text" class="form-control input-sm" placeholder="请输入主要股东姓名...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">主要股东身份证号码:</label>
+                    <div class="col-md-9">
+                      <input name="shareholderPaNo" type="text" class="form-control input-sm" placeholder="请输入主要股东身份证号码...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学面积:</label>
+                    <div class="col-md-9">
+                      <input name="teachArea" type="text" class="form-control input-sm" placeholder="请输入教学面积...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学场地环境:</label>
+                    <div class="col-md-9">
+                      <input name="teachGroundEnvir" type="text" class="form-control input-sm" placeholder="请输入教学场地环境...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">教学场地性质:</label>
+                    <div class="col-md-9">
+                      <input name="teachGroundNature" type="text" class="form-control input-sm" placeholder="请输入教学场地性质...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">测评通过率:</label>
+                    <div class="col-md-9">
+                      <input name="testPassRate" type="text" class="form-control input-sm" placeholder="请输入测评通过率...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">年培训收入:</label>
+                    <div class="col-md-9">
+                      <input name="trainIncome" type="text" class="form-control input-sm" placeholder="请输入年培训收入...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">年培训人数:</label>
+                    <div class="col-md-9">
+                      <input name="trainNum" type="text" class="form-control input-sm" placeholder="请输入年培训人数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">学期内培训次数:</label>
+                    <div class="col-md-9">
+                      <input name="trainTimes" type="text" class="form-control input-sm" placeholder="请输入学期内培训次数...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">主讲老师平均授课年限:</label>
+                    <div class="col-md-9">
+                      <input name="workYears" type="text" class="form-control input-sm" placeholder="请输入主讲老师平均授课年限...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="merchantpr-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th>  </th>
+            <th> 年成交额 </th>
+            <th> 商户电话-区号 </th>
+            <th> 学员出勤率 </th>
+            <th> 教师平均课时费 </th>
+            <th> 分支机构总数 </th>
+            <th> 教师流失率 </th>
+            <th> 商户简称 </th>
+            <th> 商户id </th>
+            <th> 公司属性名称 </th>
+            <th> 公司属性编码 </th>
+            <th> 商户证件编码 </th>
+            <th> 商户类型名称 </th>
+            <th> 商户类型编码 </th>
+            <th> 商户名称 </th>
+            <th> 经营方式名称 </th>
+            <th> 经营方式编码 </th>
+            <th> 学员投诉率 </th>
+            <th> 覆盖区域 </th>
+            <th>  </th>
+            <th> 教学设备配比 </th>
+            <th> 成立年限 </th>
+            <th> 商户电话-分机号码 </th>
+            <th> 高管姓名 </th>
+            <th> 近3年招生增长率 </th>
+            <th> 商户电话-主机号码 </th>
+            <th> 法人身份证号 </th>
+            <th> 法人姓名 </th>
+            <th> 实操通过率 </th>
+            <th> 教务员与讲师配比 </th>
+            <th> 讲师团队自有比例 </th>
+            <th> 遍布省份 </th>
+            <th> 抽样合格率 </th>
+            <th> 注册资金 </th>
+            <th> 再培训频率 </th>
+            <th> 退课率 </th>
+            <th> 主要股东姓名 </th>
+            <th> 主要股东身份证号码 </th>
+            <th> 教学面积 </th>
+            <th> 教学场地环境 </th>
+            <th> 教学场地性质 </th>
+            <th> 测评通过率 </th>
+            <th> 年培训收入 </th>
+            <th> 年培训人数 </th>
+            <th> 学期内培训次数 </th>
+            <th> 主讲老师平均授课年限 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{coId}} </td>
+            <td> {{annualTurnover}} </td>
+            <td> {{areaCode}} </td>
+            <td> {{attendance}} </td>
+            <td> {{averHourFee}} </td>
+            <td> {{branchNum}} </td>
+            <td> {{churnRate}} </td>
+            <td> {{coAbbNa}} </td>
+            <td> {{coAssId}} </td>
+            <td> {{coAttrCa}} </td>
+            <td> {{coAttrCd}} </td>
+            <td> {{coBuLicNo}} </td>
+            <td> {{coIndKiCa}} </td>
+            <td> {{coIndKiCd}} </td>
+            <td> {{coNa}} </td>
+            <td> {{coRuTyCa}} </td>
+            <td> {{coRuTyCd}} </td>
+            <td> {{complaintRate}} </td>
+            <td> {{coverageArea}} </td>
+            <td> {{cultureCycle}} </td>
+            <td> {{equipmentRatio}} </td>
+            <td> {{estYears}} </td>
+            <td> {{extNu}} </td>
+            <td> {{ggNa}} </td>
+            <td> {{growthRate}} </td>
+            <td> {{hostNu}} </td>
+            <td> {{legalPaNo}} </td>
+            <td> {{legalPeNa}} </td>
+            <td> {{operPassRate}} </td>
+            <td> {{personRatio}} </td>
+            <td> {{proportion}} </td>
+            <td> {{province}} </td>
+            <td> {{qualRate}} </td>
+            <td> {{registerCapial}} </td>
+            <td> {{retrainRate}} </td>
+            <td> {{returnRate}} </td>
+            <td> {{shareholderNa}} </td>
+            <td> {{shareholderPaNo}} </td>
+            <td> {{teachArea}} </td>
+            <td> {{teachGroundEnvir}} </td>
+            <td> {{teachGroundNature}} </td>
+            <td> {{testPassRate}} </td>
+            <td> {{trainIncome}} </td>
+            <td> {{trainNum}} </td>
+            <td> {{trainTimes}} </td>
+            <td> {{workYears}} </td>
+            <td>
+              <a href="#" data-target="#merchantpr-edit-modal" data-toggle="modal" data-merchantpr-id="{{coId}}"> 编辑 </a>
+              <a href="javascript:;" data-delete-merchantpr-id="{{coId}}.json">删除</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

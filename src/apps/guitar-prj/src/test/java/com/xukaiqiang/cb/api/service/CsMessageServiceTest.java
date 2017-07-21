@@ -11,4 +11,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ActiveProfiles("development")
 @ContextConfiguration(locations = { "classpath*:/net/zkbc/spring/*.xml", "classpath:/spring/*.xml" })
 public class CsMessageServiceTest {
+
 }

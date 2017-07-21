@@ -17,8 +17,8 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import net.zkbc.shared.protocol.OutputMessage;
-import net.zkbc.shared.util.CopierUtils;
+import com.xukaiqiang.shared.protocol.OutputMessage;
+import com.xukaiqiang.shared.util.CopierUtils;
 
 @JsonInclude(Include.NON_NULL)
 public class ${entityName}Response extends OutputMessage implements Serializable {

@@ -41,7 +41,7 @@
   </mvc:interceptors>
 
   <mvc:default-servlet-handler />
-
+	<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/"/>
   <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
     <property name="defaultLocale" value="${locale.default}" />
   </bean>

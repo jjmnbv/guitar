@@ -35,7 +35,7 @@
       <appenderRef ref="STDOUT"/>
       <appenderRef ref="ROLLING"/>
     </root>
-    <logger level="DEBUG" name="net.zkbc"/>
+    <logger level="DEBUG" name="com.xukaiqiang"/>
     <logger level="INFO" name="org.hibernate" additivity="false">
       <appenderRef ref="HIBERNATE"/>
     </logger>

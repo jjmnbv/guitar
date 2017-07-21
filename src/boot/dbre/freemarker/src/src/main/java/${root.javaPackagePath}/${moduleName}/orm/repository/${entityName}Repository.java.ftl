@@ -1,6 +1,6 @@
 package ${root.javaPackageName}.${moduleName}.orm.repository;
 
-import static net.zkbc.shared.util.JpaSpecUtils.*;
+import static com.xukaiqiang.shared.util.JpaSpecUtils.*;
 
 import java.util.List;
 

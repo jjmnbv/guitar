@@ -1,0 +1,345 @@
+{{#extend "main"}}
+
+  <!-- 页面meta  作者，关键字，描述 -->
+  {{#content "meta"}}
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keyword"/>
+  {{/content}}
+
+  <!-- 页面 title -->
+  {{#content "title"}}
+    <title>联系方式管理</title>
+  {{/content}}
+
+  <!-- css插件 -->
+  {{#content "css-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义css -->
+  {{#content "css-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 首屏渲染数据js-loader -->
+  {{#content "js-loader"}}
+    <script src="{{path.base}}/script/gb/contract.js"></script>
+  {{/content}}
+
+  <!-- js插件 -->
+  {{#content "js-plugins"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 自定义js -->
+  {{#content "js-main"}}
+    <script src="{{path.app}}/js/gb/contract.js"></script>
+  {{/content}}
+
+  <!-- 页面主体 -->
+  {{#content "content-main"}}
+    <!-- @Override -->
+  {{/content}}
+
+  <!-- 分页查询条件 pagination-form -->
+  {{#content "pagination-form"}}
+    <!-- @Override -->
+    <form role="form" class="form-horizontal pagination-form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">用户编号:</label>
+              <div class="col-md-9">
+                <input name="userId" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">手机号:</label>
+              <div class="col-md-9">
+                <input name="phone" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">微信号:</label>
+              <div class="col-md-9">
+                <input name="wechat" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">qq:</label>
+              <div class="col-md-9">
+                <input name="qq" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">邮箱:</label>
+              <div class="col-md-9">
+                <input name="email" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">直播号:</label>
+              <div class="col-md-9">
+                <input name="liveNum" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-3">直播平台:</label>
+              <div class="col-md-9">
+                <input name="liveName" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/content}}
+  <!-- pagination-form END -->
+
+  <!-- 分页表格和分页页码 pagination-container -->
+  {{#content "pagination-container"}}
+    <div class="portlet-title">
+      <div class="caption"><i class="fa fa-list"></i> 联系方式列表 </div>
+      <div class="actions">
+        <div class="btn-group btn-group-devided" data-toggle="buttons">
+          <a href="#" title="新增" data-target="#contract-add-modal" data-toggle="modal" class=""><img src="{{path.app}}/img/icon/group_3.png"/></a>
+          <a href="javascript:;" class="pagination-reload"><img src="{{path.app}}/img/icon/group_5.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div class="tabbable tabbable-tabdrop">
+        <div class="portlet-body pagination-container"
+          data-page-first-store="first-store"
+          data-page-url="/CONTRACT_PAGE"
+          data-page-template-id="contract-page-template">
+        </div>
+      </div>
+    </div>
+  <!-- @Override -->
+  {{/content}}
+  <!-- pagination-container END -->
+
+    <!-- 页面模态框 -->
+  {{#content "content-free"}}
+  <div id="contract-add-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">新增联系方式</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/CONTRACT_CREATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="id" readonly="readonly">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">用户编号:</label>
+                    <div class="col-md-9">
+                      <input name="userId" type="text" class="form-control input-sm" placeholder="请输入用户编号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">手机号:</label>
+                    <div class="col-md-9">
+                      <input name="phone" type="text" class="form-control input-sm" placeholder="请输入手机号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">微信号:</label>
+                    <div class="col-md-9">
+                      <input name="wechat" type="text" class="form-control input-sm" placeholder="请输入微信号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">qq:</label>
+                    <div class="col-md-9">
+                      <input name="qq" type="text" class="form-control input-sm" placeholder="请输入qq...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">邮箱:</label>
+                    <div class="col-md-9">
+                      <input name="email" type="text" class="form-control input-sm" placeholder="请输入邮箱...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">直播号:</label>
+                    <div class="col-md-9">
+                      <input name="liveNum" type="text" class="form-control input-sm" placeholder="请输入直播号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">直播平台:</label>
+                    <div class="col-md-9">
+                      <input name="liveName" type="text" class="form-control input-sm" placeholder="请输入直播平台...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contract-edit-modal" class="modal container fade modal-scroll" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">编辑联系方式<span class="edit_contract_id"></span></h4>
+        </div>
+        <div class="modal-body">
+          <form action="/CONTRACT_UPDATE" method="POST" role="form" class="form-horizontal">
+            <div class="form-body">
+              <input type="hidden" name="id" readonly="readonly" required>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">用户编号:</label>
+                    <div class="col-md-9">
+                      <input name="userId" type="text" class="form-control input-sm" placeholder="请输入用户编号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">手机号:</label>
+                    <div class="col-md-9">
+                      <input name="phone" type="text" class="form-control input-sm" placeholder="请输入手机号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">微信号:</label>
+                    <div class="col-md-9">
+                      <input name="wechat" type="text" class="form-control input-sm" placeholder="请输入微信号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">qq:</label>
+                    <div class="col-md-9">
+                      <input name="qq" type="text" class="form-control input-sm" placeholder="请输入qq...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">邮箱:</label>
+                    <div class="col-md-9">
+                      <input name="email" type="text" class="form-control input-sm" placeholder="请输入邮箱...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">直播号:</label>
+                    <div class="col-md-9">
+                      <input name="liveNum" type="text" class="form-control input-sm" placeholder="请输入直播号...">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-md-3 control-label">直播平台:</label>
+                    <div class="col-md-9">
+                      <input name="liveName" type="text" class="form-control input-sm" placeholder="请输入直播平台...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline dark ok">确认</button>
+          <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="contract-page-template">
+    {{{{raw}}}}
+    <div class="table-scrollable">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> 序号 </th>
+            <th> 编号 </th>
+            <th> 用户编号 </th>
+            <th> 手机号 </th>
+            <th> 微信号 </th>
+            <th> qq </th>
+            <th> 邮箱 </th>
+            <th> 直播号 </th>
+            <th> 直播平台 </th>
+            <th> 操作 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each page.content}}
+          <tr>
+            <td> {{page-rowindex}} </td>
+            <td> {{id}} </td>
+            <td> {{userId}} </td>
+            <td> {{phone}} </td>
+            <td> {{wechat}} </td>
+            <td> {{qq}} </td>
+            <td> {{email}} </td>
+            <td> {{liveNum}} </td>
+            <td> {{liveName}} </td>
+            <td>
+              <a href="#" data-target="#contract-edit-modal" data-toggle="modal" data-contract-id="{{id}}"> 编辑 </a>
+              <a href="javascript:;" data-delete-contract-id="{{id}}.json">删除</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{{{/raw}}}}
+    {{> pager}}
+  </script>
+<!-- @Override -->
+{{/content}}
+<!-- pagination-free END-->
+
+{{/extend}}

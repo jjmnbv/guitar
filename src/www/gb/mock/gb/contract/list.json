@@ -1,0 +1,14 @@
+[{
+  "content":[{
+    "id":1,
+    "userId":1,
+    "phone":"手机号",
+    "wechat":"微信号",
+    "qq":"qq",
+    "email":"邮箱",
+    "liveNum":"直播号",
+    "liveName":"直播平台",
+    "resultCode": "SUCCESS"
+  }],
+  "errors": []
+}]

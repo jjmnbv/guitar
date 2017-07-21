@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+  default-lazy-init="true">
+
+  <bean id="shiroFilter" class="com.xukaiqiang.shiro.web.ShiroDbFilterFactoryBean">
+    <property name="securityManager" ref="defaultWebSecurityManager" />
+    <property name="loginUrl" value="/login" />
+    <property name="successUrl" value="/" />
+    <property name="filterChainDefinitions">
+      <value>
+        /login = authc
+        /logout = logout
+        /favicon.ico = anon
+        /static/** = anon
+        /cu/oauth2/** = anon
+        /script/cu/availableMenus = user
+        /script/cu/dicts = user
+        /cu/message/subscribe = anon
+        /script/cu/app = anon
+        /cu/cuicons/loadImage = anon
+        /forget-login-password = anon
+        /reset-login-password = anon
+        /jcaptcha/** = anon
+        /remoting/** = anon
+      </value>
+    </property>
+  </bean>
+
+  <bean id="defaultSecurityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+    <property name="realm" ref="shiroDbRealm" />
+    <property name="cacheManager" ref="shiroCacheManager" />
+    <!-- net.zkbc.shiro.AppConfig.defaultSessionManager() -->
+    <property name="sessionManager" ref="defaultSessionManager"/>
+  </bean>
+
+  <bean id="defaultWebSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+    <property name="realm" ref="shiroDbRealm" />
+    <property name="cacheManager" ref="shiroCacheManager" />
+    <!-- net.zkbc.shiro.AppConfig.defaultWebSessionManager() -->
+    <property name="sessionManager" ref="defaultWebSessionManager"/>
+    <!-- net.zkbc.shiro.AppConfig.cookieRememberMeManager() -->
+    <property name="rememberMeManager" ref="cookieRememberMeManager" />
+  </bean>
+
+  <bean id="shiroDbRealm" class="com.xukaiqiang.shiro.realm.ShiroDbRealm">
+    <!-- net.zkbc.shiro.AppConfig.hashedCredentialsMatcher() -->
+    <property name="credentialsMatcher" ref="hashedCredentialsMatcher" />
+  </bean>
+
+  <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+  
+  <beans profile="production">
+    <bean id="shiroCacheManager" class="com.xukaiqiang.shiro.cache.redis.RedisCacheManager">
+      <!-- applicationContext-redis.xml -->
+      <property name="cacheManager" ref="redisCacheManager"/>
+    </bean>
+  </beans>
+  
+  <beans profile="development,test">
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+  </beans>
+
+</beans>

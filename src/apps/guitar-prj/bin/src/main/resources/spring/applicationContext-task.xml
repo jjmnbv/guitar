@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+  default-lazy-init="true">
+
+  <task:annotation-driven executor="defaultExecutor" scheduler="defaultScheduler" />
+  <task:executor id="defaultExecutor" pool-size="5" />
+  <task:scheduler id="defaultScheduler" pool-size="10" />
+
+  <!--<beans profile="development,test">
+    <bean id="subscribeScheduler" class="net.zkbc.message.subscribe.mgt.scheduler.SubscribeScheduler" />
+    <bean id="cbScheduler" class="net.zkbc.cb.scheduler.CbScheduler" />
+    
+    
+    <task:scheduled-tasks>
+      <task:scheduled ref="subscribeScheduler" method="execute" cron="0 0/1 1 * * ?" />
+ 
+    </task:scheduled-tasks>
+  </beans>-->
+
+</beans>

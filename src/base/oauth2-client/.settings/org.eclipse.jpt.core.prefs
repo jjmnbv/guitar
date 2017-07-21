@@ -1,0 +1,6 @@
+
+eclipse.preferences.version=1
+org.eclipse.jpt.core.platform=generic2_1
+org.eclipse.jpt.jpa.core.metamodelSourceFolderName=src/metamodel/java
+problem.PROJECT_NO_CONNECTION=info
+problem.TYPE_MANAGED_BUT_NOT_LISTED_IN_PERSISTENCE_XML=info

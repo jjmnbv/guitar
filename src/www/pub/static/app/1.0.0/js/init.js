@@ -44,8 +44,8 @@
         $('input').uniform({fileButtonHtml: "选择文件",fileDefaultHtml: "未选择任何文件",});
         
 //      wkd限制select长度溢出
-         $('select').selectpicker({size: 7,container: '#bootstrap-select-box'});
-         $('select').selectpicker('refresh');
+        // $('select').selectpicker({size: 7,container: '#bootstrap-select-box'});
+        // $('select').selectpicker('refresh');
          
 //       全局搜索增加隐藏域lyf
          $(".searchAllForm").prepend($(".hiddenCondition"));

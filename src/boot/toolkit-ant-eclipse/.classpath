@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry path="build/eclipse" kind="output"/>
+	<classpathentry output="build/classes/java/main" excluding="**/.DS_Store" kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7/"/>
+	<classpathentry sourcepath="/Users/xukaiqiang/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant/1.9.6/a09556e6512056c6741b6ffbf4de7a52282fd4ff/ant-1.9.6-sources.jar" kind="lib" path="/Users/xukaiqiang/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant/1.9.6/80e2063b01bab3c79c2d84e4ed5e73868394c85a/ant-1.9.6.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/xukaiqiang/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.9.6/717ab721434006f709330a1d4342e844120847af/ant-launcher-1.9.6-sources.jar" kind="lib" path="/Users/xukaiqiang/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.9.6/d75dd4c39ba06401f20e7afffb861d268baec6bc/ant-launcher-1.9.6.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/xukaiqiang/Documents/workspace/guitar/lib/eclipse/org.eclipse.core.jobs-3.8.0.v20160509-0411.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/xukaiqiang/Documents/workspace/guitar/lib/eclipse/org.eclipse.core.resources-3.11.0.v20160503-1608.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/xukaiqiang/Documents/workspace/guitar/lib/eclipse/org.eclipse.core.runtime-3.12.0.v20160606-1342.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/xukaiqiang/Documents/workspace/guitar/lib/eclipse/org.eclipse.equinox.common-3.8.0.v20160509-1230.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/xukaiqiang/.gradle/caches/modules-2/files-2.1/org.osgi/org.osgi.core/6.0.0/347531f45363ed10e222b03231d49bb7df016a4d/org.osgi.core-6.0.0-sources.jar" kind="lib" path="/Users/xukaiqiang/.gradle/caches/modules-2/files-2.1/org.osgi/org.osgi.core/6.0.0/c49acdc9ac62cf69ee49cb6f1905b4fdb79ea5c/org.osgi.core-6.0.0.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+</classpath>

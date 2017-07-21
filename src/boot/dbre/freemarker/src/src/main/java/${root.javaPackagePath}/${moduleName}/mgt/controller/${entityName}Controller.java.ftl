@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.zkbc.shared.SharedVars;
-import net.zkbc.shared.controller.BaseController;
-import net.zkbc.shared.protocol.OutputMessage;
-import net.zkbc.shared.util.Executor;
+import com.xukaiqiang.shared.SharedVars;
+import com.xukaiqiang.shared.controller.BaseController;
+import com.xukaiqiang.shared.protocol.OutputMessage;
+import com.xukaiqiang.shared.util.Executor;
 import ${root.javaPackageName}.${moduleName}.mgt.protocol.${entityName}CreateRequest;
 import ${root.javaPackageName}.${moduleName}.mgt.protocol.${entityName}ListResponse;
 import ${root.javaPackageName}.${moduleName}.mgt.protocol.${entityName}PageResponse;

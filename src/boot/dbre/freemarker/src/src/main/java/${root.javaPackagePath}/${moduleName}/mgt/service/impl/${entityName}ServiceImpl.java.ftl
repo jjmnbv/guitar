@@ -15,7 +15,7 @@ import ${root.javaPackageName}.${moduleName}.orm.entity.${entityName};
 import ${root.javaPackageName}.${moduleName}.orm.protocol.${entityName}FilterRequest;
 import ${root.javaPackageName}.${moduleName}.orm.repository.${entityName}Repository;
 import ${root.javaPackageName}.${moduleName}.orm.repository.${entityName}Repository.Executor;
-import net.zkbc.shared.service.PageService;
+import com.xukaiqiang.shared.service.PageService;
 
 @Transactional(readOnly = true)
 @Service

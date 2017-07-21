@@ -1,0 +1,20 @@
+{
+  "resultCode": "SUCCESS",
+  "errors": [],
+  "number":0,
+  "size":20,
+  "totalPages":6,
+  "totalElements":105,
+  "pages": [1, 2, 3, 4, 5, 6],
+  "content":[{
+    "id":1,
+    "userId":1,
+    "phone":"手机号",
+    "wechat":"微信号",
+    "qq":"qq",
+    "email":"邮箱",
+    "liveNum":"直播号",
+    "liveName":"直播平台",
+    "resultCode": "SUCCESS"
+  }]
+}

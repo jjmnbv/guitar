@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--  页面信息  -->
+    
+    <!--  页面标题  -->
+            <title>消费金融平台 | 统一用户 | 用户信息 | 修改</title>
+
+
+    <link rel="stylesheet"
+          href="/static/lib/google/fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/font-awesome/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/uniform/css/uniform.default.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-toastr/toastr.min.css"/>
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/global/css/components.min.css"
+          id="style_components"
+    />
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/global/css/plugins.min.css"/>
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/layouts/layout/css/layout.min.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/layouts/layout/css/themes/darkblue.min.css"
+          id="style_color"
+    />
+    <link rel="stylesheet" href="/static/lib/metronic/4.5.2/assets/layouts/layout/css/custom.min.css"/>
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jstree/dist/themes/default/style.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css"
+    />
+    <link rel="stylesheet"
+          href="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css"
+    />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="/static/lib/metronic/4.5.2/assets/global/plugins/respond.min.js"></script>
+    <script src="/static/lib/metronic/4.5.2/assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+
+    <!--  第三方css  -->
+        <!-- @Override -->
+
+    <link rel="shortcut icon" href="/static/app/1.0.0/img/favicon.ico"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/reset.css"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/app.css"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/app-plugins.css"/>
+    <!--  自定义css  -->
+            <link rel="stylesheet" href="/static/app/1.0.0/css/cu/user-management/add-user.css"/>
+
+    <link rel="stylesheet" href="/static/app/1.0.0/css/cu/common-form.css"/>
+    <link rel="stylesheet" href="/static/app/1.0.0/css/cu/modal-form.css"/>
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div id="bootstrap-select-box" ></div>
+<!-- 组件模板类占位符  内容有可能是js文件，也有可能是handlebar模板，所以放在这个位置  -->
+        <script type="text/x-handlebars-template" id="organization-list-page-template">
+        <div class="table-scrollable">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>机构名称</th>
+                    <th>机构编号</th>
+                    <th>机构级别</th>
+                    <th>上级机构</th>
+                    <th>机构联系人</th>
+                    <th>联系电话</th>
+                    <th>状态</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each page.content}}
+                <tr>
+                    <td>
+                        <label for="id_{{page-rowindex}}">
+                            <input
+                                    id="id_{{page-rowindex}}"
+                                    type="radio"
+                                    name="radio"
+                                    data-id="{{brNo}}">
+                        </label>
+                    </td>
+                    <td class="name">{{brNa}}</td>
+                    <td>{{brNo}}</td>
+                    <td>{{brLevQt-text}}</td>
+                    <td>{{parentBrNa}}</td>
+                    <td>{{conNa}}</td>
+                    <td>{{conTelNo}}</td>
+                    <td>{{st-text}}</td>
+                    <td><div class="omit-sm" title="{{co}}">{{co}}</div></td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="row table-pager">
+            <div class="col-md-5 col-sm-12">
+                <div style="padding-top:8px;">共 {{page.totalPages}} 页 {{page.totalElements}} 条记录</div>
+            </div>
+            <div class="col-md-7 col-sm-12 clearfix">
+                <div >
+                   <span> 每页显示</span>
+                    <input value="{{page.size}}"  class="set-num" name="pageSize"/>
+                    <span id="set_pageNum">
+                        <a>  <img src="/static/app/1.0.0/img/icon/button_left.png"/></a>
+                        <a>  <img src="/static/app/1.0.0/img/icon/button_right.png"/></a>
+                    </span>
+                    <span> 条记录</span>
+                   <span> 共<b>  {{#if page.totalElements}}{{page.totalElements}}{{else}}0{{/if}}</b> 条记录</span>
+                </div>
+                <ul class="pagination pull-right">
+                    {{#if (page-first)}}
+                    {{!--<li class="prev disabled"><a href="javascript:;"><i class="fa fa-angle-left"></i>上一页</a></li>--}}
+                    {{else}}
+                    <li class="prev" data-page-number="{{page-prev}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_left2.png"/></a></li>
+                    {{/if}}
+                    {{#each page.pages}}
+                        {{#if (page-show-first)}}
+                          {{#if (eq this 2)}}
+                    <li data-page-number="1"><a href="javascript:;">1</a></li>
+                          {{else}}
+                    <li data-page-number="1"><a href="javascript:;">1...</a></li>
+                          {{/if}}
+                        {{/if}}
+                    <li{{#if (page-current)}} class="active"{{else}} data-page-number="{{this}}"{{/if}}><a href="javascript:;">{{this}}</a></li>
+                        {{#if (page-show-last)}}
+                          {{#if (eq this (sum ../page.totalPages -1))}}
+                    <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">{{../page.totalPages}}</a></li>
+                          {{else}}
+                    <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">...{{../page.totalPages}}</a></li>
+                          {{/if}}
+                        {{/if}}
+                    {{/each}}
+                    {{#if (page-last)}}
+                    {{!--<li class="next disabled"><a href="javascript:;">下一页<i class="fa fa-angle-right"></i></a></li>--}}
+                    {{else}}
+                    <li class="next" data-page-number="{{page-next}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_right2.png"/></a></li>
+                    {{/if}}
+                    <li><i>共 {{#if page.totalPages}}{{page.totalPages}}{{else}}0{{/if}} 页</i></li>
+                    <li>
+                        <i>&nbsp;&nbsp;&nbsp;&nbsp;跳转到:&nbsp; </i>
+                        <input value="{{sum page.number 1}}" data-number="{{sum page.number 1}}" data-total-pages="{{page.totalPages}}" class="pageVal"/>
+                    </li>
+                    <li class="goPage"><a href="javascript:;">go</a></li>
+                </ul>
+            </div>
+        </div>
+    </script>
+        <script type="text/x-handlebars-template" id="competent-page-template">
+            <div class="table-scrollable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>用户登录名</th>
+                        <th>用户姓名</th>
+                        <th>联系电话</th>
+                        <th>邮箱地址</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each page.content}}
+                    <tr>
+                        <td>
+                            <label for="id_{{page-rowindex}}">
+                                <input
+                                        type="radio"
+                                        name="radio"
+                                        data-id="{{id}}">
+                            </label>
+                        </td>
+                        <td>{{loginNa}}</td>
+                        <td class="name">{{usNa}}</td>
+                        <td>{{moNo}}</td>
+                        <td>{{mailNo}}</td>
+                        <td>{{st-text}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row table-pager">
+                <div class="col-md-5 col-sm-12">
+                    <div style="padding-top:8px;">共 {{page.totalPages}} 页 {{page.totalElements}} 条记录</div>
+                </div>
+                <div class="col-md-7 col-sm-12 clearfix">
+                    <div >
+                       <span> 每页显示</span>
+                        <input value="{{page.size}}"  class="set-num" name="pageSize"/>
+                        <span id="set_pageNum">
+                            <a>  <img src="/static/app/1.0.0/img/icon/button_left.png"/></a>
+                            <a>  <img src="/static/app/1.0.0/img/icon/button_right.png"/></a>
+                        </span>
+                        <span> 条记录</span>
+                       <span> 共<b>  {{#if page.totalElements}}{{page.totalElements}}{{else}}0{{/if}}</b> 条记录</span>
+                    </div>
+                    <ul class="pagination pull-right">
+                        {{#if (page-first)}}
+                        {{!--<li class="prev disabled"><a href="javascript:;"><i class="fa fa-angle-left"></i>上一页</a></li>--}}
+                        {{else}}
+                        <li class="prev" data-page-number="{{page-prev}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_left2.png"/></a></li>
+                        {{/if}}
+                        {{#each page.pages}}
+                            {{#if (page-show-first)}}
+                              {{#if (eq this 2)}}
+                        <li data-page-number="1"><a href="javascript:;">1</a></li>
+                              {{else}}
+                        <li data-page-number="1"><a href="javascript:;">1...</a></li>
+                              {{/if}}
+                            {{/if}}
+                        <li{{#if (page-current)}} class="active"{{else}} data-page-number="{{this}}"{{/if}}><a href="javascript:;">{{this}}</a></li>
+                            {{#if (page-show-last)}}
+                              {{#if (eq this (sum ../page.totalPages -1))}}
+                        <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">{{../page.totalPages}}</a></li>
+                              {{else}}
+                        <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">...{{../page.totalPages}}</a></li>
+                              {{/if}}
+                            {{/if}}
+                        {{/each}}
+                        {{#if (page-last)}}
+                        {{!--<li class="next disabled"><a href="javascript:;">下一页<i class="fa fa-angle-right"></i></a></li>--}}
+                        {{else}}
+                        <li class="next" data-page-number="{{page-next}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_right2.png"/></a></li>
+                        {{/if}}
+                        <li><i>共 {{#if page.totalPages}}{{page.totalPages}}{{else}}0{{/if}} 页</i></li>
+                        <li>
+                            <i>&nbsp;&nbsp;&nbsp;&nbsp;跳转到:&nbsp; </i>
+                            <input value="{{sum page.number 1}}" data-number="{{sum page.number 1}}" data-total-pages="{{page.totalPages}}" class="pageVal"/>
+                        </li>
+                        <li class="goPage"><a href="javascript:;">go</a></li>
+                    </ul>
+                </div>
+            </div>
+        </script>
+        <script type="text/x-handlebars-template" id="post-page-template">
+            <div class="table-scrollable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>岗位名称</th>
+                        <th>岗位编号</th>
+                        <th>是否门店适用</th>
+                        <th>是否审批岗位</th>
+                        <th>是否催收岗位</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each page.content}}
+                    <tr>
+                        <td>
+                            <label for="id_{{page-rowindex}}">
+                                <input
+                                        type="checkbox"
+                                        name="radio"
+                                        data-id="{{postNo}}">
+                            </label>
+                        </td>
+                        <td>{{postNa}}</td>
+                        <td>{{postNo}}</td>
+                        <td>{{stoUseYn-text}}</td>
+                        <td>{{auPostYn-text}}</td>
+                        <td>{{coPostYn-text}}</td>
+                        <td>{{crTm}}</td>
+                        <td>{{st-text}}</td>
+                        <td><div class="omit-sm" title="{{co}}">{{co}}</div></td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row table-pager">
+                <div class="col-md-5 col-sm-12">
+                    <div style="padding-top:8px;">共 {{page.totalPages}} 页 {{page.totalElements}} 条记录</div>
+                </div>
+                <div class="col-md-7 col-sm-12 clearfix">
+                    <div >
+                       <span> 每页显示</span>
+                        <input value="{{page.size}}"  class="set-num" name="pageSize"/>
+                        <span id="set_pageNum">
+                            <a>  <img src="/static/app/1.0.0/img/icon/button_left.png"/></a>
+                            <a>  <img src="/static/app/1.0.0/img/icon/button_right.png"/></a>
+                        </span>
+                        <span> 条记录</span>
+                       <span> 共<b>  {{#if page.totalElements}}{{page.totalElements}}{{else}}0{{/if}}</b> 条记录</span>
+                    </div>
+                    <ul class="pagination pull-right">
+                        {{#if (page-first)}}
+                        {{!--<li class="prev disabled"><a href="javascript:;"><i class="fa fa-angle-left"></i>上一页</a></li>--}}
+                        {{else}}
+                        <li class="prev" data-page-number="{{page-prev}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_left2.png"/></a></li>
+                        {{/if}}
+                        {{#each page.pages}}
+                            {{#if (page-show-first)}}
+                              {{#if (eq this 2)}}
+                        <li data-page-number="1"><a href="javascript:;">1</a></li>
+                              {{else}}
+                        <li data-page-number="1"><a href="javascript:;">1...</a></li>
+                              {{/if}}
+                            {{/if}}
+                        <li{{#if (page-current)}} class="active"{{else}} data-page-number="{{this}}"{{/if}}><a href="javascript:;">{{this}}</a></li>
+                            {{#if (page-show-last)}}
+                              {{#if (eq this (sum ../page.totalPages -1))}}
+                        <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">{{../page.totalPages}}</a></li>
+                              {{else}}
+                        <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">...{{../page.totalPages}}</a></li>
+                              {{/if}}
+                            {{/if}}
+                        {{/each}}
+                        {{#if (page-last)}}
+                        {{!--<li class="next disabled"><a href="javascript:;">下一页<i class="fa fa-angle-right"></i></a></li>--}}
+                        {{else}}
+                        <li class="next" data-page-number="{{page-next}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_right2.png"/></a></li>
+                        {{/if}}
+                        <li><i>共 {{#if page.totalPages}}{{page.totalPages}}{{else}}0{{/if}} 页</i></li>
+                        <li>
+                            <i>&nbsp;&nbsp;&nbsp;&nbsp;跳转到:&nbsp; </i>
+                            <input value="{{sum page.number 1}}" data-number="{{sum page.number 1}}" data-total-pages="{{page.totalPages}}" class="pageVal"/>
+                        </li>
+                        <li class="goPage"><a href="javascript:;">go</a></li>
+                    </ul>
+                </div>
+            </div>
+        </script>
+        <script type="text/x-handlebars-template" id="roles-page-template">
+            <div class="table-scrollable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>角色名称</th>
+                        <th>角色编号</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each page.content}}
+                    <tr>
+                        <td>
+                            <label for="id_{{page-rowindex}}">
+                                <input
+                                        type="checkbox"
+                                        name="radio"
+                                        data-id="{{roNo}}">
+                            </label>
+                        </td>
+                        <td>{{roNa}}</td>
+                        <td>{{roNo}}</td>
+                        <td>{{crTm}}</td>
+                        <td>{{st-text}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row table-pager">
+                <div class="col-md-5 col-sm-12">
+                    <div style="padding-top:8px;">共 {{page.totalPages}} 页 {{page.totalElements}} 条记录</div>
+                </div>
+                <div class="col-md-7 col-sm-12 clearfix">
+                    <div >
+                       <span> 每页显示</span>
+                        <input value="{{page.size}}"  class="set-num" name="pageSize"/>
+                        <span id="set_pageNum">
+                            <a>  <img src="/static/app/1.0.0/img/icon/button_left.png"/></a>
+                            <a>  <img src="/static/app/1.0.0/img/icon/button_right.png"/></a>
+                        </span>
+                        <span> 条记录</span>
+                       <span> 共<b>  {{#if page.totalElements}}{{page.totalElements}}{{else}}0{{/if}}</b> 条记录</span>
+                    </div>
+                    <ul class="pagination pull-right">
+                        {{#if (page-first)}}
+                        {{!--<li class="prev disabled"><a href="javascript:;"><i class="fa fa-angle-left"></i>上一页</a></li>--}}
+                        {{else}}
+                        <li class="prev" data-page-number="{{page-prev}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_left2.png"/></a></li>
+                        {{/if}}
+                        {{#each page.pages}}
+                            {{#if (page-show-first)}}
+                              {{#if (eq this 2)}}
+                        <li data-page-number="1"><a href="javascript:;">1</a></li>
+                              {{else}}
+                        <li data-page-number="1"><a href="javascript:;">1...</a></li>
+                              {{/if}}
+                            {{/if}}
+                        <li{{#if (page-current)}} class="active"{{else}} data-page-number="{{this}}"{{/if}}><a href="javascript:;">{{this}}</a></li>
+                            {{#if (page-show-last)}}
+                              {{#if (eq this (sum ../page.totalPages -1))}}
+                        <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">{{../page.totalPages}}</a></li>
+                              {{else}}
+                        <li data-page-number="{{../page.totalPages}}"><a href="javascript:;">...{{../page.totalPages}}</a></li>
+                              {{/if}}
+                            {{/if}}
+                        {{/each}}
+                        {{#if (page-last)}}
+                        {{!--<li class="next disabled"><a href="javascript:;">下一页<i class="fa fa-angle-right"></i></a></li>--}}
+                        {{else}}
+                        <li class="next" data-page-number="{{page-next}}"><a href="javascript:;"><img src="/static/app/1.0.0/img/icon/button_fenye_right2.png"/></a></li>
+                        {{/if}}
+                        <li><i>共 {{#if page.totalPages}}{{page.totalPages}}{{else}}0{{/if}} 页</i></li>
+                        <li>
+                            <i>&nbsp;&nbsp;&nbsp;&nbsp;跳转到:&nbsp; </i>
+                            <input value="{{sum page.number 1}}" data-number="{{sum page.number 1}}" data-total-pages="{{page.totalPages}}" class="pageVal"/>
+                        </li>
+                        <li class="goPage"><a href="javascript:;">go</a></li>
+                    </ul>
+                </div>
+            </div>
+        </script>
+
+<!-- 生成html填充处  -->
+<div id="app"></div>
+<!-- 首屏数据模板  -->
+<script id="mainTemplate" type="text/x-handlebars-template">
+    <header>
+        <div class="page-header navbar navbar-fixed-top ">
+            <div class="page-header-inner clearfix">
+                <div class="page-logo">
+                    <a href="{{base}}/index.html">
+                        <img src="{{path.app}}/img/logo-big-auto.png" width="116"/>
+                        <h1 class="logo-text">柏诚消费金融情报系统</h1>
+                    </a>
+                </div>
+                <div class="pull-right">
+                    <ul class="main-menu nav navbar-nav pull-right">
+                        {{#each mainMenus}}
+                        <li>
+                            <a class="nav-item {{#if (menu-active)}} active{{/if}}"
+                               {{#if (has-children)}}
+                               href="javascript:;"
+                               {{else}}
+                               href="{{../base}}{{url}}"
+                               {{/if}}
+                            style="background-image: url({{../cubase}}/cu/cuicons/loadImage?iconNo={{styleObject.iconClassName}}); background-size:25px;"
+                            >{{text}}
+                            </a>
+                            <ul class="sub-menu">
+                                {{#each children}}
+                                <li class="nav-item">
+                                    <a {{#if (has-children)}}
+                                       href="javascript:;"
+                                       {{else}}
+                                       href="{{../../base}}{{url}}"
+                                       {{/if}}
+                                    class="nav-link{{#if (has-children)}} nav-toggle{{/if}}"
+                                    >
+                                    <span class="title">{{text}}</span>
+                                    {{#if (has-children)}}<img src="{{../../path.app}}/img/nav/daohangjiantou.png"/>{{/if}}
+                                    </a>
+                                    <ul class="{{#if (has-children)}} sub-menu  three-menu{{/if}}" dir="rtl">
+                                        {{#each children}}
+                                        <li class="nav-item">
+                                            <a href="{{../../../base}}{{url}}"
+                                               class="nav-link">
+                                                <span class="title">{{text}}</span>
+                                                {{#if (has-children)}}<img src="{{../../../path.app}}/img/nav/daohangjiantou.png"/>{{/if}}
+                                            </a>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="menu-toggler sidebar-toggler">
+                    <span>我的快捷键</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="page-container">
+        <div class="page-sidebar" data-menu-store="menus">
+            <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu">
+                {{#each menus}}
+                <li class="nav-item">
+                    <a href="{{../base}}{{url}}"
+                       class="nav-link"
+                    > {{{menu-icon}}}<span class="title">{{text}}</span>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                    {{#unless forceChangeLoginPassword}}
+                            {{#if crumbs}}
+                                <div class="page-crumbs clearfix">
+                                    <dl>
+                                        <dt class="{{crumbs.icon}}"><a href="{{crumbs.dt.url}}">{{crumbs.dt.text}}</a></dt>
+                                        {{#each crumbs.dd}}
+                                        <dd><a href="{{url}}">{{text}}</a></dd>
+                                        {{/each}}
+                                    </dl>
+                                    <div class="loginDiv">
+                                        <div class="login-info" id="loginInfo">
+                                        <a id="set_img" href="javascript:;" onclick="showLogin();">
+                                          <img src=""/>
+                                          <span>{{userInfo.loginName}}</span>
+                                        </a>
+                                        <ul style="display: none">
+                                          <li><a href="{{cubase}}/cu/personal-settings/personal-info-maintenance.html">个人信息</a></li>
+                                          <li><a href="{{cubase}}/cu/log-view/log-oprate.html">查看日志</a></li>
+                                          <li><a href="{{cubase}}/cu/personal-settings/update-password.html">修改登录密码</a></li>
+                                          <li class="li-time">上次登录时间</br>{{userInfo.loginTime}}</li>
+                                          <li><a href="{{cubase}}/logout">退出登录</a></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                                    <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>修改用户 </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        <!--<a href="" class="fullscreen" data-original-title="" title=""> </a>-->
+                    </div>
+                </div>
+                <div class="portlet-body tabs-below form">
+                    <form action="/UPDATE_USER_INFO_DATA" class="bsdForm form-horizontal" role="form" id="userInfoForm">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label">用户编号</label>
+                                <div>
+                                    <input type="text" class="form-control" name="id" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">用户登录名</label>
+                                <div>
+                                    <input type="text" class="form-control" name="loginNa" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">用户姓名</label>
+                                <div>
+                                    <input type="text" class="form-control" name="usNa" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label sexCd">性别</label>
+                                <div class="radio-noborder">
+                                    <div class="radio-list sexCd"
+                                         data-radioloader-val="{{sexCd}}"
+                                         data-radioloader-name="sexCd"
+                                         data-radioloader-store="sexCd"
+                                         data-radioloader-vkey="code"
+                                         data-radioloader-tkey="name"
+                                         required>
+                                    </div>
+                                </div>
+                            </div>
+                                <!--<div class="form-group">-->
+
+                                    <!--<label class="control-label">性别</label>-->
+                                    <!--<div>-->
+                                        <!--<div class="radio-list">-->
+                                            <!--<label class="radio-inline">-->
+                                                <!--<input type="radio" name="sexCd" id="optionsRadios25" value="1" checked=""> 男-->
+                                            <!--</label>-->
+                                            <!--<label class="radio-inline">-->
+                                                <!--<input type="radio" name="sexCd" id="optionsRadios26" value="0"> 女-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <div class="form-group">
+                                    <label class="control-label">证件类型</label>
+                                    <div>
+                                        <!--<input type="text" class="form-control" name="paTyCd" required>-->
+                                        <select id="paTyCd"
+                                                name="paTyCd"
+                                                class="form-control required"
+                                                data-selectloader-store="paTyCd"
+                                                data-selectloader-vkey="code"
+                                                data-selectloader-tkey="name">
+                                            <option value="">请选择</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <label class="control-label">证件号码</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="paNo" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">联系电话</label>
+                                    <div>
+                                        <input type="text" class="form-control telNumber" name="moNo" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">邮箱地址</label>
+                                    <div>
+                                        <input type="text" class="form-control isEmail" name="mailNo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">所属机构</label>
+                                    <div class="find">
+                                        <div class="line">
+                                            <input type="hidden" id="orgHidden">
+                                            <input type="text" class="form-control" id="org" name="brNa" readonly>
+                                        </div>
+                                        <div class="line-use">
+                                            <a data-toggle="modal" href="#organizationModal">
+                                                <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                                        type="button"
+                                                        data-select2-open="single-prepend-text">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">所在机构编码</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="newBrNo" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">上级主管</label>
+                                    <div class="find">
+                                        <div class="line">
+                                            <input type="hidden" id="competentHidden" name="newFaexe">
+                                            <input type="text" class="form-control" id="competent" name="parentCuUsSNa" readonly>
+                                        </div>
+                                        <div class="line-use">
+                                            <a data-toggle="modal" href="#competentModal">
+                                                <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                                        type="button"
+                                                        data-select2-open="single-prepend-text">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                            </div>
+                                <!--<div class="form-group">-->
+                                    <!--<label class="control-label">是否主管</label>-->
+                                    <!--<div>-->
+                                        <!--<div class="radio-list">-->
+                                            <!--<label class="radio-inline">-->
+                                                <!--<input type="radio" name="exeYn" value="1" > 是-->
+                                            <!--</label>-->
+                                            <!--<label class="radio-inline">-->
+                                                <!--<input type="radio" name="exeYn" value="0"> 否-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <div class="form-group">
+                                <label class="control-label">是否主管</label>
+                                <div class="radio-noborder">
+                                    <div class="radio-list exeYn"
+                                         data-radioloader-val="{{exeYn}}"
+                                         data-radioloader-name="exeYn"
+                                         data-radioloader-store="exeYn"
+                                         data-radioloader-vkey="code"
+                                         data-radioloader-tkey="name"
+                                         required>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <label class="control-label">是否客户经理</label>
+                                    <div class="radio-noborder">
+                                        <div class="radio-list cuMaYn"
+                                             data-radioloader-val="{{cuMaYn}}"
+                                             data-radioloader-name="cuMaYn"
+                                             data-radioloader-store="cuMaYn"
+                                             data-radioloader-vkey="code"
+                                             data-radioloader-tkey="name"
+                                             required>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div>
+                                <div class="form-group">
+                                    <label class="control-label">设置岗位</label>
+                                    <div class="find">
+                                        <div class="line">
+                                            <!--<input type="hidden" id="jobsHidden" name="sshzscooNa">-->
+                                            <input type="text" class="form-control" id="post" placeholder="可多选" readonly>
+                                        </div>
+                                        <div class="line-use">
+                                            <a data-toggle="modal" href="#postModal">
+                                                <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                                        type="button"
+                                                        data-select2-open="single-prepend-text">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group multi-select" id="postList"></ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label class="control-label">设置角色</label>
+                                    <div class="find">
+                                        <div class="line">
+                                           <!-- <input type="hidden" id="rolesHidden" name="roles">-->
+                                            <input type="text" class="form-control" id="roles" placeholder="可多选" readonly>
+                                        </div>
+                                        <div class="line-use">
+                                            <a data-toggle="modal" href="#rolesModal">
+                                                <button class="multiselect dropdown-toggle mt-multiselect btn btn-default"
+                                                        type="button"
+                                                        data-select2-open="single-prepend-text">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="preview"><button type="button" id="previewBtn">预览</button></div>
+                                    <ul class="list-group multi-select" id="roleList"></ul>
+                                </div>
+
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label class="control-label">备注</label>
+                                    <div>
+                                        <textarea class="form-control" name="co" maxlength="200"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="text-center">
+                                <button type="button" class="btn mainCol" id="update">保存</button>
+                                <a class="btn mainCol" href="user-management-list.html">取消</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+    <!-- @Override -->
+                    {{/unless}}
+            </div>
+        </div>
+        <a href="javascript:;" class="page-quick-sidebar-toggler">
+            <i class="icon-login"></i>
+        </a>
+    </div>
+    <footer>
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2017 &copy; 找音乐老师后台管理系统.</div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+    </footer>
+    <div id="chgloginpwd-modal" class="modal fade modal-scroll" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="fa fa-edit"></i> <strong><span
+                            id="chgloginpwd-msg">修改登录密码</span></strong>
+                    </h4>
+                </div>
+                <div class="modal-body form">
+                    <form id="edit-user-passwd" action="{{base}}/cu/update/loginpwd" role="form"
+                          class="form-horizontal">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 fill">原登录密码</label>
+                                <div class="col-md-8">
+                                    <input type="password" name="plainOldPassword" class="form-control"
+                                           data-rule-required="1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 fill">新登录密码</label>
+                                <div class="col-md-8">
+                                    <input type="password" name="plainNewPassword" id="password"
+                                           class="form-control passwordCheck" data-rule-required="1" minlength="6" maxlength="16"
+                                           data-msg-minlength="密码至少输入六位！">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 fill">新密码确认</label>
+                                <div class="col-md-8">
+                                    <input type="password" name="newPassword" class="form-control"
+                                           data-rule-equalto="#password" data-msg-equalto="两次密码不一致"
+                                           data-rule-required="1" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions right">
+                            <button type="button" class="btn blue" id="updatePWD">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 弹框类占位符  -->
+        <div class="modal fade" id="organizationModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="organizationListModal">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">机构信息列表
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <a class="search-pic" id="searchCase" href="javaScript:;"><img src="/static/app/1.0.0/img/search_model.png" alt=""></a>
+                        </h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <form action="/PARTNER" class="bsdForm pagination-form query-form">
+                            <div class="search">
+                                <div class="form-group">
+                                    <label class="form-label">机构名称</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="brNa">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">机构级别</label>
+                                    <div>
+                                        <!--<input type="text" class="form-control" name="brLevQt">-->
+                                        <select id="brLevQt"
+                                                name="brLevQt"
+                                                class="form-control"
+                                                data-selectloader-store="brLevQt"
+                                                data-selectloader-vkey="code"
+                                                data-selectloader-tkey="name">
+                                            <option value="">请选择</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">机构编码</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="brNo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="st" value="JH">
+                                </div>
+                                <div class="btn-right">
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default mainCol pagination-reset reset"
+                                            type="reset">
+                                        重置
+                                    </button>
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default pagination-query mainCol"
+                                            id="belongCompetent"
+                                            type="button"
+                                            data-select2-open="single-prepend-text">
+                                        查询
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="mes-list">
+                            <div id="organizationTable">
+                                <div class="pagination-reload"></div>
+                                <div class="portlet-body pagination-container"
+                                     data-page-first-store="first-store"
+                                     data-page-url="/CUUSCUBRS"
+                                     data-page-template-id="organization-list-page-template"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+                                <button class="btn blue" data-dismiss="modal" id="confirmY">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="competentModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="competentListModal">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">主管列表
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <a class="search-pic" id="searchCase" href="javaScript:;"><img src="/static/app/1.0.0/img/search_model.png" alt=""></a>
+                        </h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <form action="/PARTNER" class="bsdForm pagination-form query-form">
+                            <div class="search">
+                                <div class="form-group">
+                                    <label class="form-label">用户名称</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="usNa">                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="st" value="JH">
+                                    <input type="hidden" name="brNo">
+                                </div>
+                                <div class="btn-right">
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default mainCol pagination-reset reset"
+                                            type="reset">
+                                        重置
+                                    </button>
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default pagination-query mainCol"
+                                            id="belongCompetent"
+                                            type="button"
+                                            data-select2-open="single-prepend-text">
+                                        查询
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="mes-list">
+                            <div id="competentTable">
+                                <div class="pagination-reload"></div>
+                                <div class="portlet-body pagination-container"
+                                     data-page-first-store="first-store"
+                                     data-page-url="/COMPETENT_USER_LIST"
+                                     data-page-template-id="competent-page-template"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+                                <button class="btn blue" data-dismiss="modal" id="confirmOk">确定
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="postModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="postListModal">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">岗位列表
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <a class="search-pic" id="searchCase" href="javaScript:;"><img src="/static/app/1.0.0/img/search_model.png" alt=""></a>
+                        </h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <form action="/PARTNER" class="bsdForm pagination-form query-form">
+                            <div class="search">
+                                <div class="form-group">
+                                    <label for="queryPostNa" class="control-label">岗位名称</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="postNa" id="queryPostNa">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="queryPostNo" class="control-label">岗位编号</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="postNo" id="queryPostNo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="auPostYn" class="control-label">是否审批岗</label>
+                                    <div>
+                                        <select id="auPostYn"
+                                                name="auPostYn"
+                                                class="form-control"
+                                                data-selectloader-store="auPostYn"
+                                                data-selectloader-vkey="code"
+                                                data-selectloader-tkey="name">
+                                            <option value="">请选择</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="st" value="JH">
+                                </div>
+                                <div class="btn-right">
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default mainCol pagination-reset reset"
+                                            type="reset">
+                                        重置
+                                    </button>
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default pagination-query mainCol"
+                                            id="belongCompetent"
+                                            type="button"
+                                            data-select2-open="single-prepend-text">
+                                        查询
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="mes-list">
+                            <div id="postTable">
+                                <div class="inAll"><p>共选择[<span class="tiao"> 0 </span>]条</p></div>
+                                <div class="pagination-reload"></div>
+                                <div class="portlet-body pagination-container"
+                                     data-page-first-store="first-store"
+                                     data-page-url="/CUPOSTS"
+                                     data-page-template-id="post-page-template"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+                                <button class="btn blue" data-dismiss="modal" id="confirm">确定
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="rolesModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="rolesListModal">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">角色列表
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <a class="search-pic" id="searchCase" href="javaScript:;"><img src="/static/app/1.0.0/img/search_model.png" alt=""></a>
+                        </h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <form action="/PARTNER" class="bsdForm pagination-form query-form">
+                            <div class="search">
+                                <div class="form-group">
+                                    <label for="queryRoNa" class="control-label">角色名称</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="roNa" id="queryRoNa">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="queryRoNo" class="control-label">角色编号</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="roNo" id="queryRoNo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="st" value="JH">
+                                </div>
+                                <div class="btn-right">
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default mainCol pagination-reset reset"
+                                            type="reset">
+                                        重置
+                                    </button>
+                                    <button class="multiselect dropdown-toggle mt-multiselect btn btn-default pagination-query mainCol"
+                                            id="belongCompetent"
+                                            type="button"
+                                            data-select2-open="single-prepend-text">
+                                        查询
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="mes-list">
+                            <div id="rolesTable">
+                                <div class="inAll"><p>共选择[<span class="tiao"> 0 </span>]条</p></div>
+                                <div class="pagination-reload"></div>
+                                <div class="portlet-body pagination-container"
+                                     data-page-first-store="first-store"
+                                     data-page-url="/CUUSCUROS"
+                                     data-page-template-id="roles-page-template"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn btn-outline dark" data-dismiss="modal">取消</button>
+                                <button class="btn blue" data-dismiss="modal" id="rolesConfirm">确定
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="previewModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="rolesListModal">
+                    <div data-modal-header="" class="modal-header">
+                        <h3 class="modal-title">预览角色权限</h3>
+                    </div>
+                    <div data-modal-body="" class="modal-body">
+                        <div class="tree-nav" id="jstree" data-jstree></div>
+                    </div>
+                    <div data-modal-footer="" class="modal-footer model-btn-center">
+                        <div class="portlet-body">
+                            <div class="clearfix">
+                                <button class="btn btn-outline dark" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade bs-modal-sm" id="errorMES" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">提示信息</h4>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn blue" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<!-- 提示类弹框  -->
+    <div id="pageModal" class="modal fade" style="display: none;" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div data-modal-size class="modal-dialog">
+            <div class="modal-content">
+                <div data-modal-header class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 data-modal-title class="modal-title">提示</h4>
+                </div>
+                <div data-modal-body class="modal-body">
+                    <p data-modal-text>这是模态框！</p>
+                </div>
+                <div data-modal-footer class="modal-footer">
+                    <button data-modal-cancel type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
+                    <button data-modal-ok type="button" class="btn blue">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/js.cookie.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery.blockui.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/uniform/jquery.uniform.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootbox/bootbox.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/scripts/app.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jstree/dist/jstree.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/layouts/layout/scripts/layout.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/layouts/global/scripts/quick-sidebar.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/moment.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+<script src="/static/lib/handlebars/4.0.4/handlebars.js"></script>
+<script src="/static/lib/jquery-deserialize/1.3.3/jquery.deserialize.min.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="/static/lib/metronic/4.5.2/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<!-- js第三方库  -->
+    <!-- @Override -->
+
+<script>
+    /**
+     * 初始化全局app命名空间
+     * @type Object
+     */
+    window.app = window.app || {};
+</script>
+<!-- 公共js文件  -->
+<script src="/static/app/1.0.0/js/helpers.js"></script>
+<script src="/static/app/1.0.0/js/app.js"></script>
+<!-- 公共模拟数据 -->
+<script src="/script/cu/app.js"></script>
+<script>
+  /**
+    * 检测是否已经登录
+    */
+  app.$getJSON(app.base + '/cu/oauth2/checkLogin').done(function (json) {
+    console.log('checkLogin', json);
+    if (app.isOK(json)) {
+      console.log('已经登录.');
+    }
+  });
+</script>
+<script src="/script/cu/availableMenus"></script>
+<script src="/cu/cuuss/loginNa"></script>
+<!-- 首屏数据  -->
+        <script src="/script/cu/dicts?ids=28,17,10"></script>
+        <script src="/script/cu/updatecuuss"></script>
+
+<script>
+  $('#app').append(Handlebars.compile($('#mainTemplate').html())(app));
+  app.$getJSON(app.base + '/cu/cuuslogins/checkPW').done(function(data) {
+    if(data.resultCode == 'FAIL') {
+      $('#chgloginpwd-modal').modal();
+      $('#chgloginpwd-msg').html(data.errors.join());
+    }
+});
+$('#updatePWD').unbind('click').click(function() {
+    var form = $('#edit-user-passwd');
+    var jqxhr = app.$submit(form, 'json');
+    if(!jqxhr) return false;
+    jqxhr.done(function(data) {
+      if(app.isOK(data)) {
+        app.alertOK('修改成功');
+        setTimeout(function() {
+          window.location.href = app.base+"/logout";
+        }, 2000);
+      } else {
+        app.alertError(data.errors.join());
+      }
+    });
+});
+</script>
+<script src="/static/app/1.0.0/js/init.js"></script>
+<script src="/static/app/1.0.0/js/cu/urls.js"></script>
+<script src="/static/app/1.0.0/js/app-plugins.js"></script>
+<script src="/static/app/1.0.0/js/validation.js"></script>
+<script src="/static/app/1.0.0/js/chgloginpwd.js"></script>
+
+<!-- 自定义js文件  -->
+        <script src="/static/app/1.0.0/js/helpers-ext.js"></script>
+        <script src="/static/app/1.0.0/js/cu/common/app-context.js"></script>
+        <script src="/static/app/1.0.0/js/cu/common/jquery.query-object.js"></script>
+        <!--<script src="/static/app/1.0.0/js/cs/store/common.js"></script>-->
+        <script src="/static/app/1.0.0/js/cu/user-management/update-user.js"></script>
+
+</body>
+</html>
