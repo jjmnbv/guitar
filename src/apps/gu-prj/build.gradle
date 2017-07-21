@@ -29,7 +29,6 @@ dependencies {
   compile project(":oauth2-server")
   compile project(":cu-prj-http-skeleton")
   //compile project(":message-publish")
-  compile group: 'com.cpjit', name: 'swagger4j', version: '2.1.0'
   compile "cglib:cglib:$cglibVersion"
   compile "commons-codec:commons-codec:$commonsCodecVersion"
   compile "commons-fileupload:commons-fileupload:$commonsFileuploadVersion"
